@@ -37,6 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Button_Insert = new System.Windows.Forms.Button();
+            this.Button_AddUser = new System.Windows.Forms.Button();
+            this.TextBox_UserID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TextBox_ID
@@ -113,11 +116,40 @@
             this.Button_Insert.UseVisualStyleBackColor = true;
             this.Button_Insert.Click += new System.EventHandler(this.Button_Insert_Click);
             // 
+            // Button_AddUser
+            // 
+            this.Button_AddUser.Location = new System.Drawing.Point(537, 284);
+            this.Button_AddUser.Name = "Button_AddUser";
+            this.Button_AddUser.Size = new System.Drawing.Size(127, 25);
+            this.Button_AddUser.TabIndex = 9;
+            this.Button_AddUser.Text = "AddUser";
+            this.Button_AddUser.UseVisualStyleBackColor = true;
+            this.Button_AddUser.Click += new System.EventHandler(this.Button_AddUser_Click);
+            // 
+            // TextBox_UserID
+            // 
+            this.TextBox_UserID.Location = new System.Drawing.Point(594, 61);
+            this.TextBox_UserID.Name = "TextBox_UserID";
+            this.TextBox_UserID.Size = new System.Drawing.Size(154, 22);
+            this.TextBox_UserID.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(499, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "UserID";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.TextBox_UserID);
+            this.Controls.Add(this.Button_AddUser);
             this.Controls.Add(this.Button_Insert);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -146,6 +178,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Button_Insert;
+        private System.Windows.Forms.Button Button_AddUser;
+        private System.Windows.Forms.TextBox TextBox_UserID;
+        private System.Windows.Forms.Label label5;
     }
 }
 

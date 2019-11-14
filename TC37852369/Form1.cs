@@ -12,6 +12,8 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 
+using TC37852369.Database;
+
 namespace TC37852369
 {
     public partial class Form1 : Form
@@ -50,6 +52,12 @@ namespace TC37852369
             SetResponse response = await client.SetTaskAsync("User/" + TextBox_ID.Text,data);
             Data result = response.ResultAs<Data>();
             MessageBox.Show("Data Inserted " + result.Id);
+        }
+
+        private async void Button_AddUser_Click(object sender, EventArgs e)
+        {
+            DatabaseRequests request = new DatabaseRequests();
+            bool success = await request.addUser(TextBox_UserID.Text);
         }
     }
 }
