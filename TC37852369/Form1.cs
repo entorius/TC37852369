@@ -44,9 +44,9 @@ namespace TC37852369
             var data = new Data
             {
                 Id = TextBox_ID.Text,
-                Name = TextBox_Name.Text,
-                Address = TextBox_Address.Text,
-                Age = TextBox_Age.Text
+                Name = TextBox_UserName.Text,
+                Address = TextBox_mail.Text,
+                Age = TextBox_Name.Text
             };
 
             SetResponse response = await client.SetTaskAsync("User/" + TextBox_ID.Text,data);
@@ -57,7 +57,14 @@ namespace TC37852369
         private async void Button_AddUser_Click(object sender, EventArgs e)
         {
             DatabaseRequests request = new DatabaseRequests();
-            bool success = await request.addUser(TextBox_UserID.Text);
+            bool success = await request.addUser(TextBox_UserID.Text,TextBox_UserName.Text,TextBox_password.Text,
+                TextBox_mail.Text,TextBox_Name.Text,TextBox_UserID.Text);
+        }
+
+        private async void Button_DeleteUser_Click(object sender, EventArgs e)
+        {
+            DatabaseRequests request = new DatabaseRequests();
+            bool success = await request.deleteUser(TextBox_UserID.Text);
         }
     }
 }
