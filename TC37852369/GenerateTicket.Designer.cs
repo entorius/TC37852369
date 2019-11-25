@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.TextBox_UserId = new System.Windows.Forms.TextBox();
             this.Button_Generate = new TC37852369.CircularButton();
             this.Button_Cancel = new TC37852369.CircularButton();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(226, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Generate ticket";
             // 
             // TextBox_UserId
             // 
@@ -78,7 +68,6 @@
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Generate);
             this.Controls.Add(this.TextBox_UserId);
-            this.Controls.Add(this.label1);
             this.Name = "GenerateTicket";
             this.Text = "GenerateTicket";
             this.ResumeLayout(false);
@@ -87,8 +76,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TextBox_UserId;
         private CircularButton Button_Generate;
         private CircularButton Button_Cancel;

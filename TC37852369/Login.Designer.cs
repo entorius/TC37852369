@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.TextBox_Email = new System.Windows.Forms.TextBox();
             this.TextBox_Password = new System.Windows.Forms.TextBox();
             this.Button_Login = new TC37852369.CircularButton();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label1.Location = new System.Drawing.Point(215, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 46);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Login";
             // 
             // TextBox_Email
             // 
@@ -81,7 +70,6 @@
             this.Controls.Add(this.Button_Login);
             this.Controls.Add(this.TextBox_Password);
             this.Controls.Add(this.TextBox_Email);
-            this.Controls.Add(this.label1);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -90,8 +78,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TextBox_Email;
         private System.Windows.Forms.TextBox TextBox_Password;
         private CircularButton Button_Login;

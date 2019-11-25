@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace TC37852369
 {
-    public partial class EmailTemplate : Form
+    public partial class EmailTemplate : MetroForm
     {
         public EmailTemplate()
         {

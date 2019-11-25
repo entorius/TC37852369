@@ -115,6 +115,12 @@
     <Compile Include="CircularButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CreateEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEvent.Designer.cs">
+      <DependentUpon>CreateEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateSend.Designer.cs">
+      <DependentUpon>GenerateSend.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerateTicket.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +161,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateEvent.resx">
+      <DependentUpon>CreateEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateSend.resx">
+      <DependentUpon>GenerateSend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerateTicket.resx">
       <DependentUpon>GenerateTicket.cs</DependentUpon>
@@ -189,6 +207,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Firestore" Version="1.1.0-beta01" />
+    <PackageReference Include="MetroFramework.Fonts">
+      <Version>1.2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="MetroModernUI">
+      <Version>1.4.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.1.22.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.22.0\build\net45\Grpc.Core.targets')" />

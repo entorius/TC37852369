@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.TextBox_Subject = new System.Windows.Forms.TextBox();
             this.TextBox_Body = new System.Windows.Forms.TextBox();
             this.Button_Cancel = new TC37852369.CircularButton();
             this.Button_Confirm = new TC37852369.CircularButton();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(235, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Choose content";
             // 
             // TextBox_Subject
             // 
@@ -88,17 +78,14 @@
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.TextBox_Body);
             this.Controls.Add(this.TextBox_Subject);
-            this.Controls.Add(this.label1);
             this.Name = "EmailTemplate";
-            this.Text = "EmailTemplate";
+            this.Text = "Email Template";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TextBox_Subject;
         private System.Windows.Forms.TextBox TextBox_Body;
         private CircularButton Button_Cancel;

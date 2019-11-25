@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace TC37852369
 {
-    public partial class Login : Form
+    public partial class Login : MetroForm
     {
         public Login()
         {
@@ -65,7 +66,9 @@ namespace TC37852369
 
         private void Button_Login_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            GenerateSend sending = new GenerateSend();
+            sending.Show();
         }
     }
 }

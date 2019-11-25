@@ -12,7 +12,7 @@ namespace TC37852369
     class CircularButton : Button
 
     {
-        int BorderRadius = 20;
+        int BorderRadius = 11;
         int BorderWidth = 3;
         Color BorderColor = Color.Transparent;
         Color BorderOverColor = Color.Transparent;

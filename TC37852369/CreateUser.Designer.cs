@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.TextBox_Email = new System.Windows.Forms.TextBox();
             this.TextBox_Name = new System.Windows.Forms.TextBox();
             this.TextBox_ConfirmPassword = new System.Windows.Forms.TextBox();
@@ -36,15 +35,6 @@
             this.Button_Cancel = new TC37852369.CircularButton();
             this.Button_CreateUser = new TC37852369.CircularButton();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(315, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Create User";
             // 
             // TextBox_Email
             // 
@@ -105,7 +95,6 @@
             this.Controls.Add(this.TextBox_ConfirmPassword);
             this.Controls.Add(this.TextBox_Name);
             this.Controls.Add(this.TextBox_Email);
-            this.Controls.Add(this.label1);
             this.Name = "CreateUser";
             this.Text = "Create_User";
             this.ResumeLayout(false);
@@ -114,8 +103,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TextBox_Email;
         private System.Windows.Forms.TextBox TextBox_Name;
         private System.Windows.Forms.TextBox TextBox_ConfirmPassword;

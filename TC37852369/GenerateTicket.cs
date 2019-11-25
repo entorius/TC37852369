@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace TC37852369
 {
-    public partial class GenerateTicket : Form
+    public partial class GenerateTicket : MetroForm
     {
         public GenerateTicket()
         {
