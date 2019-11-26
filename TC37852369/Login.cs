@@ -67,8 +67,8 @@ namespace TC37852369
         private void Button_Login_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GenerateSend sending = new GenerateSend();
-            sending.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }

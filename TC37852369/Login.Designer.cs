@@ -30,7 +30,7 @@
         {
             this.TextBox_Email = new System.Windows.Forms.TextBox();
             this.TextBox_Password = new System.Windows.Forms.TextBox();
-            this.Button_Login = new TC37852369.CircularButton();
+            this.Button_Login = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // TextBox_Email
@@ -52,14 +52,18 @@
             // 
             // Button_Login
             // 
-            this.Button_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Button_Login.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Button_Login.Location = new System.Drawing.Point(199, 319);
+            this.Button_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Button_Login.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.Button_Login.Location = new System.Drawing.Point(202, 315);
             this.Button_Login.Name = "Button_Login";
-            this.Button_Login.Size = new System.Drawing.Size(138, 48);
-            this.Button_Login.TabIndex = 5;
+            this.Button_Login.Size = new System.Drawing.Size(136, 51);
+            this.Button_Login.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Button_Login.TabIndex = 11;
             this.Button_Login.Text = "Login";
-            this.Button_Login.UseVisualStyleBackColor = false;
+            this.Button_Login.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_Login.UseCustomBackColor = true;
+            this.Button_Login.UseSelectable = true;
+            this.Button_Login.UseStyleColors = true;
             this.Button_Login.Click += new System.EventHandler(this.Button_Login_Click);
             // 
             // Login
@@ -80,6 +84,6 @@
         #endregion
         private System.Windows.Forms.TextBox TextBox_Email;
         private System.Windows.Forms.TextBox TextBox_Password;
-        private CircularButton Button_Login;
+        private MetroFramework.Controls.MetroButton Button_Login;
     }
 }

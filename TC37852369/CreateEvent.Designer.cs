@@ -34,10 +34,10 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.Button_Cancel = new TC37852369.CircularButton();
-            this.Button_Create = new TC37852369.CircularButton();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Button_Send = new MetroFramework.Controls.MetroButton();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // textBox1
@@ -88,28 +88,6 @@
             this.textBox6.Size = new System.Drawing.Size(305, 30);
             this.textBox6.TabIndex = 6;
             // 
-            // Button_Cancel
-            // 
-            this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
-            this.Button_Cancel.Location = new System.Drawing.Point(65, 410);
-            this.Button_Cancel.Name = "Button_Cancel";
-            this.Button_Cancel.Size = new System.Drawing.Size(113, 44);
-            this.Button_Cancel.TabIndex = 7;
-            this.Button_Cancel.Text = "Cancel";
-            this.Button_Cancel.UseVisualStyleBackColor = false;
-            // 
-            // Button_Create
-            // 
-            this.Button_Create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Button_Create.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.Button_Create.Location = new System.Drawing.Point(649, 410);
-            this.Button_Create.Name = "Button_Create";
-            this.Button_Create.Size = new System.Drawing.Size(113, 49);
-            this.Button_Create.TabIndex = 8;
-            this.Button_Create.Text = "Create";
-            this.Button_Create.UseVisualStyleBackColor = false;
-            this.Button_Create.Click += new System.EventHandler(this.Button_Create_Click);
-            // 
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(413, 65);
@@ -129,15 +107,45 @@
             this.checkBox1.Text = "Use default mail template";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // Button_Send
+            // 
+            this.Button_Send.BackColor = System.Drawing.Color.Maroon;
+            this.Button_Send.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Send.Location = new System.Drawing.Point(626, 406);
+            this.Button_Send.Name = "Button_Send";
+            this.Button_Send.Size = new System.Drawing.Size(136, 51);
+            this.Button_Send.Style = MetroFramework.MetroColorStyle.White;
+            this.Button_Send.TabIndex = 11;
+            this.Button_Send.Text = "Create";
+            this.Button_Send.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_Send.UseCustomBackColor = true;
+            this.Button_Send.UseSelectable = true;
+            this.Button_Send.UseStyleColors = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.BackColor = System.Drawing.Color.Silver;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton1.Location = new System.Drawing.Point(65, 406);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(136, 51);
+            this.metroButton1.Style = MetroFramework.MetroColorStyle.Black;
+            this.metroButton1.TabIndex = 12;
+            this.metroButton1.Text = "Cancel";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroButton1.UseCustomBackColor = true;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseStyleColors = true;
+            // 
             // CreateEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 471);
+            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.Button_Send);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.Button_Create);
-            this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -158,9 +166,9 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
-        private CircularButton Button_Cancel;
-        private CircularButton Button_Create;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.CheckBox checkBox1;
+        private MetroFramework.Controls.MetroButton Button_Send;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

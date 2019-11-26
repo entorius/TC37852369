@@ -116,6 +116,5 @@ namespace TC37852369
                 TextBox_Name.ForeColor = SystemColors.WindowText;
             }
         }
-
     }
 }
