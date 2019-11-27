@@ -52,12 +52,12 @@
             // 
             // Button_Login
             // 
-            this.Button_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Button_Login.BackColor = System.Drawing.Color.DodgerBlue;
             this.Button_Login.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Button_Login.Location = new System.Drawing.Point(202, 315);
             this.Button_Login.Name = "Button_Login";
             this.Button_Login.Size = new System.Drawing.Size(136, 51);
-            this.Button_Login.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Button_Login.Style = MetroFramework.MetroColorStyle.White;
             this.Button_Login.TabIndex = 11;
             this.Button_Login.Text = "Login";
             this.Button_Login.Theme = MetroFramework.MetroThemeStyle.Light;

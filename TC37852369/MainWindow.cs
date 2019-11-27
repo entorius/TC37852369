@@ -17,6 +17,11 @@ namespace TC37852369
         {
             InitializeComponent();
         }
+        public void InitializeEvents()
+        {
+            
+        }
+
 
     }
 }
