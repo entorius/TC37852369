@@ -13,62 +13,39 @@ namespace TC37852369
 {
     public partial class EmailTemplate : MetroForm
     {
-        public EmailTemplate()
+        MainWindow mainWindow;
+        public EmailTemplate(MainWindow window)
         {
+            mainWindow = window;
+            this.FormClosed += CloseHandler;
             InitializeComponent();
-            TextBox_Subject.ForeColor = SystemColors.GrayText;
-            TextBox_Subject.Text = "Subject";
-            this.TextBox_Subject.Leave += new System.EventHandler(this.TextBox_Subject_Leave);
-            this.TextBox_Subject.Enter += new System.EventHandler(this.TextBox_Subject_Enter);
+            TextBoxModification TextBox_TemplateNameMod = new TextBoxModification(TextBox_TemplateName, "Template Name", false);
+            TextBox_TemplateNameMod.addEvents();
+            TextBoxModification TextBox_SubjectMod = new TextBoxModification(TextBox_Subject, "Subject", false);
+            TextBox_SubjectMod.addEvents();
+            TextBoxModification TextBox_BodyMod = new TextBoxModification(TextBox_Body, "Body", false);
+            TextBox_BodyMod.addEvents();
 
-            TextBox_Body.ForeColor = SystemColors.GrayText;
-            TextBox_Body.Text = "Body";
-            this.TextBox_Body.Leave += new System.EventHandler(this.TextBox_Body_Leave);
-            this.TextBox_Body.Enter += new System.EventHandler(this.TextBox_Body_Enter);
+            for (int i = 0; i < 30; i++)
+            {
+                this.ListBox_EmailTemplates.Items.Add("Email Template " + i);
+            }
         }
-
         private void Button_Confirm_Click(object sender, EventArgs e)
         {
-
-        }
-        private void TextBox_Subject_Leave(object sender, EventArgs e)
-        {
-            if (TextBox_Subject.Text.Length == 0)
-            {
-                TextBox_Subject.UseSystemPasswordChar = false;
-                TextBox_Subject.Text = "Subject";
-                TextBox_Subject.ForeColor = SystemColors.GrayText;
-            }
+            mainWindow.Enabled = true;
+            this.Dispose();
         }
 
-        private void TextBox_Subject_Enter(object sender, EventArgs e)
+        private void Button_Cancel_Click(object sender, EventArgs e)
         {
-            if (TextBox_Subject.Text == "Subject")
-            {
-                TextBox_Subject.UseSystemPasswordChar = true;
-                TextBox_Subject.Text = "";
-                TextBox_Subject.ForeColor = SystemColors.WindowText;
-            }
+            mainWindow.Enabled = true;
+            this.Dispose();
         }
 
-        private void TextBox_Body_Leave(object sender, EventArgs e)
+        protected void CloseHandler(object sender, EventArgs e)
         {
-            if (TextBox_Body.Text.Length == 0)
-            {
-                TextBox_Body.UseSystemPasswordChar = false;
-                TextBox_Body.Text = "Body";
-                TextBox_Body.ForeColor = SystemColors.GrayText;
-            }
-        }
-
-        private void TextBox_Body_Enter(object sender, EventArgs e)
-        {
-            if (TextBox_Body.Text == "Body")
-            {
-                TextBox_Body.UseSystemPasswordChar = true;
-                TextBox_Body.Text = "";
-                TextBox_Body.ForeColor = SystemColors.WindowText;
-            }
+            mainWindow.Enabled = true;
         }
     }
 }

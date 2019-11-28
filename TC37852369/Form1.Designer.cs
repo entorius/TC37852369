@@ -118,7 +118,6 @@
             this.Button_Insert.TabIndex = 8;
             this.Button_Insert.Text = "Insert";
             this.Button_Insert.UseVisualStyleBackColor = true;
-            this.Button_Insert.Click += new System.EventHandler(this.Button_Insert_Click);
             // 
             // Button_AddUser
             // 

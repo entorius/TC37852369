@@ -33,7 +33,7 @@
             this.TextBox_ConfirmPassword = new System.Windows.Forms.TextBox();
             this.TextBox_Password = new System.Windows.Forms.TextBox();
             this.Button_Create = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // TextBox_Email
@@ -83,28 +83,30 @@
             this.Button_Create.UseCustomBackColor = true;
             this.Button_Create.UseSelectable = true;
             this.Button_Create.UseStyleColors = true;
+            this.Button_Create.Click += new System.EventHandler(this.Button_Create_Click);
             // 
-            // metroButton1
+            // Button_Cancel
             // 
-            this.metroButton1.BackColor = System.Drawing.Color.Silver;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton1.Location = new System.Drawing.Point(84, 346);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(136, 51);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Black;
-            this.metroButton1.TabIndex = 13;
-            this.metroButton1.Text = "Cancel";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
+            this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
+            this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Cancel.Location = new System.Drawing.Point(84, 346);
+            this.Button_Cancel.Name = "Button_Cancel";
+            this.Button_Cancel.Size = new System.Drawing.Size(136, 51);
+            this.Button_Cancel.Style = MetroFramework.MetroColorStyle.Black;
+            this.Button_Cancel.TabIndex = 13;
+            this.Button_Cancel.Text = "Cancel";
+            this.Button_Cancel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_Cancel.UseCustomBackColor = true;
+            this.Button_Cancel.UseSelectable = true;
+            this.Button_Cancel.UseStyleColors = true;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 450);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Create);
             this.Controls.Add(this.TextBox_Password);
             this.Controls.Add(this.TextBox_ConfirmPassword);
@@ -123,6 +125,6 @@
         private System.Windows.Forms.TextBox TextBox_ConfirmPassword;
         private System.Windows.Forms.TextBox TextBox_Password;
         private MetroFramework.Controls.MetroButton Button_Create;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton Button_Cancel;
     }
 }

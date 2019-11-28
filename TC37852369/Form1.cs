@@ -39,21 +39,6 @@ namespace TC37852369
             }
         }
 
-        private async void Button_Insert_Click(object sender, EventArgs e)
-        {
-            var data = new Data
-            {
-                Id = TextBox_ID.Text,
-                Name = TextBox_UserName.Text,
-                Address = TextBox_mail.Text,
-                Age = TextBox_Name.Text
-            };
-
-            SetResponse response = await client.SetTaskAsync("User/" + TextBox_ID.Text,data);
-            Data result = response.ResultAs<Data>();
-            MessageBox.Show("Data Inserted " + result.Id);
-        }
-
         private async void Button_AddUser_Click(object sender, EventArgs e)
         {
             DatabaseRequests request = new DatabaseRequests();

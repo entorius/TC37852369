@@ -13,8 +13,11 @@ namespace TC37852369
 {
     public partial class MainWindow : MetroForm
     {
-        public MainWindow()
+        Login login;
+        public MainWindow(Login login)
         {
+            this.login = login;
+            this.FormClosed += ClosedHandler;
             InitializeComponent();
         }
         public void InitializeEvents()
@@ -22,6 +25,50 @@ namespace TC37852369
             
         }
 
+        private void Button_CreateEvent_Click(object sender, EventArgs e)
+        {
+            CreateEvent cEvent = new CreateEvent(this);
+            this.Enabled = false;
+            cEvent.Show();
+        }
 
+        private void Button_RegisterParticipant_Click(object sender, EventArgs e)
+        {
+            RegisterParticipant cEvent = new RegisterParticipant(this);
+            this.Enabled = false;
+            cEvent.Show();
+        }
+        protected void ClosedHandler(object sender, EventArgs e)
+        {
+            login.Show();
+        }
+
+        private void Button_GenerateMail_Click(object sender, EventArgs e)
+        {
+            GenerateSend generateSend = new GenerateSend(this);
+            generateSend.Show();
+            this.Enabled = false;
+        }
+
+        private void Button_AddUser_Click(object sender, EventArgs e)
+        {
+            CreateUser user = new CreateUser(this);
+            user.Show();
+            this.Enabled = false;
+        }
+
+        private void Button_GenerateTicket_Click(object sender, EventArgs e)
+        {
+            GenerateTicket ticket = new GenerateTicket(this);
+            ticket.Show();
+            this.Enabled = false;
+        }
+
+        private void Button_EditEmail_Click(object sender, EventArgs e)
+        {
+            EmailTemplate email = new EmailTemplate(this);
+            email.Show();
+            this.Enabled = false;
+        }
     }
 }

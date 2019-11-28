@@ -11,30 +11,17 @@ using MetroFramework.Forms;
 
 namespace TC37852369
 {
-    public partial class GenerateSend : MetroForm
+    public partial class RegisterParticipant : MetroForm
     {
         MainWindow mainWindow;
-        public GenerateSend(MainWindow window)
+        public RegisterParticipant(MainWindow window)
         {
             mainWindow = window;
             this.FormClosed += CloseHandler;
             InitializeComponent();
-            List<string> values = new List<string>();
-            values.Add("Event1");
-            values.Add("Event2");
-            values.Add("Event3");
-
-            GenerateEventsCombobox(values);
-        }
-        void GenerateEventsCombobox(List<string> values)
-        {
-            foreach (string value in values)
-            {
-                ComboBox_Events.Items.Add(value);
-            }
         }
 
-        private void Button_Send_Click(object sender, EventArgs e)
+        private void Button_Confirm_Click(object sender, EventArgs e)
         {
             mainWindow.Enabled = true;
             this.Dispose();

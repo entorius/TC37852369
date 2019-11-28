@@ -13,14 +13,32 @@ namespace TC37852369
 {
     public partial class CreateEvent : MetroForm
     {
-        public CreateEvent()
+        MainWindow mainWindow;
+        public CreateEvent(MainWindow window)
         {
             InitializeComponent();
+            mainWindow = window;
+            this.FormClosed += CloseHandler;
+            TextBoxModification TextBox_SubjectMod = new TextBoxModification(TextBox_Subject, "Subject", false);
+            TextBox_SubjectMod.addEvents();
+            TextBoxModification TextBox_BodyMod = new TextBoxModification(TextBox_Body, "Body", false);
+            TextBox_BodyMod.addEvents();
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
         {
+            mainWindow.Enabled = true;
+            this.Dispose();
+        }
 
+        private void MetroButton1_Click(object sender, EventArgs e)
+        {
+            mainWindow.Enabled = true;
+            this.Dispose();
+        }
+        protected void CloseHandler(object sender, EventArgs e)
+        {
+            mainWindow.Enabled = true;
         }
     }
 }

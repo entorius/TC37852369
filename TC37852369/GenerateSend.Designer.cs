@@ -33,7 +33,7 @@
             this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.Button_Send = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
@@ -54,9 +54,9 @@
             // 
             // 
             this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(351, 2);
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(350, 2);
             this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox1.CustomButton.TabIndex = 1;
             this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -85,9 +85,9 @@
             // 
             // 
             this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(351, 2);
+            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(350, 2);
             this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox2.CustomButton.TabIndex = 1;
             this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -116,9 +116,9 @@
             // 
             // 
             this.metroTextBox3.CustomButton.Image = null;
-            this.metroTextBox3.CustomButton.Location = new System.Drawing.Point(351, 2);
+            this.metroTextBox3.CustomButton.Location = new System.Drawing.Point(350, 2);
             this.metroTextBox3.CustomButton.Name = "";
-            this.metroTextBox3.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.metroTextBox3.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBox3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox3.CustomButton.TabIndex = 1;
             this.metroTextBox3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -147,9 +147,9 @@
             // 
             // 
             this.metroTextBox4.CustomButton.Image = null;
-            this.metroTextBox4.CustomButton.Location = new System.Drawing.Point(351, 2);
+            this.metroTextBox4.CustomButton.Location = new System.Drawing.Point(350, 2);
             this.metroTextBox4.CustomButton.Name = "";
-            this.metroTextBox4.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.metroTextBox4.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBox4.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox4.CustomButton.TabIndex = 1;
             this.metroTextBox4.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -172,17 +172,18 @@
             this.metroTextBox4.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox4.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroButton1
+            // Button_Cancel
             // 
-            this.metroButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton1.Location = new System.Drawing.Point(59, 413);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(136, 51);
-            this.metroButton1.TabIndex = 8;
-            this.metroButton1.Text = "Cancel";
-            this.metroButton1.UseSelectable = true;
+            this.Button_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Button_Cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Cancel.Location = new System.Drawing.Point(59, 413);
+            this.Button_Cancel.Name = "Button_Cancel";
+            this.Button_Cancel.Size = new System.Drawing.Size(136, 51);
+            this.Button_Cancel.TabIndex = 8;
+            this.Button_Cancel.Text = "Cancel";
+            this.Button_Cancel.UseSelectable = true;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // Button_Send
             // 
@@ -198,6 +199,7 @@
             this.Button_Send.UseCustomBackColor = true;
             this.Button_Send.UseSelectable = true;
             this.Button_Send.UseStyleColors = true;
+            this.Button_Send.Click += new System.EventHandler(this.Button_Send_Click);
             // 
             // GenerateSend
             // 
@@ -205,7 +207,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 510);
             this.Controls.Add(this.Button_Send);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.metroTextBox4);
             this.Controls.Add(this.metroTextBox3);
             this.Controls.Add(this.metroTextBox2);
@@ -223,7 +225,7 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox2;
         private MetroFramework.Controls.MetroTextBox metroTextBox3;
         private MetroFramework.Controls.MetroTextBox metroTextBox4;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton Button_Cancel;
         private MetroFramework.Controls.MetroButton Button_Send;
     }
 }

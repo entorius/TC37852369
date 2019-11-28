@@ -118,31 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="metroTile8.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAABGZJREFUeF7t
-        nE+IVVUcxyf/jbrIIMQoA8VNDCSWC0USIZncJG1aGEERiikhtHERhS4GxYUQSGIEzjqICEQ3EoGLKCKI
-        iJBgiBYRI+JCIiJCxs/3nN+bejPv3nn3vXfPuee+84Evzjnvnt/v/H7ed+89f+6byGQymUwmk8lkMpn2
-        srCw8Ahajdbob6vOFGHJ2o1m0C9oKb+jS+gAWmfNMiRDZ9hJ9A+qwjm00cyMJyTgOXRP2RiQf9ErZm68
-        IPBTLgWj4WM0PtdJgj3rwh4tn6P2J5Eg33Dh1sMlc9NOCHCbj7NWps1duyAwPdfddiHWy19o0ty2B4J6
-        wYUXhlPmtj0Q1Pc+tiD8jVaZ6/QhmEddWGF5xtynD8Hs8zEF5aS5Tx+CecfHFJRPzX36EMyHPqag3Db3
-        6UMwsz6moNwx9+lDMB/5mIIyZ+7Th2BO+5iCcsPcpw/BHPIxBeV9c58+BLPFxxSUPea+HRDQvI8rGJWn
-        /WmjZYUptLNAz6INdnhYcPw6CsVlc1sJ2l3xzUuZt8PDguO16E/Xhfp53NxWgnZf+eYrEmecjeOD3n+t
-        nDZ3laFtsxMocP6J70MtfIsGntanbRIJXIW+dN0YLb+h9eZmIGjf/AQKOqC73TXXldHwMxp6jRgbaSRQ
-        0AlN8Y9ihHIVrTGzQ4GdZiQQBzrD9iDNwsyhB0hrFcsWwal7Gt1CVdH2j11mZhHqDiP5kk+twWg7iLaM
-        rLZDCuGYuAnEsM6qI6jsceUztOxaRd1W9B76AxVxH11Ey2abqVuPZLsItdWQsvAmw2fxEojRSdTvzUFn
-        yEuoZzDUr0ObkZZBpSdQzxEA9fpPm0ay2Q/XUc+zkfo4CcSgNgj96ExX4yf0PKr86KE21lY2OiiJumwc
-        RW+WaL+Z6YL6aAnUtoph0Nf2OHoKFXZOn6En0TG09KuubXErXufKoH34BGLsRW9zpPyKdD3TpiFJf6uu
-        iBnrzlBgJ2wCMaS7rS7OMdHXdqgzrwN2gifwVW8vKl0biijr2vgW0g6wqrqL+uE86tW+TB+gHdZNDxVl
-        jxyhOGHdcVDWfF5TuW/ddB3d7uuic8y65KCsXa+NxbrpOvqur4pOsgnUEK0JpJdA/tWooykkmcAdvtgI
-        kkzgy77YCJJM4BlfbARLE7jLVzeTTie/8MVG0LWIRHkTqvrWUyhmO50sG5eG5jvXqf9BnYaYmh+sKi1K
-        9YN23PZqX6b/Nr5T0Gxvk+geIg0IdsKMhc1Ik7iDHrPuDQw26k8gjTVYbyKaldFygq6BmuDV17hUFtIi
-        1AVJoCY128KUheWgPNZn4CCET6DAQFMfE6oSLYF1bM2IQbQEvubtJE+0BOpO1wbiJFBg5IK3lTRRE6hn
-        qR+cuXSJl0CBoQ3oG2cyTeImUGBMz4VvI72jmwoay2snRFciKN/Uh30w+h+3wKiGT3uRfhDnaxT6tYYy
-        9Ns0euFb67l6c77nfkLqteFppWfc83Z4JpPJZDKZTCaTySTBxMRDRevU/Yu9eEIAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="metroTile1.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Button_EditEmail.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAABNxJREFUeF7t
         ml2IVVUYhsfR/EFy/CkiS6nMCfwDJYsUu9IgvKkQIjRFGCgvRaJEEFEKJaGboqgbQezGG5G8KESCCKKL
@@ -168,7 +144,7 @@
         tpReEevlG6X9jrZqP0EPmm2O4ziO4ziO4ziO4ziO48wYhob+B+Tj7xwDCt2yAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="metroTile2.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Button_ChangeLogo.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAABAtJREFUeF7t
         nD1rFFEUhhNjgpLYmIiNxKD4/UVQIYIBG7Gwib/ATgk2ClrY2NgIgq2FKEGICCKIKKKIaCH+AAtRxMrC
@@ -191,7 +167,7 @@
         hmEYBhgY+APkHHWhjmZc5wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="metroTile3.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Button_GenerateTicket.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAABYxJREFUeF7t
         nUuLHUUYhifJIpgbJFEXghDvqLknggsRFFTIQhEUFRVBg+IPEF24EIJiMEQiEUVRxKCIbty4UNxkJbhz
@@ -220,7 +196,7 @@
         QM4houuBRbxAJnmrgSQ90HkH0f/IcIToZn5Pf9P40tJ/CU+ymR2Sbk4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="metroTile4.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Button_AddUser.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAABGZJREFUeF7t
         nE+IVVUcxyf/jbrIIMQoA8VNDCSWC0USIZncJG1aGEERiikhtHERhS4GxYUQSGIEzjqICEQ3EoGLKCKI

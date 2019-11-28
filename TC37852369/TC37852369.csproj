@@ -127,7 +127,6 @@
     <Compile Include="CreateUser.Designer.cs">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data.cs" />
     <Compile Include="Database\DatabaseRequests.cs" />
     <Compile Include="EditParticipant.cs">
       <SubType>Form</SubType>
@@ -178,12 +177,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RegiterParticipant.cs">
+    <Compile Include="RegisterParticipant.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegiterParticipant.Designer.cs">
-      <DependentUpon>RegiterParticipant.cs</DependentUpon>
+    <Compile Include="RegisterParticipant.Designer.cs">
+      <DependentUpon>RegisterParticipant.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxModification.cs" />
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,8 +216,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegiterParticipant.resx">
-      <DependentUpon>RegiterParticipant.cs</DependentUpon>
+    <EmbeddedResource Include="RegisterParticipant.resx">
+      <DependentUpon>RegisterParticipant.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -244,9 +244,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\font-awesome_4-7-0_image_80_0_ffffff_none.png" />
+    <Content Include="Images\font-awesome_4-7-0_plus-circle_20_0_ffffff_none.png" />
     <Content Include="Images\font-awesome_4-7-0_ticket_80_0_FFFFFF_none.png" />
     <Content Include="Images\font-awesome_4-7-0_user-plus_80_0_ffffff_none.png" />
     <Content Include="Images\ionicons_2-0-1_email_80_0_ffffff_none.png" />
+    <Content Include="Images\ligature-symbols_2-11-0_add_20_0_ffffff_none.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.1.22.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.22.0\build\net45\Grpc.Core.targets')" />
