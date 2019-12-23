@@ -127,6 +127,7 @@
     <Compile Include="CreateUser.Designer.cs">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseEntities\User.cs" />
     <Compile Include="Database\DatabaseRequests.cs" />
     <Compile Include="EditParticipant.cs">
       <SubType>Form</SubType>
@@ -140,12 +141,6 @@
     <Compile Include="EmailTemplate.Designer.cs">
       <DependentUpon>EmailTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="GenerateSend.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +153,9 @@
     <Compile Include="GenerateTicket.Designer.cs">
       <DependentUpon>GenerateTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DictionaryHelper.cs" />
+    <Compile Include="Helpers\GenerateExcel.cs" />
+    <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,9 +194,6 @@
     <EmbeddedResource Include="EmailTemplate.resx">
       <DependentUpon>EmailTemplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GenerateSend.resx">
       <DependentUpon>GenerateSend.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,6 +229,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="EPPlus">
+      <Version>4.5.3.2</Version>
+    </PackageReference>
     <PackageReference Include="Google.Cloud.Firestore" Version="1.1.0-beta01" />
     <PackageReference Include="MetroFramework.Fonts">
       <Version>1.2.0.3</Version>

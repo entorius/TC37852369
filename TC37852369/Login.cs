@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using TC37852369.Database;
+using TC37852369.DatabaseEntities;
+using TC37852369.Helpers;
 
 namespace TC37852369
 {
@@ -23,11 +26,18 @@ namespace TC37852369
 
         }
         
-        private void Button_Login_Click(object sender, EventArgs e)
+        private /*async*/ void Button_Login_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //DatabaseRequests db = new DatabaseRequests();
+            //User user = await db.GetUser(TextBox_Email.Text, TextBox_Password.Text); 
+            //if (user.id == null)
+            //{
+                //MetroFramework.MetroMessageBox.Show(this, "Not correct email or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //this.Hide();
             MainWindow mainWindow = new MainWindow(this);
             mainWindow.Show();
         }
+
     }
 }

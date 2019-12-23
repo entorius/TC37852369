@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Google.Cloud.Firestore;
-
-
-
+using TC37852369.DatabaseEntities;
+using TC37852369.Helpers;
 
 namespace TC37852369.Database
 {
@@ -27,6 +26,30 @@ namespace TC37852369.Database
             await docRef.SetAsync(user);
 
             return true;
+        }
+        public async Task<User> GetUser(string username, string password)
+        {
+            User user = new User();
+            string DatabaseId;
+            string DatabaseMail;
+            string DatabaseName;
+            string DatabasePassword;
+            string DatabaseUsername;
+            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            Query userQuery = db.Collection("System_User").WhereEqualTo("Username", username).WhereEqualTo("Password", password);
+            QuerySnapshot userQuerySnapshot = await userQuery.GetSnapshotAsync();
+            foreach (DocumentSnapshot documentSnapshot in userQuerySnapshot.Documents)
+            {
+                Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
+                Dictionary<string, object> userDocument = documentSnapshot.ToDictionary();
+                userDocument.TryGetTypedValue("Id", out DatabaseId);
+                userDocument.TryGetTypedValue("Mail", out DatabaseMail);
+                userDocument.TryGetTypedValue("Name", out DatabaseName);
+                userDocument.TryGetTypedValue("Password", out DatabasePassword);
+                userDocument.TryGetTypedValue("Username", out DatabaseUsername);
+                user.setUserData(DatabaseId, DatabaseMail, DatabaseName, DatabasePassword, DatabaseUsername); 
+            }
+            return user;
         }
 
         public async Task<bool> deleteUser(string user_Id)

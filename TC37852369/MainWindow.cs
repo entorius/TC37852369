@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using TC37852369.Helpers;
 
 namespace TC37852369
 {
@@ -69,6 +71,14 @@ namespace TC37852369
             EmailTemplate email = new EmailTemplate(this);
             email.Show();
             this.Enabled = false;
+        }
+
+        private void Button_Export_Click(object sender, EventArgs e)
+        {
+            GenerateExcel generator = new GenerateExcel();
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+            generator.ExportEventInfo("Event Name", projectDirectory, "YeetForLife");
         }
     }
 }

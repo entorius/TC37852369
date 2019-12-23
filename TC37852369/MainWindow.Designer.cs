@@ -98,9 +98,9 @@
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage5.HorizontalScrollbarSize = 10;
-            this.metroTabPage5.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1077, 585);
+            this.metroTabPage5.Size = new System.Drawing.Size(1466, 674);
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Settings";
             this.metroTabPage5.VerticalScrollbarBarColor = true;
@@ -110,9 +110,9 @@
             // Button_EditEmail
             // 
             this.Button_EditEmail.ActiveControl = null;
-            this.Button_EditEmail.Location = new System.Drawing.Point(625, 320);
+            this.Button_EditEmail.Location = new System.Drawing.Point(827, 363);
             this.Button_EditEmail.Name = "Button_EditEmail";
-            this.Button_EditEmail.Size = new System.Drawing.Size(368, 245);
+            this.Button_EditEmail.Size = new System.Drawing.Size(453, 281);
             this.Button_EditEmail.TabIndex = 9;
             this.Button_EditEmail.Text = "Edit Default Email Template";
             this.Button_EditEmail.TileImage = ((System.Drawing.Image)(resources.GetObject("Button_EditEmail.TileImage")));
@@ -125,9 +125,9 @@
             // Button_ChangeLogo
             // 
             this.Button_ChangeLogo.ActiveControl = null;
-            this.Button_ChangeLogo.Location = new System.Drawing.Point(84, 320);
+            this.Button_ChangeLogo.Location = new System.Drawing.Point(89, 363);
             this.Button_ChangeLogo.Name = "Button_ChangeLogo";
-            this.Button_ChangeLogo.Size = new System.Drawing.Size(368, 245);
+            this.Button_ChangeLogo.Size = new System.Drawing.Size(453, 281);
             this.Button_ChangeLogo.TabIndex = 8;
             this.Button_ChangeLogo.Text = "Add / Change company logo";
             this.Button_ChangeLogo.TileImage = ((System.Drawing.Image)(resources.GetObject("Button_ChangeLogo.TileImage")));
@@ -139,9 +139,9 @@
             // Button_GenerateTicket
             // 
             this.Button_GenerateTicket.ActiveControl = null;
-            this.Button_GenerateTicket.Location = new System.Drawing.Point(625, 31);
+            this.Button_GenerateTicket.Location = new System.Drawing.Point(827, 39);
             this.Button_GenerateTicket.Name = "Button_GenerateTicket";
-            this.Button_GenerateTicket.Size = new System.Drawing.Size(368, 245);
+            this.Button_GenerateTicket.Size = new System.Drawing.Size(453, 292);
             this.Button_GenerateTicket.TabIndex = 7;
             this.Button_GenerateTicket.Text = "Generate Ticket";
             this.Button_GenerateTicket.TileImage = ((System.Drawing.Image)(resources.GetObject("Button_GenerateTicket.TileImage")));
@@ -154,9 +154,9 @@
             // Button_AddUser
             // 
             this.Button_AddUser.ActiveControl = null;
-            this.Button_AddUser.Location = new System.Drawing.Point(84, 31);
+            this.Button_AddUser.Location = new System.Drawing.Point(89, 39);
             this.Button_AddUser.Name = "Button_AddUser";
-            this.Button_AddUser.Size = new System.Drawing.Size(368, 245);
+            this.Button_AddUser.Size = new System.Drawing.Size(453, 292);
             this.Button_AddUser.TabIndex = 6;
             this.Button_AddUser.Text = "Add User";
             this.Button_AddUser.TileImage = ((System.Drawing.Image)(resources.GetObject("Button_AddUser.TileImage")));
@@ -181,7 +181,7 @@
             this.metroTabPage4.HorizontalScrollbarSize = 10;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1077, 585);
+            this.metroTabPage4.Size = new System.Drawing.Size(1466, 669);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Export";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
@@ -202,6 +202,7 @@
             this.Button_Export.UseCustomBackColor = true;
             this.Button_Export.UseSelectable = true;
             this.Button_Export.UseStyleColors = true;
+            this.Button_Export.Click += new System.EventHandler(this.Button_Export_Click);
             // 
             // metroTextBox9
             // 
@@ -409,9 +410,9 @@
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1077, 585);
+            this.metroTabPage3.Size = new System.Drawing.Size(1466, 674);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Check In";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
@@ -500,7 +501,7 @@
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1077, 590);
+            this.metroTabPage2.Size = new System.Drawing.Size(1466, 674);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Registration";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -701,9 +702,9 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 42);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1077, 590);
+            this.metroTabPage1.Size = new System.Drawing.Size(1466, 669);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -864,6 +865,7 @@
             // 
             // metroTabControl2
             // 
+            this.metroTabControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroTabControl2.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.metroTabControl2.Controls.Add(this.metroTabPage1);
             this.metroTabControl2.Controls.Add(this.metroTabPage2);
@@ -875,8 +877,8 @@
             this.metroTabControl2.HotTrack = true;
             this.metroTabControl2.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 4;
-            this.metroTabControl2.Size = new System.Drawing.Size(1085, 636);
+            this.metroTabControl2.SelectedIndex = 3;
+            this.metroTabControl2.Size = new System.Drawing.Size(1474, 720);
             this.metroTabControl2.TabIndex = 0;
             this.metroTabControl2.TabStop = false;
             this.metroTabControl2.UseSelectable = true;
@@ -887,7 +889,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
-            this.ClientSize = new System.Drawing.Size(1120, 722);
+            this.ClientSize = new System.Drawing.Size(1520, 800);
             this.Controls.Add(this.metroTabControl2);
             this.Name = "MainWindow";
             this.Text = "Main Window";
