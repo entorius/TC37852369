@@ -28,58 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.TextBox_EventName = new System.Windows.Forms.TextBox();
+            this.TextBox_VenueName = new System.Windows.Forms.TextBox();
+            this.TextBox_VenueAdress = new System.Windows.Forms.TextBox();
             this.TextBox_Body = new System.Windows.Forms.TextBox();
             this.CheckBox_UseDefaultEmail = new System.Windows.Forms.CheckBox();
             this.Button_Create = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.TextBox_Subject = new System.Windows.Forms.TextBox();
-            this.ComboBox_Events = new MetroFramework.Controls.MetroComboBox();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_EmailTemplate = new MetroFramework.Controls.MetroComboBox();
+            this.DateTime_EventDate = new MetroFramework.Controls.MetroDateTime();
+            this.ComboBox_EventDuration = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.Label_Subject = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TextBox_Comments = new System.Windows.Forms.TextBox();
+            this.ComboBox_Status = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TextBox_EventName
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.textBox1.Location = new System.Drawing.Point(180, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(434, 30);
-            this.textBox1.TabIndex = 1;
+            this.TextBox_EventName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_EventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_EventName.Location = new System.Drawing.Point(180, 80);
+            this.TextBox_EventName.Name = "TextBox_EventName";
+            this.TextBox_EventName.Size = new System.Drawing.Size(434, 30);
+            this.TextBox_EventName.TabIndex = 1;
             // 
-            // textBox5
+            // TextBox_VenueName
             // 
-            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.textBox5.Location = new System.Drawing.Point(180, 260);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(434, 30);
-            this.textBox5.TabIndex = 5;
+            this.TextBox_VenueName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_VenueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_VenueName.Location = new System.Drawing.Point(180, 260);
+            this.TextBox_VenueName.Name = "TextBox_VenueName";
+            this.TextBox_VenueName.Size = new System.Drawing.Size(434, 30);
+            this.TextBox_VenueName.TabIndex = 5;
             // 
-            // textBox6
+            // TextBox_VenueAdress
             // 
-            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.textBox6.Location = new System.Drawing.Point(180, 320);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(434, 30);
-            this.textBox6.TabIndex = 6;
+            this.TextBox_VenueAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_VenueAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_VenueAdress.Location = new System.Drawing.Point(180, 320);
+            this.TextBox_VenueAdress.Name = "TextBox_VenueAdress";
+            this.TextBox_VenueAdress.Size = new System.Drawing.Size(434, 30);
+            this.TextBox_VenueAdress.TabIndex = 6;
             // 
             // TextBox_Body
             // 
@@ -102,6 +102,7 @@
             this.CheckBox_UseDefaultEmail.TabIndex = 10;
             this.CheckBox_UseDefaultEmail.Text = "Use default mail template";
             this.CheckBox_UseDefaultEmail.UseVisualStyleBackColor = true;
+            this.CheckBox_UseDefaultEmail.CheckedChanged += new System.EventHandler(this.CheckBox_UseDefaultEmail_CheckedChanged);
             // 
             // Button_Create
             // 
@@ -120,22 +121,22 @@
             this.Button_Create.UseStyleColors = true;
             this.Button_Create.Click += new System.EventHandler(this.Button_Create_Click);
             // 
-            // metroButton1
+            // Button_Cancel
             // 
-            this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroButton1.BackColor = System.Drawing.Color.Silver;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton1.Location = new System.Drawing.Point(62, 614);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(197, 68);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Black;
-            this.metroButton1.TabIndex = 12;
-            this.metroButton1.Text = "Cancel";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
-            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
+            this.Button_Cancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
+            this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Cancel.Location = new System.Drawing.Point(62, 614);
+            this.Button_Cancel.Name = "Button_Cancel";
+            this.Button_Cancel.Size = new System.Drawing.Size(197, 68);
+            this.Button_Cancel.Style = MetroFramework.MetroColorStyle.Black;
+            this.Button_Cancel.TabIndex = 12;
+            this.Button_Cancel.Text = "Cancel";
+            this.Button_Cancel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_Cancel.UseCustomBackColor = true;
+            this.Button_Cancel.UseSelectable = true;
+            this.Button_Cancel.UseStyleColors = true;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // TextBox_Subject
             // 
@@ -146,37 +147,37 @@
             this.TextBox_Subject.Size = new System.Drawing.Size(415, 30);
             this.TextBox_Subject.TabIndex = 13;
             // 
-            // ComboBox_Events
+            // ComboBox_EmailTemplate
             // 
-            this.ComboBox_Events.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ComboBox_Events.FormattingEnabled = true;
-            this.ComboBox_Events.ItemHeight = 24;
-            this.ComboBox_Events.Location = new System.Drawing.Point(850, 547);
-            this.ComboBox_Events.Name = "ComboBox_Events";
-            this.ComboBox_Events.Size = new System.Drawing.Size(415, 30);
-            this.ComboBox_Events.Style = MetroFramework.MetroColorStyle.Orange;
-            this.ComboBox_Events.TabIndex = 14;
-            this.ComboBox_Events.UseSelectable = true;
+            this.ComboBox_EmailTemplate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ComboBox_EmailTemplate.FormattingEnabled = true;
+            this.ComboBox_EmailTemplate.ItemHeight = 24;
+            this.ComboBox_EmailTemplate.Location = new System.Drawing.Point(850, 547);
+            this.ComboBox_EmailTemplate.Name = "ComboBox_EmailTemplate";
+            this.ComboBox_EmailTemplate.Size = new System.Drawing.Size(415, 30);
+            this.ComboBox_EmailTemplate.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_EmailTemplate.TabIndex = 14;
+            this.ComboBox_EmailTemplate.UseSelectable = true;
             // 
-            // metroDateTime1
+            // DateTime_EventDate
             // 
-            this.metroDateTime1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroDateTime1.Location = new System.Drawing.Point(180, 140);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 30);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(434, 30);
-            this.metroDateTime1.TabIndex = 15;
+            this.DateTime_EventDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DateTime_EventDate.Location = new System.Drawing.Point(180, 140);
+            this.DateTime_EventDate.MinimumSize = new System.Drawing.Size(0, 30);
+            this.DateTime_EventDate.Name = "DateTime_EventDate";
+            this.DateTime_EventDate.Size = new System.Drawing.Size(434, 30);
+            this.DateTime_EventDate.TabIndex = 15;
             // 
-            // metroComboBox1
+            // ComboBox_EventDuration
             // 
-            this.metroComboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 24;
-            this.metroComboBox1.Location = new System.Drawing.Point(180, 200);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(434, 30);
-            this.metroComboBox1.TabIndex = 16;
-            this.metroComboBox1.UseSelectable = true;
+            this.ComboBox_EventDuration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ComboBox_EventDuration.FormattingEnabled = true;
+            this.ComboBox_EventDuration.ItemHeight = 24;
+            this.ComboBox_EventDuration.Location = new System.Drawing.Point(180, 200);
+            this.ComboBox_EventDuration.Name = "ComboBox_EventDuration";
+            this.ComboBox_EventDuration.Size = new System.Drawing.Size(434, 30);
+            this.ComboBox_EventDuration.TabIndex = 16;
+            this.ComboBox_EventDuration.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -237,24 +238,15 @@
             this.metroLabel6.TabIndex = 22;
             this.metroLabel6.Text = "Venue adress";
             // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.textBox2.Location = new System.Drawing.Point(180, 380);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(434, 30);
-            this.textBox2.TabIndex = 23;
-            // 
             // metroLabel7
             // 
             this.metroLabel7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(23, 380);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(93, 20);
+            this.metroLabel7.Size = new System.Drawing.Size(45, 20);
             this.metroLabel7.TabIndex = 24;
-            this.metroLabel7.Text = "Venue adress";
+            this.metroLabel7.Text = "Status";
             // 
             // metroLabel8
             // 
@@ -266,15 +258,15 @@
             this.metroLabel8.TabIndex = 26;
             this.metroLabel8.Text = "Comments";
             // 
-            // metroLabel9
+            // Label_Subject
             // 
-            this.metroLabel9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(704, 84);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(81, 20);
-            this.metroLabel9.TabIndex = 27;
-            this.metroLabel9.Text = "Email name";
+            this.Label_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_Subject.AutoSize = true;
+            this.Label_Subject.Location = new System.Drawing.Point(704, 84);
+            this.Label_Subject.Name = "Label_Subject";
+            this.Label_Subject.Size = new System.Drawing.Size(90, 20);
+            this.Label_Subject.TabIndex = 27;
+            this.Label_Subject.Text = "Email subject";
             // 
             // metroLabel10
             // 
@@ -296,45 +288,56 @@
             this.metroLabel11.TabIndex = 29;
             this.metroLabel11.Text = "Email template";
             // 
-            // textBox3
+            // TextBox_Comments
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.textBox3.Location = new System.Drawing.Point(180, 440);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(434, 137);
-            this.textBox3.TabIndex = 30;
+            this.TextBox_Comments.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_Comments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_Comments.Location = new System.Drawing.Point(180, 440);
+            this.TextBox_Comments.Multiline = true;
+            this.TextBox_Comments.Name = "TextBox_Comments";
+            this.TextBox_Comments.Size = new System.Drawing.Size(434, 137);
+            this.TextBox_Comments.TabIndex = 30;
+            // 
+            // ComboBox_Status
+            // 
+            this.ComboBox_Status.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ComboBox_Status.FormattingEnabled = true;
+            this.ComboBox_Status.ItemHeight = 24;
+            this.ComboBox_Status.Location = new System.Drawing.Point(180, 380);
+            this.ComboBox_Status.Name = "ComboBox_Status";
+            this.ComboBox_Status.Size = new System.Drawing.Size(434, 30);
+            this.ComboBox_Status.TabIndex = 31;
+            this.ComboBox_Status.UseSelectable = true;
             // 
             // CreateEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 705);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.ComboBox_Status);
+            this.Controls.Add(this.TextBox_Comments);
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroLabel10);
-            this.Controls.Add(this.metroLabel9);
+            this.Controls.Add(this.Label_Subject);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroComboBox1);
-            this.Controls.Add(this.metroDateTime1);
-            this.Controls.Add(this.ComboBox_Events);
+            this.Controls.Add(this.ComboBox_EventDuration);
+            this.Controls.Add(this.DateTime_EventDate);
+            this.Controls.Add(this.ComboBox_EmailTemplate);
             this.Controls.Add(this.TextBox_Subject);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Create);
             this.Controls.Add(this.CheckBox_UseDefaultEmail);
             this.Controls.Add(this.TextBox_Body);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TextBox_VenueAdress);
+            this.Controls.Add(this.TextBox_VenueName);
+            this.Controls.Add(this.TextBox_EventName);
             this.Name = "CreateEvent";
             this.Text = "CreateEvent";
             this.ResumeLayout(false);
@@ -343,29 +346,29 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox TextBox_EventName;
+        private System.Windows.Forms.TextBox TextBox_VenueName;
+        private System.Windows.Forms.TextBox TextBox_VenueAdress;
         private System.Windows.Forms.TextBox TextBox_Body;
         private System.Windows.Forms.CheckBox CheckBox_UseDefaultEmail;
         private MetroFramework.Controls.MetroButton Button_Create;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton Button_Cancel;
         private System.Windows.Forms.TextBox TextBox_Subject;
-        private MetroFramework.Controls.MetroComboBox ComboBox_Events;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox ComboBox_EmailTemplate;
+        private MetroFramework.Controls.MetroDateTime DateTime_EventDate;
+        private MetroFramework.Controls.MetroComboBox ComboBox_EventDuration;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
-        private System.Windows.Forms.TextBox textBox2;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel Label_Subject;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TextBox_Comments;
+        private MetroFramework.Controls.MetroComboBox ComboBox_Status;
     }
 }

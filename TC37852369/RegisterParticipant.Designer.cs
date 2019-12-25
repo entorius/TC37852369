@@ -1,4 +1,4 @@
-﻿namespace TC37852369
+﻿ namespace TC37852369
 {
     partial class RegisterParticipant
     {
@@ -31,17 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterParticipant));
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.Button_Confirm = new MetroFramework.Controls.MetroButton();
-            this.metroTextBox5 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.ComboBox_Events = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_CompanyType = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_ParticipationFormat = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
@@ -51,20 +50,21 @@
             this.metroTextBox7 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
-            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_Materials = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_EveningEvent = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox8 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
-            this.metroComboBox5 = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_TicketSent = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_CheckInDayOne = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox6 = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_CheckInDayTwo = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.ComboBox_PaymentStatus = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // Button_Cancel
@@ -98,37 +98,6 @@
             this.Button_Confirm.UseSelectable = true;
             this.Button_Confirm.UseStyleColors = true;
             this.Button_Confirm.Click += new System.EventHandler(this.Button_Confirm_Click);
-            // 
-            // metroTextBox5
-            // 
-            // 
-            // 
-            // 
-            this.metroTextBox5.CustomButton.Image = null;
-            this.metroTextBox5.CustomButton.Location = new System.Drawing.Point(350, 2);
-            this.metroTextBox5.CustomButton.Name = "";
-            this.metroTextBox5.CustomButton.Size = new System.Drawing.Size(29, 29);
-            this.metroTextBox5.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox5.CustomButton.TabIndex = 1;
-            this.metroTextBox5.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox5.CustomButton.UseSelectable = true;
-            this.metroTextBox5.CustomButton.Visible = false;
-            this.metroTextBox5.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.metroTextBox5.Lines = new string[0];
-            this.metroTextBox5.Location = new System.Drawing.Point(866, 277);
-            this.metroTextBox5.MaxLength = 32767;
-            this.metroTextBox5.Name = "metroTextBox5";
-            this.metroTextBox5.PasswordChar = '\0';
-            this.metroTextBox5.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox5.SelectedText = "";
-            this.metroTextBox5.SelectionLength = 0;
-            this.metroTextBox5.SelectionStart = 0;
-            this.metroTextBox5.ShortcutsEnabled = true;
-            this.metroTextBox5.Size = new System.Drawing.Size(382, 34);
-            this.metroTextBox5.TabIndex = 20;
-            this.metroTextBox5.UseSelectable = true;
-            this.metroTextBox5.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox5.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroTextBox3
             // 
@@ -223,16 +192,16 @@
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // ComboBox_Events
+            // ComboBox_CompanyType
             // 
-            this.ComboBox_Events.FormattingEnabled = true;
-            this.ComboBox_Events.ItemHeight = 24;
-            this.ComboBox_Events.Location = new System.Drawing.Point(210, 417);
-            this.ComboBox_Events.Name = "ComboBox_Events";
-            this.ComboBox_Events.Size = new System.Drawing.Size(382, 30);
-            this.ComboBox_Events.Style = MetroFramework.MetroColorStyle.Orange;
-            this.ComboBox_Events.TabIndex = 15;
-            this.ComboBox_Events.UseSelectable = true;
+            this.ComboBox_CompanyType.FormattingEnabled = true;
+            this.ComboBox_CompanyType.ItemHeight = 24;
+            this.ComboBox_CompanyType.Location = new System.Drawing.Point(210, 417);
+            this.ComboBox_CompanyType.Name = "ComboBox_CompanyType";
+            this.ComboBox_CompanyType.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_CompanyType.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_CompanyType.TabIndex = 15;
+            this.ComboBox_CompanyType.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -279,16 +248,16 @@
             this.metroLabel5.TabIndex = 27;
             this.metroLabel5.Text = "Participation format";
             // 
-            // metroComboBox1
+            // ComboBox_ParticipationFormat
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 24;
-            this.metroComboBox1.Location = new System.Drawing.Point(866, 207);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(382, 30);
-            this.metroComboBox1.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroComboBox1.TabIndex = 28;
-            this.metroComboBox1.UseSelectable = true;
+            this.ComboBox_ParticipationFormat.FormattingEnabled = true;
+            this.ComboBox_ParticipationFormat.ItemHeight = 24;
+            this.ComboBox_ParticipationFormat.Location = new System.Drawing.Point(866, 207);
+            this.ComboBox_ParticipationFormat.Name = "ComboBox_ParticipationFormat";
+            this.ComboBox_ParticipationFormat.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_ParticipationFormat.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_ParticipationFormat.TabIndex = 28;
+            this.ComboBox_ParticipationFormat.UseSelectable = true;
             // 
             // metroLabel6
             // 
@@ -437,27 +406,27 @@
             this.metroLabel11.TabIndex = 37;
             this.metroLabel11.Text = "Evening event";
             // 
-            // metroComboBox2
+            // ComboBox_Materials
             // 
-            this.metroComboBox2.FormattingEnabled = true;
-            this.metroComboBox2.ItemHeight = 24;
-            this.metroComboBox2.Location = new System.Drawing.Point(866, 417);
-            this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.Size = new System.Drawing.Size(382, 30);
-            this.metroComboBox2.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroComboBox2.TabIndex = 40;
-            this.metroComboBox2.UseSelectable = true;
+            this.ComboBox_Materials.FormattingEnabled = true;
+            this.ComboBox_Materials.ItemHeight = 24;
+            this.ComboBox_Materials.Location = new System.Drawing.Point(866, 417);
+            this.ComboBox_Materials.Name = "ComboBox_Materials";
+            this.ComboBox_Materials.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_Materials.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_Materials.TabIndex = 40;
+            this.ComboBox_Materials.UseSelectable = true;
             // 
-            // metroComboBox3
+            // ComboBox_EveningEvent
             // 
-            this.metroComboBox3.FormattingEnabled = true;
-            this.metroComboBox3.ItemHeight = 24;
-            this.metroComboBox3.Location = new System.Drawing.Point(866, 487);
-            this.metroComboBox3.Name = "metroComboBox3";
-            this.metroComboBox3.Size = new System.Drawing.Size(382, 30);
-            this.metroComboBox3.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroComboBox3.TabIndex = 41;
-            this.metroComboBox3.UseSelectable = true;
+            this.ComboBox_EveningEvent.FormattingEnabled = true;
+            this.ComboBox_EveningEvent.ItemHeight = 24;
+            this.ComboBox_EveningEvent.Location = new System.Drawing.Point(866, 487);
+            this.ComboBox_EveningEvent.Name = "ComboBox_EveningEvent";
+            this.ComboBox_EveningEvent.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_EveningEvent.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_EveningEvent.TabIndex = 41;
+            this.ComboBox_EveningEvent.UseSelectable = true;
             // 
             // metroLabel12
             // 
@@ -508,27 +477,27 @@
             this.metroLabel13.TabIndex = 44;
             this.metroLabel13.Text = "Ticket sent";
             // 
-            // metroComboBox4
+            // ComboBox_TicketSent
             // 
-            this.metroComboBox4.FormattingEnabled = true;
-            this.metroComboBox4.ItemHeight = 24;
-            this.metroComboBox4.Location = new System.Drawing.Point(866, 557);
-            this.metroComboBox4.Name = "metroComboBox4";
-            this.metroComboBox4.Size = new System.Drawing.Size(382, 30);
-            this.metroComboBox4.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroComboBox4.TabIndex = 45;
-            this.metroComboBox4.UseSelectable = true;
+            this.ComboBox_TicketSent.FormattingEnabled = true;
+            this.ComboBox_TicketSent.ItemHeight = 24;
+            this.ComboBox_TicketSent.Location = new System.Drawing.Point(866, 557);
+            this.ComboBox_TicketSent.Name = "ComboBox_TicketSent";
+            this.ComboBox_TicketSent.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_TicketSent.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_TicketSent.TabIndex = 45;
+            this.ComboBox_TicketSent.UseSelectable = true;
             // 
-            // metroComboBox5
+            // ComboBox_CheckInDayOne
             // 
-            this.metroComboBox5.FormattingEnabled = true;
-            this.metroComboBox5.ItemHeight = 24;
-            this.metroComboBox5.Location = new System.Drawing.Point(866, 627);
-            this.metroComboBox5.Name = "metroComboBox5";
-            this.metroComboBox5.Size = new System.Drawing.Size(382, 30);
-            this.metroComboBox5.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroComboBox5.TabIndex = 46;
-            this.metroComboBox5.UseSelectable = true;
+            this.ComboBox_CheckInDayOne.FormattingEnabled = true;
+            this.ComboBox_CheckInDayOne.ItemHeight = 24;
+            this.ComboBox_CheckInDayOne.Location = new System.Drawing.Point(866, 627);
+            this.ComboBox_CheckInDayOne.Name = "ComboBox_CheckInDayOne";
+            this.ComboBox_CheckInDayOne.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_CheckInDayOne.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_CheckInDayOne.TabIndex = 46;
+            this.ComboBox_CheckInDayOne.UseSelectable = true;
             // 
             // metroLabel14
             // 
@@ -539,16 +508,16 @@
             this.metroLabel14.TabIndex = 47;
             this.metroLabel14.Text = "Check In day 1";
             // 
-            // metroComboBox6
+            // ComboBox_CheckInDayTwo
             // 
-            this.metroComboBox6.FormattingEnabled = true;
-            this.metroComboBox6.ItemHeight = 24;
-            this.metroComboBox6.Location = new System.Drawing.Point(866, 697);
-            this.metroComboBox6.Name = "metroComboBox6";
-            this.metroComboBox6.Size = new System.Drawing.Size(382, 30);
-            this.metroComboBox6.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroComboBox6.TabIndex = 48;
-            this.metroComboBox6.UseSelectable = true;
+            this.ComboBox_CheckInDayTwo.FormattingEnabled = true;
+            this.ComboBox_CheckInDayTwo.ItemHeight = 24;
+            this.ComboBox_CheckInDayTwo.Location = new System.Drawing.Point(866, 697);
+            this.ComboBox_CheckInDayTwo.Name = "ComboBox_CheckInDayTwo";
+            this.ComboBox_CheckInDayTwo.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_CheckInDayTwo.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_CheckInDayTwo.TabIndex = 48;
+            this.ComboBox_CheckInDayTwo.UseSelectable = true;
             // 
             // metroLabel15
             // 
@@ -585,7 +554,7 @@
             this.label3.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label3.Location = new System.Drawing.Point(47, 91);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 37);
+            this.label3.Size = new System.Drawing.Size(102, 39);
             this.label3.TabIndex = 52;
             this.label3.Text = "Event";
             // 
@@ -601,6 +570,17 @@
             this.label4.TabIndex = 53;
             this.label4.Text = "Green Auto Summit";
             // 
+            // ComboBox_PaymentStatus
+            // 
+            this.ComboBox_PaymentStatus.FormattingEnabled = true;
+            this.ComboBox_PaymentStatus.ItemHeight = 24;
+            this.ComboBox_PaymentStatus.Location = new System.Drawing.Point(866, 277);
+            this.ComboBox_PaymentStatus.Name = "ComboBox_PaymentStatus";
+            this.ComboBox_PaymentStatus.Size = new System.Drawing.Size(382, 30);
+            this.ComboBox_PaymentStatus.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_PaymentStatus.TabIndex = 55;
+            this.ComboBox_PaymentStatus.UseSelectable = true;
+            // 
             // RegisterParticipant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -608,20 +588,21 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.ClientSize = new System.Drawing.Size(1295, 880);
+            this.Controls.Add(this.ComboBox_PaymentStatus);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.metroLabel15);
-            this.Controls.Add(this.metroComboBox6);
+            this.Controls.Add(this.ComboBox_CheckInDayTwo);
             this.Controls.Add(this.metroLabel14);
-            this.Controls.Add(this.metroComboBox5);
-            this.Controls.Add(this.metroComboBox4);
+            this.Controls.Add(this.ComboBox_CheckInDayOne);
+            this.Controls.Add(this.ComboBox_TicketSent);
             this.Controls.Add(this.metroLabel13);
             this.Controls.Add(this.metroTextBox8);
             this.Controls.Add(this.metroLabel12);
-            this.Controls.Add(this.metroComboBox3);
-            this.Controls.Add(this.metroComboBox2);
+            this.Controls.Add(this.ComboBox_EveningEvent);
+            this.Controls.Add(this.ComboBox_Materials);
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroTextBox7);
@@ -631,7 +612,7 @@
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroTextBox4);
             this.Controls.Add(this.metroLabel6);
-            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.ComboBox_ParticipationFormat);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
@@ -639,11 +620,10 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Confirm);
-            this.Controls.Add(this.metroTextBox5);
             this.Controls.Add(this.metroTextBox3);
             this.Controls.Add(this.metroTextBox2);
             this.Controls.Add(this.metroTextBox1);
-            this.Controls.Add(this.ComboBox_Events);
+            this.Controls.Add(this.ComboBox_CompanyType);
             this.Name = "RegisterParticipant";
             this.Text = "Regiter Participant";
             this.ResumeLayout(false);
@@ -655,17 +635,15 @@
 
         private MetroFramework.Controls.MetroButton Button_Cancel;
         private MetroFramework.Controls.MetroButton Button_Confirm;
-        private MetroFramework.Controls.MetroTextBox metroTextBox5;
         private MetroFramework.Controls.MetroTextBox metroTextBox3;
         private MetroFramework.Controls.MetroTextBox metroTextBox2;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MetroFramework.Controls.MetroComboBox ComboBox_Events;
+        private MetroFramework.Controls.MetroComboBox ComboBox_CompanyType;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox metroTextBox4;
         private MetroFramework.Controls.MetroLabel metroLabel7;
@@ -675,19 +653,21 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox7;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroComboBox metroComboBox2;
-        private MetroFramework.Controls.MetroComboBox metroComboBox3;
+        private MetroFramework.Controls.MetroComboBox ComboBox_Materials;
+        private MetroFramework.Controls.MetroComboBox ComboBox_EveningEvent;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroTextBox metroTextBox8;
         private MetroFramework.Controls.MetroLabel metroLabel13;
-        private MetroFramework.Controls.MetroComboBox metroComboBox4;
-        private MetroFramework.Controls.MetroComboBox metroComboBox5;
+        private MetroFramework.Controls.MetroComboBox ComboBox_TicketSent;
+        private MetroFramework.Controls.MetroComboBox ComboBox_CheckInDayOne;
         private MetroFramework.Controls.MetroLabel metroLabel14;
-        private MetroFramework.Controls.MetroComboBox metroComboBox6;
+        private MetroFramework.Controls.MetroComboBox ComboBox_CheckInDayTwo;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        public MetroFramework.Controls.MetroComboBox ComboBox_ParticipationFormat;
+        public MetroFramework.Controls.MetroComboBox ComboBox_PaymentStatus;
     }
 }

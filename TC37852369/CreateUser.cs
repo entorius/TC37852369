@@ -19,6 +19,7 @@ namespace TC37852369
             this.mainWindow = window;
             this.FormClosed += CloseHandler;
             InitializeComponent();
+            //on initialiazation adds watermarks on all textFields
             TextBoxModification TextBox_EmailMod = new TextBoxModification(TextBox_Email, "Email", false);
             TextBox_EmailMod.addEvents();
 
@@ -30,6 +31,9 @@ namespace TC37852369
 
             TextBoxModification TextBox_NameMod = new TextBoxModification(TextBox_Name, "Name", false);
             TextBox_NameMod.addEvents();
+
+            TextBoxModification TextBox_SurenameMod = new TextBoxModification(TextBox_Surename, "Surename", false);
+            TextBox_SurenameMod.addEvents();
         }
 
         private void Button_CreateUser_Click(object sender, EventArgs e)
@@ -52,5 +56,7 @@ namespace TC37852369
         {
             mainWindow.Enabled = true;
         }
+
+
     }
 }

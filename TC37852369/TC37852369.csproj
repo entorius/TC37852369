@@ -181,6 +181,12 @@
     <Compile Include="RegisterParticipant.Designer.cs">
       <DependentUpon>RegisterParticipant.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterParticipationString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterParticipationString.Designer.cs">
+      <DependentUpon>RegisterParticipationString.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextBoxModification.cs" />
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
@@ -213,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterParticipant.resx">
       <DependentUpon>RegisterParticipant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterParticipationString.resx">
+      <DependentUpon>RegisterParticipationString.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
