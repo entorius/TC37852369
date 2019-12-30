@@ -115,57 +115,67 @@
     <Compile Include="CircularButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CreateEvent.cs">
+    <Compile Include="DomainEntities\LastIdentificationNumber.cs" />
+    <Compile Include="Repository\LastEntityIdentificationNumberRepository.cs" />
+    <Compile Include="Repository\EventRepository.cs" />
+    <Compile Include="Repository\MailTemplateRepository.cs" />
+    <Compile Include="Repository\ParticipantRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Services\EventServices.cs" />
+    <Compile Include="Services\LastEntityIdentificationNumberServices.cs" />
+    <Compile Include="Services\MailTemplateServices.cs" />
+    <Compile Include="Services\ParticipantServices.cs" />
+    <Compile Include="Services\UserServices.cs" />
+    <Compile Include="UI\CreateEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateEvent.Designer.cs">
+    <Compile Include="UI\CreateEvent.Designer.cs">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateUser.cs">
+    <Compile Include="UI\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateUser.Designer.cs">
+    <Compile Include="UI\CreateUser.Designer.cs">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseEntities\User.cs" />
-    <Compile Include="Database\DatabaseRequests.cs" />
-    <Compile Include="EditParticipant.cs">
+    <Compile Include="DomainEntities\User.cs" />
+    <Compile Include="UI\EditParticipant.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditParticipant.Designer.cs">
+    <Compile Include="UI\EditParticipant.Designer.cs">
       <DependentUpon>EditParticipant.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmailTemplate.cs">
+    <Compile Include="UI\EmailTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmailTemplate.Designer.cs">
+    <Compile Include="UI\EmailTemplate.Designer.cs">
       <DependentUpon>EmailTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateSend.cs">
+    <Compile Include="UI\GenerateSend.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GenerateSend.Designer.cs">
+    <Compile Include="UI\GenerateSend.Designer.cs">
       <DependentUpon>GenerateSend.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateTicket.cs">
+    <Compile Include="UI\GenerateTicket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GenerateTicket.Designer.cs">
+    <Compile Include="UI\GenerateTicket.Designer.cs">
       <DependentUpon>GenerateTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DictionaryHelper.cs" />
     <Compile Include="Helpers\GenerateExcel.cs" />
     <Compile Include="Helpers\WindowHelper.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="UI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="UI\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="UI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="UI\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -175,41 +185,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RegisterParticipant.cs">
+    <Compile Include="UI\RegisterParticipant.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterParticipant.Designer.cs">
+    <Compile Include="UI\RegisterParticipant.Designer.cs">
       <DependentUpon>RegisterParticipant.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterParticipationString.cs">
+    <Compile Include="UI\RegisterParticipationString.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterParticipationString.Designer.cs">
+    <Compile Include="UI\RegisterParticipationString.Designer.cs">
       <DependentUpon>RegisterParticipationString.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextBoxModification.cs" />
-    <EmbeddedResource Include="CreateEvent.resx">
+    <Compile Include="UI\helpers\TextBoxModification.cs" />
+    <EmbeddedResource Include="UI\CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateUser.resx">
+    <EmbeddedResource Include="UI\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditParticipant.resx">
+    <EmbeddedResource Include="UI\EditParticipant.resx">
       <DependentUpon>EditParticipant.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplate.resx">
+    <EmbeddedResource Include="UI\EmailTemplate.resx">
       <DependentUpon>EmailTemplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GenerateSend.resx">
+    <EmbeddedResource Include="UI\GenerateSend.resx">
       <DependentUpon>GenerateSend.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GenerateTicket.resx">
+    <EmbeddedResource Include="UI\GenerateTicket.resx">
       <DependentUpon>GenerateTicket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -217,10 +227,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterParticipant.resx">
+    <EmbeddedResource Include="UI\RegisterParticipant.resx">
       <DependentUpon>RegisterParticipant.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterParticipationString.resx">
+    <EmbeddedResource Include="UI\RegisterParticipationString.resx">
       <DependentUpon>RegisterParticipationString.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -250,13 +260,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\font-awesome_4-7-0_image_80_0_ffffff_none.png" />
-    <Content Include="Images\font-awesome_4-7-0_plus-circle_20_0_ffffff_none.png" />
-    <Content Include="Images\font-awesome_4-7-0_ticket_80_0_FFFFFF_none.png" />
-    <Content Include="Images\font-awesome_4-7-0_user-plus_80_0_ffffff_none.png" />
-    <Content Include="Images\ionicons_2-0-1_email_80_0_ffffff_none.png" />
-    <Content Include="Images\ligature-symbols_2-11-0_add_20_0_ffffff_none.png" />
+    <Content Include="UI\Images\font-awesome_4-7-0_image_80_0_ffffff_none.png" />
+    <Content Include="UI\Images\font-awesome_4-7-0_plus-circle_20_0_ffffff_none.png" />
+    <Content Include="UI\Images\font-awesome_4-7-0_ticket_80_0_FFFFFF_none.png" />
+    <Content Include="UI\Images\font-awesome_4-7-0_user-plus_80_0_ffffff_none.png" />
+    <Content Include="UI\Images\ionicons_2-0-1_email_80_0_ffffff_none.png" />
+    <Content Include="UI\Images\ligature-symbols_2-11-0_add_20_0_ffffff_none.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.1.22.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.22.0\build\net45\Grpc.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

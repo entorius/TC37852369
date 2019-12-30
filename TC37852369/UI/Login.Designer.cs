@@ -70,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(570, 500);
             this.Controls.Add(this.Button_Login);
             this.Controls.Add(this.TextBox_Password);
             this.Controls.Add(this.TextBox_Email);
