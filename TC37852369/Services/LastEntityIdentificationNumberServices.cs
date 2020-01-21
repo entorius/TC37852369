@@ -16,5 +16,9 @@ namespace TC37852369.Services
         {
             return await lastEntityIdentificationNumberRepository.getLastIdetificationNumber(domainEntityName);
         }
+        public async Task<LastIdentificationNumber> IncreaseLastIdetificationNumber(string domainEntityName)
+        {
+            return await lastEntityIdentificationNumberRepository.IncreaseLastIdetificationNumber(domainEntityName);
+        }
     }
 }

@@ -59,5 +59,35 @@ namespace TC37852369.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap font_awesome_4_7_0_image_80_0_ffffff_none {
+            get {
+                object obj = ResourceManager.GetObject("font-awesome_4-7-0_image_80_0_ffffff_none", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap font_awesome_4_7_0_image_80_0_ffffff_none1 {
+            get {
+                object obj = ResourceManager.GetObject("font-awesome_4-7-0_image_80_0_ffffff_none1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap font_awesome_4_7_0_list_alt_80_0_ffffff_none {
+            get {
+                object obj = ResourceManager.GetObject("font-awesome_4-7-0_list-alt_80_0_ffffff_none", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

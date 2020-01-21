@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MetroFramework.Controls;
+using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,35 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetroFramework.Controls;
-using MetroFramework.Forms;
 using TC37852369.DomainEntities;
 using TC37852369.Services;
-public enum EventDuration
-{
-    oneDay = 1,
-    twoDays = 2,
-    threeDays = 3,
-    fourDays = 4
-}
 
-namespace TC37852369
+namespace TC37852369.UI
 {
-    public partial class CreateEvent : MetroForm
+    public partial class EditEvent : MetroForm
     {
         MainWindow mainWindow;
         EventServices eventServices = new EventServices();
-        LastEntityIdentificationNumberServices lastEntityIdentificationNumberService =
-            new LastEntityIdentificationNumberServices();
-        public CreateEvent(MainWindow window)
+        int eventId;
+        public EditEvent(MainWindow window, int eventId)
         {
-            InitializeComponent();
             mainWindow = window;
-            //checks acording to how many days the event will last which days dates to let to change
-            this.CheckWhichDateTimeFieldsToShow();
-            //sets dates according to event begining date and which day of the event it is
+            InitializeComponent();
+            this.FormClosed += CloseHandler;
+            this.eventId = eventId;
             setDaysDates();
-
 
             DateTime_EventDate.Value = SetDateTimeHoursAndMinutes(DateTime_EventDate.Value);
             //fills hours and minutes comboboxes of the days
@@ -48,43 +38,35 @@ namespace TC37852369
             fillHourMinuteComboBox(ComboBox_Day4FromHour, ComboBox_Day4FromMinute);
             fillHourMinuteComboBox(ComboBox_Day4ToHour, ComboBox_Day4ToMinute);
 
-            setDefaultDateValues(ComboBox_Day1FromHour, ComboBox_Day1ToHour,
-                ComboBox_Day1FromMinute, ComboBox_Day1ToMinute);
-            setDefaultDateValues(ComboBox_Day2FromHour, ComboBox_Day2ToHour,
-                ComboBox_Day2FromMinute, ComboBox_Day2ToMinute);
-            setDefaultDateValues(ComboBox_Day3FromHour, ComboBox_Day3ToHour,
-                ComboBox_Day3FromMinute, ComboBox_Day3ToMinute);
-            setDefaultDateValues(ComboBox_Day4FromHour, ComboBox_Day4ToHour,
-                ComboBox_Day4FromMinute, ComboBox_Day4ToMinute);
+            
 
-            //on initialize add close handler for this form
-            this.FormClosed += CloseHandler;
-
+            
             //on initialize fill Combobox of event durations (1,2,3,4 days)
             foreach (EventDuration eventDuration in (EventDuration[])Enum.GetValues(typeof(EventDuration)))
             {
                 ComboBox_EventDuration.Items.Add((int)eventDuration);
             }
             ComboBox_EventDuration.SelectedIndex = 0;
+            fillFieldsWithEventData(window.events[eventId]);
+            this.CheckWhichDateTimeFieldsToShow();
             //on initialize disable default email templates combobox
             ComboBox_EmailTemplate.Enabled = false;
-
         }
 
-        private async void Button_Create_Click(object sender, EventArgs e)
+        private async void Button_Save_Click(object sender, EventArgs e)
         {
             int eventDuration = Int32.Parse(ComboBox_EventDuration.SelectedItem.ToString());
 
             //Check if event dates are correct
             int eventErrorCode = eventServices.isEventDatesCorrect(DateTime_EventDate.Value,
-                eventDuration, DateTime_Day1.Value, DateTime_Day2.Value, DateTime_Day3.Value, 
+                eventDuration, DateTime_Day1.Value, DateTime_Day2.Value, DateTime_Day3.Value,
                 DateTime_Day4.Value);
 
             //Check if event details strings are correct
             bool isEventNameCorrect = eventServices.isStringCorrect(TextBox_EventName.Text);
             bool isVenueNameCorrect = eventServices.isStringCorrect(TextBox_VenueName.Text);
             int len = TextBox_VenueAdress.Text.Length;
-            bool isVenueAdressCorrect =  len > 0 ? true : false;
+            bool isVenueAdressCorrect = len > 0 ? true : false;
 
             //Check if email template is correct
             int emailTemplateErrorCode = eventServices.isEmailTemplateCorrect(CheckBox_UseDefaultEmail.Checked, TextBox_Subject.Text,
@@ -111,7 +93,7 @@ namespace TC37852369
                 eventDuration
                 );
 
-            if (eventErrorCode > 0 || emailTemplateErrorCode > 0 || isSomeTimeFromToNotCorrect >0 
+            if (eventErrorCode > 0 || emailTemplateErrorCode > 0 || isSomeTimeFromToNotCorrect > 0
                 || !isEventNameCorrect || !isVenueNameCorrect || !isVenueAdressCorrect)
             {
                 if (!isEventNameCorrect)
@@ -141,11 +123,11 @@ namespace TC37852369
                     else
                     {
                         showWarning("Event day " + eventErrorCode + " date is earlier than " +
-                            "event day" + (eventErrorCode - 1) + " date", 
+                            "event day" + (eventErrorCode - 1) + " date",
                             "Warning");
                     }
                 }
-                else if(emailTemplateErrorCode > 0)
+                else if (emailTemplateErrorCode > 0)
                 {
                     if (emailTemplateErrorCode == 1)
                     {
@@ -180,7 +162,7 @@ namespace TC37852369
                 DateTime day3 = SetDateTimeHoursAndMinutes(DateTime_Day3.Value);
                 DateTime day4 = SetDateTimeHoursAndMinutes(DateTime_Day4.Value);
                 string day1TimeFrom = eventServices.formHoursAndMinutesString(
-                    ComboBox_Day1FromHour.SelectedItem.ToString() , 
+                    ComboBox_Day1FromHour.SelectedItem.ToString(),
                     ComboBox_Day1FromMinute.SelectedItem.ToString());
                 string day1TimeTo = eventServices.formHoursAndMinutesString(
                     ComboBox_Day1ToHour.SelectedItem.ToString(),
@@ -209,38 +191,37 @@ namespace TC37852369
 
 
 
-                await lastEntityIdentificationNumberService.IncreaseLastIdetificationNumber("Event");
-                Event eventEntity = await eventServices.addEvent(TextBox_EventName.Text, DateTime_EventDate.Value,
-                   eventDuration, day1, day2, day3, day4,day1TimeFrom, day1TimeTo, 
+
+                Event eventEntity = await eventServices.editEvent(this.eventId.ToString(),
+                    TextBox_EventName.Text, DateTime_EventDate.Value,
+                   eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, TextBox_VenueName.Text, TextBox_VenueAdress.Text,  
-                   eventStatus,TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
+                   day4TimeTo, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
+                   eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                    ComboBox_EmailTemplate.SelectedText, TextBox_Body.Text, TextBox_Subject.Text);
-                
+
                 mainWindow.Enabled = true;
-                mainWindow.events.Add(eventEntity);
-                mainWindow.addEventTableRow();
-                mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
-            this.Dispose();
+                mainWindow.editEventTableRow(eventEntity, eventId);
+                this.Dispose();
             }
-
-            
         }
-
-
-        protected void CloseHandler(object sender, EventArgs e)
-        {
-            mainWindow.Enabled = true;
-        }
-
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
             mainWindow.Enabled = true;
             this.Dispose();
         }
-        //if checkbox use default email changes makes according actions:
-        //1)if checked disables subject andd body fields and enables default Email template choise
-        //2)if not checked enables subject andd body fields and disables default Email template choise
+
+        private void ComboBox_EventDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DateTime_EventDate.Value = SetDateTimeHoursAndMinutes(DateTime_EventDate.Value);
+            CheckWhichDateTimeFieldsToShow();
+        }
+
+        private void DateTime_EventDate_ValueChanged(object sender, EventArgs e)
+        {
+            setDaysDates();
+        }
+
         private void CheckBox_UseDefaultEmail_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBox_UseDefaultEmail.Checked)
@@ -255,25 +236,15 @@ namespace TC37852369
                 TextBox_Body.Enabled = true;
                 ComboBox_EmailTemplate.Enabled = false;
             }
-        }
-
-        private void DateTime_EventDate_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime_EventDate.Value = SetDateTimeHoursAndMinutes(DateTime_EventDate.Value);
-            setDaysDates();
+            
         }
         public void setDaysDates()
         {
-            
+
             DateTime_Day1.Value = DateTime_EventDate.Value;
             DateTime_Day2.Value = DateTime_EventDate.Value.AddDays(1);
             DateTime_Day3.Value = DateTime_EventDate.Value.AddDays(2);
             DateTime_Day4.Value = DateTime_EventDate.Value.AddDays(3);
-        }
-
-        private void ComboBox_EventDuration_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.CheckWhichDateTimeFieldsToShow();
         }
         public void CheckWhichDateTimeFieldsToShow()
         {
@@ -290,9 +261,9 @@ namespace TC37852369
             dayDateShowHide(DateTime_Day4, Label_Day4, Label_From4, Label_To4, ComboBox_Day4FromHour,
                 ComboBox_Day4FromMinute, ComboBox_Day4ToHour, ComboBox_Day4ToMinute, 3, comboboxValue);
         }
-        public void dayDateShowHide(MetroDateTime day,MetroLabel dayLabel,
-            MetroLabel fromLabel,MetroLabel toLabel,MetroComboBox fromHour,
-            MetroComboBox fromMinute, MetroComboBox toHour,MetroComboBox toMinute,int dayValue,
+        public void dayDateShowHide(MetroDateTime day, MetroLabel dayLabel,
+            MetroLabel fromLabel, MetroLabel toLabel, MetroComboBox fromHour,
+            MetroComboBox fromMinute, MetroComboBox toHour, MetroComboBox toMinute, int dayValue,
             int? comboBoxValue)
         {
             if (comboBoxValue != null)
@@ -334,7 +305,7 @@ namespace TC37852369
         }
         public void fillHourMinuteComboBox(MetroComboBox hourComboBox, MetroComboBox minuteComboBox)
         {
-            for(int i = 0; i <= 23; i++)
+            for (int i = 0; i <= 23; i++)
             {
                 hourComboBox.Items.Add(i);
             }
@@ -343,10 +314,13 @@ namespace TC37852369
                 minuteComboBox.Items.Add(i);
             }
         }
-
+        public void showWarning(string text, string type)
+        {
+            MetroFramework.MetroMessageBox.Show(this, text, type, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         }
         public DateTime SetDateTimeHoursAndMinutes(DateTime date)
         {
-            return new DateTime(date.Year,date.Month,date.Day,0,0,0);
+            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
         }
         public void setDefaultDateValues(MetroComboBox hourFromComboBox, MetroComboBox hourToComboBox, MetroComboBox minuteFromComboBox, MetroComboBox minuteToComboBox)
         {
@@ -355,11 +329,53 @@ namespace TC37852369
             minuteFromComboBox.SelectedItem = 0;
             minuteToComboBox.SelectedItem = 59;
         }
-        public void showWarning(string text,string type)
-        {
-            MetroFramework.MetroMessageBox.Show(this, text, type, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        public void fillFieldsWithEventData(Event eventEntity){
+            TextBox_EventName.Text = eventEntity.eventName;
+            DateTime_EventDate.Value = eventEntity.date_From;
+            ComboBox_EventDuration.SelectedIndex = eventEntity.eventLengthDays - 1;
+            DateTime_Day1.Value = eventEntity.day1Date;
+            DateTime_Day2.Value = eventEntity.day2Date;
+            DateTime_Day3.Value = eventEntity.day3Date;
+            DateTime_Day4.Value = eventEntity.day4Date;
+
+            ComboBox_Day1FromHour.SelectedIndex = Int32.Parse(eventEntity.day1TimeFrom.Split(':')[0]);
+            ComboBox_Day1FromMinute.SelectedIndex = Int32.Parse(eventEntity.day1TimeFrom.Split(':')[1]);
+            ComboBox_Day1ToHour.SelectedIndex = Int32.Parse(eventEntity.day1TimeTo.Split(':')[0]);
+            ComboBox_Day1ToMinute.SelectedIndex = Int32.Parse(eventEntity.day1TimeTo.Split(':')[1]);
+
+            ComboBox_Day2FromHour.SelectedIndex = Int32.Parse(eventEntity.day2TimeFrom.Split(':')[0]);
+            ComboBox_Day2FromMinute.SelectedIndex = Int32.Parse(eventEntity.day2TimeFrom.Split(':')[1]);
+            ComboBox_Day2ToHour.SelectedIndex = Int32.Parse(eventEntity.day2TimeTo.Split(':')[0]);
+            ComboBox_Day2ToMinute.SelectedIndex = Int32.Parse(eventEntity.day2TimeTo.Split(':')[1]);
+
+            ComboBox_Day3FromHour.SelectedIndex = Int32.Parse(eventEntity.day3TimeFrom.Split(':')[0]);
+            ComboBox_Day3FromMinute.SelectedIndex = Int32.Parse(eventEntity.day3TimeFrom.Split(':')[1]);
+            ComboBox_Day3ToHour.SelectedIndex = Int32.Parse(eventEntity.day3TimeTo.Split(':')[0]);
+            ComboBox_Day3ToMinute.SelectedIndex = Int32.Parse(eventEntity.day3TimeTo.Split(':')[1]);
+
+            ComboBox_Day4FromHour.SelectedIndex = Int32.Parse(eventEntity.day4TimeFrom.Split(':')[0]);
+            ComboBox_Day4FromMinute.SelectedIndex = Int32.Parse(eventEntity.day4TimeFrom.Split(':')[1]);
+            ComboBox_Day4ToHour.SelectedIndex = Int32.Parse(eventEntity.day4TimeTo.Split(':')[0]);
+            ComboBox_Day4ToMinute.SelectedIndex = Int32.Parse(eventEntity.day4TimeTo.Split(':')[1]);
+
+            TextBox_VenueName.Text = eventEntity.venueName;
+            TextBox_VenueAdress.Text = eventEntity.venueAdress;
+
+            TextBox_Comments.Text = eventEntity.comment;
+            TextBox_Subject.Text = eventEntity.emailSubject;
+            TextBox_Body.Text = eventEntity.emailBody;
+            CheckBox_UseDefaultEmail.Checked = eventEntity.useTemplate;
+            if (eventEntity.current_Mail_Template.Length > 0) {
+                int indexOfEmailTemplate = ComboBox_EmailTemplate.Items.IndexOf(eventEntity.current_Mail_Template);
+                ComboBox_EmailTemplate.SelectedIndex = indexOfEmailTemplate;
+            }
+            
+
         }
-
-
+        protected void CloseHandler(object sender, EventArgs e)
+        {
+            mainWindow.Enabled = true;
+        }
     }
 }

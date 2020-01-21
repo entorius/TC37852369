@@ -20,24 +20,27 @@ namespace TC37852369
         public Login()
         {
             InitializeComponent();
-            TextBoxModification TextBox_EmailMod = new TextBoxModification(TextBox_Email, "Email",false);
+            TextBoxModification TextBox_EmailMod = new TextBoxModification(TextBox_Email, "Username",false);
             TextBox_EmailMod.addEvents();
             TextBoxModification TextBox_PasswordMod = new TextBoxModification(TextBox_Password, "Password",true);
             TextBox_PasswordMod.addEvents();
 
         }
         
-        private /*async*/ void Button_Login_Click(object sender, EventArgs e)
+        private async void Button_Login_Click(object sender, EventArgs e)
         {
-            /*UserServices userServices = new UserServices();
-            User user = await userServices.GetUser(TextBox_Email.Text, TextBox_Password.Text); 
+            UserServices userServices = new UserServices();
+            User user = await userServices.GetUser(TextBox_Email.Text, TextBox_Password.Text);
             if (user.id == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "Not correct email or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }*/
-            this.Hide();
-            MainWindow mainWindow = new MainWindow(this);
-            mainWindow.Show();
+            }
+            else
+            {
+                this.Hide();
+                MainWindow mainWindow = new MainWindow(this);
+                mainWindow.Show();
+            }
         }
 
     }

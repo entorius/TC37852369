@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.Button_EditEmail = new MetroFramework.Controls.MetroTile();
-            this.Button_ChangeLogo = new MetroFramework.Controls.MetroTile();
+            this.Button_ChangeInformation = new MetroFramework.Controls.MetroTile();
             this.Button_GenerateTicket = new MetroFramework.Controls.MetroTile();
             this.Button_AddUser = new MetroFramework.Controls.MetroTile();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
@@ -49,32 +49,7 @@
             this.Button_CheckIn = new MetroFramework.Controls.MetroButton();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.Button_GenerateMail = new MetroFramework.Controls.MetroButton();
-            this.Button_RegisterParticipant = new MetroFramework.Controls.MetroButton();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.Button_FilterParticipant = new MetroFramework.Controls.MetroButton();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.Table_EventsHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.Button_CreateEvent = new MetroFramework.Controls.MetroButton();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.Button_FilterEvent = new MetroFramework.Controls.MetroButton();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Button_UpdateParticipantsInformation = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -88,28 +63,57 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.Button_GenerateMail = new MetroFramework.Controls.MetroButton();
+            this.Button_RegisterParticipant = new MetroFramework.Controls.MetroButton();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.Button_FilterParticipant = new MetroFramework.Controls.MetroButton();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.Button_UpdateEvents = new MetroFramework.Controls.MetroButton();
+            this.Table_EventsData = new System.Windows.Forms.TableLayoutPanel();
+            this.Table_EventsHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.Button_CreateEvent = new MetroFramework.Controls.MetroButton();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.Button_FilterEvent = new MetroFramework.Controls.MetroButton();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage5.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.Table_EventsHeader.SuspendLayout();
             this.metroTabControl2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabPage5
             // 
             this.metroTabPage5.Controls.Add(this.Button_EditEmail);
-            this.metroTabPage5.Controls.Add(this.Button_ChangeLogo);
+            this.metroTabPage5.Controls.Add(this.Button_ChangeInformation);
             this.metroTabPage5.Controls.Add(this.Button_GenerateTicket);
             this.metroTabPage5.Controls.Add(this.Button_AddUser);
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage5.HorizontalScrollbarSize = 10;
-            this.metroTabPage5.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1466, 669);
+            this.metroTabPage5.Size = new System.Drawing.Size(1878, 817);
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Settings";
             this.metroTabPage5.VerticalScrollbarBarColor = true;
@@ -131,19 +135,20 @@
             this.Button_EditEmail.UseTileImage = true;
             this.Button_EditEmail.Click += new System.EventHandler(this.Button_EditEmail_Click);
             // 
-            // Button_ChangeLogo
+            // Button_ChangeInformation
             // 
-            this.Button_ChangeLogo.ActiveControl = null;
-            this.Button_ChangeLogo.Location = new System.Drawing.Point(89, 363);
-            this.Button_ChangeLogo.Name = "Button_ChangeLogo";
-            this.Button_ChangeLogo.Size = new System.Drawing.Size(453, 281);
-            this.Button_ChangeLogo.TabIndex = 8;
-            this.Button_ChangeLogo.Text = "Add / Change company logo";
-            this.Button_ChangeLogo.TileImage = ((System.Drawing.Image)(resources.GetObject("Button_ChangeLogo.TileImage")));
-            this.Button_ChangeLogo.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Button_ChangeLogo.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.Button_ChangeLogo.UseSelectable = true;
-            this.Button_ChangeLogo.UseTileImage = true;
+            this.Button_ChangeInformation.ActiveControl = null;
+            this.Button_ChangeInformation.Location = new System.Drawing.Point(89, 363);
+            this.Button_ChangeInformation.Name = "Button_ChangeInformation";
+            this.Button_ChangeInformation.Size = new System.Drawing.Size(453, 281);
+            this.Button_ChangeInformation.TabIndex = 8;
+            this.Button_ChangeInformation.Text = "Add / Change company information";
+            this.Button_ChangeInformation.TileImage = global::TC37852369.Properties.Resources.font_awesome_4_7_0_list_alt_80_0_ffffff_none;
+            this.Button_ChangeInformation.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button_ChangeInformation.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.Button_ChangeInformation.UseSelectable = true;
+            this.Button_ChangeInformation.UseTileImage = true;
+            this.Button_ChangeInformation.Click += new System.EventHandler(this.Button_ChangeInformation_Click);
             // 
             // Button_GenerateTicket
             // 
@@ -188,9 +193,9 @@
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.HorizontalScrollbarSize = 10;
-            this.metroTabPage4.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1466, 669);
+            this.metroTabPage4.Size = new System.Drawing.Size(1878, 817);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Export";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
@@ -419,9 +424,9 @@
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1466, 669);
+            this.metroTabPage3.Size = new System.Drawing.Size(1878, 817);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Check In";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
@@ -495,7 +500,7 @@
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.tableLayoutPanel1);
+            this.metroTabPage2.Controls.Add(this.Button_UpdateParticipantsInformation);
             this.metroTabPage2.Controls.Add(this.tableLayoutPanel3);
             this.metroTabPage2.Controls.Add(this.Button_GenerateMail);
             this.metroTabPage2.Controls.Add(this.Button_RegisterParticipant);
@@ -505,23 +510,205 @@
             this.metroTabPage2.Controls.Add(this.metroLabel5);
             this.metroTabPage2.Controls.Add(this.Button_FilterParticipant);
             this.metroTabPage2.Controls.Add(this.textBox7);
+            this.metroTabPage2.Controls.Add(this.tableLayoutPanel1);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1466, 669);
+            this.metroTabPage2.Size = new System.Drawing.Size(1878, 817);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Registration";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // Button_UpdateParticipantsInformation
+            // 
+            this.Button_UpdateParticipantsInformation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Button_UpdateParticipantsInformation.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_UpdateParticipantsInformation.ForeColor = System.Drawing.Color.White;
+            this.Button_UpdateParticipantsInformation.Location = new System.Drawing.Point(1682, 180);
+            this.Button_UpdateParticipantsInformation.Name = "Button_UpdateParticipantsInformation";
+            this.Button_UpdateParticipantsInformation.Size = new System.Drawing.Size(174, 51);
+            this.Button_UpdateParticipantsInformation.TabIndex = 29;
+            this.Button_UpdateParticipantsInformation.Text = "Update information";
+            this.Button_UpdateParticipantsInformation.UseCustomBackColor = true;
+            this.Button_UpdateParticipantsInformation.UseCustomForeColor = true;
+            this.Button_UpdateParticipantsInformation.UseSelectable = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.AutoSize = true;
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(84)))), ((int)(((byte)(96)))));
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel3.ColumnCount = 12;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label18, 8, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label19, 9, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label20, 10, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label21, 7, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label22, 11, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label23, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label24, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 130);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1635, 46);
+            this.tableLayoutPanel3.TabIndex = 27;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(309, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Job title";
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(5, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 40);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "First name";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(613, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Company name";
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(927, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 40);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Payment status";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(765, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(146, 20);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Participation format";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(1131, 2);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(46, 20);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "Email";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(1283, 2);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 20);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "Phone number";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(1435, 2);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(81, 20);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Ticket sent";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(1029, 2);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(73, 40);
+            this.label21.TabIndex = 10;
+            this.label21.Text = "Payment amount";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(1537, 2);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 20);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Edit";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(461, 2);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(108, 20);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Company type";
+            // 
+            // label24
+            // 
+            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(157, 2);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(90, 40);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Last name";
+            // 
             // Button_GenerateMail
             // 
-            this.Button_GenerateMail.BackColor = System.Drawing.Color.Maroon;
+            this.Button_GenerateMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(188)))), ((int)(((byte)(249)))));
             this.Button_GenerateMail.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_GenerateMail.Location = new System.Drawing.Point(1296, 110);
+            this.Button_GenerateMail.Location = new System.Drawing.Point(1682, 100);
             this.Button_GenerateMail.Name = "Button_GenerateMail";
             this.Button_GenerateMail.Size = new System.Drawing.Size(174, 51);
             this.Button_GenerateMail.Style = MetroFramework.MetroColorStyle.White;
@@ -535,9 +722,9 @@
             // 
             // Button_RegisterParticipant
             // 
-            this.Button_RegisterParticipant.BackColor = System.Drawing.Color.Maroon;
+            this.Button_RegisterParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
             this.Button_RegisterParticipant.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_RegisterParticipant.Location = new System.Drawing.Point(1296, 27);
+            this.Button_RegisterParticipant.Location = new System.Drawing.Point(1682, 20);
             this.Button_RegisterParticipant.Name = "Button_RegisterParticipant";
             this.Button_RegisterParticipant.Size = new System.Drawing.Size(174, 51);
             this.Button_RegisterParticipant.Style = MetroFramework.MetroColorStyle.White;
@@ -552,9 +739,9 @@
             // metroLabel4
             // 
             this.metroLabel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel4.Location = new System.Drawing.Point(1280, -47);
+            this.metroLabel4.Location = new System.Drawing.Point(1638, -47);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(10, 791);
+            this.metroLabel4.Size = new System.Drawing.Size(10, 884);
             this.metroLabel4.TabIndex = 17;
             // 
             // textBox5
@@ -579,13 +766,13 @@
             this.metroLabel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.metroLabel5.Location = new System.Drawing.Point(-4, 106);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(1284, 11);
+            this.metroLabel5.Size = new System.Drawing.Size(1652, 24);
             this.metroLabel5.TabIndex = 13;
             this.metroLabel5.Text = "\r\n";
             // 
             // Button_FilterParticipant
             // 
-            this.Button_FilterParticipant.BackColor = System.Drawing.Color.Maroon;
+            this.Button_FilterParticipant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(52)))));
             this.Button_FilterParticipant.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.Button_FilterParticipant.Location = new System.Drawing.Point(683, 27);
             this.Button_FilterParticipant.Name = "Button_FilterParticipant";
@@ -606,9 +793,37 @@
             this.textBox7.Size = new System.Drawing.Size(188, 30);
             this.textBox7.TabIndex = 2;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(218)))), ((int)(((byte)(226)))));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel1.ColumnCount = 12;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 176);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1635, 41);
+            this.tableLayoutPanel1.TabIndex = 28;
+            // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.tableLayoutPanel2);
+            this.metroTabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage1.Controls.Add(this.Button_UpdateEvents);
+            this.metroTabPage1.Controls.Add(this.Table_EventsData);
             this.metroTabPage1.Controls.Add(this.Table_EventsHeader);
             this.metroTabPage1.Controls.Add(this.metroLabel7);
             this.metroTabPage1.Controls.Add(this.Button_CreateEvent);
@@ -622,109 +837,175 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1466, 669);
+            this.metroTabPage1.Size = new System.Drawing.Size(1878, 812);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // tableLayoutPanel2
+            // Button_UpdateEvents
             // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 260F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 176);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1249, 41);
-            this.tableLayoutPanel2.TabIndex = 26;
+            this.Button_UpdateEvents.BackColor = System.Drawing.Color.Maroon;
+            this.Button_UpdateEvents.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_UpdateEvents.Location = new System.Drawing.Point(1712, 102);
+            this.Button_UpdateEvents.Name = "Button_UpdateEvents";
+            this.Button_UpdateEvents.Size = new System.Drawing.Size(158, 51);
+            this.Button_UpdateEvents.Style = MetroFramework.MetroColorStyle.White;
+            this.Button_UpdateEvents.TabIndex = 28;
+            this.Button_UpdateEvents.Text = "Update Events";
+            this.Button_UpdateEvents.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_UpdateEvents.UseCustomBackColor = true;
+            this.Button_UpdateEvents.UseSelectable = true;
+            this.Button_UpdateEvents.UseStyleColors = true;
+            // 
+            // Table_EventsData
+            // 
+            this.Table_EventsData.AutoScroll = true;
+            this.Table_EventsData.AutoScrollMargin = new System.Drawing.Size(10, 0);
+            this.Table_EventsData.AutoSize = true;
+            this.Table_EventsData.BackColor = System.Drawing.Color.White;
+            this.Table_EventsData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+            this.Table_EventsData.ColumnCount = 8;
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.Table_EventsData.Location = new System.Drawing.Point(1, 176);
+            this.Table_EventsData.Margin = new System.Windows.Forms.Padding(0);
+            this.Table_EventsData.MaximumSize = new System.Drawing.Size(1700, 600);
+            this.Table_EventsData.Name = "Table_EventsData";
+            this.Table_EventsData.RowCount = 1;
+            this.Table_EventsData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Table_EventsData.Size = new System.Drawing.Size(1677, 41);
+            this.Table_EventsData.TabIndex = 26;
             // 
             // Table_EventsHeader
             // 
             this.Table_EventsHeader.AutoSize = true;
+            this.Table_EventsHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.Table_EventsHeader.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.Table_EventsHeader.ColumnCount = 6;
+            this.Table_EventsHeader.ColumnCount = 8;
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.Table_EventsHeader.Controls.Add(this.label11, 7, 0);
+            this.Table_EventsHeader.Controls.Add(this.label10, 2, 0);
             this.Table_EventsHeader.Controls.Add(this.label1, 0, 0);
-            this.Table_EventsHeader.Controls.Add(this.label12, 5, 0);
             this.Table_EventsHeader.Controls.Add(this.label2, 1, 0);
-            this.Table_EventsHeader.Controls.Add(this.label3, 2, 0);
-            this.Table_EventsHeader.Controls.Add(this.label16, 3, 0);
-            this.Table_EventsHeader.Controls.Add(this.label4, 4, 0);
+            this.Table_EventsHeader.Controls.Add(this.label12, 6, 0);
+            this.Table_EventsHeader.Controls.Add(this.label4, 5, 0);
+            this.Table_EventsHeader.Controls.Add(this.label16, 4, 0);
+            this.Table_EventsHeader.Controls.Add(this.label3, 3, 0);
             this.Table_EventsHeader.Location = new System.Drawing.Point(1, 130);
             this.Table_EventsHeader.Margin = new System.Windows.Forms.Padding(0);
             this.Table_EventsHeader.Name = "Table_EventsHeader";
             this.Table_EventsHeader.RowCount = 1;
             this.Table_EventsHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Table_EventsHeader.Size = new System.Drawing.Size(1249, 46);
+            this.Table_EventsHeader.Size = new System.Drawing.Size(1677, 46);
             this.Table_EventsHeader.TabIndex = 23;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(1557, 3);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 20);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Edit";
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(487, 3);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(169, 40);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Event Duration (days)";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 40);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Event name";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(309, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 40);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Event Date";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(1234, 3);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(110, 20);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Email template";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label4.Location = new System.Drawing.Point(868, 3);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1071, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Status";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(868, 3);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(108, 20);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Venue address";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label3.Location = new System.Drawing.Point(462, 3);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(665, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Venue name";
             // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(209, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 40);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Event duration";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(6, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 40);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Event name";
-            // 
             // metroLabel7
             // 
             this.metroLabel7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel7.Location = new System.Drawing.Point(-15, 109);
+            this.metroLabel7.Location = new System.Drawing.Point(-15, 110);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(1301, 10);
+            this.metroLabel7.Size = new System.Drawing.Size(1706, 20);
             this.metroLabel7.TabIndex = 27;
             this.metroLabel7.Text = "\r\n";
             // 
@@ -732,7 +1013,7 @@
             // 
             this.Button_CreateEvent.BackColor = System.Drawing.Color.Maroon;
             this.Button_CreateEvent.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_CreateEvent.Location = new System.Drawing.Point(1312, 27);
+            this.Button_CreateEvent.Location = new System.Drawing.Point(1712, 27);
             this.Button_CreateEvent.Name = "Button_CreateEvent";
             this.Button_CreateEvent.Size = new System.Drawing.Size(158, 51);
             this.Button_CreateEvent.Style = MetroFramework.MetroColorStyle.White;
@@ -748,9 +1029,9 @@
             // 
             this.metroLabel9.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel9.Location = new System.Drawing.Point(1286, -9);
+            this.metroLabel9.Location = new System.Drawing.Point(1692, -10);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(20, 610);
+            this.metroLabel9.Size = new System.Drawing.Size(14, 880);
             this.metroLabel9.TabIndex = 25;
             // 
             // textBox12
@@ -771,7 +1052,7 @@
             // 
             // Button_FilterEvent
             // 
-            this.Button_FilterEvent.BackColor = System.Drawing.Color.Maroon;
+            this.Button_FilterEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.Button_FilterEvent.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.Button_FilterEvent.Location = new System.Drawing.Point(683, 27);
             this.Button_FilterEvent.Name = "Button_FilterEvent";
@@ -795,7 +1076,7 @@
             // metroTabControl2
             // 
             this.metroTabControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroTabControl2.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.metroTabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.metroTabControl2.Controls.Add(this.metroTabPage1);
             this.metroTabControl2.Controls.Add(this.metroTabPage2);
             this.metroTabControl2.Controls.Add(this.metroTabPage3);
@@ -804,213 +1085,13 @@
             this.metroTabControl2.FontSize = MetroFramework.MetroTabControlSize.Tall;
             this.metroTabControl2.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl2.HotTrack = true;
-            this.metroTabControl2.Location = new System.Drawing.Point(23, 63);
+            this.metroTabControl2.Location = new System.Drawing.Point(23, 78);
             this.metroTabControl2.Name = "metroTabControl2";
             this.metroTabControl2.SelectedIndex = 0;
-            this.metroTabControl2.Size = new System.Drawing.Size(1474, 720);
+            this.metroTabControl2.Size = new System.Drawing.Size(1886, 863);
             this.metroTabControl2.TabIndex = 0;
             this.metroTabControl2.TabStop = false;
             this.metroTabControl2.UseSelectable = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label12.Location = new System.Drawing.Point(971, 3);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(81, 20);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Comments";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label16.Location = new System.Drawing.Point(665, 3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(108, 20);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Venue address";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.tableLayoutPanel1.ColumnCount = 12;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 176);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1249, 41);
-            this.tableLayoutPanel1.TabIndex = 28;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.tableLayoutPanel3.ColumnCount = 12;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 6, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label9, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label18, 8, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label19, 9, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label20, 10, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label21, 7, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label22, 11, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label23, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label24, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 130);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1249, 46);
-            this.tableLayoutPanel3.TabIndex = 27;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label5.Location = new System.Drawing.Point(212, 3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Job title";
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(6, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 40);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "First name";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label7.Location = new System.Drawing.Point(418, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 40);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Company name";
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label8.Location = new System.Drawing.Point(634, 3);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 40);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Payment status";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label9.Location = new System.Drawing.Point(521, 3);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 40);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Participation format";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label18.Location = new System.Drawing.Point(840, 3);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 20);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "Email";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label19.Location = new System.Drawing.Point(943, 3);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(63, 40);
-            this.label19.TabIndex = 8;
-            this.label19.Text = "Phone number";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label20.Location = new System.Drawing.Point(1046, 3);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(81, 20);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "Ticket sent";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label21.Location = new System.Drawing.Point(737, 3);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(73, 40);
-            this.label21.TabIndex = 10;
-            this.label21.Text = "Payment amount";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label22.Location = new System.Drawing.Point(1149, 3);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(35, 20);
-            this.label22.TabIndex = 11;
-            this.label22.Text = "Edit";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label23.Location = new System.Drawing.Point(315, 3);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(78, 40);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "Company type";
-            // 
-            // label24
-            // 
-            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label24.Location = new System.Drawing.Point(109, 3);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(68, 40);
-            this.label24.TabIndex = 1;
-            this.label24.Text = "Last name";
             // 
             // MainWindow
             // 
@@ -1018,23 +1099,24 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
-            this.ClientSize = new System.Drawing.Size(1520, 800);
+            this.ClientSize = new System.Drawing.Size(1920, 1030);
             this.Controls.Add(this.metroTabControl2);
             this.Name = "MainWindow";
             this.Text = "Main Window";
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.metroTabPage5.ResumeLayout(false);
             this.metroTabPage4.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
             this.metroTabPage3.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.Table_EventsHeader.ResumeLayout(false);
             this.Table_EventsHeader.PerformLayout();
             this.metroTabControl2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1042,7 +1124,7 @@
         #endregion
         private MetroFramework.Controls.MetroTabPage metroTabPage5;
         private MetroFramework.Controls.MetroTile Button_EditEmail;
-        private MetroFramework.Controls.MetroTile Button_ChangeLogo;
+        private MetroFramework.Controls.MetroTile Button_ChangeInformation;
         private MetroFramework.Controls.MetroTile Button_GenerateTicket;
         private MetroFramework.Controls.MetroTile Button_AddUser;
         private MetroFramework.Controls.MetroTabPage metroTabPage4;
@@ -1082,7 +1164,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        public System.Windows.Forms.TableLayoutPanel Table_EventsData;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1099,5 +1181,9 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private MetroFramework.Controls.MetroButton Button_UpdateParticipantsInformation;
+        private MetroFramework.Controls.MetroButton Button_UpdateEvents;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

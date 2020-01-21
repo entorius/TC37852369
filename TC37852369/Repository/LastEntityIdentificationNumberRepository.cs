@@ -31,5 +31,27 @@ namespace TC37852369.Repository
             }
             return lastIdetificationNumber;
         }
+        private async Task<LastIdentificationNumber> AddLastIdetificationNumber(LastIdentificationNumber lastIdentificationNumber)
+        {
+            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            LastIdentificationNumber lastIdetificationNumber = new LastIdentificationNumber();
+            Dictionary<string, object> user = new Dictionary<string, object>
+            {
+                { "Id",                     lastIdentificationNumber.id                },
+                { "EntityName",             lastIdentificationNumber.entityName              }           
+            };
+            DocumentReference docRef = db.Collection("LastEntityIdentificationNumber").Document(lastIdentificationNumber.entityName + "Identification");
+            await docRef.SetAsync(user);
+            return lastIdetificationNumber;
+        }
+        public async Task<LastIdentificationNumber> IncreaseLastIdetificationNumber(string domainEntityName)
+        {
+            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            LastIdentificationNumber lastIdentificationNumber = await getLastIdetificationNumber(domainEntityName);
+            lastIdentificationNumber.id += 1;
+            await AddLastIdetificationNumber(lastIdentificationNumber);
+            return lastIdentificationNumber;
+        }
+        
     }
 }
