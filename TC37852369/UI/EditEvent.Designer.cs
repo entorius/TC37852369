@@ -85,6 +85,11 @@
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.label4 = new System.Windows.Forms.Label();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_PaymentAmount = new System.Windows.Forms.TextBox();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.ComboBox_TemplateStrings = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // label2
@@ -171,7 +176,7 @@
             // 
             this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel5.Location = new System.Drawing.Point(27, 625);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(87, 19);
             this.metroLabel5.TabIndex = 53;
@@ -181,7 +186,7 @@
             // 
             this.metroLabel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(31, 685);
+            this.metroLabel8.Location = new System.Drawing.Point(31, 745);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(73, 19);
             this.metroLabel8.TabIndex = 56;
@@ -191,7 +196,7 @@
             // 
             this.metroLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(31, 625);
+            this.metroLabel6.Location = new System.Drawing.Point(27, 685);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(91, 19);
             this.metroLabel6.TabIndex = 55;
@@ -508,17 +513,17 @@
             // 
             this.TextBox_Comments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Comments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Comments.Location = new System.Drawing.Point(183, 685);
+            this.TextBox_Comments.Location = new System.Drawing.Point(182, 745);
             this.TextBox_Comments.Multiline = true;
             this.TextBox_Comments.Name = "TextBox_Comments";
-            this.TextBox_Comments.Size = new System.Drawing.Size(409, 145);
+            this.TextBox_Comments.Size = new System.Drawing.Size(409, 110);
             this.TextBox_Comments.TabIndex = 101;
             // 
             // TextBox_VenueAdress
             // 
             this.TextBox_VenueAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueAdress.Location = new System.Drawing.Point(183, 625);
+            this.TextBox_VenueAdress.Location = new System.Drawing.Point(182, 685);
             this.TextBox_VenueAdress.Name = "TextBox_VenueAdress";
             this.TextBox_VenueAdress.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueAdress.TabIndex = 100;
@@ -527,7 +532,7 @@
             // 
             this.TextBox_VenueName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueName.Location = new System.Drawing.Point(183, 565);
+            this.TextBox_VenueName.Location = new System.Drawing.Point(183, 625);
             this.TextBox_VenueName.Name = "TextBox_VenueName";
             this.TextBox_VenueName.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueName.TabIndex = 99;
@@ -546,7 +551,7 @@
             // 
             this.Label_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Subject.AutoSize = true;
-            this.Label_Subject.Location = new System.Drawing.Point(785, 176);
+            this.Label_Subject.Location = new System.Drawing.Point(785, 217);
             this.Label_Subject.Name = "Label_Subject";
             this.Label_Subject.Size = new System.Drawing.Size(91, 19);
             this.Label_Subject.TabIndex = 104;
@@ -556,7 +561,7 @@
             // 
             this.TextBox_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Subject.Location = new System.Drawing.Point(898, 176);
+            this.TextBox_Subject.Location = new System.Drawing.Point(898, 217);
             this.TextBox_Subject.Name = "TextBox_Subject";
             this.TextBox_Subject.Size = new System.Drawing.Size(374, 30);
             this.TextBox_Subject.TabIndex = 103;
@@ -592,6 +597,7 @@
             this.ComboBox_EmailTemplate.Style = MetroFramework.MetroColorStyle.Orange;
             this.ComboBox_EmailTemplate.TabIndex = 108;
             this.ComboBox_EmailTemplate.UseSelectable = true;
+            this.ComboBox_EmailTemplate.SelectedIndexChanged += new System.EventHandler(this.ComboBox_EmailTemplate_SelectedIndexChanged);
             // 
             // Button_Save
             // 
@@ -628,7 +634,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.865546F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(179, 859);
+            this.label3.Location = new System.Drawing.Point(178, 869);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 19);
             this.label3.TabIndex = 111;
@@ -670,11 +676,67 @@
             this.metroLabel3.Size = new System.Drawing.Size(2, 849);
             this.metroLabel3.TabIndex = 113;
             // 
+            // metroLabel7
+            // 
+            this.metroLabel7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel7.Location = new System.Drawing.Point(27, 565);
+            this.metroLabel7.MaximumSize = new System.Drawing.Size(150, 0);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(110, 0);
+            this.metroLabel7.TabIndex = 115;
+            this.metroLabel7.Text = "Payment amount (for day)*";
+            this.metroLabel7.WrapToLine = true;
+            // 
+            // TextBox_PaymentAmount
+            // 
+            this.TextBox_PaymentAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_PaymentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_PaymentAmount.Location = new System.Drawing.Point(182, 565);
+            this.TextBox_PaymentAmount.Name = "TextBox_PaymentAmount";
+            this.TextBox_PaymentAmount.Size = new System.Drawing.Size(409, 30);
+            this.TextBox_PaymentAmount.TabIndex = 114;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(116, 19);
+            this.metroLabel9.TabIndex = 116;
+            this.metroLabel9.Text = "Payment Amount*";
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(789, 171);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(98, 19);
+            this.metroLabel12.TabIndex = 117;
+            this.metroLabel12.Text = "Template string";
+            // 
+            // ComboBox_TemplateStrings
+            // 
+            this.ComboBox_TemplateStrings.FormattingEnabled = true;
+            this.ComboBox_TemplateStrings.ItemHeight = 23;
+            this.ComboBox_TemplateStrings.Location = new System.Drawing.Point(898, 164);
+            this.ComboBox_TemplateStrings.Name = "ComboBox_TemplateStrings";
+            this.ComboBox_TemplateStrings.Size = new System.Drawing.Size(374, 29);
+            this.ComboBox_TemplateStrings.TabIndex = 118;
+            this.ComboBox_TemplateStrings.UseSelectable = true;
+            this.ComboBox_TemplateStrings.SelectedIndexChanged += new System.EventHandler(this.ComboBox_TemplateStrings_SelectedIndexChanged);
+            // 
             // EditEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 1030);
+            this.Controls.Add(this.ComboBox_TemplateStrings);
+            this.Controls.Add(this.metroLabel12);
+            this.Controls.Add(this.metroLabel9);
+            this.Controls.Add(this.metroLabel7);
+            this.Controls.Add(this.TextBox_PaymentAmount);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -798,5 +860,10 @@
         private MetroFramework.Controls.MetroButton Button_Cancel;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.TextBox TextBox_PaymentAmount;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroComboBox ComboBox_TemplateStrings;
     }
 }

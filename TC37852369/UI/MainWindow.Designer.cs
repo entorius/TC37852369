@@ -50,7 +50,7 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.Button_UpdateParticipantsInformation = new MetroFramework.Controls.MetroButton();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.Table_ParticipantHeader = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.Button_FilterParticipant = new MetroFramework.Controls.MetroButton();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Table_ParticipantData = new System.Windows.Forms.TableLayoutPanel();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.Button_UpdateEvents = new MetroFramework.Controls.MetroButton();
             this.Table_EventsData = new System.Windows.Forms.TableLayoutPanel();
@@ -96,7 +96,7 @@
             this.metroTabPage4.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.Table_ParticipantHeader.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.Table_EventsHeader.SuspendLayout();
             this.metroTabControl2.SuspendLayout();
@@ -501,7 +501,7 @@
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.Button_UpdateParticipantsInformation);
-            this.metroTabPage2.Controls.Add(this.tableLayoutPanel3);
+            this.metroTabPage2.Controls.Add(this.Table_ParticipantHeader);
             this.metroTabPage2.Controls.Add(this.Button_GenerateMail);
             this.metroTabPage2.Controls.Add(this.Button_RegisterParticipant);
             this.metroTabPage2.Controls.Add(this.metroLabel4);
@@ -510,13 +510,13 @@
             this.metroTabPage2.Controls.Add(this.metroLabel5);
             this.metroTabPage2.Controls.Add(this.Button_FilterParticipant);
             this.metroTabPage2.Controls.Add(this.textBox7);
-            this.metroTabPage2.Controls.Add(this.tableLayoutPanel1);
+            this.metroTabPage2.Controls.Add(this.Table_ParticipantData);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 42);
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1878, 817);
+            this.metroTabPage2.Size = new System.Drawing.Size(1878, 812);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Registration";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -537,43 +537,43 @@
             this.Button_UpdateParticipantsInformation.UseCustomForeColor = true;
             this.Button_UpdateParticipantsInformation.UseSelectable = true;
             // 
-            // tableLayoutPanel3
+            // Table_ParticipantHeader
             // 
-            this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(84)))), ((int)(((byte)(96)))));
-            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel3.ColumnCount = 12;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 6, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label9, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label18, 8, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label19, 9, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label20, 10, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label21, 7, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label22, 11, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label23, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label24, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 130);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1635, 46);
-            this.tableLayoutPanel3.TabIndex = 27;
+            this.Table_ParticipantHeader.AutoSize = true;
+            this.Table_ParticipantHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(84)))), ((int)(((byte)(96)))));
+            this.Table_ParticipantHeader.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.Table_ParticipantHeader.ColumnCount = 12;
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_ParticipantHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.Table_ParticipantHeader.Controls.Add(this.label5, 2, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label6, 0, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label7, 3, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label8, 6, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label9, 5, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label18, 8, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label19, 9, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label20, 10, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label21, 7, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label22, 11, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label23, 2, 0);
+            this.Table_ParticipantHeader.Controls.Add(this.label24, 1, 0);
+            this.Table_ParticipantHeader.Location = new System.Drawing.Point(0, 130);
+            this.Table_ParticipantHeader.Margin = new System.Windows.Forms.Padding(0);
+            this.Table_ParticipantHeader.Name = "Table_ParticipantHeader";
+            this.Table_ParticipantHeader.RowCount = 1;
+            this.Table_ParticipantHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Table_ParticipantHeader.Size = new System.Drawing.Size(1635, 46);
+            this.Table_ParticipantHeader.TabIndex = 27;
             // 
             // label5
             // 
@@ -713,7 +713,7 @@
             this.Button_GenerateMail.Size = new System.Drawing.Size(174, 51);
             this.Button_GenerateMail.Style = MetroFramework.MetroColorStyle.White;
             this.Button_GenerateMail.TabIndex = 19;
-            this.Button_GenerateMail.Text = "Send to everyone";
+            this.Button_GenerateMail.Text = "Send emails";
             this.Button_GenerateMail.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Button_GenerateMail.UseCustomBackColor = true;
             this.Button_GenerateMail.UseSelectable = true;
@@ -793,31 +793,31 @@
             this.textBox7.Size = new System.Drawing.Size(188, 30);
             this.textBox7.TabIndex = 2;
             // 
-            // tableLayoutPanel1
+            // Table_ParticipantData
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(218)))), ((int)(((byte)(226)))));
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel1.ColumnCount = 12;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 176);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1635, 41);
-            this.tableLayoutPanel1.TabIndex = 28;
+            this.Table_ParticipantData.AutoSize = true;
+            this.Table_ParticipantData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(218)))), ((int)(((byte)(226)))));
+            this.Table_ParticipantData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.Table_ParticipantData.ColumnCount = 12;
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.Table_ParticipantData.Location = new System.Drawing.Point(0, 176);
+            this.Table_ParticipantData.Margin = new System.Windows.Forms.Padding(0);
+            this.Table_ParticipantData.Name = "Table_ParticipantData";
+            this.Table_ParticipantData.RowCount = 1;
+            this.Table_ParticipantData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Table_ParticipantData.Size = new System.Drawing.Size(1635, 41);
+            this.Table_ParticipantData.TabIndex = 28;
             // 
             // metroTabPage1
             // 
@@ -835,9 +835,9 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1878, 812);
+            this.metroTabPage1.Size = new System.Drawing.Size(1878, 817);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -1087,7 +1087,7 @@
             this.metroTabControl2.HotTrack = true;
             this.metroTabControl2.Location = new System.Drawing.Point(23, 78);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 1;
             this.metroTabControl2.Size = new System.Drawing.Size(1886, 863);
             this.metroTabControl2.TabIndex = 0;
             this.metroTabControl2.TabStop = false;
@@ -1110,8 +1110,8 @@
             this.metroTabPage3.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.Table_ParticipantHeader.ResumeLayout(false);
+            this.Table_ParticipantHeader.PerformLayout();
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.Table_EventsHeader.ResumeLayout(false);
@@ -1167,8 +1167,8 @@
         public System.Windows.Forms.TableLayoutPanel Table_EventsData;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        public System.Windows.Forms.TableLayoutPanel Table_ParticipantData;
+        private System.Windows.Forms.TableLayoutPanel Table_ParticipantHeader;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

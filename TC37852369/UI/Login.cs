@@ -27,20 +27,20 @@ namespace TC37852369
 
         }
         
-        private async void Button_Login_Click(object sender, EventArgs e)
+        private /*async*/ void Button_Login_Click(object sender, EventArgs e)
         {
-            UserServices userServices = new UserServices();
+            /*UserServices userServices = new UserServices();
             User user = await userServices.GetUser(TextBox_Email.Text, TextBox_Password.Text);
             if (user.id == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "Not correct email or password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-            {
+            {*/
                 this.Hide();
                 MainWindow mainWindow = new MainWindow(this);
                 mainWindow.Show();
-            }
+            /*}*/
         }
 
     }

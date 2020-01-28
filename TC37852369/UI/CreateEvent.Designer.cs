@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateEvent));
             this.TextBox_EventName = new System.Windows.Forms.TextBox();
             this.TextBox_VenueName = new System.Windows.Forms.TextBox();
             this.TextBox_VenueAdress = new System.Windows.Forms.TextBox();
@@ -85,6 +86,29 @@
             this.Label_To2 = new MetroFramework.Controls.MetroLabel();
             this.Label_To3 = new MetroFramework.Controls.MetroLabel();
             this.Label_To4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_PaymentAmount = new System.Windows.Forms.TextBox();
+            this.Button_Image1 = new System.Windows.Forms.Button();
+            this.Button_Delete1 = new System.Windows.Forms.PictureBox();
+            this.Button_AddImage = new System.Windows.Forms.Button();
+            this.Button_Delete2 = new System.Windows.Forms.PictureBox();
+            this.Button_Image2 = new System.Windows.Forms.Button();
+            this.Button_Delete3 = new System.Windows.Forms.PictureBox();
+            this.Button_Image3 = new System.Windows.Forms.Button();
+            this.Button_Delete4 = new System.Windows.Forms.PictureBox();
+            this.Button_Image4 = new System.Windows.Forms.Button();
+            this.Button_Delete5 = new System.Windows.Forms.PictureBox();
+            this.Button_Image5 = new System.Windows.Forms.Button();
+            this.FileDialog_AddEvent = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog_ImageSave = new System.Windows.Forms.FolderBrowserDialog();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.ComboBox_TemplateStrings = new MetroFramework.Controls.MetroComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete5)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBox_EventName
@@ -100,7 +124,7 @@
             // 
             this.TextBox_VenueName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueName.Location = new System.Drawing.Point(188, 565);
+            this.TextBox_VenueName.Location = new System.Drawing.Point(188, 625);
             this.TextBox_VenueName.Name = "TextBox_VenueName";
             this.TextBox_VenueName.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueName.TabIndex = 5;
@@ -109,7 +133,7 @@
             // 
             this.TextBox_VenueAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueAdress.Location = new System.Drawing.Point(188, 625);
+            this.TextBox_VenueAdress.Location = new System.Drawing.Point(188, 685);
             this.TextBox_VenueAdress.Name = "TextBox_VenueAdress";
             this.TextBox_VenueAdress.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueAdress.TabIndex = 6;
@@ -176,7 +200,7 @@
             // 
             this.TextBox_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Subject.Location = new System.Drawing.Point(898, 149);
+            this.TextBox_Subject.Location = new System.Drawing.Point(898, 194);
             this.TextBox_Subject.Name = "TextBox_Subject";
             this.TextBox_Subject.Size = new System.Drawing.Size(374, 30);
             this.TextBox_Subject.TabIndex = 13;
@@ -192,6 +216,7 @@
             this.ComboBox_EmailTemplate.Style = MetroFramework.MetroColorStyle.Orange;
             this.ComboBox_EmailTemplate.TabIndex = 14;
             this.ComboBox_EmailTemplate.UseSelectable = true;
+            this.ComboBox_EmailTemplate.SelectedIndexChanged += new System.EventHandler(this.ComboBox_EmailTemplate_SelectedIndexChanged);
             // 
             // DateTime_EventDate
             // 
@@ -258,7 +283,7 @@
             // 
             this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel5.Location = new System.Drawing.Point(31, 625);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(87, 19);
             this.metroLabel5.TabIndex = 21;
@@ -268,7 +293,7 @@
             // 
             this.metroLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(31, 625);
+            this.metroLabel6.Location = new System.Drawing.Point(31, 685);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(91, 19);
             this.metroLabel6.TabIndex = 22;
@@ -278,7 +303,7 @@
             // 
             this.metroLabel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(31, 685);
+            this.metroLabel8.Location = new System.Drawing.Point(31, 745);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(73, 19);
             this.metroLabel8.TabIndex = 26;
@@ -288,7 +313,7 @@
             // 
             this.Label_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Subject.AutoSize = true;
-            this.Label_Subject.Location = new System.Drawing.Point(785, 149);
+            this.Label_Subject.Location = new System.Drawing.Point(785, 194);
             this.Label_Subject.Name = "Label_Subject";
             this.Label_Subject.Size = new System.Drawing.Size(91, 19);
             this.Label_Subject.TabIndex = 27;
@@ -318,10 +343,10 @@
             // 
             this.TextBox_Comments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Comments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Comments.Location = new System.Drawing.Point(188, 685);
+            this.TextBox_Comments.Location = new System.Drawing.Point(188, 745);
             this.TextBox_Comments.Multiline = true;
             this.TextBox_Comments.Name = "TextBox_Comments";
-            this.TextBox_Comments.Size = new System.Drawing.Size(409, 145);
+            this.TextBox_Comments.Size = new System.Drawing.Size(409, 110);
             this.TextBox_Comments.TabIndex = 30;
             // 
             // Label_Day1
@@ -424,7 +449,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.865546F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(184, 851);
+            this.label3.Location = new System.Drawing.Point(184, 868);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 19);
             this.label3.TabIndex = 46;
@@ -670,11 +695,268 @@
             this.Label_To4.TabIndex = 76;
             this.Label_To4.Text = "To:";
             // 
+            // metroLabel7
+            // 
+            this.metroLabel7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel7.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel7.MaximumSize = new System.Drawing.Size(150, 0);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(110, 0);
+            this.metroLabel7.TabIndex = 78;
+            this.metroLabel7.Text = "Payment amount (for day)*";
+            this.metroLabel7.WrapToLine = true;
+            // 
+            // TextBox_PaymentAmount
+            // 
+            this.TextBox_PaymentAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_PaymentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_PaymentAmount.Location = new System.Drawing.Point(188, 565);
+            this.TextBox_PaymentAmount.Name = "TextBox_PaymentAmount";
+            this.TextBox_PaymentAmount.Size = new System.Drawing.Size(409, 30);
+            this.TextBox_PaymentAmount.TabIndex = 77;
+            // 
+            // Button_Image1
+            // 
+            this.Button_Image1.AutoEllipsis = true;
+            this.Button_Image1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Image1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Image1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Image1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Button_Image1.ForeColor = System.Drawing.Color.White;
+            this.Button_Image1.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image1.Image")));
+            this.Button_Image1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Button_Image1.Location = new System.Drawing.Point(802, 798);
+            this.Button_Image1.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Image1.Name = "Button_Image1";
+            this.Button_Image1.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
+            this.Button_Image1.Size = new System.Drawing.Size(148, 40);
+            this.Button_Image1.TabIndex = 80;
+            this.Button_Image1.Text = "SomeImage1";
+            this.Button_Image1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_Image1.UseVisualStyleBackColor = false;
+            this.Button_Image1.Click += new System.EventHandler(this.Button_Image1_Click);
+            // 
+            // Button_Delete1
+            // 
+            this.Button_Delete1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Delete1.ErrorImage = null;
+            this.Button_Delete1.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete1.Image")));
+            this.Button_Delete1.InitialImage = null;
+            this.Button_Delete1.Location = new System.Drawing.Point(916, 809);
+            this.Button_Delete1.Name = "Button_Delete1";
+            this.Button_Delete1.Size = new System.Drawing.Size(20, 20);
+            this.Button_Delete1.TabIndex = 81;
+            this.Button_Delete1.TabStop = false;
+            this.Button_Delete1.Click += new System.EventHandler(this.Button_Delete1_Click);
+            // 
+            // Button_AddImage
+            // 
+            this.Button_AddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(185)))), ((int)(((byte)(161)))));
+            this.Button_AddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_AddImage.ForeColor = System.Drawing.Color.White;
+            this.Button_AddImage.Image = ((System.Drawing.Image)(resources.GetObject("Button_AddImage.Image")));
+            this.Button_AddImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Button_AddImage.Location = new System.Drawing.Point(802, 711);
+            this.Button_AddImage.Name = "Button_AddImage";
+            this.Button_AddImage.Size = new System.Drawing.Size(179, 67);
+            this.Button_AddImage.TabIndex = 82;
+            this.Button_AddImage.Text = "  ADD EVENT IMAGES";
+            this.Button_AddImage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_AddImage.UseVisualStyleBackColor = false;
+            this.Button_AddImage.Click += new System.EventHandler(this.Button_AddImage_Click);
+            // 
+            // Button_Delete2
+            // 
+            this.Button_Delete2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Delete2.ErrorImage = null;
+            this.Button_Delete2.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete2.Image")));
+            this.Button_Delete2.InitialImage = null;
+            this.Button_Delete2.Location = new System.Drawing.Point(1081, 809);
+            this.Button_Delete2.Name = "Button_Delete2";
+            this.Button_Delete2.Size = new System.Drawing.Size(20, 20);
+            this.Button_Delete2.TabIndex = 84;
+            this.Button_Delete2.TabStop = false;
+            this.Button_Delete2.Click += new System.EventHandler(this.Button_Delete2_Click);
+            // 
+            // Button_Image2
+            // 
+            this.Button_Image2.AutoEllipsis = true;
+            this.Button_Image2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Image2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Image2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Image2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Button_Image2.ForeColor = System.Drawing.Color.White;
+            this.Button_Image2.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image2.Image")));
+            this.Button_Image2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Button_Image2.Location = new System.Drawing.Point(967, 798);
+            this.Button_Image2.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Image2.Name = "Button_Image2";
+            this.Button_Image2.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
+            this.Button_Image2.Size = new System.Drawing.Size(148, 40);
+            this.Button_Image2.TabIndex = 83;
+            this.Button_Image2.Text = "SomeImage1";
+            this.Button_Image2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_Image2.UseVisualStyleBackColor = false;
+            this.Button_Image2.Click += new System.EventHandler(this.Button_Image2_Click);
+            // 
+            // Button_Delete3
+            // 
+            this.Button_Delete3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Delete3.ErrorImage = null;
+            this.Button_Delete3.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete3.Image")));
+            this.Button_Delete3.InitialImage = null;
+            this.Button_Delete3.Location = new System.Drawing.Point(1244, 809);
+            this.Button_Delete3.Name = "Button_Delete3";
+            this.Button_Delete3.Size = new System.Drawing.Size(20, 20);
+            this.Button_Delete3.TabIndex = 86;
+            this.Button_Delete3.TabStop = false;
+            this.Button_Delete3.Click += new System.EventHandler(this.Button_Delete3_Click);
+            // 
+            // Button_Image3
+            // 
+            this.Button_Image3.AutoEllipsis = true;
+            this.Button_Image3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Image3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Image3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Image3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Button_Image3.ForeColor = System.Drawing.Color.White;
+            this.Button_Image3.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image3.Image")));
+            this.Button_Image3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Button_Image3.Location = new System.Drawing.Point(1130, 798);
+            this.Button_Image3.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Image3.Name = "Button_Image3";
+            this.Button_Image3.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
+            this.Button_Image3.Size = new System.Drawing.Size(148, 40);
+            this.Button_Image3.TabIndex = 85;
+            this.Button_Image3.Text = "SomeImage1";
+            this.Button_Image3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_Image3.UseVisualStyleBackColor = false;
+            this.Button_Image3.Click += new System.EventHandler(this.Button_Image3_Click);
+            // 
+            // Button_Delete4
+            // 
+            this.Button_Delete4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Delete4.ErrorImage = null;
+            this.Button_Delete4.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete4.Image")));
+            this.Button_Delete4.InitialImage = null;
+            this.Button_Delete4.Location = new System.Drawing.Point(916, 867);
+            this.Button_Delete4.Name = "Button_Delete4";
+            this.Button_Delete4.Size = new System.Drawing.Size(20, 20);
+            this.Button_Delete4.TabIndex = 88;
+            this.Button_Delete4.TabStop = false;
+            this.Button_Delete4.Click += new System.EventHandler(this.Button_Delete4_Click);
+            // 
+            // Button_Image4
+            // 
+            this.Button_Image4.AutoEllipsis = true;
+            this.Button_Image4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Image4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Image4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Image4.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Button_Image4.ForeColor = System.Drawing.Color.White;
+            this.Button_Image4.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image4.Image")));
+            this.Button_Image4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Button_Image4.Location = new System.Drawing.Point(802, 856);
+            this.Button_Image4.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Image4.Name = "Button_Image4";
+            this.Button_Image4.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
+            this.Button_Image4.Size = new System.Drawing.Size(148, 40);
+            this.Button_Image4.TabIndex = 87;
+            this.Button_Image4.Text = "SomeImage1";
+            this.Button_Image4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_Image4.UseVisualStyleBackColor = false;
+            this.Button_Image4.Click += new System.EventHandler(this.Button_Image4_Click);
+            // 
+            // Button_Delete5
+            // 
+            this.Button_Delete5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Delete5.ErrorImage = null;
+            this.Button_Delete5.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete5.Image")));
+            this.Button_Delete5.InitialImage = null;
+            this.Button_Delete5.Location = new System.Drawing.Point(1081, 867);
+            this.Button_Delete5.Name = "Button_Delete5";
+            this.Button_Delete5.Size = new System.Drawing.Size(20, 20);
+            this.Button_Delete5.TabIndex = 90;
+            this.Button_Delete5.TabStop = false;
+            this.Button_Delete5.Click += new System.EventHandler(this.Button_Delete5_Click);
+            // 
+            // Button_Image5
+            // 
+            this.Button_Image5.AutoEllipsis = true;
+            this.Button_Image5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Image5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Image5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Image5.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Button_Image5.ForeColor = System.Drawing.Color.White;
+            this.Button_Image5.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image5.Image")));
+            this.Button_Image5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Button_Image5.Location = new System.Drawing.Point(967, 856);
+            this.Button_Image5.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Image5.Name = "Button_Image5";
+            this.Button_Image5.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
+            this.Button_Image5.Size = new System.Drawing.Size(148, 40);
+            this.Button_Image5.TabIndex = 89;
+            this.Button_Image5.Text = "SomeImage1";
+            this.Button_Image5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_Image5.UseVisualStyleBackColor = false;
+            this.Button_Image5.Click += new System.EventHandler(this.Button_Image5_Click);
+            // 
+            // FileDialog_AddEvent
+            // 
+            this.FileDialog_AddEvent.FileName = "openFileDialog1";
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(116, 19);
+            this.metroLabel9.TabIndex = 117;
+            this.metroLabel9.Text = "Payment Amount*";
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(785, 145);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(103, 19);
+            this.metroLabel12.TabIndex = 119;
+            this.metroLabel12.Text = "Template strings";
+            // 
+            // ComboBox_TemplateStrings
+            // 
+            this.ComboBox_TemplateStrings.FormattingEnabled = true;
+            this.ComboBox_TemplateStrings.ItemHeight = 23;
+            this.ComboBox_TemplateStrings.Location = new System.Drawing.Point(898, 138);
+            this.ComboBox_TemplateStrings.Name = "ComboBox_TemplateStrings";
+            this.ComboBox_TemplateStrings.Size = new System.Drawing.Size(374, 29);
+            this.ComboBox_TemplateStrings.TabIndex = 120;
+            this.ComboBox_TemplateStrings.UseSelectable = true;
+            this.ComboBox_TemplateStrings.SelectedIndexChanged += new System.EventHandler(this.ComboBox_TemplateStrings_SelectedIndexChanged);
+            // 
             // CreateEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 1030);
+            this.Controls.Add(this.ComboBox_TemplateStrings);
+            this.Controls.Add(this.metroLabel12);
+            this.Controls.Add(this.metroLabel9);
+            this.Controls.Add(this.Button_Delete5);
+            this.Controls.Add(this.Button_Image5);
+            this.Controls.Add(this.Button_Delete4);
+            this.Controls.Add(this.Button_Image4);
+            this.Controls.Add(this.Button_Delete3);
+            this.Controls.Add(this.Button_Image3);
+            this.Controls.Add(this.Button_Delete2);
+            this.Controls.Add(this.Button_Image2);
+            this.Controls.Add(this.Button_AddImage);
+            this.Controls.Add(this.Button_Delete1);
+            this.Controls.Add(this.Button_Image1);
+            this.Controls.Add(this.metroLabel7);
+            this.Controls.Add(this.TextBox_PaymentAmount);
             this.Controls.Add(this.Label_To4);
             this.Controls.Add(this.Label_To3);
             this.Controls.Add(this.Label_To2);
@@ -733,9 +1015,15 @@
             this.Controls.Add(this.TextBox_VenueName);
             this.Controls.Add(this.TextBox_EventName);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Name = "CreateEvent";
             this.Padding = new System.Windows.Forms.Padding(20, 64, 20, 21);
             this.Text = "Create Event";
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -799,5 +1087,23 @@
         private MetroFramework.Controls.MetroLabel Label_To2;
         private MetroFramework.Controls.MetroLabel Label_To3;
         private MetroFramework.Controls.MetroLabel Label_To4;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.TextBox TextBox_PaymentAmount;
+        private System.Windows.Forms.Button Button_Image1;
+        private System.Windows.Forms.PictureBox Button_Delete1;
+        private System.Windows.Forms.Button Button_AddImage;
+        private System.Windows.Forms.PictureBox Button_Delete2;
+        private System.Windows.Forms.Button Button_Image2;
+        private System.Windows.Forms.PictureBox Button_Delete3;
+        private System.Windows.Forms.Button Button_Image3;
+        private System.Windows.Forms.PictureBox Button_Delete4;
+        private System.Windows.Forms.Button Button_Image4;
+        private System.Windows.Forms.PictureBox Button_Delete5;
+        private System.Windows.Forms.Button Button_Image5;
+        private System.Windows.Forms.OpenFileDialog FileDialog_AddEvent;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_ImageSave;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroComboBox ComboBox_TemplateStrings;
     }
 }

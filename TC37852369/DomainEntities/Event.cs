@@ -24,6 +24,7 @@ namespace TC37852369.DomainEntities
         public string day3TimeTo { get; set; }
         public string day4TimeFrom { get; set; }
         public string day4TimeTo { get; set; }
+        public double paymentAmountForDay { get; set; }
         public string venueName { get; set; }
         public string venueAdress { get; set; }
         public string eventStatus { get; set; }
@@ -36,7 +37,7 @@ namespace TC37852369.DomainEntities
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom, string day1TimeTo,
             string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-            string day4TimeFrom, string day4TimeTo,
+            string day4TimeFrom, string day4TimeTo, double paymentAmountForDay,
             string venueName, string venueAdress, string eventStatus, string comment,
             bool useTemplate, string current_Mail_Template, string emailBody, string emailSubject)
         {
@@ -58,6 +59,7 @@ namespace TC37852369.DomainEntities
             this.day3TimeTo= day3TimeTo;
             this.day4TimeFrom= day4TimeFrom;
             this.day4TimeTo= day4TimeTo;
+            this.paymentAmountForDay = paymentAmountForDay;
             this.venueName= venueName;
             this.venueAdress= venueAdress;
             this.eventStatus= eventStatus;

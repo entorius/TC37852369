@@ -12,13 +12,29 @@ namespace TC37852369.Services
     {
         LastEntityIdentificationNumberRepository lastEntityIdentificationNumberRepository =
             new LastEntityIdentificationNumberRepository();
-        public async Task<LastIdentificationNumber> getLastIdetificationNumber(string domainEntityName)
+        private async Task<LastIdentificationNumber> getLastIdetificationNumber(string domainEntityName)
         {
             return await lastEntityIdentificationNumberRepository.getLastIdetificationNumber(domainEntityName);
         }
         public async Task<LastIdentificationNumber> IncreaseLastIdetificationNumber(string domainEntityName)
         {
             return await lastEntityIdentificationNumberRepository.IncreaseLastIdetificationNumber(domainEntityName);
+        }
+        public async Task<LastIdentificationNumber> getEventLastIdentificationNumber()
+        {
+            return await this.getLastIdetificationNumber("Event");
+        }
+        public async Task<LastIdentificationNumber> getMailTemplateLastIdetificationNumber()
+        {
+            return await this.getLastIdetificationNumber("MailTemplate");
+        }
+        public async Task<LastIdentificationNumber> getUserLastIdentificationNumber()
+        {
+            return await this.getLastIdetificationNumber("User");
+        }
+        public async Task<LastIdentificationNumber> getParticipantLastIdentificationNumber()
+        {
+            return await this.getLastIdetificationNumber("Participant");
         }
     }
 }

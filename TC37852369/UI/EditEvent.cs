@@ -18,15 +18,37 @@ namespace TC37852369.UI
     {
         MainWindow mainWindow;
         EventServices eventServices = new EventServices();
-        int eventId;
-        public EditEvent(MainWindow window, int eventId)
+        MailTemplateServices mailTeplateServices = new MailTemplateServices();
+
+        List<EmailTemplate> mailTemplates = new List<EmailTemplate>();
+        List<EmailTemplateString> mailTemplateStrings = new List<EmailTemplateString>();
+        TextBox lastSelectedMailTextBox = null;
+        long eventId;
+        string lastEmailBody = "";
+        string lastEmailSubject = "";
+        public EditEvent(MainWindow window, long eventId)
         {
             mainWindow = window;
             InitializeComponent();
+
             this.FormClosed += CloseHandler;
             this.eventId = eventId;
+           
+
+            TextBox_Body.Click += TextBox_BodyClicked;
+            TextBox_Subject.Click += TextBox_SubjectClicked;
+
+            fillWindowFields();
             setDaysDates();
 
+            this.CheckWhichDateTimeFieldsToShow();
+            //on initialize disable default email templates combobox
+            ComboBox_EmailTemplate.Enabled = false;
+        }
+
+        // Fills window fields on initialization
+        public async void fillWindowFields()
+        {
             DateTime_EventDate.Value = SetDateTimeHoursAndMinutes(DateTime_EventDate.Value);
             //fills hours and minutes comboboxes of the days
             fillHourMinuteComboBox(ComboBox_Day1FromHour, ComboBox_Day1FromMinute);
@@ -38,19 +60,36 @@ namespace TC37852369.UI
             fillHourMinuteComboBox(ComboBox_Day4FromHour, ComboBox_Day4FromMinute);
             fillHourMinuteComboBox(ComboBox_Day4ToHour, ComboBox_Day4ToMinute);
 
-            
-
-            
             //on initialize fill Combobox of event durations (1,2,3,4 days)
             foreach (EventDuration eventDuration in (EventDuration[])Enum.GetValues(typeof(EventDuration)))
             {
                 ComboBox_EventDuration.Items.Add((int)eventDuration);
             }
             ComboBox_EventDuration.SelectedIndex = 0;
-            fillFieldsWithEventData(window.events[eventId]);
-            this.CheckWhichDateTimeFieldsToShow();
-            //on initialize disable default email templates combobox
-            ComboBox_EmailTemplate.Enabled = false;
+            mailTemplates = await mailTeplateServices.getAllMailTemplates();
+            mailTemplateStrings = await mailTeplateServices.getEmailTemplateStrings();
+            for (int i = 0; i < mailTemplates.Count; i++)
+            {
+                ComboBox_EmailTemplate.Items.Add(mailTemplates[i].templateName);
+            }
+            for (int i = 0; i < mailTemplateStrings.Count; i++)
+            {
+                ComboBox_TemplateStrings.Items.Add(mailTemplateStrings[i].name);
+            }
+            fillFieldsWithEventData(mainWindow.events.FindLast(delegate (Event eventEntity)
+            {
+                return eventEntity.id == eventId;
+            }));
+        }
+
+        private void TextBox_SubjectClicked(object sender, EventArgs e)
+        {
+            lastSelectedMailTextBox = TextBox_Subject;
+        }
+
+        private void TextBox_BodyClicked(object sender, EventArgs e)
+        {
+            lastSelectedMailTextBox = TextBox_Body;
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)
@@ -68,9 +107,14 @@ namespace TC37852369.UI
             int len = TextBox_VenueAdress.Text.Length;
             bool isVenueAdressCorrect = len > 0 ? true : false;
 
+            string emailTemplateString = "";
+            if(ComboBox_EmailTemplate.SelectedIndex >=0)
+            {
+                emailTemplateString = mailTemplates[ComboBox_EmailTemplate.SelectedIndex].templateName;
+            }
             //Check if email template is correct
             int emailTemplateErrorCode = eventServices.isEmailTemplateCorrect(CheckBox_UseDefaultEmail.Checked, TextBox_Subject.Text,
-                TextBox_Body.Text, ComboBox_EmailTemplate.SelectedText);
+                TextBox_Body.Text, emailTemplateString);
 
             //check if all From and To times are correct
             int isSomeTimeFromToNotCorrect = eventServices.isSomeTimeFromToNotCorrect(
@@ -93,8 +137,11 @@ namespace TC37852369.UI
                 eventDuration
                 );
 
+            int checkIfPaymentAmountCorect = eventServices.checkIfPaymentAmountCorrect(TextBox_PaymentAmount.Text);
+
             if (eventErrorCode > 0 || emailTemplateErrorCode > 0 || isSomeTimeFromToNotCorrect > 0
-                || !isEventNameCorrect || !isVenueNameCorrect || !isVenueAdressCorrect)
+                || checkIfPaymentAmountCorect > 0 || !isEventNameCorrect || !isVenueNameCorrect
+                || !isVenueAdressCorrect)
             {
                 if (!isEventNameCorrect)
                 {
@@ -124,6 +171,24 @@ namespace TC37852369.UI
                     {
                         showWarning("Event day " + eventErrorCode + " date is earlier than " +
                             "event day" + (eventErrorCode - 1) + " date",
+                            "Warning");
+                    }
+                }
+                else if (checkIfPaymentAmountCorect > 0)
+                {
+                    if (checkIfPaymentAmountCorect == 1)
+                    {
+                        showWarning("Event Payment Amount for day not entered", "Warning");
+                    }
+                    else if (checkIfPaymentAmountCorect == 2)
+                    {
+                        showWarning("Event Payment Amount for day entered in incorrect format",
+                            "Warning");
+                    }
+                    else if (checkIfPaymentAmountCorect == 3)
+                    {
+                        showWarning("Event Payment Amount for day is too high (maximum value" +
+                            "1.79 * 10^308",
                             "Warning");
                     }
                 }
@@ -189,20 +254,41 @@ namespace TC37852369.UI
                     ComboBox_Day4ToHour.SelectedItem.ToString(),
                     ComboBox_Day4ToMinute.SelectedItem.ToString());
 
+                double paymentAmountForDay = Double.Parse(TextBox_PaymentAmount.Text);
 
+                string emailTemplate = "";
+                string emailBody = TextBox_Body.Text;
+                string emailSubject = TextBox_Subject.Text;
+                if (CheckBox_UseDefaultEmail.Checked)
+                {
 
+                    emailTemplate = mailTemplates[ComboBox_EmailTemplate.SelectedIndex].templateName;
+                    emailBody = "";
+                    emailSubject = "";
+                }
 
                 Event eventEntity = await eventServices.editEvent(this.eventId.ToString(),
                     TextBox_EventName.Text, DateTime_EventDate.Value,
                    eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
+                   day4TimeTo, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                    eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
-                   ComboBox_EmailTemplate.SelectedText, TextBox_Body.Text, TextBox_Subject.Text);
-
-                mainWindow.Enabled = true;
-                mainWindow.editEventTableRow(eventEntity, eventId);
-                this.Dispose();
+                   emailTemplate, emailBody, emailSubject);
+                if (eventEntity != null)
+                {
+                    mainWindow.Enabled = true;
+                    int eventIndex = mainWindow.events.FindLastIndex(delegate (Event eventEnt)
+                    {
+                        return eventEnt.id == eventId;
+                    });
+                    mainWindow.editEventTableRow(eventEntity, eventIndex);
+                    this.Dispose();
+                }
+                else
+                {
+                    showWarning("Event creation was unsuccesfull, because of internet connection" +
+                        "or database write request number exceeded", "Warning");
+                }
             }
         }
         private void Button_Cancel_Click(object sender, EventArgs e)
@@ -226,15 +312,29 @@ namespace TC37852369.UI
         {
             if (CheckBox_UseDefaultEmail.Checked)
             {
+                
+                ComboBox_EmailTemplate.Enabled = true;
+                lastEmailBody = TextBox_Body.Text;
+                lastEmailSubject = TextBox_Subject.Text;
+                if (ComboBox_EmailTemplate.SelectedIndex >= 0)
+                {
+                    int index = ComboBox_EmailTemplate.SelectedIndex;
+                    EmailTemplate selectedTemplate = mailTemplates[index];
+                    TextBox_Subject.Text = selectedTemplate.subject;
+                    TextBox_Body.Text = selectedTemplate.body;
+                }
                 TextBox_Subject.Enabled = false;
                 TextBox_Body.Enabled = false;
-                ComboBox_EmailTemplate.Enabled = true;
+                ComboBox_TemplateStrings.Enabled = false;
             }
             if (!CheckBox_UseDefaultEmail.Checked)
             {
                 TextBox_Subject.Enabled = true;
                 TextBox_Body.Enabled = true;
+                TextBox_Subject.Text = lastEmailSubject;
+                TextBox_Body.Text = lastEmailBody;
                 ComboBox_EmailTemplate.Enabled = false;
+                ComboBox_TemplateStrings.Enabled = true;
             }
             
         }
@@ -362,6 +462,8 @@ namespace TC37852369.UI
             TextBox_VenueName.Text = eventEntity.venueName;
             TextBox_VenueAdress.Text = eventEntity.venueAdress;
 
+            TextBox_PaymentAmount.Text = eventEntity.paymentAmountForDay.ToString();
+
             TextBox_Comments.Text = eventEntity.comment;
             TextBox_Subject.Text = eventEntity.emailSubject;
             TextBox_Body.Text = eventEntity.emailBody;
@@ -376,6 +478,27 @@ namespace TC37852369.UI
         protected void CloseHandler(object sender, EventArgs e)
         {
             mainWindow.Enabled = true;
+        }
+
+        private void ComboBox_EmailTemplate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBox_Subject.Enabled = true;
+            TextBox_Body.Enabled = true;
+
+            EmailTemplate selectedMailTemplate = mailTemplates[ComboBox_EmailTemplate.SelectedIndex];
+            TextBox_Subject.Text = selectedMailTemplate.subject;
+            TextBox_Body.Text = selectedMailTemplate.body;
+
+            TextBox_Subject.Enabled = false;
+            TextBox_Body.Enabled = false;
+        }
+
+        private void ComboBox_TemplateStrings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lastSelectedMailTextBox != null)
+            {
+                lastSelectedMailTextBox.Text = lastSelectedMailTextBox.Text + mailTemplateStrings[ComboBox_TemplateStrings.SelectedIndex].value;
+            }
         }
     }
 }

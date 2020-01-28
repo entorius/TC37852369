@@ -14,9 +14,18 @@ namespace TC37852369
     public partial class RegisterParticipationString : MetroForm
     {
         RegisterParticipant registerParticipant;
+        EditParticipant editParticipant;
+        string participationForm;
         public RegisterParticipationString(RegisterParticipant registerParticipant)
         {
             this.registerParticipant = registerParticipant;
+            participationForm = "register";
+            InitializeComponent();
+        }
+        public RegisterParticipationString(EditParticipant editParticipant)
+        {
+            this.editParticipant = editParticipant;
+            participationForm = "edit";
             InitializeComponent();
         }
 
@@ -28,8 +37,16 @@ namespace TC37852369
 
         private void Button_Add_Click(object sender, EventArgs e)
         {
-            registerParticipant.participationFormats.Add(TextBox_ParticipationFormatName.Text);
-            registerParticipant.Enabled = true;
+            if (participationForm.Equals("register"))
+            {
+                registerParticipant.participationFormats.Add(TextBox_ParticipationFormatName.Text);
+                registerParticipant.Enabled = true;
+            }
+            else if(participationForm.Equals("edit"))
+            {
+                editParticipant.participationFormats.Add(TextBox_ParticipationFormatName.Text);
+                editParticipant.Enabled = true;
+            }
             this.Dispose();
             
         }

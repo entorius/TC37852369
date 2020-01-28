@@ -15,7 +15,7 @@ namespace TC37852369.Services
             new LastEntityIdentificationNumberServices(); 
         public async Task<bool> addUser(string username, string password, string mail, string phoneNumber, string name, string surename)
         {
-            LastIdentificationNumber lastIdentificationNumber = await lastEntityIdentificationNumberServices.getLastIdetificationNumber("User");
+            LastIdentificationNumber lastIdentificationNumber = await lastEntityIdentificationNumberServices.getUserLastIdentificationNumber();
             return await userRepository.addUser(username,password,mail,phoneNumber,name,surename, lastIdentificationNumber.id);
         }
 

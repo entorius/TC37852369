@@ -25,25 +25,25 @@ namespace TC37852369.Services
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom,string day1TimeTo,
                    string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-                   string day4TimeFrom, string day4TimeTo, string venueName,string venueAdress,
-                   string eventStatus, string comment, bool useTemplate, string current_Mail_Template,
-                   string body, string subject)
+                   string day4TimeFrom, string day4TimeTo,double paymentAmountForDay, string venueName,
+                   string venueAdress, string eventStatus, string comment, bool useTemplate, 
+                   string current_Mail_Template, string body, string subject)
         {
 
             LastIdentificationNumber lastIdentificationNumber = 
-                await lastEntityIdentificationNumberServices.getLastIdetificationNumber("Event");
+                await lastEntityIdentificationNumberServices.getEventLastIdentificationNumber();
             Event eventEntity = new Event(lastIdentificationNumber.id.ToString(), eventName,
                 date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                 day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject
                 );
             bool isRequestSucessful = await eventRepository.addEvent(lastIdentificationNumber.id, 
                 eventName,date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                  day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, venueName,venueAdress, eventStatus,comment, useTemplate,
+                   day4TimeTo, paymentAmountForDay, venueName,venueAdress, eventStatus,comment, useTemplate,
                 current_Mail_Template,body,subject);
             if (isRequestSucessful)
             {
@@ -58,24 +58,31 @@ namespace TC37852369.Services
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom, string day1TimeTo,
                    string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-                   string day4TimeFrom, string day4TimeTo, string venueName, string venueAdress,
-                   string eventStatus, string comment, bool useTemplate, string current_Mail_Template,
-                   string body, string subject)
+                   string day4TimeFrom, string day4TimeTo, double paymentAmountForDay,
+                   string venueName, string venueAdress, string eventStatus, string comment, 
+                   bool useTemplate, string current_Mail_Template, string body, string subject)
         {
             Event eventEntity = new Event(eventId, eventName,
                 date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                 day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject
                 );
             bool isRequestSucessful = await eventRepository.addEvent(long.Parse(eventId),
                 eventName, date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                  day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject);
-            return eventEntity;
+            if (isRequestSucessful)
+            {
+                return eventEntity;
+            }
+            else
+            {
+                return null;
+            }
         }
         public async Task<bool> deleteEvent(long event_Id)
         {
@@ -214,6 +221,27 @@ namespace TC37852369.Services
         public string formHoursAndMinutesString(string hours,string minutes)
         {
             return hours + ":" + minutes;
+        }
+        public int checkIfPaymentAmountCorrect(string paymentAmount)
+        {
+            double paymentAmountConverted = 0;
+            try
+            {
+                paymentAmountConverted = Double.Parse(paymentAmount);
+            }
+            catch (ArgumentNullException e)
+            {
+                return 1;
+            }
+            catch (FormatException e)
+            {
+                return 2;
+            }
+            catch (OverflowException e)
+            {
+                return 3;
+            }
+            return 0;
         }
     }
 }
