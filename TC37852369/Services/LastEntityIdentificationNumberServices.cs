@@ -36,5 +36,9 @@ namespace TC37852369.Services
         {
             return await this.getLastIdetificationNumber("Participant");
         }
+        public async Task<LastIdentificationNumber> getBarcodeLastIdentificationNumber()
+        {
+            return await this.getLastIdetificationNumber("Barcode");
+        }
     }
 }

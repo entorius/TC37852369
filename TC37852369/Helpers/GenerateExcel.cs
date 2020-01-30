@@ -71,7 +71,7 @@ namespace TC37852369.Helpers
                     excel.SaveAs(excelFile);
                     return true;
                 }
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
                     return false;
                 }

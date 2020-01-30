@@ -14,7 +14,7 @@ namespace TC37852369.Repository
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom, string day1TimeTo,
             string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-            string day4TimeFrom, string day4TimeTo, double paymentAmountForDay,
+            string day4TimeFrom, string day4TimeTo,string webPage, double paymentAmountForDay,
             string venueName, string venueAddress,  string eventStatus,string comment,
             bool useTemplate, string current_Mail_Template, string body, string subject)
         {
@@ -50,6 +50,7 @@ namespace TC37852369.Repository
                 { "Day3TimeTo",             day3TimeTo              },
                 { "Day4TimeFrom",           day4TimeFrom            },
                 { "Day4TimeTo",             day4TimeTo              },
+                { "WebPage",                webPage                 },              
                 { "PaymentAmountForDay",    paymentAmountForDay     }, 
                 { "VenueName",              venueName               },
                 { "VenueAdress",            venueAddress            },
@@ -64,11 +65,11 @@ namespace TC37852369.Repository
             {
                 await docRef.SetAsync(user);
             }
-            catch (AggregateException ae)
+            catch (AggregateException)
             {
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -89,6 +90,19 @@ namespace TC37852369.Repository
                 {
                     Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
                 }
+                object webPage = null;
+                try
+                {
+                    eventValue.TryGetValue("WebPage", out webPage).ToString();
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine("Web page got unsuccesfully");
+                };
+                string webPageString = "";
+                if (webPage != null) {
+                    webPageString = webPage.ToString();
+                }
 
                 Event eventEntity = new Event(
                         eventValue["Id"].ToString(),
@@ -107,6 +121,7 @@ namespace TC37852369.Repository
                         eventValue["Day3TimeTo"].ToString(),
                         eventValue["Day4TimeFrom"].ToString(),
                         eventValue["Day4TimeTo"].ToString(),
+                        webPageString,
                         Double.Parse(eventValue["PaymentAmountForDay"].ToString()),
                         eventValue["VenueName"].ToString(),
                         eventValue["VenueAdress"].ToString(),

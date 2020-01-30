@@ -17,7 +17,7 @@ namespace TC37852369.Repository
             DocumentReference docRef = db.Collection("Participant").Document(participant.participantId);
             Dictionary<string, object> user = new Dictionary<string, object>
             {
-                { "Id", participant.participantId },
+                { "Id", long.Parse(participant.participantId) },
                 { "EventId", participant.eventId },
                 { "FirstName", participant.firstName },
                 { "LastName", participant.lastName },

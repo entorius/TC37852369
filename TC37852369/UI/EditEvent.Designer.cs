@@ -90,6 +90,8 @@
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.ComboBox_TemplateStrings = new MetroFramework.Controls.MetroComboBox();
+            this.Label_ticketWebPage = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_WebPage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label2
@@ -176,7 +178,7 @@
             // 
             this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(27, 625);
+            this.metroLabel5.Location = new System.Drawing.Point(31, 685);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(87, 19);
             this.metroLabel5.TabIndex = 53;
@@ -186,7 +188,7 @@
             // 
             this.metroLabel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(31, 745);
+            this.metroLabel8.Location = new System.Drawing.Point(30, 805);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(73, 19);
             this.metroLabel8.TabIndex = 56;
@@ -196,7 +198,7 @@
             // 
             this.metroLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(27, 685);
+            this.metroLabel6.Location = new System.Drawing.Point(31, 745);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(91, 19);
             this.metroLabel6.TabIndex = 55;
@@ -513,17 +515,17 @@
             // 
             this.TextBox_Comments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Comments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Comments.Location = new System.Drawing.Point(182, 745);
+            this.TextBox_Comments.Location = new System.Drawing.Point(182, 805);
             this.TextBox_Comments.Multiline = true;
             this.TextBox_Comments.Name = "TextBox_Comments";
-            this.TextBox_Comments.Size = new System.Drawing.Size(409, 110);
+            this.TextBox_Comments.Size = new System.Drawing.Size(409, 70);
             this.TextBox_Comments.TabIndex = 101;
             // 
             // TextBox_VenueAdress
             // 
             this.TextBox_VenueAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueAdress.Location = new System.Drawing.Point(182, 685);
+            this.TextBox_VenueAdress.Location = new System.Drawing.Point(181, 745);
             this.TextBox_VenueAdress.Name = "TextBox_VenueAdress";
             this.TextBox_VenueAdress.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueAdress.TabIndex = 100;
@@ -532,7 +534,7 @@
             // 
             this.TextBox_VenueName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueName.Location = new System.Drawing.Point(183, 625);
+            this.TextBox_VenueName.Location = new System.Drawing.Point(182, 685);
             this.TextBox_VenueName.Name = "TextBox_VenueName";
             this.TextBox_VenueName.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueName.TabIndex = 99;
@@ -634,7 +636,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.865546F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(178, 869);
+            this.label3.Location = new System.Drawing.Point(178, 880);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 19);
             this.label3.TabIndex = 111;
@@ -727,11 +729,32 @@
             this.ComboBox_TemplateStrings.UseSelectable = true;
             this.ComboBox_TemplateStrings.SelectedIndexChanged += new System.EventHandler(this.ComboBox_TemplateStrings_SelectedIndexChanged);
             // 
+            // Label_ticketWebPage
+            // 
+            this.Label_ticketWebPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_ticketWebPage.AutoSize = true;
+            this.Label_ticketWebPage.Location = new System.Drawing.Point(31, 625);
+            this.Label_ticketWebPage.Name = "Label_ticketWebPage";
+            this.Label_ticketWebPage.Size = new System.Drawing.Size(70, 19);
+            this.Label_ticketWebPage.TabIndex = 124;
+            this.Label_ticketWebPage.Text = "Web page";
+            // 
+            // TextBox_WebPage
+            // 
+            this.TextBox_WebPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBox_WebPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.TextBox_WebPage.Location = new System.Drawing.Point(182, 625);
+            this.TextBox_WebPage.Name = "TextBox_WebPage";
+            this.TextBox_WebPage.Size = new System.Drawing.Size(409, 30);
+            this.TextBox_WebPage.TabIndex = 123;
+            // 
             // EditEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 1030);
+            this.Controls.Add(this.Label_ticketWebPage);
+            this.Controls.Add(this.TextBox_WebPage);
             this.Controls.Add(this.ComboBox_TemplateStrings);
             this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroLabel9);
@@ -865,5 +888,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroComboBox ComboBox_TemplateStrings;
+        private MetroFramework.Controls.MetroLabel Label_ticketWebPage;
+        private System.Windows.Forms.TextBox TextBox_WebPage;
     }
 }

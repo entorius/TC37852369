@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TC37852369.DomainEntities;
 using TC37852369.Repository;
+using TC37852369.Services.Ticket_generation;
 
 namespace TC37852369.Services
 {
@@ -13,6 +14,7 @@ namespace TC37852369.Services
     {
         LastEntityIdentificationNumberServices lastIdentificationNumber = new LastEntityIdentificationNumberServices();
         ParticipantRepository participantRepository = new ParticipantRepository();
+        BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
         public async Task<Participant> addParticipant(string participantId, string event_Id,
             string firstName, string lastName,string jobTitle, string company_Name, string companyType,
             string email, string phone_Number, string country, string participation_Format,
@@ -29,6 +31,8 @@ namespace TC37852369.Services
              participate_Evening_Event, participate_In_Day1, participate_In_Day2,
              participate_In_Day3, participate_In_Day4, checked_In_Day1,
              checked_In_Day2, checked_In_Day3, checked_In_Day4);
+
+
             bool participantAdded = await participantRepository.addParticipant(participant);
             if (participantAdded)
             {
@@ -51,10 +55,15 @@ namespace TC37852369.Services
             bool participate_In_Day3, bool participate_In_Day4)
         {
             LastIdentificationNumber participant_Id = await lastIdentificationNumber.getParticipantLastIdentificationNumber();
+
+            string barcode = await barcodeGenerator.generateBarcodeNumber(participant_Id.id.ToString());
+
+            await lastIdentificationNumber.IncreaseLastIdetificationNumber("Participant");
+
             return await this.addParticipant(participant_Id.id.ToString(), event_Id,
              firstName,  lastName, jobTitle,  company_Name,  companyType,
              email,  phone_Number,  country,  participation_Format,
-             payment_Status,  materials,  "",  false,
+             payment_Status,  materials, barcode,  false,
              participate_Evening_Event,  participate_In_Day1,  participate_In_Day2,
              participate_In_Day3,  participate_In_Day4,  false,
              false,  false,  false);
@@ -106,15 +115,15 @@ namespace TC37852369.Services
             {
                 MailAddress emailCatch = new MailAddress(email);
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 return 3;
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 return 3;
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return 3;
             }

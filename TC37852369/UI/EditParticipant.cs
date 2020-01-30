@@ -26,9 +26,10 @@ namespace TC37852369
         Event participantEvent;
         Participant participant;
         ParticipantServices participantServices = new ParticipantServices();
+        ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
+        public List<ParticipationFormat> participationFormats = new List<ParticipationFormat>();
         int rowNumber;
 
-        public List<string> participationFormats = new List<string>();
         string addNewParticipationFormat = "+ Add new participation format";
         bool addNewParticipantFormatSelected = false;
         public EditParticipant(MainWindow window, Participant participant,List<Event> events,int rowNumber)
@@ -40,29 +41,27 @@ namespace TC37852369
                  {
                      return e.id == long.Parse(participant.eventId);
                  }
-                );
+                 );
             mainWindow = window;
             InitializeComponent();
             this.FormClosed += CloseHandler;
-            
-            EventDaysShowHide(participantEvent.eventLengthDays);
-            /*foreach (Event eventEntity in events)
+
+            loadWindowData();
+        }
+
+        private async void loadWindowData()
+        {
+            participationFormats = await participationFormatServices.getAllParticipationFormats();
+
+            foreach (ParticipationFormat participationFormat in participationFormats)
             {
-                ComboBox_Events.Items.Add(eventEntity.eventName);
-            }*/
+                ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
+            }
+            EventDaysShowHide(participantEvent.eventLengthDays);
             Label_EventName.Text = participantEvent.eventName;
             foreach (CompanyTypes companyType in (CompanyTypes[])Enum.GetValues(typeof(CompanyTypes)))
             {
                 ComboBox_CompanyType.Items.Add(companyType);
-            }
-
-            foreach (ParticipationFormats participationFormat in (ParticipationFormats[])Enum.GetValues(typeof(ParticipationFormats)))
-            {
-                participationFormats.Add(participationFormat.ToString());
-            }
-            foreach (string participationFormat in participationFormats)
-            {
-                ComboBox_ParticipationFormat.Items.Add(participationFormat);
             }
 
             //Set payment status values to comboBox and select first item
@@ -92,11 +91,9 @@ namespace TC37852369
             setFieldsData();
         }
 
-       
 
-        
 
-        protected void CloseHandler(object sender, EventArgs e)
+            protected void CloseHandler(object sender, EventArgs e)
         {
             mainWindow.Enabled = true;
         }
@@ -253,9 +250,9 @@ namespace TC37852369
         private void AddParticipationFormats(Object sender, EventArgs e)
         {
             ComboBox_ParticipationFormat.Items.Clear();
-            foreach (string participationFormat in participationFormats)
+            foreach (ParticipationFormat participationFormat in participationFormats)
             {
-                ComboBox_ParticipationFormat.Items.Add(participationFormat);
+                ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
             }
             ComboBox_ParticipationFormat.SelectedIndex = ComboBox_ParticipationFormat.Items.Count - 1;
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);

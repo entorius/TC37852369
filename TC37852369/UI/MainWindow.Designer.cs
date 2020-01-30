@@ -635,9 +635,9 @@
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(1131, 2);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 20);
+            this.label18.Size = new System.Drawing.Size(89, 20);
             this.label18.TabIndex = 7;
-            this.label18.Text = "Email";
+            this.label18.Text = "Event name";
             // 
             // label19
             // 
@@ -795,6 +795,7 @@
             // 
             // Table_ParticipantData
             // 
+            this.Table_ParticipantData.AutoScroll = true;
             this.Table_ParticipantData.AutoSize = true;
             this.Table_ParticipantData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(218)))), ((int)(((byte)(226)))));
             this.Table_ParticipantData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -813,6 +814,7 @@
             this.Table_ParticipantData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.Table_ParticipantData.Location = new System.Drawing.Point(0, 176);
             this.Table_ParticipantData.Margin = new System.Windows.Forms.Padding(0);
+            this.Table_ParticipantData.MaximumSize = new System.Drawing.Size(1635, 600);
             this.Table_ParticipantData.Name = "Table_ParticipantData";
             this.Table_ParticipantData.RowCount = 1;
             this.Table_ParticipantData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -835,9 +837,9 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 42);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1878, 817);
+            this.metroTabPage1.Size = new System.Drawing.Size(1878, 812);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.VerticalScrollbarBarColor = true;

@@ -271,7 +271,7 @@ namespace TC37852369.UI
                     TextBox_EventName.Text, DateTime_EventDate.Value,
                    eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
+                   day4TimeTo,TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                    eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                    emailTemplate, emailBody, emailSubject);
                 if (eventEntity != null)

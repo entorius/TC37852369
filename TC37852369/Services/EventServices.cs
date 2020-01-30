@@ -25,7 +25,7 @@ namespace TC37852369.Services
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom,string day1TimeTo,
                    string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-                   string day4TimeFrom, string day4TimeTo,double paymentAmountForDay, string venueName,
+                   string day4TimeFrom, string day4TimeTo, string webPage, double paymentAmountForDay, string venueName,
                    string venueAdress, string eventStatus, string comment, bool useTemplate, 
                    string current_Mail_Template, string body, string subject)
         {
@@ -36,14 +36,14 @@ namespace TC37852369.Services
                 date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                 day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo,webPage, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject
                 );
             bool isRequestSucessful = await eventRepository.addEvent(lastIdentificationNumber.id, 
                 eventName,date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                  day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, paymentAmountForDay, venueName,venueAdress, eventStatus,comment, useTemplate,
+                   day4TimeTo, webPage, paymentAmountForDay, venueName,venueAdress, eventStatus,comment, useTemplate,
                 current_Mail_Template,body,subject);
             if (isRequestSucessful)
             {
@@ -58,7 +58,7 @@ namespace TC37852369.Services
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom, string day1TimeTo,
                    string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-                   string day4TimeFrom, string day4TimeTo, double paymentAmountForDay,
+                   string day4TimeFrom, string day4TimeTo,string webPage, double paymentAmountForDay,
                    string venueName, string venueAdress, string eventStatus, string comment, 
                    bool useTemplate, string current_Mail_Template, string body, string subject)
         {
@@ -66,14 +66,14 @@ namespace TC37852369.Services
                 date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                 day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo,webPage, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject
                 );
             bool isRequestSucessful = await eventRepository.addEvent(long.Parse(eventId),
                 eventName, date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                  day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo, webPage, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject);
             if (isRequestSucessful)
             {
@@ -229,15 +229,15 @@ namespace TC37852369.Services
             {
                 paymentAmountConverted = Double.Parse(paymentAmount);
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException)
             {
                 return 1;
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 return 2;
             }
-            catch (OverflowException e)
+            catch (OverflowException)
             {
                 return 3;
             }

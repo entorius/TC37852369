@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TC37852369.DomainEntities;
+using TC37852369.Services;
+using TC37852369.UI.helpers;
 
 namespace TC37852369
 {
@@ -16,6 +19,8 @@ namespace TC37852369
         RegisterParticipant registerParticipant;
         EditParticipant editParticipant;
         string participationForm;
+        ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
+        MetroMessageBoxHelper MetroMessageBoxHelper = new MetroMessageBoxHelper(); 
         public RegisterParticipationString(RegisterParticipant registerParticipant)
         {
             this.registerParticipant = registerParticipant;
@@ -35,17 +40,35 @@ namespace TC37852369
             this.Dispose();
         }
 
-        private void Button_Add_Click(object sender, EventArgs e)
+        private async void Button_Add_Click(object sender, EventArgs e)
         {
+            ParticipationFormat participationFormat = await participationFormatServices.addParticipationFormat(TextBox_ParticipationFormatName.Text);
             if (participationForm.Equals("register"))
             {
-                registerParticipant.participationFormats.Add(TextBox_ParticipationFormatName.Text);
-                registerParticipant.Enabled = true;
+                if (participationFormat != null)
+                {
+                    registerParticipant.participationFormats.Add(participationFormat);
+                    registerParticipant.Enabled = true;
+                }
+                else
+                {
+                    MetroMessageBoxHelper.showWarning(this, "participation format add unsuccesful. There " +
+                        "might be problems with database or your internet connection", "Warning");
+                }
+                
             }
             else if(participationForm.Equals("edit"))
             {
-                editParticipant.participationFormats.Add(TextBox_ParticipationFormatName.Text);
-                editParticipant.Enabled = true;
+                if (participationFormat != null)
+                {
+                    editParticipant.participationFormats.Add(participationFormat);
+                    editParticipant.Enabled = true;
+                }
+                else
+                {
+                    MetroMessageBoxHelper.showWarning(this, "participation format add unsuccesful. There " +
+                        "might be problems with database or your internet connection", "Warning");
+                }
             }
             this.Dispose();
             

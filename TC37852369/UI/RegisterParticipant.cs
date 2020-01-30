@@ -63,8 +63,9 @@ namespace TC37852369
         MetroMessageBoxHelper messageBoxHelper = new MetroMessageBoxHelper();
         List<Event> events = new List<Event>();
         ParticipantServices participantServices = new ParticipantServices();
-        
-        public List<string> participationFormats = new List<string>();
+        ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
+        public List<ParticipationFormat> participationFormats = new List<ParticipationFormat>();
+
         string addNewParticipationFormat = "+ Add new participation format";
         bool addNewParticipantFormatSelected = false;
         public RegisterParticipant(MainWindow window, List<Event> events)
@@ -75,6 +76,13 @@ namespace TC37852369
 
             InitializeComponent();
             EventDaysShowHide(null); ;
+
+            loadWindowData();
+        }
+        private async void loadWindowData()
+        {
+            participationFormats = await participationFormatServices.getAllParticipationFormats();
+
             foreach (Event eventEntity in events)
             {
                 ComboBox_Events.Items.Add(eventEntity.eventName);
@@ -83,16 +91,12 @@ namespace TC37852369
             {
                 ComboBox_CompanyType.Items.Add(companyType);
             }
+            
 
-            foreach (ParticipationFormats participationFormat in (ParticipationFormats[])Enum.GetValues(typeof(ParticipationFormats)))
+            foreach (ParticipationFormat participationFormat in participationFormats)
             {
-                participationFormats.Add(participationFormat.ToString());
+                ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
             }
-            foreach(string participationFormat in participationFormats)
-            {
-                ComboBox_ParticipationFormat.Items.Add(participationFormat);
-            }
-
             //Set payment status values to comboBox and select first item
             foreach (PaymentStatus paymentStatus in (PaymentStatus[])Enum.GetValues(typeof(PaymentStatus)))
             {
@@ -122,9 +126,7 @@ namespace TC37852369
             ComboBox_PaymentStatus.SelectedIndex = 0;
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
             ComboBox_ParticipationFormat.SelectedIndexChanged += ParticipationFormatSelectedIndexChanged;
-
         }
-
         private async void Button_Register_Click(object sender, EventArgs e)
         {
             bool eventChoosen = ComboBox_Events.SelectedItem == null ? false : true;
@@ -181,7 +183,7 @@ namespace TC37852369
                     mainWindow.participants.Add(createdParticipant);
                     mainWindow.addParticipantTableRow();
                     mainWindow.addParticipantToParticipantTableRow(
-                        createdParticipant, mainWindow.Table_ParticipantData.RowCount - 1);
+                        createdParticipant, mainWindow.Table_ParticipantData.RowCount - 1, events);
                     this.Dispose();
                 }
                 else
@@ -213,12 +215,13 @@ namespace TC37852369
                 registerParticipationFormat.Show();
                 registerParticipationFormat.Disposed += AddParticipationFormats;
                 addNewParticipantFormatSelected = true;
+                
             }
         }
         private void AddParticipationFormats(Object sender,EventArgs e)
         {
             ComboBox_ParticipationFormat.Items.Clear();
-            foreach(string participationFormat in participationFormats)
+            foreach(ParticipationFormat participationFormat in participationFormats)
             {
                 ComboBox_ParticipationFormat.Items.Add(participationFormat);
             }

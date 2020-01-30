@@ -26,6 +26,10 @@ namespace TC37852369
         public List<Event> events = new List<Event>();
         public ParticipantServices participantService = new ParticipantServices();
         public List<Participant> participants = new List<Participant>();
+        private CompanyDataServices companyDataServices = new CompanyDataServices();
+        public CompanyData companyData;
+        private List<EmailTemplate> mailTemplates;
+        private MailTemplateServices mailTemplateService = new MailTemplateServices();
         public MainWindow(Login login)
         {
             this.login = login;
@@ -37,15 +41,16 @@ namespace TC37852369
         {
             events = await eventService.getAllEvents();
             participants = await participantService.getAllParticipants();
-
+            companyData = await companyDataServices.GetCompanyData();
+            mailTemplates = await mailTemplateService.getAllMailTemplates();
             UpdateEventsTable();
             UpdateParticipantsTable();
         }
         //Main Window Events tab actions
         public void UpdateEventsTable()
         {
-            
-            
+
+            Table_EventsData.SuspendLayout();
             Table_EventsData.RowCount = events.Count;
             for(int i = 0; i < events.Count - 1; i++)
             {
@@ -63,7 +68,7 @@ namespace TC37852369
             {
                 addEventToEventTableRow(events[i], i);
             }
-            
+            Table_EventsData.ResumeLayout();
         }
         private void Button_CreateEvent_Click(object sender, EventArgs e)
         {
@@ -160,7 +165,7 @@ namespace TC37852369
         public void UpdateParticipantsTable()
         {
 
-            
+            Table_ParticipantData.SuspendLayout();
             Table_ParticipantData.RowCount = participants.Count;
             for (int i = 0; i < participants.Count - 1; i++)
             {
@@ -168,26 +173,31 @@ namespace TC37852369
             }
             TableLayoutRowStyleCollection styles =
             Table_ParticipantData.RowStyles;
+            int j = 0;
             foreach (RowStyle style in styles)
             {
                 // Set the row height to 20 pixels.
                 style.SizeType = SizeType.Absolute;
                 style.Height = 40;
+                j = j + 1;
+                
             }
             for (int i = 0; i < participants.Count; i++)
             {
-                addParticipantToParticipantTableRow(participants[i], i);
+                addParticipantToParticipantTableRow(participants[i], i , events);
             }
-
+            Table_ParticipantData.ResumeLayout();
         }
-        public void addParticipantToParticipantTableRow(Participant participant, int rowNumber)
+        public void addParticipantToParticipantTableRow(Participant participant, int rowNumber,
+            List<Event> events)
         {
             int eventDaysParticipating = participantService.countInHowManyDaysParticipating(
                 participant);
-            double paymentAmountForEventDay = events.Find(delegate (Event eventValue)
+            Event participantEvent = events.Find(delegate (Event eventValue)
             {
                 return eventValue.id == long.Parse(participant.eventId);
-            }).paymentAmountForDay;
+            });
+            double paymentAmountForEventDay = participantEvent.paymentAmountForDay;
 
             double paymentAmount = participantService.countPaymentAmount(
                 paymentAmountForEventDay, eventDaysParticipating);
@@ -216,9 +226,9 @@ namespace TC37852369
             Label label_PaymentAmount = new Label();
             label_PaymentAmount.Text = paymentAmount.ToString();
             label_PaymentAmount.Width = 320;
-            Label label_Email = new Label();
-            label_Email.Text = participant.email;
-            label_Email.Width = 320;
+            Label label_EventName = new Label();
+            label_EventName.Text = participantEvent.eventName;
+            label_EventName.Width = 320;
             Label label_PhoneNumber = new Label();
             label_PhoneNumber.Text = participant.phoneNumber;
             label_PhoneNumber.Width = 320;
@@ -237,7 +247,7 @@ namespace TC37852369
             button_Edit.UseCustomForeColor = true;
             button_Edit.MouseClick += ButtonEditParticipantHandler;
 
-
+            
             Table_ParticipantData.Controls.Add(label_FirstName, 0, rowNumber);
             Table_ParticipantData.Controls.Add(label_LastName, 1, rowNumber);
             Table_ParticipantData.Controls.Add(label_JobTitle, 2, rowNumber);
@@ -246,10 +256,11 @@ namespace TC37852369
             Table_ParticipantData.Controls.Add(label_ParticipationFormat, 5, rowNumber);
             Table_ParticipantData.Controls.Add(label_PaymentStatus, 6, rowNumber);
             Table_ParticipantData.Controls.Add(label_PaymentAmount, 7, rowNumber);
-            Table_ParticipantData.Controls.Add(label_Email, 8, rowNumber);
+            Table_ParticipantData.Controls.Add(label_EventName, 8, rowNumber);
             Table_ParticipantData.Controls.Add(label_PhoneNumber, 9, rowNumber);
             Table_ParticipantData.Controls.Add(label_TicketSent, 10, rowNumber);
             Table_ParticipantData.Controls.Add(button_Edit, 11, rowNumber);
+            
         }
         private void Button_RegisterParticipant_Click(object sender, EventArgs e)
         {
@@ -326,7 +337,8 @@ namespace TC37852369
 
         private void Button_GenerateMail_Click(object sender, EventArgs e)
         {
-            GenerateSend generateSend = new GenerateSend(this);
+            GenerateSend generateSend = new GenerateSend(this, events, participants,companyData,
+                mailTemplates);
             generateSend.Show();
             this.Enabled = false;
         }
@@ -340,7 +352,17 @@ namespace TC37852369
 
         private void Button_GenerateTicket_Click(object sender, EventArgs e)
         {
-            GenerateTicket ticket = new GenerateTicket(this);
+            Event eventEntity = events[0];
+            
+            if (participants.Count > 0)
+            {
+                eventEntity = events.Find(someEvent =>
+                someEvent.id.ToString().Equals(participants[0].eventId));
+                
+            }
+
+            Participant participant = participants.Count > 0 ? participants[0] : null;
+            GenerateTicket ticket = new GenerateTicket(this, participant, companyData, eventEntity);
             ticket.Show();
             this.Enabled = false;
         }
@@ -363,7 +385,7 @@ namespace TC37852369
         private void Button_ChangeInformation_Click(object sender, EventArgs e)
         {
             AddChangeCompanyInformation changeInformationWindow = 
-                new AddChangeCompanyInformation();
+                new AddChangeCompanyInformation(this);
             changeInformationWindow.Show();
         }
 
