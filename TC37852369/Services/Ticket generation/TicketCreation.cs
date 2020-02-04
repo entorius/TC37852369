@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TC37852369.DomainEntities;
+using TC37852369.Services.Encoder;
 using Xceed.Document.NET;
 using Xceed.Words.NET;
 
@@ -15,9 +16,11 @@ namespace TC37852369.Services.Ticket_generation
     public class TicketCreation
     {
         private PDFConverter pdfConverter;
+        private StringEncoder stringEncoder = new StringEncoder();
         private BarcodeGenerator barcodeGenerator = new BarcodeGenerator(); 
         private Microsoft.Office.Interop.Word.Application MSdoc;
         public static string workingDirectory = Environment.CurrentDirectory;
+
         string myImageFullPath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\websiteQRCode_noFrame.png";
         string LogoFinalImage = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\logo_final.png";
         string phoneImagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\phone.png";
@@ -34,7 +37,8 @@ namespace TC37852369.Services.Ticket_generation
             string eventName,string date,string location1Row, string location2Row, string barcode,
            System.Drawing.Color barcodeColor, string savingName)
         {
-            System.Drawing.Image barcodeImage = barcodeGenerator.generateQrBarcodeZXing(barcode, barcodeColor);
+            string encodedBarcode = StringEncoder.ReturnEncryptedString(barcode);
+            System.Drawing.Image barcodeImage = barcodeGenerator.generateQrBarcodeZXing(encodedBarcode, barcodeColor);
 
             using (DocX document = DocX.Create(@"docs\" + savingName + ".docx"))
             {
@@ -285,6 +289,8 @@ namespace TC37852369.Services.Ticket_generation
         private void convertWordToPdf(object filePath, object targetFile)
         {
             pdfConverter.convertWordToPdf(filePath, targetFile);
+
+
         }
         //returns paths
         public List<string> generateTicketsAndSave(List<Participant> participants,List<Event> events, CompanyData companyData)

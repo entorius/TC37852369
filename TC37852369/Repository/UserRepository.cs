@@ -11,8 +11,10 @@ namespace TC37852369.Repository
 {
     public class UserRepository
     {
+        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addUser(string username, string password, string mail,string phoneNumber, string name, string surename, long user_Id)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("System_User").Document(user_Id.ToString());
@@ -32,6 +34,7 @@ namespace TC37852369.Repository
         }
         public async Task<User> GetUser(string username, string password)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             User user = new User();
             string databaseId;
             string databaseMail;
@@ -62,6 +65,7 @@ namespace TC37852369.Repository
 
         public async Task<bool> deleteUser(string user_Id)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("System_User").Document(user_Id);

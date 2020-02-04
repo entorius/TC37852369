@@ -93,6 +93,11 @@ namespace TC37852369.Services
             return await eventRepository.getAllEvents();
         }
 
+        public string addEventImage(string imagePath)
+        {
+            return eventRepository.addEventImage(imagePath);
+        }
+
         public async Task<bool> addEventDay(string event_Day_Id, string id, string event_Id, int dayNum, double cost, DateTime event_Day_Date)
         {
             return await eventRepository.addEventDay(event_Day_Id, id, event_Id,dayNum,cost,event_Day_Date);

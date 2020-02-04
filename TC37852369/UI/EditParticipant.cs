@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
@@ -13,6 +14,9 @@ using MetroFramework.Forms;
 using TC37852369.DomainEntities;
 using TC37852369.Helpers;
 using TC37852369.Services;
+using TC37852369.Services.EmailSending;
+using TC37852369.Services.Ticket_generation;
+using TC37852369.UI;
 using TC37852369.UI.helpers;
 
 namespace TC37852369
@@ -28,14 +32,28 @@ namespace TC37852369
         ParticipantServices participantServices = new ParticipantServices();
         ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
         public List<ParticipationFormat> participationFormats = new List<ParticipationFormat>();
+        MailTemplateServices emailTemplateServices = new MailTemplateServices();
+        EmailStringHelper emailStringHelper = new EmailStringHelper();
+        List<EmailTemplate> emailTemplates;
+        public CancellationTokenSource cancelationTokenSource;
+        GenerateSendInfoWindow generateSendInfoWindow;
+        CompanyData companyData;
+        TicketCreation ticketCreation = new TicketCreation();
+        string sendingStatus;
         int rowNumber;
+        SendEmail sendEmail;
 
         string addNewParticipationFormat = "+ Add new participation format";
+        string deleteParticipationFormat = "x Delete participation format";
         bool addNewParticipantFormatSelected = false;
-        public EditParticipant(MainWindow window, Participant participant,List<Event> events,int rowNumber)
+        bool deleteParticipantFormatSelected = false;
+        public EditParticipant(MainWindow window, Participant participant,List<Event> events,CompanyData companyData,int rowNumber)
         {
             this.rowNumber = rowNumber;
             this.participant = participant;
+            this.companyData = companyData;
+            
+            sendEmail = new SendEmail(companyData.emailUsername, companyData.emailPassword);
             participantEvent = events.FindLast(
                  delegate (Event e)
                  {
@@ -51,6 +69,7 @@ namespace TC37852369
 
         private async void loadWindowData()
         {
+            this.emailTemplates = await emailTemplateServices.getAllMailTemplates();
             participationFormats = await participationFormatServices.getAllParticipationFormats();
 
             foreach (ParticipationFormat participationFormat in participationFormats)
@@ -85,6 +104,7 @@ namespace TC37852369
             }
 
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
+            ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
             ComboBox_ParticipationFormat.SelectedIndexChanged += ParticipationFormatSelectedIndexChanged;
 
 
@@ -156,10 +176,11 @@ namespace TC37852369
                 participant.checkedInDay4
                 );
                 await participantServices.editParticipant(createdParticipant);
-                if (createdParticipant != null)
+                if (createdParticipant != null && mainWindow.selectedEvent != null)
                 {
+
                     mainWindow.Enabled = true;
-                    int participantRow = this.mainWindow.participants.FindLastIndex(delegate (Participant participant)
+                    int participantRow = this.mainWindow.filteredParticipants.FindLastIndex(delegate (Participant participant)
                     {
                         return participant.participantId == createdParticipant.participantId;
                     });
@@ -190,8 +211,11 @@ namespace TC37852369
 
                 if (deleted)
                 {
-                    tableLayoutHelper.RemoveArbitraryRow(mainWindow.Table_ParticipantData, rowNumber);
-                    mainWindow.participants.Remove(participant);
+                    tableLayoutHelper.RemoveArbitraryRow(mainWindow.Table_ParticipantsData1, rowNumber);
+                    mainWindow.allParticipants.Remove(participant);
+                    mainWindow.filteredParticipants.Remove(participant);
+                    int id = mainWindow.selectedEventParticipants.FindIndex(p => p.participantId.Equals(participant.participantId));
+                    mainWindow.selectedEventParticipants.RemoveAt(id);
                     mainWindow.Enabled = true;
                     this.Dispose();
                 }
@@ -246,6 +270,17 @@ namespace TC37852369
                 registerParticipationFormat.Disposed += AddParticipationFormats;
                 addNewParticipantFormatSelected = true;
             }
+            else if (this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 1 && !deleteParticipantFormatSelected)
+            {
+                Console.WriteLine("Yahooo");
+                this.ComboBox_ParticipationFormat.SelectedIndex = -1;
+                this.Enabled = false;
+                MetroForm DeleteParticipationFormat = new DeleteParticipantionFormat(this, participationFormats);
+                DeleteParticipationFormat.Show();
+                DeleteParticipationFormat.Disposed += DeleteParticipationFormats;
+                deleteParticipantFormatSelected = true;
+
+            }
         }
         private void AddParticipationFormats(Object sender, EventArgs e)
         {
@@ -258,7 +293,19 @@ namespace TC37852369
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
             addNewParticipantFormatSelected = false;
         }
-        
+        private void DeleteParticipationFormats(Object sender, EventArgs e)
+        {
+            ComboBox_ParticipationFormat.Items.Clear();
+            foreach (ParticipationFormat participationFormat in participationFormats)
+            {
+                ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
+            }
+            ComboBox_ParticipationFormat.SelectedIndex = -1;
+            ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
+            ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
+            addNewParticipantFormatSelected = false;
+        }
+
         public void EventDaysShowHide(int eventDays)
         {
             eventDayShowHide(Label_ParticipateDay1, ComboBox_ParticipateDay1, 1, eventDays);
@@ -279,6 +326,121 @@ namespace TC37852369
                     eventDayLabel.Hide();
                     eventDayComboBox.Hide();
                 }
+        }
+
+        private void Button_SendEmail_Click(object sender, EventArgs e)
+        {
+            if (mainWindow.companyData.emailUsername.Length == 0 || mainWindow.companyData.emailUsername.Length == 0)
+            {
+                messageBoxHelper.showWarning(this, "You cannot send email because you have not entered " +
+                    "your email credentials, which are mandatory to send email. Go to Main Window -> Settings -> Add/" +
+                    "Change company information to fill email credentials", "Warning");
+            }
+            else
+            {
+                cancelationTokenSource = new CancellationTokenSource();
+                Button_Send.Enabled = false;
+                generateSendInfoWindow = new GenerateSendInfoWindow(this);
+                sendingStatus = "GeneratingDocuments";
+                Timer_StringChanged.Enabled = true;
+
+                generateSendInfoWindow.Show();
+                generateSendInfoWindow.BringToFront();
+
+                var tasks = new[]
+                {
+                    Task.Factory.StartNew(() => GenerateDocumentsAndSendEmails(),cancelationTokenSource.Token)
+                };
+
+                //mainWindow.Enabled = true;
+                //this.Dispose();
+            }
+        }
+        private async void GenerateDocumentsAndSendEmails()
+        {
+            List<Participant> participants = new List<Participant>();
+            participants.Add(participant);
+            List<Event> events = new List<Event>();
+            events.Add(participantEvent);
+
+            List<string> ticketsPaths = ticketCreation.generateTicketsAndSave(
+                    participants, events, companyData);
+            sendingStatus = "SendingEmails";
+            List<string> toEmails = new List<string>();
+            List<string> emailBodies = new List<string>();
+            List<string> emailSubjects = new List<string>();
+            List<string> ticketsNames = new List<string>();
+            foreach (Participant p in participants)
+            {
+                toEmails.Add(p.email);
+                Event eventEntity = events.Find(ev => ev.id.ToString().Equals(p.eventId));
+                string body = "";
+                string subject = "";
+                if (eventEntity.useTemplate)
+                {
+                    EmailTemplate temp = emailTemplates.Find(et =>
+                    et.templateName.Equals(eventEntity.current_Mail_Template));
+                    body = temp.body;
+                    subject = temp.subject;
+                }
+                else
+                {
+                    body = eventEntity.emailBody;
+                    subject = eventEntity.emailSubject;
+                }
+                emailBodies.Add(emailStringHelper.formatEmailString(body, p, eventEntity));
+                emailSubjects.Add(emailStringHelper.formatEmailString(subject, p, eventEntity));
+                ticketsNames.Add(eventEntity.eventName + " ticket");
+            }
+
+            sendEmail.SendEmails(toEmails, emailSubjects, emailBodies, ticketsPaths, ticketsNames);
+            sendingStatus = "EmailsSent";
+            foreach (Participant p in participants)
+            {
+                p.ticketSent = true;
+                Participant participant = await participantServices.editParticipant(p);
+
+                if (participant != null)
+                {
+                    int allParticipantsIndex = mainWindow.allParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
+                    int selectedEventParticipantsIndex = 0;
+                    int filteredEventParticipantsIndex = 0;
+                    if (mainWindow.selectedEventParticipants.Count > 0)
+                    {
+                        selectedEventParticipantsIndex = mainWindow.selectedEventParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
+                        filteredEventParticipantsIndex = mainWindow.filteredParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
+                    }
+                    mainWindow.allParticipants[allParticipantsIndex] = p;
+                    if (mainWindow.selectedEventParticipants.Count > 0)
+                    {
+                        mainWindow.selectedEventParticipants[selectedEventParticipantsIndex] = p;
+                        mainWindow.filteredParticipants[filteredEventParticipantsIndex] = p;
+                        mainWindow.editParticipantTableRow(participant, filteredEventParticipantsIndex);
+                    }
+                }
+            }
+        }
+
+        private void Timer_StringChanged_Tick(object sender, EventArgs e)
+        {
+            if (sendingStatus.Equals("GeneratingDocuments"))
+            {
+                generateSendInfoWindow.Label_Status.Text = "Generating Tickets For  Events";
+            }
+            else if (sendingStatus.Equals("SendingEmails"))
+            {
+                generateSendInfoWindow.Timer_Document.Enabled = false;
+                generateSendInfoWindow.Timer_Sending.Enabled = true;
+                generateSendInfoWindow.Label_Status.Text = "Sending Emails To Participants";
+            }
+            else if (sendingStatus.Equals("EmailsSent"))
+            {
+                generateSendInfoWindow.Timer_Sending.Enabled = false;
+                generateSendInfoWindow.Timer_Sent.Enabled = true;
+                generateSendInfoWindow.Button_Confirm.Enabled = true;
+                generateSendInfoWindow.Button_Cancel.Enabled = false;
+                generateSendInfoWindow.Label_Status.Text = "Emails    Sent    Successfully";
+            }
         }
     }
 }

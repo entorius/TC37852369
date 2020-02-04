@@ -464,6 +464,7 @@ namespace TC37852369.UI
 
             TextBox_PaymentAmount.Text = eventEntity.paymentAmountForDay.ToString();
 
+            TextBox_WebPage.Text = eventEntity.webPage;
             TextBox_Comments.Text = eventEntity.comment;
             TextBox_Subject.Text = eventEntity.emailSubject;
             TextBox_Body.Text = eventEntity.emailBody;

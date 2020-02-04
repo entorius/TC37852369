@@ -13,10 +13,12 @@ namespace TC37852369.Repository
     public class CompanyDataRepository
     {
         StringEncoder stringEncoder = new StringEncoder();
+        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> EditCompanyData(string address, string companyName, string email, 
             string phoneNumber, string webPageAddress, string companyLogo, string emailSurename,
             string emailPassword)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             CancellationTokenSource cts = new CancellationTokenSource();
@@ -62,6 +64,7 @@ namespace TC37852369.Repository
 
         public async Task<CompanyData> GetCompanyData()
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             CompanyData companyData = null;
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
             Query CompanyDataQuery = db.Collection("CompanyData");

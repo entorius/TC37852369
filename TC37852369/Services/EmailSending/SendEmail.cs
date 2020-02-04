@@ -96,6 +96,8 @@ namespace TC37852369.Services.EmailSending
                     attachment.Name = attachmentsNames[i] + ".pdf";
                     message.Attachments.Add(attachment);
                     smtp.Send(message);
+                    attachment.Dispose();
+                        
                     totali = i;
                 }
                 catch (Exception)

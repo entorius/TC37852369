@@ -1,6 +1,9 @@
-﻿using Google.Cloud.Firestore;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Firestore;
+using Google.Cloud.Storage.V1;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +13,7 @@ namespace TC37852369.Repository
 {
     public class EventRepository
     {
+        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addEvent(long event_Id, string eventName, DateTime date_From,
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom, string day1TimeTo,
@@ -18,6 +22,7 @@ namespace TC37852369.Repository
             string venueName, string venueAddress,  string eventStatus,string comment,
             bool useTemplate, string current_Mail_Template, string body, string subject)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             string dateFromString = date_From.ToString();
@@ -78,6 +83,7 @@ namespace TC37852369.Repository
 
         public async Task<List<Event>> getAllEvents()
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<Event> allEvents = new List<Event>();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
             Query allEventsQuery = db.Collection("Event");
@@ -135,12 +141,16 @@ namespace TC37852369.Repository
                 allEvents.Add(eventEntity);
                 Console.WriteLine("");
             }
-
-                    return allEvents;
+            if (allEvents.Count > 0)
+            {
+                allEvents = allEvents.OrderBy(ev => ev.date_From).ToList();
+            }
+            return allEvents;
         }
 
         public async Task<bool> deleteEvent(long event_Id)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Event").Document(event_Id.ToString());
@@ -148,14 +158,125 @@ namespace TC37852369.Repository
 
             return true;
         }
-        
 
+        public string addEventImage(string imagePath)
+        {
+            string eventImagesLinks = "";
+            eventImagesLinks = imagePath;
+            try
+            {
+                if (imagePath.Length != 0)
+                {
+                    string bucketName = "eventsimages";
+                    string sharedkeyFilePath = SetEnvironmentVariable.getGoogleCloudEnvironmentVariable();
+                    GoogleCredential credential = null;
+                    using (var jsonStream = new FileStream(sharedkeyFilePath, FileMode.Open,
+                        FileAccess.Read, FileShare.Read))
+                    {
+                        credential = GoogleCredential.FromStream(jsonStream);
+                    }
+                    var storageClient = StorageClient.Create(credential);
+                    string[] spliters = { @"\" };
+
+                    string filetoUpload = imagePath;
+                    string[] splitedString = imagePath.Split(spliters, StringSplitOptions.RemoveEmptyEntries);
+                    string fileName = splitedString[splitedString.Length - 1];
+                    //check if object with name like this exists
+                    try
+                    {
+                        Object GoogleFirestoreObject = storageClient.GetObject(bucketName, fileName);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("GoogleFirestoreObject does not exist");
+                    }
+                    using (var fileStream = new FileStream(filetoUpload, FileMode.Open,
+                        FileAccess.Read, FileShare.Read))
+                    {
+                        storageClient.UploadObject(bucketName, fileName, "text/plain", fileStream);
+                        
+                    }
+                    Console.WriteLine("uploaded the file successfully");
+                    Console.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return eventImagesLinks;
+        }
+
+        public List<string> getEventImages(string eventName)
+        {
+            List<string> eventImagesLinks = new List<string>();
+            try
+            {
+                if (eventName.Length != 0)
+                {
+                    string bucketName = "eventsimages";
+                    string sharedkeyFilePath = SetEnvironmentVariable.getGoogleCloudEnvironmentVariable();
+                    GoogleCredential credential = null;
+                    using (var jsonStream = new FileStream(sharedkeyFilePath, FileMode.Open,
+                        FileAccess.Read, FileShare.Read))
+                    {
+                        credential = GoogleCredential.FromStream(jsonStream);
+                    }
+                    var storageClient = StorageClient.Create(credential);
+                    string[] spliters = { @"\" };
+
+                    string filetoUpload = eventName;
+                    string[] splitedString = eventName.Split(spliters, StringSplitOptions.RemoveEmptyEntries);
+                    string fileName = splitedString[splitedString.Length - 1];
+                    Console.WriteLine("uploaded the file successfully");
+                    Console.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return eventImagesLinks;
+        }
+        public List<string> deleteEventImages(List<string> filesNames)
+        {
+            List<string> eventImagesLinks = new List<string>();
+            try
+            {
+                if (filesNames.Count != 0)
+                {
+                    string bucketName = "eventsimages";
+                    string sharedkeyFilePath = SetEnvironmentVariable.getGoogleCloudEnvironmentVariable();
+                    GoogleCredential credential = null;
+                    using (var jsonStream = new FileStream(sharedkeyFilePath, FileMode.Open,
+                        FileAccess.Read, FileShare.Read))
+                    {
+                        credential = GoogleCredential.FromStream(jsonStream);
+                    }
+                    var storageClient = StorageClient.Create(credential);
+                    string[] spliters = { @"\" };
+
+                    string filetoUpload = filesNames[0];
+                    string[] splitedString = filesNames[0].Split(spliters, StringSplitOptions.RemoveEmptyEntries);
+                    string fileName = splitedString[splitedString.Length - 1];
+                        storageClient.DeleteObject(bucketName, fileName);
+                    Console.WriteLine("uploaded the file successfully");
+                    Console.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return eventImagesLinks;
+        }
 
 
 
 
         public async Task<bool> addEventDay(string event_Day_Id, string id, string event_Id, int dayNum, double cost, DateTime event_Day_Date)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Event").Document(event_Id).Collection("Event_Day").Document(event_Day_Id);
@@ -174,6 +295,7 @@ namespace TC37852369.Repository
         }
         public async Task<bool> deleteEventDay(string event_Id, string Event_Day_Id)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Event").Document(event_Id).Collection("Event_Day").Document(Event_Day_Id);

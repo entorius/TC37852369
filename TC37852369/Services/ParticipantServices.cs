@@ -47,12 +47,16 @@ namespace TC37852369.Services
         {
             return await participantRepository.getAllParticipants();
         }
+        public async Task<Participant> getParticipant(string Id)
+        {
+            return await participantRepository.getParticipant(Id);
+        }
         public async Task<Participant> createParticipant( string event_Id,
-            string firstName, string lastName, string jobTitle, string company_Name, string companyType,
-            string email, string phone_Number, string country, string participation_Format,
-            string payment_Status, bool materials, 
-            bool participate_Evening_Event, bool participate_In_Day1, bool participate_In_Day2,
-            bool participate_In_Day3, bool participate_In_Day4)
+        string firstName, string lastName, string jobTitle, string company_Name, string companyType,
+        string email, string phone_Number, string country, string participation_Format,
+        string payment_Status, bool materials, 
+        bool participate_Evening_Event, bool participate_In_Day1, bool participate_In_Day2,
+        bool participate_In_Day3, bool participate_In_Day4)
         {
             LastIdentificationNumber participant_Id = await lastIdentificationNumber.getParticipantLastIdentificationNumber();
 

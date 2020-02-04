@@ -122,6 +122,7 @@
     <Compile Include="DomainEntities\LastIdentificationNumber.cs" />
     <Compile Include="DomainEntities\Participant.cs" />
     <Compile Include="DomainEntities\ParticipationFormat.cs" />
+    <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -135,12 +136,14 @@
     <Compile Include="Repository\MailTemplateRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Repository\ParticipationFormatRepository.cs" />
+    <Compile Include="Repository\SetEnvironmentVariable.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Services\CompanyDataServices.cs" />
     <Compile Include="Services\EmailSending\EmailStringHelper.cs" />
     <Compile Include="Services\EmailSending\SendEmail.cs" />
     <Compile Include="Services\Encoder\StringEncoder.cs" />
     <Compile Include="Services\EventServices.cs" />
+    <Compile Include="Services\Images\GifImage.cs" />
     <Compile Include="Services\LastEntityIdentificationNumberServices.cs" />
     <Compile Include="Services\MailTemplateServices.cs" />
     <Compile Include="Services\ParticipantServices.cs" />
@@ -169,6 +172,12 @@
       <DependentUpon>CreateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="DomainEntities\User.cs" />
+    <Compile Include="UI\DeleteParticipantionFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DeleteParticipantionFormat.Designer.cs">
+      <DependentUpon>DeleteParticipantionFormat.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EditEvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +201,12 @@
     </Compile>
     <Compile Include="UI\GenerateSend.Designer.cs">
       <DependentUpon>GenerateSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GenerateSendInfoWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GenerateSendInfoWindow.Designer.cs">
+      <DependentUpon>GenerateSendInfoWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\GenerateTicket.cs">
       <SubType>Form</SubType>
@@ -231,6 +246,18 @@
       <DependentUpon>RegisterParticipationString.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\helpers\TextBoxModification.cs" />
+    <Compile Include="UI\ScanningUserDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ScanningUserDisplay.Designer.cs">
+      <DependentUpon>ScanningUserDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ScanningWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ScanningWindow.Designer.cs">
+      <DependentUpon>ScanningWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\AddChangeCompanyInformation.resx">
       <DependentUpon>AddChangeCompanyInformation.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DeleteParticipantionFormat.resx">
+      <DependentUpon>DeleteParticipantionFormat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EditEvent.resx">
       <DependentUpon>EditEvent.cs</DependentUpon>
@@ -251,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GenerateSend.resx">
       <DependentUpon>GenerateSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GenerateSendInfoWindow.resx">
+      <DependentUpon>GenerateSendInfoWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GenerateTicket.resx">
       <DependentUpon>GenerateTicket.cs</DependentUpon>
@@ -271,6 +304,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RegisterParticipationString.resx">
       <DependentUpon>RegisterParticipationString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScanningUserDisplay.resx">
+      <DependentUpon>ScanningUserDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScanningWindow.resx">
+      <DependentUpon>ScanningWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -297,6 +336,9 @@
       <Version>4.5.3.2</Version>
     </PackageReference>
     <PackageReference Include="Google.Cloud.Firestore" Version="1.1.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1">
+      <Version>2.5.0</Version>
+    </PackageReference>
     <PackageReference Include="MailKit">
       <Version>2.5.0</Version>
     </PackageReference>
@@ -317,6 +359,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UI\Images\barcode.png" />
+    <Content Include="UI\Images\enviroment.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_file-image-o_20_0_ffffff_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_file-image-o_40_0_2c3e50_ffffff.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_file-image-o_40_0_2c3e50_none.png" />
@@ -326,6 +370,7 @@
     <Content Include="UI\Images\font-awesome_4-7-0_ticket_80_0_FFFFFF_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_times_20_0_ffffff_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_user-plus_80_0_ffffff_none.png" />
+    <Content Include="UI\Images\GeneratingDocument.gif" />
     <Content Include="UI\Images\inlinum-logo.png" />
     <Content Include="UI\Images\internet.png" />
     <Content Include="UI\Images\ionicons_2-0-1_email_80_0_ffffff_none.png" />
@@ -333,6 +378,9 @@
     <Content Include="UI\Images\logo_final.png" />
     <Content Include="UI\Images\mail.png" />
     <Content Include="UI\Images\phone.png" />
+    <Content Include="UI\Images\qr-scan.gif" />
+    <Content Include="UI\Images\Sending.gif" />
+    <Content Include="UI\Images\Sent.gif" />
     <Content Include="UI\Images\websiteQRCode_noFrame.png" />
   </ItemGroup>
   <ItemGroup />

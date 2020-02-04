@@ -12,6 +12,7 @@ using MetroFramework.Controls;
 using MetroFramework.Forms;
 using TC37852369.DomainEntities;
 using TC37852369.Services;
+using TC37852369.UI;
 using TC37852369.UI.helpers;
 
 public enum CompanyTypes
@@ -67,7 +68,9 @@ namespace TC37852369
         public List<ParticipationFormat> participationFormats = new List<ParticipationFormat>();
 
         string addNewParticipationFormat = "+ Add new participation format";
+        string deleteParticipationFormat = "x Delete participation format";
         bool addNewParticipantFormatSelected = false;
+        bool deleteParticipantFormatSelected = false;
         public RegisterParticipant(MainWindow window, List<Event> events)
         {
             mainWindow = window;
@@ -125,6 +128,7 @@ namespace TC37852369
 
             ComboBox_PaymentStatus.SelectedIndex = 0;
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
+            ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
             ComboBox_ParticipationFormat.SelectedIndexChanged += ParticipationFormatSelectedIndexChanged;
         }
         private async void Button_Register_Click(object sender, EventArgs e)
@@ -180,10 +184,26 @@ namespace TC37852369
                 if (createdParticipant != null)
                 {
                     mainWindow.Enabled = true;
-                    mainWindow.participants.Add(createdParticipant);
-                    mainWindow.addParticipantTableRow();
-                    mainWindow.addParticipantToParticipantTableRow(
-                        createdParticipant, mainWindow.Table_ParticipantData.RowCount - 1, events);
+                    mainWindow.allParticipants.Add(createdParticipant);
+                    if (mainWindow.selectedEvent != null)
+                    {
+                        if (createdParticipant.eventId.Equals(mainWindow.selectedEvent.id.ToString()))
+                        {
+                            mainWindow.filteredParticipants.Add(createdParticipant);
+                            if (mainWindow.selectedEvent != null)
+                            {
+                                if (createdParticipant.eventId.Equals(mainWindow.selectedEvent.id.ToString()))
+                                {
+                                    mainWindow.selectedEventParticipants.Add(createdParticipant);
+                                }
+                                mainWindow.UpdateCheckedInAndRegistered(mainWindow.selectedEventParticipants, mainWindow.selectedEvent, false);
+                                
+                            }
+                            mainWindow.addParticipantTableRow();
+                            mainWindow.addParticipantToParticipantTableRow(
+                                createdParticipant, mainWindow.Table_ParticipantsData1.RowCount - 1, events);
+                        }
+                    }
                     this.Dispose();
                 }
                 else
@@ -206,7 +226,7 @@ namespace TC37852369
         }
         private void ParticipationFormatSelectedIndexChanged(Object sender, EventArgs e)
         {
-            if(this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 1 && !addNewParticipantFormatSelected)
+            if(this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 2 && !addNewParticipantFormatSelected)
             {
                 Console.WriteLine("Yahooo");
                 this.ComboBox_ParticipationFormat.SelectedIndex = -1;
@@ -217,16 +237,40 @@ namespace TC37852369
                 addNewParticipantFormatSelected = true;
                 
             }
+            else if (this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 1 && !deleteParticipantFormatSelected)
+            {
+                Console.WriteLine("Yahooo");
+                this.ComboBox_ParticipationFormat.SelectedIndex = -1;
+                this.Enabled = false;
+                MetroForm DeleteParticipationFormat = new DeleteParticipantionFormat(this, participationFormats);
+                DeleteParticipationFormat.Show();
+                DeleteParticipationFormat.Disposed += DeleteParticipationFormats;
+                deleteParticipantFormatSelected = true;
+
+            }
         }
         private void AddParticipationFormats(Object sender,EventArgs e)
         {
             ComboBox_ParticipationFormat.Items.Clear();
             foreach(ParticipationFormat participationFormat in participationFormats)
             {
-                ComboBox_ParticipationFormat.Items.Add(participationFormat);
+                ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
             }
             ComboBox_ParticipationFormat.SelectedIndex = ComboBox_ParticipationFormat.Items.Count - 1;
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
+            ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
+            addNewParticipantFormatSelected = false;
+        }
+        private void DeleteParticipationFormats(Object sender, EventArgs e)
+        {
+            ComboBox_ParticipationFormat.Items.Clear();
+            foreach (ParticipationFormat participationFormat in participationFormats)
+            {
+                ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
+            }
+            ComboBox_ParticipationFormat.SelectedIndex = -1;
+            ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
+            ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
             addNewParticipantFormatSelected = false;
         }
 

@@ -369,7 +369,7 @@
             this.TextBox_Password.MaxLength = 32767;
             this.TextBox_Password.Multiline = true;
             this.TextBox_Password.Name = "TextBox_Password";
-            this.TextBox_Password.PasswordChar = '\0';
+            this.TextBox_Password.PasswordChar = '*';
             this.TextBox_Password.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TextBox_Password.SelectedText = "";
             this.TextBox_Password.SelectionLength = 0;
@@ -378,7 +378,6 @@
             this.TextBox_Password.Size = new System.Drawing.Size(281, 31);
             this.TextBox_Password.TabIndex = 22;
             this.TextBox_Password.UseSelectable = true;
-            this.TextBox_Password.UseSystemPasswordChar = true;
             this.TextBox_Password.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBox_Password.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 

@@ -30,6 +30,7 @@ namespace TC37852369
         LastEntityIdentificationNumberServices lastEntityIdentificationNumberService =
             new LastEntityIdentificationNumberServices();
         Dictionary<int,Image> eventImages = new Dictionary<int,Image>();
+        Dictionary<int, string> eventImagePath = new Dictionary<int, string>();
         MailTemplateServices mailTeplateServices = new MailTemplateServices();
 
         List<EmailTemplate> mailTemplates = new List<EmailTemplate>();
@@ -287,7 +288,14 @@ namespace TC37852369
                     emailBody = "";
                     emailSubject = "";
                 }
-
+                
+                /*bool imageExists = eventImagePath.ContainsKey(1);
+                if (imageExists)
+                {
+                    string path = "";
+                    eventImagePath.TryGetValue(1, out path);
+                    eventServices.addEventImage(path);
+                }*/
                 await lastEntityIdentificationNumberService.IncreaseLastIdetificationNumber("Event");
                 Event eventEntity = await eventServices.addEvent(TextBox_EventName.Text, DateTime_EventDate.Value,
                    eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
@@ -298,6 +306,7 @@ namespace TC37852369
                 if (eventEntity != null)
                 {
                     mainWindow.Enabled = true;
+                    mainWindow.ComboBox_Events.Items.Add(eventEntity.eventName);
                     mainWindow.events.Add(eventEntity);
                     mainWindow.addEventTableRow();
                     mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
@@ -478,6 +487,7 @@ namespace TC37852369
                         if (!eventImages.ContainsKey(i) && !added)
                         {
                             eventImages.Add(i, image);
+                            eventImagePath.Add(i, fileName);
                             updatingImageNumber = i;
                             added = true;
                         }
@@ -563,30 +573,35 @@ namespace TC37852369
         private void Button_Delete1_Click(object sender, EventArgs e)
         {
             eventImages.Remove(1);
+            eventImagePath.Remove(1);
             updateImageButtons("", 0);
         }
 
         private void Button_Delete2_Click(object sender, EventArgs e)
         {
             eventImages.Remove(2);
+            eventImagePath.Remove(2);
             updateImageButtons("", 0);
         }
 
         private void Button_Delete3_Click(object sender, EventArgs e)
         {
             eventImages.Remove(3);
+            eventImagePath.Remove(3);
             updateImageButtons("", 0);
         }
 
         private void Button_Delete4_Click(object sender, EventArgs e)
         {
             eventImages.Remove(4);
+            eventImagePath.Remove(4);
             updateImageButtons("", 0);
         }
 
         private void Button_Delete5_Click(object sender, EventArgs e)
         {
             eventImages.Remove(5);
+            eventImagePath.Remove(5);
             updateImageButtons("", 0);
         }
 

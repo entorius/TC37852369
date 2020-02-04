@@ -10,8 +10,10 @@ namespace TC37852369.Repository
 {
     public class ParticipantRepository
     {
+        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addParticipant(Participant participant )
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Participant").Document(participant.participantId);
@@ -48,6 +50,7 @@ namespace TC37852369.Repository
         }
         public async Task<List<Participant>> getAllParticipants()
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<Participant> allPartcipants = new List<Participant>();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
             Query allParticipantsQuery = db.Collection("Participant");
@@ -92,8 +95,59 @@ namespace TC37852369.Repository
             }
             return allPartcipants;
         }
+        public async Task<Participant> getParticipant(string Id)
+        {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
+            Participant partcipant;
+            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            DocumentReference docRef = db.Collection("Participant").Document(Id);
+            DocumentSnapshot documentSnapshot = await docRef.GetSnapshotAsync();
+            if (documentSnapshot.Exists)
+            {
+                Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
+                Dictionary<string, object> ParticipantValue = documentSnapshot.ToDictionary();
+                foreach (KeyValuePair<string, object> pair in ParticipantValue)
+                {
+                    Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
+                }
+
+                Participant ParticipantEntity = new Participant(
+                        ParticipantValue["Id"].ToString(),
+                        ParticipantValue["EventId"].ToString(),
+                        ParticipantValue["FirstName"].ToString(),
+                        ParticipantValue["LastName"].ToString(),
+                        ParticipantValue["JobTitle"].ToString(),
+                        ParticipantValue["CompanyName"].ToString(),
+                        ParticipantValue["CompanyType"].ToString(),
+                        ParticipantValue["Email"].ToString(),
+                        ParticipantValue["PhoneNumber"].ToString(),
+                        ParticipantValue["Country"].ToString(),
+                        ParticipantValue["ParticipantFormat"].ToString(),
+                        ParticipantValue["PaymentStatus"].ToString(),
+                        Boolean.Parse(ParticipantValue["Materials"].ToString()),
+                        ParticipantValue["TicketBarcode"].ToString(),
+                        Boolean.Parse(ParticipantValue["TicketSent"].ToString()),
+                        Boolean.Parse(ParticipantValue["ParticipateEveningEvent"].ToString()),
+                        Boolean.Parse(ParticipantValue["ParticipateInDay1"].ToString()),
+                        Boolean.Parse(ParticipantValue["ParticipateInDay2"].ToString()),
+                        Boolean.Parse(ParticipantValue["ParticipateInDay3"].ToString()),
+                        Boolean.Parse(ParticipantValue["ParticipateInDay4"].ToString()),
+                        Boolean.Parse(ParticipantValue["CheckedInDay1"].ToString()),
+                        Boolean.Parse(ParticipantValue["CheckedInDay2"].ToString()),
+                        Boolean.Parse(ParticipantValue["CheckedInDay3"].ToString()),
+                        Boolean.Parse(ParticipantValue["CheckedInDay4"].ToString())
+                    );
+                partcipant = ParticipantEntity;
+            }
+            else
+            {
+                partcipant = null;
+            }
+            return partcipant;
+        }
         public async Task<bool> deleteParticipant(string participantId)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Participant").Document(participantId);

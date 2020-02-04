@@ -10,8 +10,10 @@ namespace TC37852369.Repository
 {
     public class MailTemplateRepository
     {
+        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addMailTemplate(string id, string name, string subject, string body, bool is_Default)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Mail_Template").Document("MailTemplate").Collection("MailTemplate").Document(id);
@@ -30,7 +32,7 @@ namespace TC37852369.Repository
 
         public async Task<List<EmailTemplate>> getAllMailTemplates()
         {
-
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<EmailTemplate> emailTemplates = new List<EmailTemplate>();
 
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
@@ -56,6 +58,7 @@ namespace TC37852369.Repository
 
         public async Task<bool> deleteMailTemplate(string mail_Template_Id)
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
 
             DocumentReference docRef = db.Collection("Mail_Template").Document(mail_Template_Id);
@@ -66,6 +69,7 @@ namespace TC37852369.Repository
 
         public async Task<List<EmailTemplateString>> getEmailTemplateStrings()
         {
+            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<EmailTemplateString> emailTemplateStrings = new List<EmailTemplateString>();
 
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");

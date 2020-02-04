@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Label_ParticipateDay4 = new MetroFramework.Controls.MetroLabel();
             this.Label_ParticipateDay3 = new MetroFramework.Controls.MetroLabel();
             this.ComboBox_ParticipateDay4 = new MetroFramework.Controls.MetroComboBox();
@@ -67,6 +68,8 @@
             this.Button_Delete = new MetroFramework.Controls.MetroButton();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_JobTitle = new MetroFramework.Controls.MetroTextBox();
+            this.Button_Send = new MetroFramework.Controls.MetroButton();
+            this.Timer_StringChanged = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Label_ParticipateDay4
@@ -419,7 +422,7 @@
             // 
             this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
             this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Cancel.Location = new System.Drawing.Point(768, 748);
+            this.Button_Cancel.Location = new System.Drawing.Point(636, 748);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(186, 69);
             this.Button_Cancel.Style = MetroFramework.MetroColorStyle.Black;
@@ -435,7 +438,7 @@
             // 
             this.Button_Save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Button_Save.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Save.Location = new System.Drawing.Point(1037, 748);
+            this.Button_Save.Location = new System.Drawing.Point(1064, 748);
             this.Button_Save.Name = "Button_Save";
             this.Button_Save.Size = new System.Drawing.Size(186, 69);
             this.Button_Save.Style = MetroFramework.MetroColorStyle.White;
@@ -622,11 +625,35 @@
             this.TextBox_JobTitle.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBox_JobTitle.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // Button_Send
+            // 
+            this.Button_Send.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.Button_Send.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Send.ForeColor = System.Drawing.Color.White;
+            this.Button_Send.Location = new System.Drawing.Point(851, 748);
+            this.Button_Send.Name = "Button_Send";
+            this.Button_Send.Size = new System.Drawing.Size(186, 69);
+            this.Button_Send.Style = MetroFramework.MetroColorStyle.Black;
+            this.Button_Send.TabIndex = 100;
+            this.Button_Send.Text = "Send email";
+            this.Button_Send.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_Send.UseCustomBackColor = true;
+            this.Button_Send.UseCustomForeColor = true;
+            this.Button_Send.UseSelectable = true;
+            this.Button_Send.UseStyleColors = true;
+            this.Button_Send.Click += new System.EventHandler(this.Button_SendEmail_Click);
+            // 
+            // Timer_StringChanged
+            // 
+            this.Timer_StringChanged.Interval = 500;
+            this.Timer_StringChanged.Tick += new System.EventHandler(this.Timer_StringChanged_Tick);
+            // 
             // EditParticipant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 880);
+            this.Controls.Add(this.Button_Send);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.TextBox_JobTitle);
             this.Controls.Add(this.Button_Delete);
@@ -714,5 +741,7 @@
         private MetroFramework.Controls.MetroButton Button_Delete;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroTextBox TextBox_JobTitle;
+        public MetroFramework.Controls.MetroButton Button_Send;
+        private System.Windows.Forms.Timer Timer_StringChanged;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ComboBox_Events = new MetroFramework.Controls.MetroComboBox();
             this.TextBox_CompanyName = new MetroFramework.Controls.MetroTextBox();
             this.TextBox_FirstName = new MetroFramework.Controls.MetroTextBox();
@@ -39,21 +40,27 @@
             this.ComboBox_EmailSent = new MetroFramework.Controls.MetroComboBox();
             this.Table_FilteredResultsHeader = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.TextBox_LastName = new MetroFramework.Controls.MetroTextBox();
-            this.Table_FilteredResultData = new System.Windows.Forms.TableLayoutPanel();
             this.ComboBox_PaymentStatus = new MetroFramework.Controls.MetroComboBox();
-            this.Button_Delete = new System.Windows.Forms.Button();
+            this.TextBox_Status = new System.Windows.Forms.TextBox();
+            this.Timer_StringChanged = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Table_FilteredResults = new System.Windows.Forms.TableLayoutPanel();
+            this.ComboBox_ParticipationFormat = new MetroFramework.Controls.MetroComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.CheckBox_CheckAll = new System.Windows.Forms.CheckBox();
             this.Table_FilteredResultsHeader.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ComboBox_Events
@@ -163,7 +170,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 100);
+            this.label1.Location = new System.Drawing.Point(34, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 23);
             this.label1.TabIndex = 10;
@@ -175,7 +182,7 @@
             this.Button_Filter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Filter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Button_Filter.ForeColor = System.Drawing.Color.White;
-            this.Button_Filter.Location = new System.Drawing.Point(230, 487);
+            this.Button_Filter.Location = new System.Drawing.Point(268, 553);
             this.Button_Filter.Name = "Button_Filter";
             this.Button_Filter.Size = new System.Drawing.Size(198, 86);
             this.Button_Filter.TabIndex = 11;
@@ -187,7 +194,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label2.Location = new System.Drawing.Point(63, 160);
+            this.label2.Location = new System.Drawing.Point(34, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 13;
@@ -215,7 +222,7 @@
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
+            this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.Table_FilteredResultsHeader.Controls.Add(this.label13, 6, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label10, 1, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label11, 1, 0);
@@ -227,7 +234,7 @@
             this.Table_FilteredResultsHeader.Name = "Table_FilteredResultsHeader";
             this.Table_FilteredResultsHeader.RowCount = 1;
             this.Table_FilteredResultsHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Table_FilteredResultsHeader.Size = new System.Drawing.Size(800, 45);
+            this.Table_FilteredResultsHeader.Size = new System.Drawing.Size(675, 45);
             this.Table_FilteredResultsHeader.TabIndex = 15;
             // 
             // label13
@@ -238,15 +245,6 @@
             this.label13.Size = new System.Drawing.Size(41, 17);
             this.label13.TabIndex = 23;
             this.label13.Text = "Send";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(105, 1);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 17);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Last Name";
             // 
             // label10
             // 
@@ -266,15 +264,6 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "Company Name";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 1);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "First Name";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -293,11 +282,29 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Email sent";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(105, 1);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 17);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Last Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "First Name";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(63, 220);
+            this.label5.Location = new System.Drawing.Point(34, 220);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 23);
             this.label5.TabIndex = 16;
@@ -307,7 +314,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label6.Location = new System.Drawing.Point(64, 280);
+            this.label6.Location = new System.Drawing.Point(34, 280);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 23);
             this.label6.TabIndex = 17;
@@ -317,7 +324,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label7.Location = new System.Drawing.Point(67, 340);
+            this.label7.Location = new System.Drawing.Point(34, 340);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 23);
             this.label7.TabIndex = 18;
@@ -327,7 +334,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label8.Location = new System.Drawing.Point(70, 400);
+            this.label8.Location = new System.Drawing.Point(34, 400);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 23);
             this.label8.TabIndex = 19;
@@ -364,27 +371,6 @@
             this.TextBox_LastName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBox_LastName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // Table_FilteredResultData
-            // 
-            this.Table_FilteredResultData.AutoScroll = true;
-            this.Table_FilteredResultData.AutoSize = true;
-            this.Table_FilteredResultData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.Table_FilteredResultData.ColumnCount = 7;
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
-            this.Table_FilteredResultData.Location = new System.Drawing.Point(648, 144);
-            this.Table_FilteredResultData.MinimumSize = new System.Drawing.Size(800, 0);
-            this.Table_FilteredResultData.Name = "Table_FilteredResultData";
-            this.Table_FilteredResultData.RowCount = 1;
-            this.Table_FilteredResultData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Table_FilteredResultData.Size = new System.Drawing.Size(801, 43);
-            this.Table_FilteredResultData.TabIndex = 21;
-            // 
             // ComboBox_PaymentStatus
             // 
             this.ComboBox_PaymentStatus.FontSize = MetroFramework.MetroComboBoxSize.Tall;
@@ -397,28 +383,96 @@
             this.ComboBox_PaymentStatus.TabIndex = 22;
             this.ComboBox_PaymentStatus.UseSelectable = true;
             // 
-            // Button_Delete
+            // TextBox_Status
             // 
-            this.Button_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(185)))), ((int)(((byte)(161)))));
-            this.Button_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Delete.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Button_Delete.ForeColor = System.Drawing.Color.White;
-            this.Button_Delete.Location = new System.Drawing.Point(497, 487);
-            this.Button_Delete.Name = "Button_Delete";
-            this.Button_Delete.Size = new System.Drawing.Size(198, 86);
-            this.Button_Delete.TabIndex = 23;
-            this.Button_Delete.Text = "Delete";
-            this.Button_Delete.UseVisualStyleBackColor = false;
-            this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
+            this.TextBox_Status.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_Status.ForeColor = System.Drawing.Color.Transparent;
+            this.TextBox_Status.Location = new System.Drawing.Point(1234, 10);
+            this.TextBox_Status.Name = "TextBox_Status";
+            this.TextBox_Status.Size = new System.Drawing.Size(264, 15);
+            this.TextBox_Status.TabIndex = 24;
+            // 
+            // Timer_StringChanged
+            // 
+            this.Timer_StringChanged.Interval = 500;
+            this.Timer_StringChanged.Tick += new System.EventHandler(this.Timer_StringChanged_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.Table_FilteredResults);
+            this.panel1.Location = new System.Drawing.Point(648, 151);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(675, 557);
+            this.panel1.TabIndex = 25;
+            // 
+            // Table_FilteredResults
+            // 
+            this.Table_FilteredResults.AutoSize = true;
+            this.Table_FilteredResults.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Table_FilteredResults.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.Table_FilteredResults.ColumnCount = 7;
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.Table_FilteredResults.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Table_FilteredResults.Location = new System.Drawing.Point(0, 0);
+            this.Table_FilteredResults.Name = "Table_FilteredResults";
+            this.Table_FilteredResults.RowCount = 2;
+            this.Table_FilteredResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Table_FilteredResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Table_FilteredResults.Size = new System.Drawing.Size(675, 3);
+            this.Table_FilteredResults.TabIndex = 0;
+            // 
+            // ComboBox_ParticipationFormat
+            // 
+            this.ComboBox_ParticipationFormat.FontSize = MetroFramework.MetroComboBoxSize.Tall;
+            this.ComboBox_ParticipationFormat.FormattingEnabled = true;
+            this.ComboBox_ParticipationFormat.ItemHeight = 29;
+            this.ComboBox_ParticipationFormat.Location = new System.Drawing.Point(216, 460);
+            this.ComboBox_ParticipationFormat.Name = "ComboBox_ParticipationFormat";
+            this.ComboBox_ParticipationFormat.Size = new System.Drawing.Size(379, 35);
+            this.ComboBox_ParticipationFormat.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ComboBox_ParticipationFormat.TabIndex = 27;
+            this.ComboBox_ParticipationFormat.UseSelectable = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10.28571F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label14.Location = new System.Drawing.Point(34, 460);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(163, 23);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Participation format";
+            // 
+            // CheckBox_CheckAll
+            // 
+            this.CheckBox_CheckAll.AutoSize = true;
+            this.CheckBox_CheckAll.Location = new System.Drawing.Point(648, 731);
+            this.CheckBox_CheckAll.Name = "CheckBox_CheckAll";
+            this.CheckBox_CheckAll.Size = new System.Drawing.Size(84, 21);
+            this.CheckBox_CheckAll.TabIndex = 28;
+            this.CheckBox_CheckAll.Text = "Check all";
+            this.CheckBox_CheckAll.UseVisualStyleBackColor = true;
+            this.CheckBox_CheckAll.CheckedChanged += new System.EventHandler(this.CheckBox_CheckAll_CheckedChanged);
             // 
             // GenerateSend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1500, 880);
-            this.Controls.Add(this.Button_Delete);
+            this.Controls.Add(this.CheckBox_CheckAll);
+            this.Controls.Add(this.ComboBox_ParticipationFormat);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.TextBox_Status);
             this.Controls.Add(this.ComboBox_PaymentStatus);
-            this.Controls.Add(this.Table_FilteredResultData);
             this.Controls.Add(this.TextBox_LastName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -438,6 +492,8 @@
             this.Text = "Generate And Send To Everyone";
             this.Table_FilteredResultsHeader.ResumeLayout(false);
             this.Table_FilteredResultsHeader.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +504,7 @@
         private MetroFramework.Controls.MetroTextBox TextBox_CompanyName;
         private MetroFramework.Controls.MetroTextBox TextBox_FirstName;
         private MetroFramework.Controls.MetroButton Button_Cancel;
-        private MetroFramework.Controls.MetroButton Button_Send;
+        public  MetroFramework.Controls.MetroButton Button_Send;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Filter;
         private System.Windows.Forms.Label label2;
@@ -465,9 +521,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private MetroFramework.Controls.MetroTextBox TextBox_LastName;
-        private System.Windows.Forms.TableLayoutPanel Table_FilteredResultData;
         private MetroFramework.Controls.MetroComboBox ComboBox_PaymentStatus;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button Button_Delete;
+        private System.Windows.Forms.TextBox TextBox_Status;
+        private System.Windows.Forms.Timer Timer_StringChanged;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel Table_FilteredResults;
+        private MetroFramework.Controls.MetroComboBox ComboBox_ParticipationFormat;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox CheckBox_CheckAll;
     }
 }
