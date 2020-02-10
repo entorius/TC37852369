@@ -75,6 +75,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(699, 300);
             this.ClientSize = new System.Drawing.Size(699, 300);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Delete);

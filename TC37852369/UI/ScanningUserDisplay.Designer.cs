@@ -54,20 +54,28 @@
             this.Label_RegisteredInDay4 = new System.Windows.Forms.Label();
             this.Button_CheckIn = new System.Windows.Forms.Button();
             this.Button_Close = new System.Windows.Forms.Button();
+            this.Label_JobTitle = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Label_ParticipationFormat = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Label_CompanyName = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(143, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 17);
+            this.label1.Size = new System.Drawing.Size(77, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
             // Label_FirstName
             // 
             this.Label_FirstName.AutoSize = true;
+            this.Label_FirstName.ForeColor = System.Drawing.Color.Gray;
             this.Label_FirstName.Location = new System.Drawing.Point(312, 120);
             this.Label_FirstName.Name = "Label_FirstName";
             this.Label_FirstName.Size = new System.Drawing.Size(76, 17);
@@ -77,15 +85,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(143, 160);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.Size = new System.Drawing.Size(75, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Last Name";
             // 
             // Label_LastName
             // 
             this.Label_LastName.AutoSize = true;
+            this.Label_LastName.ForeColor = System.Drawing.Color.Gray;
             this.Label_LastName.Location = new System.Drawing.Point(312, 160);
             this.Label_LastName.Name = "Label_LastName";
             this.Label_LastName.Size = new System.Drawing.Size(76, 17);
@@ -95,15 +105,17 @@
             // Label_CheckInDay1Name
             // 
             this.Label_CheckInDay1Name.AutoSize = true;
+            this.Label_CheckInDay1Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_CheckInDay1Name.Location = new System.Drawing.Point(144, 240);
             this.Label_CheckInDay1Name.Name = "Label_CheckInDay1Name";
-            this.Label_CheckInDay1Name.Size = new System.Drawing.Size(101, 17);
+            this.Label_CheckInDay1Name.Size = new System.Drawing.Size(99, 19);
             this.Label_CheckInDay1Name.TabIndex = 4;
             this.Label_CheckInDay1Name.Text = "Check in day 1";
             // 
             // Label_CheckInDay1
             // 
             this.Label_CheckInDay1.AutoSize = true;
+            this.Label_CheckInDay1.ForeColor = System.Drawing.Color.Gray;
             this.Label_CheckInDay1.Location = new System.Drawing.Point(313, 240);
             this.Label_CheckInDay1.Name = "Label_CheckInDay1";
             this.Label_CheckInDay1.Size = new System.Drawing.Size(42, 17);
@@ -113,33 +125,37 @@
             // Label_CheckInDay2Name
             // 
             this.Label_CheckInDay2Name.AutoSize = true;
+            this.Label_CheckInDay2Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_CheckInDay2Name.Location = new System.Drawing.Point(144, 280);
             this.Label_CheckInDay2Name.Name = "Label_CheckInDay2Name";
-            this.Label_CheckInDay2Name.Size = new System.Drawing.Size(101, 17);
+            this.Label_CheckInDay2Name.Size = new System.Drawing.Size(101, 19);
             this.Label_CheckInDay2Name.TabIndex = 12;
             this.Label_CheckInDay2Name.Text = "Check in day 2";
             // 
             // Label_CheckInDay3Name
             // 
             this.Label_CheckInDay3Name.AutoSize = true;
+            this.Label_CheckInDay3Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_CheckInDay3Name.Location = new System.Drawing.Point(144, 320);
             this.Label_CheckInDay3Name.Name = "Label_CheckInDay3Name";
-            this.Label_CheckInDay3Name.Size = new System.Drawing.Size(101, 17);
+            this.Label_CheckInDay3Name.Size = new System.Drawing.Size(101, 19);
             this.Label_CheckInDay3Name.TabIndex = 13;
             this.Label_CheckInDay3Name.Text = "Check in day 3";
             // 
             // Label_CheckInDay4Name
             // 
             this.Label_CheckInDay4Name.AutoSize = true;
+            this.Label_CheckInDay4Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_CheckInDay4Name.Location = new System.Drawing.Point(144, 360);
             this.Label_CheckInDay4Name.Name = "Label_CheckInDay4Name";
-            this.Label_CheckInDay4Name.Size = new System.Drawing.Size(101, 17);
+            this.Label_CheckInDay4Name.Size = new System.Drawing.Size(101, 19);
             this.Label_CheckInDay4Name.TabIndex = 14;
             this.Label_CheckInDay4Name.Text = "Check in day 4";
             // 
             // Label_EventName
             // 
             this.Label_EventName.AutoSize = true;
+            this.Label_EventName.ForeColor = System.Drawing.Color.Gray;
             this.Label_EventName.Location = new System.Drawing.Point(312, 80);
             this.Label_EventName.Name = "Label_EventName";
             this.Label_EventName.Size = new System.Drawing.Size(76, 17);
@@ -149,15 +165,17 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(143, 80);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 17);
+            this.label14.Size = new System.Drawing.Size(84, 19);
             this.label14.TabIndex = 15;
             this.label14.Text = "Event Name";
             // 
             // Label_PaymentStatus
             // 
             this.Label_PaymentStatus.AutoSize = true;
+            this.Label_PaymentStatus.ForeColor = System.Drawing.Color.Gray;
             this.Label_PaymentStatus.Location = new System.Drawing.Point(312, 200);
             this.Label_PaymentStatus.Name = "Label_PaymentStatus";
             this.Label_PaymentStatus.Size = new System.Drawing.Size(76, 17);
@@ -167,51 +185,57 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(143, 200);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(105, 17);
+            this.label16.Size = new System.Drawing.Size(104, 19);
             this.label16.TabIndex = 17;
             this.label16.Text = "Payment status";
             // 
             // Label_RegisteredInDay4Name
             // 
             this.Label_RegisteredInDay4Name.AutoSize = true;
+            this.Label_RegisteredInDay4Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_RegisteredInDay4Name.Location = new System.Drawing.Point(457, 360);
             this.Label_RegisteredInDay4Name.Name = "Label_RegisteredInDay4Name";
-            this.Label_RegisteredInDay4Name.Size = new System.Drawing.Size(131, 17);
+            this.Label_RegisteredInDay4Name.Size = new System.Drawing.Size(129, 19);
             this.Label_RegisteredInDay4Name.TabIndex = 26;
             this.Label_RegisteredInDay4Name.Text = "Registered in day 4";
             // 
             // Label_RegisteredInDay3Name
             // 
             this.Label_RegisteredInDay3Name.AutoSize = true;
+            this.Label_RegisteredInDay3Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_RegisteredInDay3Name.Location = new System.Drawing.Point(457, 320);
             this.Label_RegisteredInDay3Name.Name = "Label_RegisteredInDay3Name";
-            this.Label_RegisteredInDay3Name.Size = new System.Drawing.Size(131, 17);
+            this.Label_RegisteredInDay3Name.Size = new System.Drawing.Size(129, 19);
             this.Label_RegisteredInDay3Name.TabIndex = 25;
             this.Label_RegisteredInDay3Name.Text = "Registered in day 3";
             // 
             // Label_RegisteredInDay2Name
             // 
             this.Label_RegisteredInDay2Name.AutoSize = true;
+            this.Label_RegisteredInDay2Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_RegisteredInDay2Name.Location = new System.Drawing.Point(457, 280);
             this.Label_RegisteredInDay2Name.Name = "Label_RegisteredInDay2Name";
-            this.Label_RegisteredInDay2Name.Size = new System.Drawing.Size(131, 17);
+            this.Label_RegisteredInDay2Name.Size = new System.Drawing.Size(129, 19);
             this.Label_RegisteredInDay2Name.TabIndex = 24;
             this.Label_RegisteredInDay2Name.Text = "Registered in day 2";
             // 
             // Label_RegisteredInDay1Name
             // 
             this.Label_RegisteredInDay1Name.AutoSize = true;
+            this.Label_RegisteredInDay1Name.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_RegisteredInDay1Name.Location = new System.Drawing.Point(457, 240);
             this.Label_RegisteredInDay1Name.Name = "Label_RegisteredInDay1Name";
-            this.Label_RegisteredInDay1Name.Size = new System.Drawing.Size(131, 17);
+            this.Label_RegisteredInDay1Name.Size = new System.Drawing.Size(127, 19);
             this.Label_RegisteredInDay1Name.TabIndex = 19;
             this.Label_RegisteredInDay1Name.Text = "Registered in day 1";
             // 
             // Label_CheckInDay2
             // 
             this.Label_CheckInDay2.AutoSize = true;
+            this.Label_CheckInDay2.ForeColor = System.Drawing.Color.Gray;
             this.Label_CheckInDay2.Location = new System.Drawing.Point(312, 280);
             this.Label_CheckInDay2.Name = "Label_CheckInDay2";
             this.Label_CheckInDay2.Size = new System.Drawing.Size(42, 17);
@@ -221,6 +245,7 @@
             // Label_CheckInDay3
             // 
             this.Label_CheckInDay3.AutoSize = true;
+            this.Label_CheckInDay3.ForeColor = System.Drawing.Color.Gray;
             this.Label_CheckInDay3.Location = new System.Drawing.Point(312, 320);
             this.Label_CheckInDay3.Name = "Label_CheckInDay3";
             this.Label_CheckInDay3.Size = new System.Drawing.Size(42, 17);
@@ -230,6 +255,7 @@
             // Label_CheckInDay4
             // 
             this.Label_CheckInDay4.AutoSize = true;
+            this.Label_CheckInDay4.ForeColor = System.Drawing.Color.Gray;
             this.Label_CheckInDay4.Location = new System.Drawing.Point(312, 360);
             this.Label_CheckInDay4.Name = "Label_CheckInDay4";
             this.Label_CheckInDay4.Size = new System.Drawing.Size(42, 17);
@@ -239,6 +265,7 @@
             // Label_RegisteredInDay1
             // 
             this.Label_RegisteredInDay1.AutoSize = true;
+            this.Label_RegisteredInDay1.ForeColor = System.Drawing.Color.Gray;
             this.Label_RegisteredInDay1.Location = new System.Drawing.Point(654, 240);
             this.Label_RegisteredInDay1.Name = "Label_RegisteredInDay1";
             this.Label_RegisteredInDay1.Size = new System.Drawing.Size(42, 17);
@@ -248,6 +275,7 @@
             // Label_RegisteredInDay2
             // 
             this.Label_RegisteredInDay2.AutoSize = true;
+            this.Label_RegisteredInDay2.ForeColor = System.Drawing.Color.Gray;
             this.Label_RegisteredInDay2.Location = new System.Drawing.Point(654, 280);
             this.Label_RegisteredInDay2.Name = "Label_RegisteredInDay2";
             this.Label_RegisteredInDay2.Size = new System.Drawing.Size(42, 17);
@@ -257,6 +285,7 @@
             // Label_RegisteredInDay3
             // 
             this.Label_RegisteredInDay3.AutoSize = true;
+            this.Label_RegisteredInDay3.ForeColor = System.Drawing.Color.Gray;
             this.Label_RegisteredInDay3.Location = new System.Drawing.Point(654, 320);
             this.Label_RegisteredInDay3.Name = "Label_RegisteredInDay3";
             this.Label_RegisteredInDay3.Size = new System.Drawing.Size(42, 17);
@@ -266,6 +295,7 @@
             // Label_RegisteredInDay4
             // 
             this.Label_RegisteredInDay4.AutoSize = true;
+            this.Label_RegisteredInDay4.ForeColor = System.Drawing.Color.Gray;
             this.Label_RegisteredInDay4.Location = new System.Drawing.Point(654, 360);
             this.Label_RegisteredInDay4.Name = "Label_RegisteredInDay4";
             this.Label_RegisteredInDay4.Size = new System.Drawing.Size(42, 17);
@@ -300,11 +330,79 @@
             this.Button_Close.UseVisualStyleBackColor = false;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
+            // Label_JobTitle
+            // 
+            this.Label_JobTitle.AutoSize = true;
+            this.Label_JobTitle.ForeColor = System.Drawing.Color.Gray;
+            this.Label_JobTitle.Location = new System.Drawing.Point(631, 80);
+            this.Label_JobTitle.Name = "Label_JobTitle";
+            this.Label_JobTitle.Size = new System.Drawing.Size(76, 17);
+            this.Label_JobTitle.TabIndex = 41;
+            this.Label_JobTitle.Text = "First Name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(462, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 19);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Job Title";
+            // 
+            // Label_ParticipationFormat
+            // 
+            this.Label_ParticipationFormat.AutoSize = true;
+            this.Label_ParticipationFormat.ForeColor = System.Drawing.Color.Gray;
+            this.Label_ParticipationFormat.Location = new System.Drawing.Point(631, 160);
+            this.Label_ParticipationFormat.Name = "Label_ParticipationFormat";
+            this.Label_ParticipationFormat.Size = new System.Drawing.Size(76, 17);
+            this.Label_ParticipationFormat.TabIndex = 39;
+            this.Label_ParticipationFormat.Text = "First Name";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(462, 160);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 19);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Participation format";
+            // 
+            // Label_CompanyName
+            // 
+            this.Label_CompanyName.AutoSize = true;
+            this.Label_CompanyName.ForeColor = System.Drawing.Color.Gray;
+            this.Label_CompanyName.Location = new System.Drawing.Point(631, 120);
+            this.Label_CompanyName.Name = "Label_CompanyName";
+            this.Label_CompanyName.Size = new System.Drawing.Size(76, 17);
+            this.Label_CompanyName.TabIndex = 37;
+            this.Label_CompanyName.Text = "First Name";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 7.865546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(462, 120);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(109, 19);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Company Name";
+            // 
             // ScanningUserDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(800, 502);
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.Label_JobTitle);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Label_ParticipationFormat);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Label_CompanyName);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.Button_Close);
             this.Controls.Add(this.Button_CheckIn);
             this.Controls.Add(this.Label_RegisteredInDay4);
@@ -332,6 +430,7 @@
             this.Controls.Add(this.Label_FirstName);
             this.Controls.Add(this.label1);
             this.Name = "ScanningUserDisplay";
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Scanned User Display";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -366,5 +465,11 @@
         private System.Windows.Forms.Label Label_RegisteredInDay4;
         private System.Windows.Forms.Button Button_CheckIn;
         private System.Windows.Forms.Button Button_Close;
+        private System.Windows.Forms.Label Label_JobTitle;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Label_ParticipationFormat;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Label_CompanyName;
+        private System.Windows.Forms.Label label10;
     }
 }

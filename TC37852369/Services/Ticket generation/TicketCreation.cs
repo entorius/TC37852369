@@ -78,7 +78,7 @@ namespace TC37852369.Services.Ticket_generation
                 addTextToDocument(document, eventName, Alignment.left, "Calibri", 16, paragraphColor);
                 document.InsertParagraph();
                 string dateLocation = "Date\t\t\t\t\t\t\t\t\tLocation";
-                string datePlace = date + "\t\t\t\t" + location1Row;
+                string datePlace = date + "\t\t\t\t\t" + location1Row;
                 string TimeLocation = "\t\t\t\t\t\t\t\t\t" + location2Row;
 
 

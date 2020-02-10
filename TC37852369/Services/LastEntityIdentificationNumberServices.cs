@@ -40,5 +40,9 @@ namespace TC37852369.Services
         {
             return await this.getLastIdetificationNumber("Barcode");
         }
+        public async Task<LastIdentificationNumber> getImageEntityLastIdentificationNumber()
+        {
+            return await this.getLastIdetificationNumber("ImageEntity");
+        }
     }
 }

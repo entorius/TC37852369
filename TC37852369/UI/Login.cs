@@ -24,6 +24,11 @@ namespace TC37852369
             TextBox_EmailMod.addEvents();
             TextBoxModification TextBox_PasswordMod = new TextBoxModification(TextBox_Password, "Password",true);
             TextBox_PasswordMod.addEvents();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
 
         }
         

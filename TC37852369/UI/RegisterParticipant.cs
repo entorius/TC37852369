@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MetroFramework.Controls;
 using MetroFramework.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.UI;
 using TC37852369.UI.helpers;
@@ -71,6 +72,8 @@ namespace TC37852369
         string deleteParticipationFormat = "x Delete participation format";
         bool addNewParticipantFormatSelected = false;
         bool deleteParticipantFormatSelected = false;
+        bool paymentDateValueChanged = false;
+        DateTime paymentValueDate = DateTime.MinValue;
         public RegisterParticipant(MainWindow window, List<Event> events)
         {
             mainWindow = window;
@@ -78,13 +81,24 @@ namespace TC37852369
             this.FormClosed += CloseHandler;
 
             InitializeComponent();
-            EventDaysShowHide(null); ;
+            EventDaysShowHide(null);
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
 
             loadWindowData();
         }
         private async void loadWindowData()
         {
             participationFormats = await participationFormatServices.getAllParticipationFormats();
+
+            PictureBox_DeleteAdditionalPhoneNumber.Hide();
+            TextBox_AdditionalPhoneNumber.Text = "";
+            TextBox_AdditionalPhoneNumber.Hide();
+            Label_AdditionalPhoneNumber.Hide();
+            
 
             foreach (Event eventEntity in events)
             {
@@ -94,7 +108,7 @@ namespace TC37852369
             {
                 ComboBox_CompanyType.Items.Add(companyType);
             }
-            
+
 
             foreach (ParticipationFormat participationFormat in participationFormats)
             {
@@ -134,17 +148,18 @@ namespace TC37852369
         private async void Button_Register_Click(object sender, EventArgs e)
         {
             bool eventChoosen = ComboBox_Events.SelectedItem == null ? false : true;
+            bool paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
             int partcipantInformationManditoryFieldsFilled =
                 participantServices.isPartcipantInformationManditoryFieldsCorrect(
                     TextBox_FirstName.Text, TextBox_LastName.Text, TextBox_Email.Text
                     );
-            if (partcipantInformationManditoryFieldsFilled > 0)
+            if (partcipantInformationManditoryFieldsFilled > 0 || !eventChoosen || !paymentAmountCorrect)
             {
-                if(partcipantInformationManditoryFieldsFilled == 1)
+                if (partcipantInformationManditoryFieldsFilled == 1)
                 {
-                    messageBoxHelper.showWarning(this, 
+                    messageBoxHelper.showWarning(this,
                         "First Name field text is too short (not correct name entered " +
-                        "(is shorter than 3 characters) or name has not been entered)","Warning");
+                        "(is shorter than 3 characters) or name has not been entered)", "Warning");
                 }
                 else if (partcipantInformationManditoryFieldsFilled == 2)
                 {
@@ -159,9 +174,31 @@ namespace TC37852369
                         "(must be: (some cheracters)@(domain) etc. example@gmail.com)" +
                         " or email has not been entered)", "Warning");
                 }
+                else if (!eventChoosen)
+                {
+                    messageBoxHelper.showWarning(this,
+                       "You have not choosen event!", "Warning");
+                }
+                else if (!paymentAmountCorrect)
+                {
+                    messageBoxHelper.showWarning(this,
+                       "Payment amount is negative or not a number", "Warning");
+                }
             }
             else
             {
+                double paymentAmount;
+                Double.TryParse(TextBox_PaymentAmount.Text, out paymentAmount);
+                if(paymentAmount == 0)
+                {
+                    paymentAmount = -1;
+                }
+
+                DateTime paymentDate = DateTime_PaymentDate.MinDate;
+                if (paymentDateValueChanged)
+                {
+                    paymentDate = paymentValueDate;
+                }
                 Participant createdParticipant = await participantServices.createParticipant(
                 events[ComboBox_Events.SelectedIndex].id.ToString(),
                 TextBox_FirstName.Text,
@@ -179,7 +216,13 @@ namespace TC37852369
                 ComboBox_ParticipateDay1.Text.Equals("Yes") ? true : false,
                 ComboBox_ParticipateDay2.Text.Equals("Yes") ? true : false,
                 ComboBox_ParticipateDay3.Text.Equals("Yes") ? true : false,
-                ComboBox_ParticipateDay4.Text.Equals("Yes") ? true : false
+                ComboBox_ParticipateDay4.Text.Equals("Yes") ? true : false,
+                DateHelper.setDateToMidnight(paymentDate),
+                DateHelper.setDateToMidnight(DateTime_RegistrationDate.Value),
+                paymentAmount,
+                TextBox_AdditionalPhoneNumber.Text,
+                TextBox_Comment.Text
+
                 );
                 if (createdParticipant != null)
                 {
@@ -197,7 +240,7 @@ namespace TC37852369
                                     mainWindow.selectedEventParticipants.Add(createdParticipant);
                                 }
                                 mainWindow.UpdateCheckedInAndRegistered(mainWindow.selectedEventParticipants, mainWindow.selectedEvent, false);
-                                
+
                             }
                             mainWindow.addParticipantTableRow();
                             mainWindow.addParticipantToParticipantTableRow(
@@ -208,7 +251,7 @@ namespace TC37852369
                 }
                 else
                 {
-                    messageBoxHelper.showWarning(this,"Event creation was unsuccesfull, because of internet connection" +
+                    messageBoxHelper.showWarning(this, "Event creation was unsuccesfull, because of internet connection" +
                         "or database write request number exceeded", "Warning");
                 }
             }
@@ -226,7 +269,7 @@ namespace TC37852369
         }
         private void ParticipationFormatSelectedIndexChanged(Object sender, EventArgs e)
         {
-            if(this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 2 && !addNewParticipantFormatSelected)
+            if (this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 2 && !addNewParticipantFormatSelected)
             {
                 Console.WriteLine("Yahooo");
                 this.ComboBox_ParticipationFormat.SelectedIndex = -1;
@@ -235,7 +278,7 @@ namespace TC37852369
                 registerParticipationFormat.Show();
                 registerParticipationFormat.Disposed += AddParticipationFormats;
                 addNewParticipantFormatSelected = true;
-                
+
             }
             else if (this.ComboBox_ParticipationFormat.SelectedIndex == this.ComboBox_ParticipationFormat.Items.Count - 1 && !deleteParticipantFormatSelected)
             {
@@ -249,10 +292,10 @@ namespace TC37852369
 
             }
         }
-        private void AddParticipationFormats(Object sender,EventArgs e)
+        private void AddParticipationFormats(Object sender, EventArgs e)
         {
             ComboBox_ParticipationFormat.Items.Clear();
-            foreach(ParticipationFormat participationFormat in participationFormats)
+            foreach (ParticipationFormat participationFormat in participationFormats)
             {
                 ComboBox_ParticipationFormat.Items.Add(participationFormat.Value);
             }
@@ -286,7 +329,7 @@ namespace TC37852369
             eventDayShowHide(Label_ParticipateDay3, ComboBox_ParticipateDay3, 3, selectedEventIndex);
             eventDayShowHide(Label_ParticipateDay4, ComboBox_ParticipateDay4, 4, selectedEventIndex);
         }
-        public void eventDayShowHide(MetroLabel eventDayLabel,MetroComboBox eventDayComboBox, int dayValueToCompare, 
+        public void eventDayShowHide(MetroLabel eventDayLabel, MetroComboBox eventDayComboBox, int dayValueToCompare,
             int? selectedEventIndex)
         {
             if (selectedEventIndex != null)
@@ -307,6 +350,53 @@ namespace TC37852369
             {
                 eventDayLabel.Hide();
                 eventDayComboBox.Hide();
+            }
+        }
+
+        private void DateTime_PaymentDate_ValueChanged(object sender, EventArgs e)
+        {
+            paymentDateValueChanged = true;
+            paymentValueDate = DateTime_PaymentDate.Value;
+        }
+
+        private void PictureBox_AddAdditionalPhoneNUmber_Click(object sender, EventArgs e)
+        {
+            PictureBox_AddAdditionalPhoneNumber.Hide();
+            PictureBox_DeleteAdditionalPhoneNumber.Show();
+            TextBox_AdditionalPhoneNumber.Show();
+            Label_AdditionalPhoneNumber.Show();
+        }
+
+        private void PictureBox_DeleteAdditionalPhoneNumber_Click(object sender, EventArgs e)
+        {
+            PictureBox_AddAdditionalPhoneNumber.Show();
+            PictureBox_DeleteAdditionalPhoneNumber.Hide();
+            TextBox_AdditionalPhoneNumber.Text = "";
+            TextBox_AdditionalPhoneNumber.Hide();
+            Label_AdditionalPhoneNumber.Hide();
+        }
+
+        private void ComboBox_PaymentStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ComboBox_PaymentStatus.SelectedIndex == 2)
+            {
+                TextBox_PaymentAmount.Hide();
+                Label_PaymentAmount.Hide();
+            }
+            else
+            {
+                TextBox_PaymentAmount.Show();
+                Label_PaymentAmount.Show();
+            }
+            if(ComboBox_PaymentStatus.SelectedIndex == 1)
+            {
+                DateTime_PaymentDate.Hide();
+                Label_PaymentDate.Hide();
+            }
+            else
+            {
+                DateTime_PaymentDate.Show();
+                Label_PaymentDate.Show();
             }
         }
     }

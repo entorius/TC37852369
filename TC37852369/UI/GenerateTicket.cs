@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.Services.Ticket_generation;
 
@@ -36,10 +37,15 @@ namespace TC37852369
             InitializeComponent();
             TextBoxModification TextBox_UserIdMod = new TextBoxModification(TextBox_UserId, "User Id", false);
             TextBox_UserIdMod.addEvents();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
         private void Button_Generate_Click(object sender, EventArgs e)
         {
-            Image image = ticketCreation.GenerateCompanyCredentialsImage(companyData.companyName,
+            /*Image image = ticketCreation.GenerateCompanyCredentialsImage(companyData.companyName,
                 companyData.address, companyData.email, companyData.phoneNumber, eventEntity.webPage);
 
             List<Participant> participants = new List<Participant>();
@@ -50,7 +56,7 @@ namespace TC37852369
             ticketCreation.generateTicketsAndSave(participants, events, companyData);
 
             mainWindow.Enabled = true;
-            this.Dispose();
+            this.Dispose();*/
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
@@ -66,13 +72,13 @@ namespace TC37852369
 
         private void Button_GenerateBarcode_Click(object sender, EventArgs e)
         {
-            barcodeGenerator.generateQRBarcode("Something", Color.Black);
+            /*barcodeGenerator.generateQRBarcode("Something", Color.Black);*/
         }
 
-        private async void Button_GenerateBarcodeNumber_Click(object sender, EventArgs e)
+        private /*async*/ void Button_GenerateBarcodeNumber_Click(object sender, EventArgs e)
         {
-            string barcode = await barcodeGenerator.generateBarcodeNumber("1");
-            TextBox_Barcode.Text = barcode; 
+            /*string barcode = await barcodeGenerator.generateBarcodeNumber("1");
+            TextBox_Barcode.Text = barcode; */
 
         }
         public string formatEventDate(DateTime date)
@@ -89,9 +95,9 @@ namespace TC37852369
 
         }
 
-        private async void Button_GenerateUsers_Click(object sender, EventArgs e)
+        private /*async*/ void Button_GenerateUsers_Click(object sender, EventArgs e)
         {
-            List<Participant> addedPartcipants = new List<Participant>();
+            /*List<Participant> addedPartcipants = new List<Participant>();
             for (int i = 0; i < 100; i++)
             {
                Participant addedParticipant = await participantServices.createParticipant(
@@ -116,7 +122,7 @@ namespace TC37852369
                 addedPartcipants.Add(addedParticipant);
             }
             mainWindow.Enabled = true;
-            this.Dispose();
+            this.Dispose();*/
         }
     }
 }

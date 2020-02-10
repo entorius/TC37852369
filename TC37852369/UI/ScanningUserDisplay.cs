@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.UI.helpers;
 
@@ -36,6 +37,11 @@ namespace TC37852369.UI
             this.scanningWindow = scanningWindow;
             this.FormClosed += ClosedHandler;
             loadWindowData();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void ClosedHandler(object sender, FormClosedEventArgs e)
@@ -56,6 +62,10 @@ namespace TC37852369.UI
                 Label_FirstName.Text = selectedParticipant.firstName;
                 Label_LastName.Text = selectedParticipant.lastName;
                 Label_PaymentStatus.Text = selectedParticipant.paymentStatus;
+                Label_JobTitle.Text = selectedParticipant.jobTitle;
+                Label_CompanyName.Text = selectedParticipant.companyName;
+                Label_ParticipationFormat.Text = selectedParticipant.participationFormat;
+                
 
                 Label_CheckInDay1.Text = selectedParticipant.checkedInDay1 ? "Yes" : "No";
                 Label_CheckInDay2.Text = selectedParticipant.checkedInDay2 ? "Yes" : "No";
@@ -70,6 +80,19 @@ namespace TC37852369.UI
                 ShowCheckedInRegisteredLabel(Label_CheckInDay2Name, Label_RegisteredInDay2Name, Label_CheckInDay2, Label_RegisteredInDay2, eventDaysNumber, 2);
                 ShowCheckedInRegisteredLabel(Label_CheckInDay3Name, Label_RegisteredInDay3Name, Label_CheckInDay3, Label_RegisteredInDay3, eventDaysNumber, 3);
                 ShowCheckedInRegisteredLabel(Label_CheckInDay4Name, Label_RegisteredInDay4Name, Label_CheckInDay4, Label_RegisteredInDay4, eventDaysNumber, 4);
+                
+                if (selectedParticipant.paymentStatus.Equals("Paid"))
+                {
+                    this.Style = MetroFramework.MetroColorStyle.Green;
+                }
+                else if (selectedParticipant.paymentStatus.Equals("Due"))
+                {
+                    this.Style = MetroFramework.MetroColorStyle.Red;
+                }
+                else if (selectedParticipant.paymentStatus.Equals("Free"))
+                {
+                    this.Style = MetroFramework.MetroColorStyle.Green;
+                }
             }
             else
             {

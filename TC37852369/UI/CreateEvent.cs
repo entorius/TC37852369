@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework.Controls;
 using MetroFramework.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.UI.helpers;
 
@@ -25,10 +26,12 @@ namespace TC37852369
 {
     public partial class CreateEvent : MetroForm
     {
+        
         MainWindow mainWindow;
         EventServices eventServices = new EventServices();
         LastEntityIdentificationNumberServices lastEntityIdentificationNumberService =
             new LastEntityIdentificationNumberServices();
+        ImageEntityServices imageEntityServices = new ImageEntityServices();
         Dictionary<int,Image> eventImages = new Dictionary<int,Image>();
         Dictionary<int, string> eventImagePath = new Dictionary<int, string>();
         MailTemplateServices mailTeplateServices = new MailTemplateServices();
@@ -54,8 +57,16 @@ namespace TC37852369
 
             //on initialize add close handler for this form
             this.FormClosed += CloseHandler;
+            this.Show();
+            this.BringToFront();
 
             fillWindowFields();
+
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
 
             //on initialize disable default email templates combobox
             ComboBox_EmailTemplate.Enabled = false;
@@ -288,14 +299,12 @@ namespace TC37852369
                     emailBody = "";
                     emailSubject = "";
                 }
+
                 
-                /*bool imageExists = eventImagePath.ContainsKey(1);
-                if (imageExists)
-                {
-                    string path = "";
-                    eventImagePath.TryGetValue(1, out path);
-                    eventServices.addEventImage(path);
-                }*/
+
+
+
+                //Adding event to database
                 await lastEntityIdentificationNumberService.IncreaseLastIdetificationNumber("Event");
                 Event eventEntity = await eventServices.addEvent(TextBox_EventName.Text, DateTime_EventDate.Value,
                    eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
@@ -303,13 +312,52 @@ namespace TC37852369
                    day4TimeTo,TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                    eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                    emailTemplate, emailBody, emailSubject);
+
+
                 if (eventEntity != null)
                 {
+                    // checking which images to add
+                    bool image1Exists = eventImagePath.ContainsKey(1);
+                    if (image1Exists)
+                    {
+                        await AddEventImageToDatabase("1", eventEntity);
+                    }
+                    bool image2Exists = eventImagePath.ContainsKey(2);
+                    if (image2Exists)
+                    {
+                        await AddEventImageToDatabase("2", eventEntity);
+                    }
+                    bool image3Exists = eventImagePath.ContainsKey(3);
+                    if (image3Exists)
+                    {
+                        await AddEventImageToDatabase("3", eventEntity);
+                    }
+                    bool image4Exists = eventImagePath.ContainsKey(4);
+                    if (image4Exists)
+                    {
+                        await AddEventImageToDatabase("4", eventEntity);
+                    }
+
+                    bool image5Exists = eventImagePath.ContainsKey(5);
+                    if (image5Exists)
+                    {
+                       await AddEventImageToDatabase("5", eventEntity);
+                    }
+                    
+
                     mainWindow.Enabled = true;
                     mainWindow.ComboBox_Events.Items.Add(eventEntity.eventName);
                     mainWindow.events.Add(eventEntity);
-                    mainWindow.addEventTableRow();
-                    mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
+                    mainWindow.filteredEvents.Add(eventEntity);
+                    if (eventEntity.eventStatus.Equals(nameof(EventStatus.Ongoing)) || eventEntity.eventStatus.Equals(nameof(EventStatus.Upcoming)))
+                    {
+                        mainWindow.filteredEvents = mainWindow.filteredEvents.OrderByDescending(ev => ev.date_From).ToList();
+                    }
+                    else
+                    {
+                        mainWindow.addEventTableRow();
+                        mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
+                    }
                     this.Dispose();
                 }
                 else
@@ -321,7 +369,20 @@ namespace TC37852369
 
             }
         }
-
+        private async Task<bool> AddEventImageToDatabase(string imageNumber, Event eventEntity )
+        {
+            string path = "";
+            int imageNumberToAdd;
+            bool successfulCoversion =Int32.TryParse(imageNumber, out imageNumberToAdd);
+            if (successfulCoversion && eventEntity != null)
+            {
+                eventImagePath.TryGetValue(imageNumberToAdd, out path);
+                LastIdentificationNumber lastId = await lastEntityIdentificationNumberService.getImageEntityLastIdentificationNumber();
+                string image1Name = imageEntityServices.addEventImage(path, lastId.id.ToString());
+                await imageEntityServices.AddEventImageEntity(image1Name, imageNumber, eventEntity);
+            }
+            return successfulCoversion && eventEntity != null;
+        }
 
         protected void CloseHandler(object sender, EventArgs e)
         {
@@ -574,35 +635,35 @@ namespace TC37852369
         {
             eventImages.Remove(1);
             eventImagePath.Remove(1);
-            updateImageButtons("", 0);
+            updateImageButtons("", 1);
         }
 
         private void Button_Delete2_Click(object sender, EventArgs e)
         {
             eventImages.Remove(2);
             eventImagePath.Remove(2);
-            updateImageButtons("", 0);
+            updateImageButtons("", 2);
         }
 
         private void Button_Delete3_Click(object sender, EventArgs e)
         {
             eventImages.Remove(3);
             eventImagePath.Remove(3);
-            updateImageButtons("", 0);
+            updateImageButtons("", 3);
         }
 
         private void Button_Delete4_Click(object sender, EventArgs e)
         {
             eventImages.Remove(4);
             eventImagePath.Remove(4);
-            updateImageButtons("", 0);
+            updateImageButtons("", 4);
         }
 
         private void Button_Delete5_Click(object sender, EventArgs e)
         {
             eventImages.Remove(5);
             eventImagePath.Remove(5);
-            updateImageButtons("", 0);
+            updateImageButtons("", 5);
         }
 
         private void ComboBox_EmailTemplate_SelectedIndexChanged(object sender, EventArgs e)

@@ -134,7 +134,7 @@
             // 
             this.metroLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel3.Location = new System.Drawing.Point(641, 60);
+            this.metroLabel3.Location = new System.Drawing.Point(661, 100);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(2, 400);
             this.metroLabel3.TabIndex = 20;
@@ -143,6 +143,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1300, 720);
             this.ClientSize = new System.Drawing.Size(1300, 720);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.TextBox_PhoneNumber);

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.UI.helpers;
 
@@ -28,6 +29,11 @@ namespace TC37852369.UI
             this.participationFormats = participationFormats;
             this.FormClosed += CloseHandler;
             fillCombobox();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void fillCombobox()

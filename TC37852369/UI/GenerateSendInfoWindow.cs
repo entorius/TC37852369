@@ -36,6 +36,11 @@ namespace TC37852369.UI
 
             this.generateSend = generateSend;
             InitializeComponent();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
         public GenerateSendInfoWindow(EditParticipant editParticipant)
         {

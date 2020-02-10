@@ -25,29 +25,47 @@ namespace TC37852369
         //events variables
         public EventServices eventService = new EventServices();
         public List<Event> events = new List<Event>();
+        int lastEventsCount = 0;
         public List<Event> filteredEvents = new List<Event>();
         //registration variables
         public Event selectedEvent;
         public ParticipantServices participantService = new ParticipantServices();
+        public EventServices eventServices = new EventServices();
         public List<Participant> allParticipants = new List<Participant>();
         public List<Participant> selectedEventParticipants = new List<Participant>();
         public List<Participant> filteredParticipants = new List<Participant>();
+        public List<bool> participantTableColumnShow = new List<bool>();
         private CompanyDataServices companyDataServices = new CompanyDataServices();
         private MetroMessageBoxHelper messageBoxHelper = new MetroMessageBoxHelper();
         public CompanyData companyData;
         private List<EmailTemplate> mailTemplates;
+        public List<List<ToolTipHelper>> participantsToolTipHelpers = new List<List<ToolTipHelper>>();
         private MailTemplateServices mailTemplateService = new MailTemplateServices();
         int regiteredParticipantsTodayNumber = 0;
         int checkedInTodayParticipantsNumber = 0;
+        WindowLoading windowLoading;
         public MainWindow(Login login)
         {
+           
+            
             this.login = login;
             this.FormClosed += ClosedHandler;
             InitializeComponent();
+            Table_ParticipantsData1.BringToFront();
+            windowLoading = new WindowLoading(this);
+            windowLoading.Show();
             loadData();
+            this.Show();
+            this.BringToFront();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
         public async void loadData()
         {
+
             events = await eventService.getAllEvents();
             //Participant participant1 = await participantService.getParticipant("253");
             //participants.Add(participant1);
@@ -55,23 +73,60 @@ namespace TC37852369
             companyData = await companyDataServices.GetCompanyData();
             mailTemplates = await mailTemplateService.getAllMailTemplates();
             UpdateEventsTable(events);
-            foreach(Event eventEntity in events)
+            foreach (Event eventEntity in events)
             {
                 ComboBox_Events.Items.Add(eventEntity.eventName);
             }
+
+            foreach (PaymentStatus paymentStatus in (PaymentStatus[])Enum.GetValues(typeof(PaymentStatus)))
+            {
+                ComboBox_PaymentStatus.Items.Add(paymentStatus);
+            }
+            ComboBox_PaymentStatus.SelectedIndex = -1;
+
             Label_Registered.Hide();
             Label_CheckedIn.Hide();
-            TextBox_Registered.Hide();
-            TextBox_CheckedIn.Hide();
+            Label_RegisteredAmount.Hide();
+            Label_CheckedInAmount.Hide();
+
+            Label_PaidStatus.Hide();
+            Label_PaidDueAmount.Hide();
+            metroTabControl2.Selecting += TabChanged;
+
+            updateEventExportItems();
+            windowLoading.Dispose();
+            for (int i = 0; i <= 12; i++)
+            {
+                participantTableColumnShow.Add(true);
+            }
             //UpdateParticipantsTable();
         }
+
+        private void TabChanged(object sender, EventArgs e)
+        {
+            if (events.Count > lastEventsCount)
+            {
+                updateEventExportItems();
+            }
+        }
+        private void updateEventExportItems()
+        {
+            ComboBox_EventExport.Items.Clear();
+            foreach (Event ev in events)
+            {
+                ComboBox_EventExport.Items.Add(ev.eventName);
+            }
+            lastEventsCount = events.Count;
+        }
+
         //Main Window Events tab actions
-        public void UpdateEventsTable(List<Event> eventsToAdd )
+        public void UpdateEventsTable(List<Event> eventsToAdd)
         {
 
             Table_EventsData.SuspendLayout();
+            emptyTable(Table_EventsData);
             Table_EventsData.RowCount = events.Count;
-            for(int i = 0; i < eventsToAdd.Count - 1; i++)
+            for (int i = 0; i < eventsToAdd.Count - 1; i++)
             {
                 Table_EventsData.RowStyles.Add(new RowStyle(SizeType.Absolute));
             }
@@ -101,12 +156,12 @@ namespace TC37852369
         }
         public void addEventToEventTableRow(Event eventEntity, int rowNumber)
         {
-
+            
             Label label_EventName = new Label();
             label_EventName.Text = eventEntity.eventName;
-            label_EventName.Width = 250; 
+            label_EventName.Width = 250;
             Label label_EventDate = new Label();
-            label_EventDate.Text = eventEntity.date_From.ToString("yyyy/MM/dd");
+            label_EventDate.Text = eventEntity.date_From.ToString("dd/MM/yyyy");
             label_EventDate.Width = 200;
             Label label_EventDuration = new Label();
             label_EventDuration.Text = eventEntity.eventLengthDays.ToString();
@@ -147,25 +202,25 @@ namespace TC37852369
         }
         public void editEventTableRow(Event eventEntity, int rowNumber)
         {
-            Table_EventsData.GetControlFromPosition(0, rowNumber).Text = 
+            Table_EventsData.GetControlFromPosition(0, rowNumber).Text =
                 eventEntity.eventName;
 
-            Table_EventsData.GetControlFromPosition(1, rowNumber).Text = 
+            Table_EventsData.GetControlFromPosition(1, rowNumber).Text =
                 eventEntity.date_From.ToString("yyyy/MM/dd");
 
-            Table_EventsData.GetControlFromPosition(2, rowNumber).Text = 
+            Table_EventsData.GetControlFromPosition(2, rowNumber).Text =
                 eventEntity.eventLengthDays.ToString();
 
-            Table_EventsData.GetControlFromPosition(3, rowNumber).Text = 
+            Table_EventsData.GetControlFromPosition(3, rowNumber).Text =
                 eventEntity.venueName;
 
-            Table_EventsData.GetControlFromPosition(4, rowNumber).Text = 
-                eventEntity.venueAdress; 
+            Table_EventsData.GetControlFromPosition(4, rowNumber).Text =
+                eventEntity.venueAdress;
 
-            Table_EventsData.GetControlFromPosition(5, rowNumber).Text = 
-                eventEntity.eventStatus; 
+            Table_EventsData.GetControlFromPosition(5, rowNumber).Text =
+                eventEntity.eventStatus;
 
-            Table_EventsData.GetControlFromPosition(6, rowNumber).Text = 
+            Table_EventsData.GetControlFromPosition(6, rowNumber).Text =
                 eventEntity.current_Mail_Template;
 
             events[rowNumber] = eventEntity;
@@ -200,15 +255,16 @@ namespace TC37852369
                 style.SizeType = SizeType.Absolute;
                 style.Height = 40;
                 j = j + 1;
-                
+
             }
             table_ParticipantsHeader.SuspendLayout();
             for (int i = 0; i < ParticipantsToAdd.Count; i++)
             {
-                addParticipantToParticipantTableRow(ParticipantsToAdd[i], i , events);
+                addParticipantToParticipantTableRow(ParticipantsToAdd[i], i, events);
             }
             table_ParticipantsHeader.ResumeLayout();
             Table_ParticipantsData1.ResumeLayout();
+
         }
         public void addParticipantToParticipantTableRow(Participant participant, int rowNumber,
             List<Event> events)
@@ -225,9 +281,9 @@ namespace TC37852369
             double paymentAmount = participantService.countPaymentAmount(
                 paymentAmountForEventDay, eventDaysParticipating);
 
-            
+
             emptyTableRowsAndColumns(table_ParticipantsHeader);
-            
+
             Label label_FirstName = new Label();
             label_FirstName.Text = participant.firstName;
             label_FirstName.Width = 300;
@@ -367,7 +423,7 @@ namespace TC37852369
             Table_ParticipantsData1.Controls.Add(label_PaymentAmount, 7, rowNumber);
             Table_ParticipantsData1.Controls.Add(label_TicketSent, 8, rowNumber);
             Table_ParticipantsData1.Controls.Add(button_Edit, 9, rowNumber);
-            if(Table_ParticipantsData1.ColumnCount == 13)
+            if (Table_ParticipantsData1.ColumnCount == 13)
             {
                 Table_ParticipantsData1.Controls.Add(label_RegisteredInDay, 10, rowNumber);
                 Table_ParticipantsData1.Controls.Add(label_CheckedInDay, 11, rowNumber);
@@ -377,7 +433,7 @@ namespace TC37852369
         }
         private void Button_RegisterParticipant_Click(object sender, EventArgs e)
         {
-            RegisterParticipant cEvent = new RegisterParticipant(this,events);
+            RegisterParticipant cEvent = new RegisterParticipant(this, events);
             this.Enabled = false;
             cEvent.Show();
         }
@@ -386,8 +442,8 @@ namespace TC37852369
             var cellPos = GetRowColIndex(
             Table_ParticipantsData1,
             Table_ParticipantsData1.PointToClient(Cursor.Position));
-            EditParticipant editParticipant = new EditParticipant(this, 
-                filteredParticipants[cellPos.Value.Y],events,companyData, cellPos.Value.Y);
+            EditParticipant editParticipant = new EditParticipant(this,
+                filteredParticipants[cellPos.Value.Y], events, companyData, cellPos.Value.Y);
             editParticipant.Show();
             this.Enabled = false;
         }
@@ -484,16 +540,31 @@ namespace TC37852369
             });
             double paymentAmountForEventDay = participantEvent.paymentAmountForDay;
 
-            double paymentAmount = participantService.countPaymentAmount(
-                paymentAmountForEventDay, eventDaysParticipating);
+            double paymentAmount = 0;
+            if (participant.paymentAmount > 0)
+            {
+                paymentAmount = participant.paymentAmount;
+            }
+            else { 
+                paymentAmount = participantService.countPaymentAmount(
+                    paymentAmountForEventDay, eventDaysParticipating);
+            }
             Table_ParticipantsData1.GetControlFromPosition(0, rowNumber).Text =
                 participant.firstName;
+            participantsToolTipHelpers[rowNumber][0].labelToolTip
+                .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(0, rowNumber), participant.firstName);
 
             Table_ParticipantsData1.GetControlFromPosition(1, rowNumber).Text =
                 participant.lastName;
 
+            participantsToolTipHelpers[rowNumber][1].labelToolTip
+                .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(1, rowNumber), participant.lastName);
+
             Table_ParticipantsData1.GetControlFromPosition(2, rowNumber).Text =
                 participant.jobTitle;
+
+            participantsToolTipHelpers[rowNumber][2].labelToolTip
+                .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(2, rowNumber), participant.jobTitle);
 
             Table_ParticipantsData1.GetControlFromPosition(3, rowNumber).Text =
                 participant.companyType;
@@ -501,8 +572,14 @@ namespace TC37852369
             Table_ParticipantsData1.GetControlFromPosition(4, rowNumber).Text =
                 participant.companyName;
 
+            participantsToolTipHelpers[rowNumber][3].labelToolTip
+                .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(4, rowNumber), participant.companyName);
+
             Table_ParticipantsData1.GetControlFromPosition(5, rowNumber).Text =
                 participant.participationFormat;
+
+            participantsToolTipHelpers[rowNumber][4].labelToolTip
+                .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(5, rowNumber), participant.participationFormat);
 
             Table_ParticipantsData1.GetControlFromPosition(6, rowNumber).Text =
                 participant.paymentStatus;
@@ -551,7 +628,7 @@ namespace TC37852369
             }
 
             filteredParticipants[rowNumber] = participant;
-            
+
             int idToReplace = allParticipants.FindLastIndex(p => p.participantId.Equals(participant.participantId));
             allParticipants[idToReplace] = participant;
         }
@@ -579,12 +656,12 @@ namespace TC37852369
         private void Button_GenerateTicket_Click(object sender, EventArgs e)
         {
             Event eventEntity = events[0];
-            
+
             if (allParticipants.Count > 0)
             {
                 eventEntity = events.Find(ev =>
                 ev.id.ToString().Equals(allParticipants[0].eventId));
-                
+
             }
 
             Participant participant = allParticipants.Count > 0 ? allParticipants[0] : null;
@@ -602,15 +679,32 @@ namespace TC37852369
 
         private void Button_Export_Click(object sender, EventArgs e)
         {
-            GenerateExcel generator = new GenerateExcel();
-            string workingDirectory = Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
-            generator.ExportEventInfo("Event Name", projectDirectory, "YeetForLife");
+            if (StringHelper.containsIllegalPathCharacters(TextBox_EventExportFileName.Text) || TextBox_EventExportFileName.Text.Length == 0)
+            {
+                messageBoxHelper.showWarning(this, "file name contains illegal characters", "Warning");
+            }
+            else
+            {
+                if (ComboBox_EventExport.SelectedIndex >= 0)
+                {
+                    DialogResult dialogResult = FolderBrowserDialog_Events.ShowDialog();
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        List<Participant> eParticipants = participantService.
+                            filterEventParticipants(allParticipants, events[ComboBox_EventExport.SelectedIndex]);
+                        GenerateExcel.ExportAllEventInfo(events[ComboBox_EventExport.SelectedIndex], eParticipants, FolderBrowserDialog_Events.SelectedPath, TextBox_EventExportFileName.Text);
+                    }
+                }
+                else
+                {
+                    messageBoxHelper.showWarning(this, "You have not choosen event", "Warning");
+                }
+            }
         }
 
         private void Button_ChangeInformation_Click(object sender, EventArgs e)
         {
-            AddChangeCompanyInformation changeInformationWindow = 
+            AddChangeCompanyInformation changeInformationWindow =
                 new AddChangeCompanyInformation(this);
             changeInformationWindow.Show();
         }
@@ -660,9 +754,11 @@ namespace TC37852369
         }
 
         private async void Button_UpdateParticipantsInformation_Click(object sender, EventArgs e)
-        { 
+        {
             allParticipants = await participantService.getAllParticipants();
+            Table_ParticipantsData1.SuspendLayout();
             emptyTable(Table_ParticipantsData1);
+            participantsToolTipHelpers.Clear();
             filteredParticipants = filterParticipantsfromEvent(allParticipants, this.selectedEvent);
             UpdateParticipantsTable(filteredParticipants);
             UpdateCheckedInAndRegistered(filteredParticipants, this.selectedEvent, true);
@@ -670,6 +766,7 @@ namespace TC37852369
         }
         public void emptyTable(TableLayoutPanel table)
         {
+
             table.SuspendLayout();
             table.Controls.Clear();
             table.RowCount = 1;
@@ -677,7 +774,7 @@ namespace TC37852369
         }
         public void emptyTableRowsAndColumns(TableLayoutPanel table)
         {
-            
+
             table.RowStyles.Clear();
             table.Controls.Clear();
             table.RowCount = 1;
@@ -687,19 +784,26 @@ namespace TC37852369
         private async void Button_UpdateEvents_Click(object sender, EventArgs e)
         {
             events = await eventService.getAllEvents();
+            Table_EventsData.SuspendLayout();
             emptyTable(Table_EventsData);
             filteredEvents = events;
             UpdateEventsTable(filteredEvents);
         }
 
-        private void ComboBox_Events_SelectedIndexChanged(object sender, EventArgs e)
+        private async void ComboBox_Events_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Table_ParticipantsData1.SuspendLayout();
             emptyTable(Table_ParticipantsData1);
+            foreach (Event ev in events) {
+                bool updated = await updateEventStatus(ev);
+            }
             this.selectedEvent = events[ComboBox_Events.SelectedIndex];
             filteredParticipants = filterParticipantsfromEvent(allParticipants, this.selectedEvent);
             selectedEventParticipants = filteredParticipants;
+            participantsToolTipHelpers.Clear();
             UpdateParticipantsTable(filteredParticipants);
-            UpdateCheckedInAndRegistered(filteredParticipants, this.selectedEvent,true);
+            Table_ParticipantsData1.ResumeLayout();
+            UpdateCheckedInAndRegistered(filteredParticipants, this.selectedEvent, true);
         }
 
         //Participants filters
@@ -732,19 +836,29 @@ namespace TC37852369
         private List<Participant> filterParticipantsfromCompanyName(List<Participant> participants, string companyName)
         {
             List<Participant> filteredParticipants = participants;
-            if (companyName.Replace(" ","").Length > 0)
+            if (companyName.Replace(" ", "").Length > 0)
             {
                 filteredParticipants = filteredParticipants.FindAll(p => p.companyName.Replace(" ", "").Contains(companyName.Replace(" ", "")));
+            }
+            return filteredParticipants;
+        }
+
+        private List<Participant> filterParticipantsfromPaymentStatus(List<Participant> participants, string paymentsStatus)
+        {
+            List<Participant> filteredParticipants = participants;
+            if (paymentsStatus.Length > 0)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.paymentStatus.Equals(paymentsStatus));
             }
             return filteredParticipants;
         }
         // end of Participant filters
         public void UpdateCheckedInAndRegistered(List<Participant> participants, Event eventEntity, bool loadingData)
         {
-            TextBox_Registered.Show();
+            Label_RegisteredAmount.Show();
             Label_Registered.Show();
-            TextBox_Registered.Text = participants.Count.ToString();
-            
+            Label_RegisteredAmount.Text = participants.Count.ToString();
+
             if (eventEntity.date_From <= DateHelper.getToday() && eventEntity.date_From.AddDays(Double.Parse((eventEntity.eventLengthDays - 1).ToString())) >= DateHelper.getToday())
             {
                 for (int i = 0; i < eventEntity.eventLengthDays; i++)
@@ -756,50 +870,71 @@ namespace TC37852369
                     }
                 }
                 Label_CheckedIn.Show();
-                TextBox_CheckedIn.Show();
-                TextBox_CheckedIn.Text = checkedInTodayParticipantsNumber.ToString() + " / " + regiteredParticipantsTodayNumber.ToString();
-               
+                Label_CheckedInAmount.Show();
+                Label_CheckedInAmount.Text = checkedInTodayParticipantsNumber.ToString() + " / " + regiteredParticipantsTodayNumber.ToString();
+
             }
             else
             {
                 Label_CheckedIn.Hide();
-                TextBox_CheckedIn.Hide();
+                Label_CheckedInAmount.Hide();
             }
+        }
+        private async Task<bool> updateEventStatus(Event eventEntity)
+        {
+            string eventStatus = eventServices.getEventStatus(eventEntity.date_From,
+                    eventEntity.eventLengthDays);
+            if(!eventEntity.eventStatus.Equals(eventStatus))
+            {
+                eventEntity.eventStatus = eventStatus;
+                Event responseEventEntity = await eventServices.editEvent(eventEntity);
+                int allEventsIndex =events.FindLastIndex(ev => ev.id.Equals(responseEventEntity.id)); 
+                int filteredEventsIndex = filteredEvents.FindLastIndex(ev => ev.id.Equals(responseEventEntity.id));
+                if (allEventsIndex >= 0)
+                {
+                    events[allEventsIndex] = responseEventEntity;
+                }
+                if (filteredEventsIndex >= 0)
+                {
+                    filteredEvents[filteredEventsIndex] = responseEventEntity;
+                }
+            }
+            return true;
         }
         public int countRegisteredToThisDayParticipants(List<Participant> participants, Event eventEntity, int eventDay)
         {
             int participantsCount = 0;
-                foreach(Participant participant in participants)
+            foreach (Participant participant in participants)
+            {
+                if (eventDay == 1)
                 {
-                    if (eventDay == 1)
+                    if (participant.participateInDay1)
                     {
-                        if (participant.participateInDay1)
-                        {
-                            participantsCount = participantsCount + 1;
-                        }
-                    }
-                    else if (eventDay == 2)
-                    {
-                        if (participant.participateInDay2)
-                        {
-                            participantsCount = participantsCount + 1;
-                        }
-                    }
-                    else if (eventDay == 3)
-                    {
-                        if (participant.participateInDay3)
-                        {
-                            participantsCount = participantsCount + 1;
-                        }
-                    }
-                    else if (eventDay == 4)
-                    {
-                        if (participant.participateInDay4)
-                        {
-                            participantsCount = participantsCount + 1;
-                        }
+                        participantsCount = participantsCount + 1;
                     }
                 }
+                else if (eventDay == 2)
+                {
+                    if (participant.participateInDay2)
+                    {
+                        participantsCount = participantsCount + 1;
+                    }
+                }
+                else if (eventDay == 3)
+                {
+                    if (participant.participateInDay3)
+                    {
+                        participantsCount = participantsCount + 1;
+                    }
+                }
+                else if (eventDay == 4)
+                {
+                    if (participant.participateInDay4)
+                    {
+                        participantsCount = participantsCount + 1;
+                    }
+                }
+            }
             return participantsCount;
 
 
@@ -842,13 +977,46 @@ namespace TC37852369
         }
         private void Button_FilterParticipant_Click(object sender, EventArgs e)
         {
+            filterParticipants();
+            Table_ParticipantsData1.ResumeLayout();
+        }
+        private void filterParticipants()
+        {
+            
+            Table_ParticipantsData1.SuspendLayout();
             emptyTable(Table_ParticipantsData1);
+            participantsToolTipHelpers.Clear();
+            filteredParticipants = selectedEventParticipants;
             filteredParticipants = filterParticipantsfromFirstName(filteredParticipants, TextBox_FirstNameFilter.Text);
             filteredParticipants = filterParticipantsfromLastName(filteredParticipants, TextBox_LastNameFilter.Text);
             filteredParticipants = filterParticipantsfromCompanyName(filteredParticipants, TextBox_CompanyNameFilter.Text);
+            
+            if (ComboBox_PaymentStatus.SelectedIndex >= 0)
+            {
+                filteredParticipants = filterParticipantsfromPaymentStatus(filteredParticipants, ComboBox_PaymentStatus.SelectedItem.ToString());
+                if (ComboBox_PaymentStatus.SelectedItem.ToString().Equals("Paid"))
+                {
+                    Label_PaidStatus.Show();
+                    Label_PaidDueAmount.Show();
+                    Label_PaidStatus.Text = "Total paid";
+                    Label_PaidDueAmount.Text = participantService.countParticipantsPaymentAmount(filteredParticipants, selectedEvent).ToString();
+                }
+                else if (ComboBox_PaymentStatus.SelectedItem.ToString().Equals("Due"))
+                {
+                    Label_PaidStatus.Show();
+                    Label_PaidDueAmount.Show();
+                    Label_PaidStatus.Text = "Total due";
+                    Label_PaidDueAmount.Text = participantService.countParticipantsPaymentAmount(filteredParticipants, selectedEvent).ToString();
+                }
+            }
+            else
+            {
+                Label_PaidStatus.Hide();
+                Label_PaidDueAmount.Hide();
+            }
             UpdateParticipantsTable(filteredParticipants);
         }
-        private Label formatLabel(int size,int width, string text, Color color)
+        private Label formatLabel(int size, int width, string text, Color color)
         {
             Label upgradedLabel = new Label();
             upgradedLabel.Width = width;
@@ -857,6 +1025,107 @@ namespace TC37852369
             upgradedLabel.Font = font;
             upgradedLabel.ForeColor = color;
             return upgradedLabel;
+        }
+
+        private void Button_ExcelExport_Click(object sender, EventArgs e)
+        {
+            
+            if (StringHelper.containsIllegalPathCharacters(TextBox_EventExportFileName.Text) || TextBox_EventExportFileName.Text.Length == 0)
+            {
+                messageBoxHelper.showWarning(this, "file name contains illegal characters", "Warning");
+            }
+            else
+            {
+                if (ComboBox_EventExport.SelectedIndex >= 0)
+                {
+                    DialogResult dialogResult = FolderBrowserDialog_Events.ShowDialog();
+                    if (dialogResult == DialogResult.OK) {
+                        List<Participant> eParticipants = participantService.
+                            filterEventParticipants(allParticipants, events[ComboBox_EventExport.SelectedIndex]);
+                        GenerateExcel.ReportEventInfo(events[ComboBox_EventExport.SelectedIndex], eParticipants, FolderBrowserDialog_Events.SelectedPath, TextBox_EventExportFileName.Text);
+                    }
+                }
+                else
+                {
+                    messageBoxHelper.showWarning(this, "You have not choosen event", "Warning");
+                }
+            }
+        }
+
+        private void Button_DelegateList_Click(object sender, EventArgs e)
+        {
+            if (StringHelper.containsIllegalPathCharacters(TextBox_EventExportFileName.Text) || TextBox_EventExportFileName.Text.Length == 0)
+            {
+                messageBoxHelper.showWarning(this, "file name contains illegal characters", "Warning");
+            }
+            else
+            {
+                if (ComboBox_EventExport.SelectedIndex >= 0)
+                {
+                    DialogResult dialogResult = FolderBrowserDialog_Events.ShowDialog();
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        List<Participant> eParticipants = participantService.
+                            filterEventParticipants(allParticipants, events[ComboBox_EventExport.SelectedIndex]);
+                        GenerateExcel.DelegateAllEventInfo(events[ComboBox_EventExport.SelectedIndex], eParticipants, FolderBrowserDialog_Events.SelectedPath, TextBox_EventExportFileName.Text);
+                    }
+                }
+                else
+                {
+                    messageBoxHelper.showWarning(this, "You have not choosen event", "Warning");
+                }
+            }
+        }
+
+        private void Button_ClearParticipantFIlters_Click(object sender, EventArgs e)
+        {
+            TextBox_FirstNameFilter.Text = "";
+            TextBox_LastNameFilter.Text = "";
+            TextBox_CompanyNameFilter.Text = "";
+            ComboBox_PaymentStatus.SelectedIndex = -1;
+            filterParticipants();
+        }
+
+        private void Button_FilterEvent_Click(object sender, EventArgs e)
+        {
+            filteredEvents = events;
+            bool warningShown = false;
+            int day = 0;
+            int month = 0;
+            int year = 0;
+            bool dayParsed = Int32.TryParse(TextBox_Day.Text, out day);
+            bool monthParsed = Int32.TryParse(TextBox_Month.Text, out month);
+            bool yearParsed = Int32.TryParse(TextBox_Year.Text, out year);
+            if (dayParsed && monthParsed && yearParsed)
+            {
+                if (TextBox_Day.Text.Length > 0 && TextBox_Day.Text.Length <= 2 && day <= 31)
+                {
+                    filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Day == day);
+                }
+                if (TextBox_Month.Text.Length > 0 && TextBox_Month.Text.Length <= 2 && month <= 12)
+                {
+                    filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Month == month);
+                }
+                if (TextBox_Year.Text.Length == 4 && year > 1990)
+                {
+                    filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Year == year);
+                }
+                if(TextBox_EventName.Text.Replace(" ","").Length > 0)
+                {
+                    filteredEvents = filteredEvents.FindAll(ev => ev.eventName.Contains(TextBox_EventName.Text));
+                }
+            }
+            else
+            {
+                messageBoxHelper.showWarning(this, "You have entered wrong date (contains spaces or contain letters)", "Warning");
+            }
+        }
+
+        private void Button_ChooseColumnsToShow_Click(object sender, EventArgs e)
+        {
+            MainWindow_ColumnsToShow window = new MainWindow_ColumnsToShow(this);
+            window.Show();
+            this.Enabled = false;
         }
     }
 }

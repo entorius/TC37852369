@@ -119,18 +119,21 @@
     <Compile Include="DomainEntities\EmailTemplate.cs" />
     <Compile Include="DomainEntities\EmailTemplateString.cs" />
     <Compile Include="DomainEntities\Event.cs" />
+    <Compile Include="DomainEntities\ImageEntity.cs" />
     <Compile Include="DomainEntities\LastIdentificationNumber.cs" />
     <Compile Include="DomainEntities\Participant.cs" />
     <Compile Include="DomainEntities\ParticipationFormat.cs" />
     <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Repository\CompanyDataRepository.cs" />
+    <Compile Include="Repository\ImageEntityRepository.cs" />
     <Compile Include="Repository\LastEntityIdentificationNumberRepository.cs" />
     <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Repository\MailTemplateRepository.cs" />
@@ -143,6 +146,7 @@
     <Compile Include="Services\EmailSending\SendEmail.cs" />
     <Compile Include="Services\Encoder\StringEncoder.cs" />
     <Compile Include="Services\EventServices.cs" />
+    <Compile Include="Services\ImageEntityServices.cs" />
     <Compile Include="Services\Images\GifImage.cs" />
     <Compile Include="Services\LastEntityIdentificationNumberServices.cs" />
     <Compile Include="Services\MailTemplateServices.cs" />
@@ -158,6 +162,12 @@
     </Compile>
     <Compile Include="UI\AddChangeCompanyInformation.Designer.cs">
       <DependentUpon>AddChangeCompanyInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AllFiltersWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AllFiltersWindow.Designer.cs">
+      <DependentUpon>AllFiltersWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CreateEvent.cs">
       <SubType>Form</SubType>
@@ -219,6 +229,7 @@
     <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="UI\helpers\MetroMessageBoxHelper.cs" />
     <Compile Include="UI\helpers\TableLayoutHelper.cs" />
+    <Compile Include="UI\helpers\ToolTipHelper.cs" />
     <Compile Include="UI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +244,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\MainWindow_ColumnsToShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainWindow_ColumnsToShow.Designer.cs">
+      <DependentUpon>MainWindow_ColumnsToShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\RegisterParticipant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,8 +275,17 @@
     <Compile Include="UI\ScanningWindow.Designer.cs">
       <DependentUpon>ScanningWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\WindowLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\WindowLoading.Designer.cs">
+      <DependentUpon>WindowLoading.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\AddChangeCompanyInformation.resx">
       <DependentUpon>AddChangeCompanyInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AllFiltersWindow.resx">
+      <DependentUpon>AllFiltersWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
@@ -299,6 +325,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainWindow_ColumnsToShow.resx">
+      <DependentUpon>MainWindow_ColumnsToShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\RegisterParticipant.resx">
       <DependentUpon>RegisterParticipant.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ScanningWindow.resx">
       <DependentUpon>ScanningWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\WindowLoading.resx">
+      <DependentUpon>WindowLoading.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -367,12 +399,15 @@
     <Content Include="UI\Images\font-awesome_4-7-0_image_80_0_ffffff_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_list-alt_80_0_ffffff_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_plus-circle_20_0_ffffff_none.png" />
+    <Content Include="UI\Images\font-awesome_4-7-0_plus_20_0_000000_none.png" />
+    <Content Include="UI\Images\font-awesome_4-7-0_plus_30_0_000000_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_ticket_80_0_FFFFFF_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_times_20_0_ffffff_none.png" />
     <Content Include="UI\Images\font-awesome_4-7-0_user-plus_80_0_ffffff_none.png" />
     <Content Include="UI\Images\GeneratingDocument.gif" />
     <Content Include="UI\Images\inlinum-logo.png" />
     <Content Include="UI\Images\internet.png" />
+    <Content Include="UI\Images\ionicons_2-0-1_android-delete_20_0_000000_none.png" />
     <Content Include="UI\Images\ionicons_2-0-1_email_80_0_ffffff_none.png" />
     <Content Include="UI\Images\ligature-symbols_2-11-0_add_20_0_ffffff_none.png" />
     <Content Include="UI\Images\logo_final.png" />

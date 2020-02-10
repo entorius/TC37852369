@@ -11,7 +11,6 @@ namespace TC37852369.Repository
 {
     public class LastEntityIdentificationNumberRepository
     {
-        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<LastIdentificationNumber> getLastIdetificationNumber(string domainEntityName)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();

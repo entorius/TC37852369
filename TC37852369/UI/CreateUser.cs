@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using TC37852369.Helpers;
 using TC37852369.Services;
 
 namespace TC37852369
@@ -44,6 +45,12 @@ namespace TC37852369
 
             TextBoxModification TextBox_PhoneNumberMod = new TextBoxModification(TextBox_PhoneNumber, "Phone Number", false);
             TextBox_PhoneNumberMod.addEvents();
+
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void Button_CreateUser_Click(object sender, EventArgs e)

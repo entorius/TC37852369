@@ -117,7 +117,7 @@
             // 
             this.TextBox_EventName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_EventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_EventName.Location = new System.Drawing.Point(188, 145);
+            this.TextBox_EventName.Location = new System.Drawing.Point(224, 125);
             this.TextBox_EventName.Name = "TextBox_EventName";
             this.TextBox_EventName.Size = new System.Drawing.Size(409, 30);
             this.TextBox_EventName.TabIndex = 1;
@@ -126,7 +126,7 @@
             // 
             this.TextBox_VenueName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueName.Location = new System.Drawing.Point(188, 685);
+            this.TextBox_VenueName.Location = new System.Drawing.Point(224, 665);
             this.TextBox_VenueName.Name = "TextBox_VenueName";
             this.TextBox_VenueName.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueName.TabIndex = 5;
@@ -135,7 +135,7 @@
             // 
             this.TextBox_VenueAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueAdress.Location = new System.Drawing.Point(188, 745);
+            this.TextBox_VenueAdress.Location = new System.Drawing.Point(224, 725);
             this.TextBox_VenueAdress.Name = "TextBox_VenueAdress";
             this.TextBox_VenueAdress.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueAdress.TabIndex = 6;
@@ -144,10 +144,10 @@
             // 
             this.TextBox_Body.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Body.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Body.Location = new System.Drawing.Point(898, 240);
+            this.TextBox_Body.Location = new System.Drawing.Point(1267, 240);
             this.TextBox_Body.Multiline = true;
             this.TextBox_Body.Name = "TextBox_Body";
-            this.TextBox_Body.Size = new System.Drawing.Size(374, 308);
+            this.TextBox_Body.Size = new System.Drawing.Size(513, 308);
             this.TextBox_Body.TabIndex = 9;
             // 
             // CheckBox_UseDefaultEmail
@@ -155,7 +155,7 @@
             this.CheckBox_UseDefaultEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CheckBox_UseDefaultEmail.AutoSize = true;
             this.CheckBox_UseDefaultEmail.Font = new System.Drawing.Font("Segoe UI", 7.865546F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.CheckBox_UseDefaultEmail.Location = new System.Drawing.Point(857, 583);
+            this.CheckBox_UseDefaultEmail.Location = new System.Drawing.Point(1267, 585);
             this.CheckBox_UseDefaultEmail.Name = "CheckBox_UseDefaultEmail";
             this.CheckBox_UseDefaultEmail.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.CheckBox_UseDefaultEmail.Size = new System.Drawing.Size(191, 23);
@@ -169,7 +169,7 @@
             this.Button_Create.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Create.BackColor = System.Drawing.Color.Maroon;
             this.Button_Create.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Create.Location = new System.Drawing.Point(1046, 934);
+            this.Button_Create.Location = new System.Drawing.Point(1694, 929);
             this.Button_Create.Name = "Button_Create";
             this.Button_Create.Size = new System.Drawing.Size(197, 72);
             this.Button_Create.Style = MetroFramework.MetroColorStyle.White;
@@ -186,7 +186,7 @@
             this.Button_Cancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
             this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Cancel.Location = new System.Drawing.Point(47, 934);
+            this.Button_Cancel.Location = new System.Drawing.Point(67, 937);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(197, 72);
             this.Button_Cancel.Style = MetroFramework.MetroColorStyle.Black;
@@ -202,9 +202,9 @@
             // 
             this.TextBox_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Subject.Location = new System.Drawing.Point(898, 194);
+            this.TextBox_Subject.Location = new System.Drawing.Point(1267, 180);
             this.TextBox_Subject.Name = "TextBox_Subject";
-            this.TextBox_Subject.Size = new System.Drawing.Size(374, 30);
+            this.TextBox_Subject.Size = new System.Drawing.Size(513, 30);
             this.TextBox_Subject.TabIndex = 13;
             // 
             // ComboBox_EmailTemplate
@@ -212,7 +212,7 @@
             this.ComboBox_EmailTemplate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_EmailTemplate.FormattingEnabled = true;
             this.ComboBox_EmailTemplate.ItemHeight = 23;
-            this.ComboBox_EmailTemplate.Location = new System.Drawing.Point(898, 641);
+            this.ComboBox_EmailTemplate.Location = new System.Drawing.Point(1267, 643);
             this.ComboBox_EmailTemplate.Name = "ComboBox_EmailTemplate";
             this.ComboBox_EmailTemplate.Size = new System.Drawing.Size(374, 29);
             this.ComboBox_EmailTemplate.Style = MetroFramework.MetroColorStyle.Orange;
@@ -223,7 +223,7 @@
             // DateTime_EventDate
             // 
             this.DateTime_EventDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DateTime_EventDate.Location = new System.Drawing.Point(188, 205);
+            this.DateTime_EventDate.Location = new System.Drawing.Point(224, 185);
             this.DateTime_EventDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.DateTime_EventDate.Name = "DateTime_EventDate";
             this.DateTime_EventDate.Size = new System.Drawing.Size(409, 29);
@@ -235,7 +235,7 @@
             this.ComboBox_EventDuration.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_EventDuration.FormattingEnabled = true;
             this.ComboBox_EventDuration.ItemHeight = 23;
-            this.ComboBox_EventDuration.Location = new System.Drawing.Point(188, 265);
+            this.ComboBox_EventDuration.Location = new System.Drawing.Point(224, 245);
             this.ComboBox_EventDuration.Name = "ComboBox_EventDuration";
             this.ComboBox_EventDuration.Size = new System.Drawing.Size(409, 29);
             this.ComboBox_EventDuration.TabIndex = 16;
@@ -246,7 +246,7 @@
             // 
             this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(31, 205);
+            this.metroLabel1.Location = new System.Drawing.Point(67, 185);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(76, 19);
             this.metroLabel1.TabIndex = 17;
@@ -256,7 +256,7 @@
             // 
             this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(31, 265);
+            this.metroLabel2.Location = new System.Drawing.Point(67, 245);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(137, 19);
             this.metroLabel2.TabIndex = 18;
@@ -266,7 +266,7 @@
             // 
             this.metroLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel3.Location = new System.Drawing.Point(772, 50);
+            this.metroLabel3.Location = new System.Drawing.Point(1004, 64);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(2, 849);
             this.metroLabel3.TabIndex = 19;
@@ -275,7 +275,7 @@
             // 
             this.metroLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(31, 145);
+            this.metroLabel4.Location = new System.Drawing.Point(67, 125);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(83, 19);
             this.metroLabel4.TabIndex = 20;
@@ -285,7 +285,7 @@
             // 
             this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(31, 685);
+            this.metroLabel5.Location = new System.Drawing.Point(67, 665);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(87, 19);
             this.metroLabel5.TabIndex = 21;
@@ -295,7 +295,7 @@
             // 
             this.metroLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(31, 745);
+            this.metroLabel6.Location = new System.Drawing.Point(67, 725);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(91, 19);
             this.metroLabel6.TabIndex = 22;
@@ -305,7 +305,7 @@
             // 
             this.metroLabel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(31, 805);
+            this.metroLabel8.Location = new System.Drawing.Point(67, 785);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(73, 19);
             this.metroLabel8.TabIndex = 26;
@@ -315,7 +315,7 @@
             // 
             this.Label_Subject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Subject.AutoSize = true;
-            this.Label_Subject.Location = new System.Drawing.Point(785, 194);
+            this.Label_Subject.Location = new System.Drawing.Point(1119, 180);
             this.Label_Subject.Name = "Label_Subject";
             this.Label_Subject.Size = new System.Drawing.Size(91, 19);
             this.Label_Subject.TabIndex = 27;
@@ -325,7 +325,7 @@
             // 
             this.metroLabel10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(785, 240);
+            this.metroLabel10.Location = new System.Drawing.Point(1119, 240);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(81, 19);
             this.metroLabel10.TabIndex = 28;
@@ -335,7 +335,7 @@
             // 
             this.metroLabel11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(785, 641);
+            this.metroLabel11.Location = new System.Drawing.Point(1119, 643);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(103, 19);
             this.metroLabel11.TabIndex = 29;
@@ -345,7 +345,7 @@
             // 
             this.TextBox_Comments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Comments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Comments.Location = new System.Drawing.Point(188, 805);
+            this.TextBox_Comments.Location = new System.Drawing.Point(224, 785);
             this.TextBox_Comments.Multiline = true;
             this.TextBox_Comments.Name = "TextBox_Comments";
             this.TextBox_Comments.Size = new System.Drawing.Size(409, 70);
@@ -355,7 +355,7 @@
             // 
             this.Label_Day1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Day1.AutoSize = true;
-            this.Label_Day1.Location = new System.Drawing.Point(31, 325);
+            this.Label_Day1.Location = new System.Drawing.Point(67, 305);
             this.Label_Day1.Name = "Label_Day1";
             this.Label_Day1.Size = new System.Drawing.Size(70, 19);
             this.Label_Day1.TabIndex = 36;
@@ -365,7 +365,7 @@
             // 
             this.Label_Day2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Day2.AutoSize = true;
-            this.Label_Day2.Location = new System.Drawing.Point(31, 385);
+            this.Label_Day2.Location = new System.Drawing.Point(67, 365);
             this.Label_Day2.Name = "Label_Day2";
             this.Label_Day2.Size = new System.Drawing.Size(72, 19);
             this.Label_Day2.TabIndex = 37;
@@ -375,7 +375,7 @@
             // 
             this.Label_Day3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Day3.AutoSize = true;
-            this.Label_Day3.Location = new System.Drawing.Point(31, 445);
+            this.Label_Day3.Location = new System.Drawing.Point(67, 425);
             this.Label_Day3.Name = "Label_Day3";
             this.Label_Day3.Size = new System.Drawing.Size(72, 19);
             this.Label_Day3.TabIndex = 38;
@@ -385,7 +385,7 @@
             // 
             this.Label_Day4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_Day4.AutoSize = true;
-            this.Label_Day4.Location = new System.Drawing.Point(31, 505);
+            this.Label_Day4.Location = new System.Drawing.Point(67, 485);
             this.Label_Day4.Name = "Label_Day4";
             this.Label_Day4.Size = new System.Drawing.Size(72, 19);
             this.Label_Day4.TabIndex = 39;
@@ -394,7 +394,7 @@
             // DateTime_Day1
             // 
             this.DateTime_Day1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DateTime_Day1.Location = new System.Drawing.Point(188, 325);
+            this.DateTime_Day1.Location = new System.Drawing.Point(224, 305);
             this.DateTime_Day1.MinimumSize = new System.Drawing.Size(0, 29);
             this.DateTime_Day1.Name = "DateTime_Day1";
             this.DateTime_Day1.Size = new System.Drawing.Size(243, 29);
@@ -403,7 +403,7 @@
             // DateTime_Day2
             // 
             this.DateTime_Day2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DateTime_Day2.Location = new System.Drawing.Point(188, 385);
+            this.DateTime_Day2.Location = new System.Drawing.Point(224, 365);
             this.DateTime_Day2.MinimumSize = new System.Drawing.Size(0, 29);
             this.DateTime_Day2.Name = "DateTime_Day2";
             this.DateTime_Day2.Size = new System.Drawing.Size(243, 29);
@@ -412,7 +412,7 @@
             // DateTime_Day3
             // 
             this.DateTime_Day3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DateTime_Day3.Location = new System.Drawing.Point(188, 445);
+            this.DateTime_Day3.Location = new System.Drawing.Point(224, 425);
             this.DateTime_Day3.MinimumSize = new System.Drawing.Size(0, 29);
             this.DateTime_Day3.Name = "DateTime_Day3";
             this.DateTime_Day3.Size = new System.Drawing.Size(243, 29);
@@ -421,7 +421,7 @@
             // DateTime_Day4
             // 
             this.DateTime_Day4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DateTime_Day4.Location = new System.Drawing.Point(188, 505);
+            this.DateTime_Day4.Location = new System.Drawing.Point(224, 485);
             this.DateTime_Day4.MinimumSize = new System.Drawing.Size(0, 29);
             this.DateTime_Day4.Name = "DateTime_Day4";
             this.DateTime_Day4.Size = new System.Drawing.Size(243, 29);
@@ -429,9 +429,10 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label1.Location = new System.Drawing.Point(781, 75);
+            this.label1.Location = new System.Drawing.Point(1114, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 30);
             this.label1.TabIndex = 44;
@@ -441,7 +442,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label2.Location = new System.Drawing.Point(26, 75);
+            this.label2.Location = new System.Drawing.Point(62, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(164, 30);
             this.label2.TabIndex = 45;
@@ -449,9 +450,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.865546F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(184, 893);
+            this.label3.Location = new System.Drawing.Point(220, 878);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 19);
             this.label3.TabIndex = 46;
@@ -459,9 +461,10 @@
             // 
             // ComboBox_Day1FromHour
             // 
+            this.ComboBox_Day1FromHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day1FromHour.FormattingEnabled = true;
             this.ComboBox_Day1FromHour.ItemHeight = 23;
-            this.ComboBox_Day1FromHour.Location = new System.Drawing.Point(491, 325);
+            this.ComboBox_Day1FromHour.Location = new System.Drawing.Point(526, 305);
             this.ComboBox_Day1FromHour.Name = "ComboBox_Day1FromHour";
             this.ComboBox_Day1FromHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day1FromHour.TabIndex = 47;
@@ -469,9 +472,10 @@
             // 
             // ComboBox_Day1FromMinute
             // 
+            this.ComboBox_Day1FromMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day1FromMinute.FormattingEnabled = true;
             this.ComboBox_Day1FromMinute.ItemHeight = 23;
-            this.ComboBox_Day1FromMinute.Location = new System.Drawing.Point(547, 325);
+            this.ComboBox_Day1FromMinute.Location = new System.Drawing.Point(582, 305);
             this.ComboBox_Day1FromMinute.Name = "ComboBox_Day1FromMinute";
             this.ComboBox_Day1FromMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day1FromMinute.TabIndex = 48;
@@ -479,9 +483,10 @@
             // 
             // ComboBox_Day1ToMinute
             // 
+            this.ComboBox_Day1ToMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day1ToMinute.FormattingEnabled = true;
             this.ComboBox_Day1ToMinute.ItemHeight = 23;
-            this.ComboBox_Day1ToMinute.Location = new System.Drawing.Point(697, 325);
+            this.ComboBox_Day1ToMinute.Location = new System.Drawing.Point(732, 305);
             this.ComboBox_Day1ToMinute.Name = "ComboBox_Day1ToMinute";
             this.ComboBox_Day1ToMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day1ToMinute.TabIndex = 56;
@@ -491,7 +496,7 @@
             // 
             this.ComboBox_Day1ToHour.FormattingEnabled = true;
             this.ComboBox_Day1ToHour.ItemHeight = 23;
-            this.ComboBox_Day1ToHour.Location = new System.Drawing.Point(641, 325);
+            this.ComboBox_Day1ToHour.Location = new System.Drawing.Point(676, 305);
             this.ComboBox_Day1ToHour.Name = "ComboBox_Day1ToHour";
             this.ComboBox_Day1ToHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day1ToHour.TabIndex = 55;
@@ -499,9 +504,10 @@
             // 
             // ComboBox_Day2ToMinute
             // 
+            this.ComboBox_Day2ToMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day2ToMinute.FormattingEnabled = true;
             this.ComboBox_Day2ToMinute.ItemHeight = 23;
-            this.ComboBox_Day2ToMinute.Location = new System.Drawing.Point(697, 385);
+            this.ComboBox_Day2ToMinute.Location = new System.Drawing.Point(732, 365);
             this.ComboBox_Day2ToMinute.Name = "ComboBox_Day2ToMinute";
             this.ComboBox_Day2ToMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day2ToMinute.TabIndex = 60;
@@ -509,9 +515,10 @@
             // 
             // ComboBox_Day2ToHour
             // 
+            this.ComboBox_Day2ToHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day2ToHour.FormattingEnabled = true;
             this.ComboBox_Day2ToHour.ItemHeight = 23;
-            this.ComboBox_Day2ToHour.Location = new System.Drawing.Point(641, 385);
+            this.ComboBox_Day2ToHour.Location = new System.Drawing.Point(676, 365);
             this.ComboBox_Day2ToHour.Name = "ComboBox_Day2ToHour";
             this.ComboBox_Day2ToHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day2ToHour.TabIndex = 59;
@@ -519,9 +526,10 @@
             // 
             // ComboBox_Day2FromMinute
             // 
+            this.ComboBox_Day2FromMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day2FromMinute.FormattingEnabled = true;
             this.ComboBox_Day2FromMinute.ItemHeight = 23;
-            this.ComboBox_Day2FromMinute.Location = new System.Drawing.Point(547, 385);
+            this.ComboBox_Day2FromMinute.Location = new System.Drawing.Point(582, 365);
             this.ComboBox_Day2FromMinute.Name = "ComboBox_Day2FromMinute";
             this.ComboBox_Day2FromMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day2FromMinute.TabIndex = 58;
@@ -529,9 +537,10 @@
             // 
             // ComboBox_Day2FromHour
             // 
+            this.ComboBox_Day2FromHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day2FromHour.FormattingEnabled = true;
             this.ComboBox_Day2FromHour.ItemHeight = 23;
-            this.ComboBox_Day2FromHour.Location = new System.Drawing.Point(491, 385);
+            this.ComboBox_Day2FromHour.Location = new System.Drawing.Point(526, 365);
             this.ComboBox_Day2FromHour.Name = "ComboBox_Day2FromHour";
             this.ComboBox_Day2FromHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day2FromHour.TabIndex = 57;
@@ -539,9 +548,10 @@
             // 
             // ComboBox_Day3ToMinute
             // 
+            this.ComboBox_Day3ToMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day3ToMinute.FormattingEnabled = true;
             this.ComboBox_Day3ToMinute.ItemHeight = 23;
-            this.ComboBox_Day3ToMinute.Location = new System.Drawing.Point(697, 445);
+            this.ComboBox_Day3ToMinute.Location = new System.Drawing.Point(732, 425);
             this.ComboBox_Day3ToMinute.Name = "ComboBox_Day3ToMinute";
             this.ComboBox_Day3ToMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day3ToMinute.TabIndex = 64;
@@ -549,9 +559,10 @@
             // 
             // ComboBox_Day3ToHour
             // 
+            this.ComboBox_Day3ToHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day3ToHour.FormattingEnabled = true;
             this.ComboBox_Day3ToHour.ItemHeight = 23;
-            this.ComboBox_Day3ToHour.Location = new System.Drawing.Point(641, 445);
+            this.ComboBox_Day3ToHour.Location = new System.Drawing.Point(676, 425);
             this.ComboBox_Day3ToHour.Name = "ComboBox_Day3ToHour";
             this.ComboBox_Day3ToHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day3ToHour.TabIndex = 63;
@@ -559,9 +570,10 @@
             // 
             // ComboBox_Day3FromMinute
             // 
+            this.ComboBox_Day3FromMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day3FromMinute.FormattingEnabled = true;
             this.ComboBox_Day3FromMinute.ItemHeight = 23;
-            this.ComboBox_Day3FromMinute.Location = new System.Drawing.Point(547, 445);
+            this.ComboBox_Day3FromMinute.Location = new System.Drawing.Point(582, 425);
             this.ComboBox_Day3FromMinute.Name = "ComboBox_Day3FromMinute";
             this.ComboBox_Day3FromMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day3FromMinute.TabIndex = 62;
@@ -569,9 +581,10 @@
             // 
             // ComboBox_Day3FromHour
             // 
+            this.ComboBox_Day3FromHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day3FromHour.FormattingEnabled = true;
             this.ComboBox_Day3FromHour.ItemHeight = 23;
-            this.ComboBox_Day3FromHour.Location = new System.Drawing.Point(491, 445);
+            this.ComboBox_Day3FromHour.Location = new System.Drawing.Point(526, 425);
             this.ComboBox_Day3FromHour.Name = "ComboBox_Day3FromHour";
             this.ComboBox_Day3FromHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day3FromHour.TabIndex = 61;
@@ -579,9 +592,10 @@
             // 
             // ComboBox_Day4ToMinute
             // 
+            this.ComboBox_Day4ToMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day4ToMinute.FormattingEnabled = true;
             this.ComboBox_Day4ToMinute.ItemHeight = 23;
-            this.ComboBox_Day4ToMinute.Location = new System.Drawing.Point(697, 505);
+            this.ComboBox_Day4ToMinute.Location = new System.Drawing.Point(732, 485);
             this.ComboBox_Day4ToMinute.Name = "ComboBox_Day4ToMinute";
             this.ComboBox_Day4ToMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day4ToMinute.TabIndex = 68;
@@ -589,9 +603,10 @@
             // 
             // ComboBox_Day4ToHour
             // 
+            this.ComboBox_Day4ToHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day4ToHour.FormattingEnabled = true;
             this.ComboBox_Day4ToHour.ItemHeight = 23;
-            this.ComboBox_Day4ToHour.Location = new System.Drawing.Point(641, 505);
+            this.ComboBox_Day4ToHour.Location = new System.Drawing.Point(676, 485);
             this.ComboBox_Day4ToHour.Name = "ComboBox_Day4ToHour";
             this.ComboBox_Day4ToHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day4ToHour.TabIndex = 67;
@@ -599,9 +614,10 @@
             // 
             // ComboBox_Day4FromMinute
             // 
+            this.ComboBox_Day4FromMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day4FromMinute.FormattingEnabled = true;
             this.ComboBox_Day4FromMinute.ItemHeight = 23;
-            this.ComboBox_Day4FromMinute.Location = new System.Drawing.Point(547, 505);
+            this.ComboBox_Day4FromMinute.Location = new System.Drawing.Point(582, 485);
             this.ComboBox_Day4FromMinute.Name = "ComboBox_Day4FromMinute";
             this.ComboBox_Day4FromMinute.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day4FromMinute.TabIndex = 66;
@@ -609,9 +625,10 @@
             // 
             // ComboBox_Day4FromHour
             // 
+            this.ComboBox_Day4FromHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_Day4FromHour.FormattingEnabled = true;
             this.ComboBox_Day4FromHour.ItemHeight = 23;
-            this.ComboBox_Day4FromHour.Location = new System.Drawing.Point(491, 505);
+            this.ComboBox_Day4FromHour.Location = new System.Drawing.Point(526, 485);
             this.ComboBox_Day4FromHour.Name = "ComboBox_Day4FromHour";
             this.ComboBox_Day4FromHour.Size = new System.Drawing.Size(50, 29);
             this.ComboBox_Day4FromHour.TabIndex = 65;
@@ -619,9 +636,10 @@
             // 
             // Label_From1
             // 
+            this.Label_From1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_From1.AutoSize = true;
             this.Label_From1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_From1.Location = new System.Drawing.Point(437, 335);
+            this.Label_From1.Location = new System.Drawing.Point(473, 315);
             this.Label_From1.Name = "Label_From1";
             this.Label_From1.Size = new System.Drawing.Size(48, 19);
             this.Label_From1.TabIndex = 69;
@@ -629,9 +647,10 @@
             // 
             // Label_To1
             // 
+            this.Label_To1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_To1.AutoSize = true;
             this.Label_To1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_To1.Location = new System.Drawing.Point(603, 335);
+            this.Label_To1.Location = new System.Drawing.Point(638, 315);
             this.Label_To1.Name = "Label_To1";
             this.Label_To1.Size = new System.Drawing.Size(29, 19);
             this.Label_To1.TabIndex = 70;
@@ -639,9 +658,10 @@
             // 
             // Label_From2
             // 
+            this.Label_From2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_From2.AutoSize = true;
             this.Label_From2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_From2.Location = new System.Drawing.Point(437, 395);
+            this.Label_From2.Location = new System.Drawing.Point(473, 375);
             this.Label_From2.Name = "Label_From2";
             this.Label_From2.Size = new System.Drawing.Size(48, 19);
             this.Label_From2.TabIndex = 71;
@@ -649,9 +669,10 @@
             // 
             // Label_From3
             // 
+            this.Label_From3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_From3.AutoSize = true;
             this.Label_From3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_From3.Location = new System.Drawing.Point(437, 455);
+            this.Label_From3.Location = new System.Drawing.Point(472, 435);
             this.Label_From3.Name = "Label_From3";
             this.Label_From3.Size = new System.Drawing.Size(48, 19);
             this.Label_From3.TabIndex = 72;
@@ -659,9 +680,10 @@
             // 
             // Label_From4
             // 
+            this.Label_From4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_From4.AutoSize = true;
             this.Label_From4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_From4.Location = new System.Drawing.Point(437, 515);
+            this.Label_From4.Location = new System.Drawing.Point(472, 495);
             this.Label_From4.Name = "Label_From4";
             this.Label_From4.Size = new System.Drawing.Size(48, 19);
             this.Label_From4.TabIndex = 73;
@@ -669,9 +691,10 @@
             // 
             // Label_To2
             // 
+            this.Label_To2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_To2.AutoSize = true;
             this.Label_To2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_To2.Location = new System.Drawing.Point(603, 395);
+            this.Label_To2.Location = new System.Drawing.Point(638, 375);
             this.Label_To2.Name = "Label_To2";
             this.Label_To2.Size = new System.Drawing.Size(29, 19);
             this.Label_To2.TabIndex = 74;
@@ -679,9 +702,10 @@
             // 
             // Label_To3
             // 
+            this.Label_To3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_To3.AutoSize = true;
             this.Label_To3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_To3.Location = new System.Drawing.Point(606, 455);
+            this.Label_To3.Location = new System.Drawing.Point(641, 435);
             this.Label_To3.Name = "Label_To3";
             this.Label_To3.Size = new System.Drawing.Size(29, 19);
             this.Label_To3.TabIndex = 75;
@@ -689,9 +713,10 @@
             // 
             // Label_To4
             // 
+            this.Label_To4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_To4.AutoSize = true;
             this.Label_To4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.Label_To4.Location = new System.Drawing.Point(606, 515);
+            this.Label_To4.Location = new System.Drawing.Point(641, 495);
             this.Label_To4.Name = "Label_To4";
             this.Label_To4.Size = new System.Drawing.Size(29, 19);
             this.Label_To4.TabIndex = 76;
@@ -700,7 +725,7 @@
             // metroLabel7
             // 
             this.metroLabel7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel7.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel7.Location = new System.Drawing.Point(364, 662);
             this.metroLabel7.MaximumSize = new System.Drawing.Size(150, 0);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(110, 0);
@@ -712,13 +737,14 @@
             // 
             this.TextBox_PaymentAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_PaymentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_PaymentAmount.Location = new System.Drawing.Point(188, 565);
+            this.TextBox_PaymentAmount.Location = new System.Drawing.Point(224, 545);
             this.TextBox_PaymentAmount.Name = "TextBox_PaymentAmount";
             this.TextBox_PaymentAmount.Size = new System.Drawing.Size(409, 30);
             this.TextBox_PaymentAmount.TabIndex = 77;
             // 
             // Button_Image1
             // 
+            this.Button_Image1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Image1.AutoEllipsis = true;
             this.Button_Image1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Image1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -727,7 +753,7 @@
             this.Button_Image1.ForeColor = System.Drawing.Color.White;
             this.Button_Image1.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image1.Image")));
             this.Button_Image1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image1.Location = new System.Drawing.Point(802, 798);
+            this.Button_Image1.Location = new System.Drawing.Point(1266, 812);
             this.Button_Image1.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image1.Name = "Button_Image1";
             this.Button_Image1.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -740,11 +766,12 @@
             // 
             // Button_Delete1
             // 
+            this.Button_Delete1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Delete1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Delete1.ErrorImage = null;
             this.Button_Delete1.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete1.Image")));
             this.Button_Delete1.InitialImage = null;
-            this.Button_Delete1.Location = new System.Drawing.Point(916, 809);
+            this.Button_Delete1.Location = new System.Drawing.Point(1390, 822);
             this.Button_Delete1.Name = "Button_Delete1";
             this.Button_Delete1.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete1.TabIndex = 81;
@@ -753,12 +780,13 @@
             // 
             // Button_AddImage
             // 
+            this.Button_AddImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_AddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(185)))), ((int)(((byte)(161)))));
             this.Button_AddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_AddImage.ForeColor = System.Drawing.Color.White;
             this.Button_AddImage.Image = ((System.Drawing.Image)(resources.GetObject("Button_AddImage.Image")));
             this.Button_AddImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Button_AddImage.Location = new System.Drawing.Point(802, 711);
+            this.Button_AddImage.Location = new System.Drawing.Point(1266, 725);
             this.Button_AddImage.Name = "Button_AddImage";
             this.Button_AddImage.Size = new System.Drawing.Size(179, 67);
             this.Button_AddImage.TabIndex = 82;
@@ -769,11 +797,12 @@
             // 
             // Button_Delete2
             // 
+            this.Button_Delete2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Delete2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Delete2.ErrorImage = null;
             this.Button_Delete2.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete2.Image")));
             this.Button_Delete2.InitialImage = null;
-            this.Button_Delete2.Location = new System.Drawing.Point(1081, 809);
+            this.Button_Delete2.Location = new System.Drawing.Point(1555, 822);
             this.Button_Delete2.Name = "Button_Delete2";
             this.Button_Delete2.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete2.TabIndex = 84;
@@ -782,6 +811,7 @@
             // 
             // Button_Image2
             // 
+            this.Button_Image2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Image2.AutoEllipsis = true;
             this.Button_Image2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Image2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -790,7 +820,7 @@
             this.Button_Image2.ForeColor = System.Drawing.Color.White;
             this.Button_Image2.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image2.Image")));
             this.Button_Image2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image2.Location = new System.Drawing.Point(967, 798);
+            this.Button_Image2.Location = new System.Drawing.Point(1431, 812);
             this.Button_Image2.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image2.Name = "Button_Image2";
             this.Button_Image2.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -803,11 +833,12 @@
             // 
             // Button_Delete3
             // 
+            this.Button_Delete3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Delete3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Delete3.ErrorImage = null;
             this.Button_Delete3.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete3.Image")));
             this.Button_Delete3.InitialImage = null;
-            this.Button_Delete3.Location = new System.Drawing.Point(1244, 809);
+            this.Button_Delete3.Location = new System.Drawing.Point(1718, 822);
             this.Button_Delete3.Name = "Button_Delete3";
             this.Button_Delete3.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete3.TabIndex = 86;
@@ -816,6 +847,7 @@
             // 
             // Button_Image3
             // 
+            this.Button_Image3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Image3.AutoEllipsis = true;
             this.Button_Image3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Image3.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -824,7 +856,7 @@
             this.Button_Image3.ForeColor = System.Drawing.Color.White;
             this.Button_Image3.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image3.Image")));
             this.Button_Image3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image3.Location = new System.Drawing.Point(1130, 798);
+            this.Button_Image3.Location = new System.Drawing.Point(1594, 812);
             this.Button_Image3.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image3.Name = "Button_Image3";
             this.Button_Image3.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -837,11 +869,12 @@
             // 
             // Button_Delete4
             // 
+            this.Button_Delete4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Delete4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Delete4.ErrorImage = null;
             this.Button_Delete4.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete4.Image")));
             this.Button_Delete4.InitialImage = null;
-            this.Button_Delete4.Location = new System.Drawing.Point(916, 867);
+            this.Button_Delete4.Location = new System.Drawing.Point(1390, 880);
             this.Button_Delete4.Name = "Button_Delete4";
             this.Button_Delete4.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete4.TabIndex = 88;
@@ -850,6 +883,7 @@
             // 
             // Button_Image4
             // 
+            this.Button_Image4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Image4.AutoEllipsis = true;
             this.Button_Image4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Image4.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -858,7 +892,7 @@
             this.Button_Image4.ForeColor = System.Drawing.Color.White;
             this.Button_Image4.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image4.Image")));
             this.Button_Image4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image4.Location = new System.Drawing.Point(802, 856);
+            this.Button_Image4.Location = new System.Drawing.Point(1266, 870);
             this.Button_Image4.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image4.Name = "Button_Image4";
             this.Button_Image4.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -871,11 +905,12 @@
             // 
             // Button_Delete5
             // 
+            this.Button_Delete5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Delete5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Delete5.ErrorImage = null;
             this.Button_Delete5.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete5.Image")));
             this.Button_Delete5.InitialImage = null;
-            this.Button_Delete5.Location = new System.Drawing.Point(1081, 867);
+            this.Button_Delete5.Location = new System.Drawing.Point(1555, 880);
             this.Button_Delete5.Name = "Button_Delete5";
             this.Button_Delete5.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete5.TabIndex = 90;
@@ -884,6 +919,7 @@
             // 
             // Button_Image5
             // 
+            this.Button_Image5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Image5.AutoEllipsis = true;
             this.Button_Image5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
             this.Button_Image5.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -892,7 +928,7 @@
             this.Button_Image5.ForeColor = System.Drawing.Color.White;
             this.Button_Image5.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image5.Image")));
             this.Button_Image5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image5.Location = new System.Drawing.Point(967, 856);
+            this.Button_Image5.Location = new System.Drawing.Point(1431, 870);
             this.Button_Image5.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image5.Name = "Button_Image5";
             this.Button_Image5.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -911,7 +947,7 @@
             // 
             this.metroLabel9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(31, 565);
+            this.metroLabel9.Location = new System.Drawing.Point(67, 545);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(116, 19);
             this.metroLabel9.TabIndex = 117;
@@ -921,7 +957,7 @@
             // 
             this.metroLabel12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(785, 145);
+            this.metroLabel12.Location = new System.Drawing.Point(1119, 120);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(103, 19);
             this.metroLabel12.TabIndex = 119;
@@ -929,11 +965,12 @@
             // 
             // ComboBox_TemplateStrings
             // 
+            this.ComboBox_TemplateStrings.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ComboBox_TemplateStrings.FormattingEnabled = true;
             this.ComboBox_TemplateStrings.ItemHeight = 23;
-            this.ComboBox_TemplateStrings.Location = new System.Drawing.Point(898, 138);
+            this.ComboBox_TemplateStrings.Location = new System.Drawing.Point(1267, 120);
             this.ComboBox_TemplateStrings.Name = "ComboBox_TemplateStrings";
-            this.ComboBox_TemplateStrings.Size = new System.Drawing.Size(374, 29);
+            this.ComboBox_TemplateStrings.Size = new System.Drawing.Size(513, 29);
             this.ComboBox_TemplateStrings.TabIndex = 120;
             this.ComboBox_TemplateStrings.UseSelectable = true;
             this.ComboBox_TemplateStrings.SelectedIndexChanged += new System.EventHandler(this.ComboBox_TemplateStrings_SelectedIndexChanged);
@@ -942,7 +979,7 @@
             // 
             this.Label_ticketWebPage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_ticketWebPage.AutoSize = true;
-            this.Label_ticketWebPage.Location = new System.Drawing.Point(31, 625);
+            this.Label_ticketWebPage.Location = new System.Drawing.Point(67, 605);
             this.Label_ticketWebPage.Name = "Label_ticketWebPage";
             this.Label_ticketWebPage.Size = new System.Drawing.Size(70, 19);
             this.Label_ticketWebPage.TabIndex = 122;
@@ -952,16 +989,17 @@
             // 
             this.TextBox_WebPage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_WebPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_WebPage.Location = new System.Drawing.Point(188, 625);
+            this.TextBox_WebPage.Location = new System.Drawing.Point(224, 605);
             this.TextBox_WebPage.Name = "TextBox_WebPage";
             this.TextBox_WebPage.Size = new System.Drawing.Size(409, 30);
             this.TextBox_WebPage.TabIndex = 121;
             // 
             // CreateEvent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 1030);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1920, 1030);
+            this.ClientSize = new System.Drawing.Size(1920, 1030);
             this.Controls.Add(this.Label_ticketWebPage);
             this.Controls.Add(this.TextBox_WebPage);
             this.Controls.Add(this.ComboBox_TemplateStrings);
@@ -1042,6 +1080,7 @@
             this.Name = "CreateEvent";
             this.Padding = new System.Windows.Forms.Padding(20, 64, 20, 21);
             this.Text = "Create Event";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete3)).EndInit();

@@ -120,4 +120,21 @@
   <metadata name="Timer_StringChanged.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PictureBox_DeleteAdditionalPhoneNumber.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAGxJREFUOE/t
+        z6ENgDAQRuEqEhw7gMAiUBhmIRi2YFJWYAR4dbS5HgWCu5d88r+0TqnFGBnwKj88ElbcJg2fqBA0f1Tg
+        /xpI39H41yWzg1nsYJgdzKIerCGNNBOSlZBGmg5qPTZI46sdC6KcOwHvkdc5I8fc1AAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="PictureBox_AddAdditionalPhoneNumber.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAJtJREFUOE/t
+        k7sNgDAMRE2J2IYSCYkFWIKOcViCHWhYgp4tqOEuoogs85HT5qTXJM6l8J18qAIDGG96UAC3ZnAqauDW
+        CrRhB9zKhv8MS9ACDmp2oA0nYM1y+yFSG9CPvDCn5oUXht+88BIMj+ggFdZUGrAAblRjfcZFWbOsKbv/
+        Kg5qQ27UrWyYbsjta0PW1C1GKo4Oa8ruP0jkAhXkpWNt6rXrAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

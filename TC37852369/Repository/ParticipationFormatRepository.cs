@@ -10,7 +10,6 @@ namespace TC37852369.Repository
 {
     public class ParticipationFormatRepository
     {
-        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addParticipationFormat(string id, string value)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();

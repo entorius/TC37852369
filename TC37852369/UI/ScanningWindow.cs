@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services.Encoder;
 using TC37852369.Services.Images;
 using TC37852369.UI.helpers;
@@ -44,6 +45,11 @@ namespace TC37852369.UI
             PictureBox_Barcode.BringToFront();
 
             this.ActiveControl = TextBox_Barcode;
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
         private void CloseHandler(object sender, EventArgs e)
         {

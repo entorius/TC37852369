@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.UI.helpers;
 
@@ -43,6 +44,11 @@ namespace TC37852369
             TextBox_Subject.Click += TextBoxSubjectClicked;
             TextBox_Body.Click += TextBoxBodyClicked;
             initializeWindowFields();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void TextBoxBodyClicked(object sender, EventArgs e)

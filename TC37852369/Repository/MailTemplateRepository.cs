@@ -10,7 +10,6 @@ namespace TC37852369.Repository
 {
     public class MailTemplateRepository
     {
-        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addMailTemplate(string id, string name, string subject, string body, bool is_Default)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();

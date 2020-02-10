@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 
 namespace TC37852369.UI
@@ -19,7 +20,13 @@ namespace TC37852369.UI
         MainWindow mainWindow;
         EventServices eventServices = new EventServices();
         MailTemplateServices mailTeplateServices = new MailTemplateServices();
-
+        ImageEntityServices imageEntityServices = new ImageEntityServices();
+        Dictionary<int, ImageEntity> eventImagesInCloud = new Dictionary<int, ImageEntity>();
+        List<ImageEntity> ImagesInCloudToDelete = new List<ImageEntity>();
+        Dictionary<int, Image> eventImages = new Dictionary<int, Image>();
+        Dictionary<int, string> eventImagePath = new Dictionary<int, string>();
+        LastEntityIdentificationNumberServices lastEntityIdentificationNumberService =
+            new LastEntityIdentificationNumberServices();
         List<EmailTemplate> mailTemplates = new List<EmailTemplate>();
         List<EmailTemplateString> mailTemplateStrings = new List<EmailTemplateString>();
         TextBox lastSelectedMailTextBox = null;
@@ -44,6 +51,11 @@ namespace TC37852369.UI
             this.CheckWhichDateTimeFieldsToShow();
             //on initialize disable default email templates combobox
             ComboBox_EmailTemplate.Enabled = false;
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         // Fills window fields on initialization
@@ -66,8 +78,10 @@ namespace TC37852369.UI
                 ComboBox_EventDuration.Items.Add((int)eventDuration);
             }
             ComboBox_EventDuration.SelectedIndex = 0;
+
             mailTemplates = await mailTeplateServices.getAllMailTemplates();
             mailTemplateStrings = await mailTeplateServices.getEmailTemplateStrings();
+
             for (int i = 0; i < mailTemplates.Count; i++)
             {
                 ComboBox_EmailTemplate.Items.Add(mailTemplates[i].templateName);
@@ -76,10 +90,19 @@ namespace TC37852369.UI
             {
                 ComboBox_TemplateStrings.Items.Add(mailTemplateStrings[i].name);
             }
-            fillFieldsWithEventData(mainWindow.events.FindLast(delegate (Event eventEntity)
+            Event CurrentEvent = mainWindow.events.FindLast(delegate (Event eventEntity)
             {
                 return eventEntity.id == eventId;
-            }));
+            });
+            fillFieldsWithEventData(CurrentEvent);
+
+            List<ImageEntity> imageEntities = await imageEntityServices.GetEventImageEntities(CurrentEvent);
+            foreach(ImageEntity img in imageEntities)
+            {
+                int imgId = Int32.Parse(img.imageNumber.ToString());
+                eventImagesInCloud.Add(imgId, img);
+                updateImageButtons(img.link, imgId);
+            }
         }
 
         private void TextBox_SubjectClicked(object sender, EventArgs e)
@@ -267,21 +290,57 @@ namespace TC37852369.UI
                     emailSubject = "";
                 }
 
-                Event eventEntity = await eventServices.editEvent(this.eventId.ToString(),
+                Event eventEntity = new Event(this.eventId.ToString(),
                     TextBox_EventName.Text, DateTime_EventDate.Value,
                    eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
                    day4TimeTo,TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                    eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                    emailTemplate, emailBody, emailSubject);
-                if (eventEntity != null)
+                Event responseEventEntity = await eventServices.editEvent(eventEntity);
+                if (responseEventEntity != null)
                 {
-                    mainWindow.Enabled = true;
+
+                    List<bool> deleted = new List<bool>();
+                    // checking which images to add
+                    bool image1Exists = eventImagePath.ContainsKey(1);
+                    if (image1Exists)
+                    {
+                        AddEventImageToDatabase("1", responseEventEntity);
+                    }
+                    bool image2Exists = eventImagePath.ContainsKey(2);
+                    if (image2Exists)
+                    {
+                        AddEventImageToDatabase("2", responseEventEntity);
+                    }
+                    bool image3Exists = eventImagePath.ContainsKey(3);
+                    if (image3Exists)
+                    {
+                        AddEventImageToDatabase("3", responseEventEntity);
+                    }
+                    bool image4Exists = eventImagePath.ContainsKey(4);
+                    if (image4Exists)
+                    {
+                        AddEventImageToDatabase("4", responseEventEntity);
+                    }
+
+                    bool image5Exists = eventImagePath.ContainsKey(5);
+                    if (image5Exists)
+                    {
+                        AddEventImageToDatabase("5", responseEventEntity);
+                    }
+                    
+                    foreach(ImageEntity ent in ImagesInCloudToDelete)
+                    {
+                        deleted.Add(await imageEntityServices.DeleteEventImageEntity(ent));
+                    }
+
+                        mainWindow.Enabled = true;
                     int eventIndex = mainWindow.events.FindLastIndex(delegate (Event eventEnt)
                     {
                         return eventEnt.id == eventId;
                     });
-                    mainWindow.editEventTableRow(eventEntity, eventIndex);
+                    mainWindow.editEventTableRow(responseEventEntity, eventIndex);
                     this.Dispose();
                 }
                 else
@@ -289,6 +348,19 @@ namespace TC37852369.UI
                     showWarning("Event creation was unsuccesfull, because of internet connection" +
                         "or database write request number exceeded", "Warning");
                 }
+            }
+        }
+        private async void AddEventImageToDatabase(string imageNumber, Event eventEntity)
+        {
+            string path = "";
+            int imageNumberToAdd;
+            bool successfulCoversion = Int32.TryParse(imageNumber, out imageNumberToAdd);
+            if (successfulCoversion && eventEntity != null)
+            {
+                eventImagePath.TryGetValue(imageNumberToAdd, out path);
+                LastIdentificationNumber lastId = await lastEntityIdentificationNumberService.getImageEntityLastIdentificationNumber();
+                string image1Name = imageEntityServices.addEventImage(path, lastId.id.ToString());
+                await imageEntityServices.AddEventImageEntity(image1Name, imageNumber, eventEntity);
             }
         }
         private void Button_Cancel_Click(object sender, EventArgs e)
@@ -499,6 +571,156 @@ namespace TC37852369.UI
             if (lastSelectedMailTextBox != null)
             {
                 lastSelectedMailTextBox.Text = lastSelectedMailTextBox.Text + mailTemplateStrings[ComboBox_TemplateStrings.SelectedIndex].value;
+            }
+        }
+        public async void SaveImageDialogAction(int buttonNumber, Button button)
+        {
+            if (FolderBrowserDialog_ImageSave.ShowDialog() == DialogResult.OK)
+            {
+                string ImageFolderName = FolderBrowserDialog_ImageSave.SelectedPath;
+                Image imageToSave;
+                ImageEntity imageEntityToSave;
+                if (eventImagesInCloud.ContainsKey(buttonNumber))
+                {
+                    eventImagesInCloud.TryGetValue(buttonNumber, out imageEntityToSave);
+                    string eventImageSavingPath = await imageEntityServices.downloadEventImage(imageEntityToSave, ImageFolderName);
+                }
+                else if (eventImages.ContainsKey(buttonNumber))
+                {
+                    eventImages.TryGetValue(buttonNumber, out imageToSave);
+                    SaveImage(imageToSave, ImageFolderName, button.Text);
+                }
+            }
+        }
+        public void SaveImage(Image image, string path, string imageName)
+        {
+            string fullImagePath = path + @"\" + imageName;
+            image.Save(fullImagePath);
+        }
+
+        private void Button_Image1_Click(object sender, EventArgs e)
+        {
+            SaveImageDialogAction(1, Button_Image1);
+        }
+
+        private void Button_Image2_Click(object sender, EventArgs e)
+        {
+            SaveImageDialogAction(2, Button_Image2);
+        }
+
+        private void Button_Image3_Click(object sender, EventArgs e)
+        {
+            SaveImageDialogAction(3, Button_Image3);
+        }
+
+        private void Button_Image4_Click(object sender, EventArgs e)
+        {
+            SaveImageDialogAction(4, Button_Image4);
+        }
+
+        private void Button_Image5_Click(object sender, EventArgs e)
+        {
+            SaveImageDialogAction(5, Button_Image5);
+        }
+
+        private void Button_Delete1_Click(object sender, EventArgs e)
+        {
+            DeleteImage(1);
+        }
+
+        private void Button_Delete2_Click(object sender, EventArgs e)
+        {
+            DeleteImage(2);
+        }
+
+        private void Button_Delete3_Click(object sender, EventArgs e)
+        {
+            DeleteImage(3);
+        }
+
+        private void Button_Delete4_Click(object sender, EventArgs e)
+        {
+            DeleteImage(4);
+        }
+
+        private void Button_Delete5_Click(object sender, EventArgs e)
+        {
+            DeleteImage(5);
+        }
+        private void DeleteImage(int imageNumber)
+        {
+            if (eventImagesInCloud.ContainsKey(imageNumber))
+            {
+                ImageEntity imageEntityToDelete;
+                eventImagesInCloud.TryGetValue(imageNumber, out imageEntityToDelete);
+                ImagesInCloudToDelete.Add(imageEntityToDelete);
+                eventImagesInCloud.Remove(imageNumber);
+                updateImageButtons("", imageNumber);
+            }
+            else if (eventImages.ContainsKey(imageNumber))
+            {
+                eventImages.Remove(imageNumber);
+                eventImagePath.Remove(imageNumber);
+                updateImageButtons("", imageNumber);
+            }
+        }
+        public void updateImageButtons(string imageName, int updatingImageNumber)
+        {
+            updateImageButton(eventImages.ContainsKey(1) || eventImagesInCloud.ContainsKey(1), Button_Image1, Button_Delete1, imageName, updatingImageNumber, 1);
+            updateImageButton(eventImages.ContainsKey(2) || eventImagesInCloud.ContainsKey(2), Button_Image2, Button_Delete2, imageName, updatingImageNumber, 2);
+            updateImageButton(eventImages.ContainsKey(3) || eventImagesInCloud.ContainsKey(3), Button_Image3, Button_Delete3, imageName, updatingImageNumber, 3);
+            updateImageButton(eventImages.ContainsKey(4) || eventImagesInCloud.ContainsKey(4), Button_Image4, Button_Delete4, imageName, updatingImageNumber, 4);
+            updateImageButton(eventImages.ContainsKey(5) || eventImagesInCloud.ContainsKey(5), Button_Image5, Button_Delete5, imageName, updatingImageNumber, 5);
+        }
+        public void updateImageButton(bool eventImagesContainsButtonNumber, Button button, PictureBox pictureBox,
+            string imageName, int updatingNumber, int key)
+        {
+            if (eventImagesContainsButtonNumber)
+            {
+                pictureBox.Show();
+                button.Show();
+                if (updatingNumber == key)
+                {
+                    button.Text = imageName;
+                }
+
+            }
+            else
+            {
+                button.Hide();
+                pictureBox.Hide();
+            }
+        }
+
+        private void Button_AddImage_Click(object sender, EventArgs e)
+        {
+            FileDialog_AddEvent.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (FileDialog_AddEvent.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = FileDialog_AddEvent.FileName;
+                Image image = Image.FromFile(fileName);
+                string[] imageName = System.Text.RegularExpressions.Regex.Split(fileName, @"\\");
+                int updatingImageNumber = 0;
+                if (eventImages.Count + eventImagesInCloud.Count < 5)
+                {
+                    bool added = false;
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        if (!eventImages.ContainsKey(i) && !eventImagesInCloud.ContainsKey(i) && !added)
+                        {
+                            eventImages.Add(i, image);
+                            eventImagePath.Add(i, fileName);
+                            updatingImageNumber = i;
+                            added = true;
+                        }
+                    }
+
+                    updateImageButtons(imageName.Last(), updatingImageNumber);
+                }
+                else
+                {
+                    showWarning("You can add maximum 5 images. ", "Warning");
+                }
             }
         }
     }

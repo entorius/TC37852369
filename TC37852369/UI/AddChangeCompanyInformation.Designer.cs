@@ -394,6 +394,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1295, 705);
             this.ClientSize = new System.Drawing.Size(1295, 705);
             this.Controls.Add(this.TextBox_Password);
             this.Controls.Add(this.metroLabel7);

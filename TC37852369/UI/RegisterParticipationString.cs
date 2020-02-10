@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
 using TC37852369.UI.helpers;
 
@@ -26,12 +27,22 @@ namespace TC37852369
             this.registerParticipant = registerParticipant;
             participationForm = "register";
             InitializeComponent();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
         public RegisterParticipationString(EditParticipant editParticipant)
         {
             this.editParticipant = editParticipant;
             participationForm = "edit";
             InitializeComponent();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)

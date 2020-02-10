@@ -21,7 +21,8 @@ namespace TC37852369.Services
             string payment_Status, bool materials, string ticket_Barcode, bool ticket_Sent,
             bool participate_Evening_Event, bool participate_In_Day1, bool participate_In_Day2,
             bool participate_In_Day3, bool participate_In_Day4, bool checked_In_Day1,
-            bool checked_In_Day2, bool checked_In_Day3, bool checked_In_Day4)
+            bool checked_In_Day2, bool checked_In_Day3, bool checked_In_Day4, DateTime paymentDate, DateTime registrationDate,
+            double paymentAmount,string additionalPhoneNumber,string comment)
         {
            
             Participant participant = new Participant(participantId, event_Id,
@@ -30,7 +31,8 @@ namespace TC37852369.Services
              payment_Status, materials, ticket_Barcode, ticket_Sent,
              participate_Evening_Event, participate_In_Day1, participate_In_Day2,
              participate_In_Day3, participate_In_Day4, checked_In_Day1,
-             checked_In_Day2, checked_In_Day3, checked_In_Day4);
+             checked_In_Day2, checked_In_Day3, checked_In_Day4, registrationDate, paymentDate,
+             paymentAmount,additionalPhoneNumber,comment);
 
 
             bool participantAdded = await participantRepository.addParticipant(participant);
@@ -56,7 +58,8 @@ namespace TC37852369.Services
         string email, string phone_Number, string country, string participation_Format,
         string payment_Status, bool materials, 
         bool participate_Evening_Event, bool participate_In_Day1, bool participate_In_Day2,
-        bool participate_In_Day3, bool participate_In_Day4)
+        bool participate_In_Day3, bool participate_In_Day4, DateTime paymentDate, DateTime registrationDate,
+            double paymentAmount, string additionalPhoneNumber, string comment)
         {
             LastIdentificationNumber participant_Id = await lastIdentificationNumber.getParticipantLastIdentificationNumber();
 
@@ -70,7 +73,8 @@ namespace TC37852369.Services
              payment_Status,  materials, barcode,  false,
              participate_Evening_Event,  participate_In_Day1,  participate_In_Day2,
              participate_In_Day3,  participate_In_Day4,  false,
-             false,  false,  false);
+             false,  false,  false,paymentDate,registrationDate,paymentAmount,
+             additionalPhoneNumber,comment);
         }
 
         public async Task<Participant> editParticipant(Participant participant)
@@ -84,7 +88,9 @@ namespace TC37852369.Services
              participant.ticketBarcode, participant.ticketSent,
              participant.participateEveningEvent, participant.participateInDay1, participant.participateInDay2,
              participant.participateInDay3, participant.participateInDay4, participant.checkedInDay1,
-             participant.checkedInDay2, participant.checkedInDay3, participant.checkedInDay4);
+             participant.checkedInDay2, participant.checkedInDay3, participant.checkedInDay4,
+             participant.paymentDate,participant.registrationDate,participant.paymentAmount,
+             participant.additionalPhoneNumber,participant.comment);
         }
 
         public async Task<bool> deleteParticipant(string participantId)
@@ -104,6 +110,79 @@ namespace TC37852369.Services
                 participant.participateInDay2, participant.participateInDay3,
                 participant.participateInDay4 }.Count(x => x);
         }
+        public int countCheckedInDay(int dayNumber, List<Participant> participants)
+        {
+            int checkedIn = 0;
+            foreach (Participant p in participants)
+            {
+                if (dayNumber == 1)
+                {
+                    if (p.checkedInDay1)
+                    {
+                        checkedIn += 1;
+                    }
+                }
+                if (dayNumber == 2)
+                {
+                    if (p.checkedInDay2)
+                    {
+                        checkedIn += 1;
+                    }
+                }
+                if (dayNumber == 3)
+                {
+                    if (p.checkedInDay3)
+                    {
+                        checkedIn += 1;
+                    }
+                }
+                if (dayNumber == 4)
+                {
+                    if (p.checkedInDay4)
+                    {
+                        checkedIn += 1;
+                    }
+                }
+            }
+            return checkedIn;
+        }
+        public int countRegisteredInDay(int dayNumber, List<Participant> participants)
+        {
+            int regestered = 0;
+            foreach (Participant p in participants)
+            {
+                if (dayNumber == 1)
+                {
+                    if (p.participateInDay1)
+                    {
+                        regestered += 1;
+                    }
+                }
+                if (dayNumber == 2)
+                {
+                    if (p.participateInDay2)
+                    {
+                        regestered += 1;
+                    }
+                }
+                if (dayNumber == 3)
+                {
+                    if (p.participateInDay3)
+                    {
+                        regestered += 1;
+                    }
+                }
+                if (dayNumber == 4)
+                {
+                    if (p.participateInDay4)
+                    {
+                        regestered += 1;
+                    }
+                }
+            }
+            return regestered;
+        }
+
         public int isPartcipantInformationManditoryFieldsCorrect(string name, string surename, string email)
         {
 
@@ -132,6 +211,81 @@ namespace TC37852369.Services
                 return 3;
             }
             return 0;
+        }
+        public List<Participant> filterEventParticipants(List<Participant> participants, Event eventEntity)
+        {
+            List<Participant> filteredParticipants = new List<Participant>();
+            foreach(Participant p in participants)
+            {
+                if (p.eventId.Equals(eventEntity.id.ToString())){
+                    filteredParticipants.Add(p);
+                }
+            }
+            return filteredParticipants;
+        }
+
+        public double countParticipantsPaymentAmount(List<Participant> participants, Event eventEntity)
+        {
+            double paymentAmount = 0;
+            foreach(Participant participant in participants)
+            {
+                if (participant.paymentAmount > 0)
+                {
+                    paymentAmount += participant.paymentAmount;
+                }
+                else { 
+                    if (eventEntity.eventLengthDays >= 1)
+                    {
+                        if (participant.participateInDay1)
+                        {
+                            paymentAmount += eventEntity.paymentAmountForDay;
+                        }
+                    }
+                    if (eventEntity.eventLengthDays >= 2)
+                    {
+                        if (participant.participateInDay2)
+                        {
+                            paymentAmount += eventEntity.paymentAmountForDay;
+                        }
+                    }
+                    if (eventEntity.eventLengthDays >= 3)
+                    {
+                        if (participant.participateInDay3)
+                        {
+                            paymentAmount += eventEntity.paymentAmountForDay;
+                        }
+                    }
+                    if (eventEntity.eventLengthDays >= 4)
+                    {
+                        if (participant.participateInDay4)
+                        {
+                            paymentAmount += eventEntity.paymentAmountForDay;
+                        }
+                    }
+                }
+            }
+            return paymentAmount;
+        }
+        public bool paymentAmountStringCorrect(string paymentAmount)
+        {
+            double localPaymentAmount;
+            if(paymentAmount.Replace(" ","").Length == 0)
+            {
+                return true;
+            }
+            bool parsed = Double.TryParse(paymentAmount, out localPaymentAmount);
+            if (!parsed)
+            {
+                return false;
+            }
+            else if (localPaymentAmount < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

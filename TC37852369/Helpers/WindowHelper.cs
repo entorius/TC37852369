@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace TC37852369.Helpers
 {
-    public class WindowHelper
+    public static class WindowHelper
     {
-        public void GoFullscreen(bool fullscreen, MetroForm form)
+        public static void GoFullscreen(bool fullscreen, MetroForm form)
         {
             if (fullscreen)
             {
@@ -23,6 +23,16 @@ namespace TC37852369.Helpers
                 form.WindowState = FormWindowState.Maximized;
                 form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             }
+        }
+        public static bool checkIfMaximizeWindow(int width, int height)
+        {
+            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            if (width  > (screenWidth - 30) || height > (screenHeight - 30))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

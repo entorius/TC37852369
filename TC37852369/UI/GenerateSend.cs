@@ -55,6 +55,11 @@ namespace TC37852369
             this.emailTemplates = emailTemplates;
             sendEmail = new SendEmail(companyData.emailUsername, companyData.emailPassword);
             FillWindowFields();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
         async void FillWindowFields()
         {
@@ -194,8 +199,8 @@ namespace TC37852369
         private void Button_Filter_Click(object sender, EventArgs e)
         {
             filteredParticipants = filterParticipants();
-            emptyTable(Table_FilteredResults);
             Table_FilteredResults.SuspendLayout();
+            emptyTable(Table_FilteredResults);
             SendCheckBoxes.Clear();
             for (int i = 0; i < filteredParticipants.Count; i++)
             {

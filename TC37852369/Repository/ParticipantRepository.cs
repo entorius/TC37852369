@@ -10,7 +10,6 @@ namespace TC37852369.Repository
 {
     public class ParticipantRepository
     {
-        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addParticipant(Participant participant )
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
@@ -42,7 +41,13 @@ namespace TC37852369.Repository
                 { "CheckedInDay1", participant.checkedInDay1 },
                 { "CheckedInDay2", participant.checkedInDay2 },
                 { "CheckedInDay3", participant.checkedInDay3 },
-                { "CheckedInDay4", participant.checkedInDay4 }
+                { "CheckedInDay4", participant.checkedInDay4 },
+                { "RegistrationDate", participant.registrationDate.ToString() },
+                { "PaymentDate", participant.paymentDate.ToString() },
+                { "PaymentAmount", participant.paymentAmount.ToString() },
+                { "AdditionalPhoneNumber", participant.additionalPhoneNumber},
+                { "Comment", participant.comment }
+
             };
             WriteResult result = await docRef.SetAsync(user);
            
@@ -55,6 +60,12 @@ namespace TC37852369.Repository
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
             Query allParticipantsQuery = db.Collection("Participant");
             QuerySnapshot allParticipantsQuerySnapshot = await allParticipantsQuery.GetSnapshotAsync();
+            DateTime registrationDate;
+            DateTime paymentDate;
+            int paymentAmount;
+            string additionalPhoneNumber;
+            string comment;
+
             foreach (DocumentSnapshot documentSnapshot in allParticipantsQuerySnapshot.Documents)
             {
                 Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
@@ -62,6 +73,49 @@ namespace TC37852369.Repository
                 foreach (KeyValuePair<string, object> pair in ParticipantValue)
                 {
                     Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
+                }
+                try
+                {
+                    paymentDate =  DateTime.Parse(ParticipantValue["PaymentDate"].ToString());
+                }
+                catch (Exception)
+                {
+                    paymentDate = new DateTime(1753,01,01);
+                }
+                try
+                {
+                    registrationDate = DateTime.Parse(ParticipantValue["RegistrationDate"].ToString());
+                }
+                catch (Exception)
+                {
+                    registrationDate = DateTime.MinValue;
+                }
+
+                try
+                {
+                    paymentAmount = Int32.Parse(ParticipantValue["PaymentAmount"].ToString());
+                }
+                catch (Exception)
+                {
+                    paymentAmount = -1;
+                }
+
+                try
+                {
+                    additionalPhoneNumber = ParticipantValue["AdditionalPhoneNumber"].ToString();
+                }
+                catch (Exception)
+                {
+                    additionalPhoneNumber = "";
+                }
+
+                try
+                {
+                    comment = ParticipantValue["Comment"].ToString();
+                }
+                catch (Exception)
+                {
+                    comment = "";
                 }
 
                 Participant ParticipantEntity = new Participant(
@@ -88,7 +142,12 @@ namespace TC37852369.Repository
                         Boolean.Parse(ParticipantValue["CheckedInDay1"].ToString()),
                         Boolean.Parse(ParticipantValue["CheckedInDay2"].ToString()),
                         Boolean.Parse(ParticipantValue["CheckedInDay3"].ToString()),
-                        Boolean.Parse(ParticipantValue["CheckedInDay4"].ToString())
+                        Boolean.Parse(ParticipantValue["CheckedInDay4"].ToString()),
+                        registrationDate,
+                        paymentDate,
+                        paymentAmount,
+                        additionalPhoneNumber,
+                        comment
                     );
                 allPartcipants.Add(ParticipantEntity);
                 Console.WriteLine("");
@@ -102,6 +161,11 @@ namespace TC37852369.Repository
             FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
             DocumentReference docRef = db.Collection("Participant").Document(Id);
             DocumentSnapshot documentSnapshot = await docRef.GetSnapshotAsync();
+            DateTime registrationDate;
+            DateTime paymentDate;
+            int paymentAmount;
+            string additionalPhoneNumber;
+            string comment;
             if (documentSnapshot.Exists)
             {
                 Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
@@ -110,7 +174,49 @@ namespace TC37852369.Repository
                 {
                     Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
                 }
+                try
+                {
+                    paymentDate = DateTime.Parse(ParticipantValue["PaymentDate"].ToString());
+                }
+                catch (Exception)
+                {
+                    paymentDate = DateTime.MinValue;
+                }
+                try
+                {
+                    registrationDate = DateTime.Parse(ParticipantValue["RegistrationDate"].ToString());
+                }
+                catch (Exception)
+                {
+                    registrationDate = DateTime.MinValue;
+                }
 
+                try
+                {
+                    paymentAmount = Int32.Parse(ParticipantValue["PaymentAmount"].ToString());
+                }
+                catch (Exception)
+                {
+                    paymentAmount = -1;
+                }
+
+                try
+                {
+                    additionalPhoneNumber = ParticipantValue["AdditionalPhoneNumber"].ToString();
+                }
+                catch (Exception)
+                {
+                    additionalPhoneNumber = "";
+                }
+
+                try
+                {
+                    comment = ParticipantValue["Comment"].ToString();
+                }
+                catch (Exception)
+                {
+                    comment = "";
+                }
                 Participant ParticipantEntity = new Participant(
                         ParticipantValue["Id"].ToString(),
                         ParticipantValue["EventId"].ToString(),
@@ -135,7 +241,12 @@ namespace TC37852369.Repository
                         Boolean.Parse(ParticipantValue["CheckedInDay1"].ToString()),
                         Boolean.Parse(ParticipantValue["CheckedInDay2"].ToString()),
                         Boolean.Parse(ParticipantValue["CheckedInDay3"].ToString()),
-                        Boolean.Parse(ParticipantValue["CheckedInDay4"].ToString())
+                        Boolean.Parse(ParticipantValue["CheckedInDay4"].ToString()),
+                        registrationDate,
+                        paymentDate,
+                        paymentAmount,
+                        additionalPhoneNumber,
+                        comment
                     );
                 partcipant = ParticipantEntity;
             }

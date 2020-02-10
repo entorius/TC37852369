@@ -67,6 +67,20 @@
             this.ComboBox_Events = new MetroFramework.Controls.MetroComboBox();
             this.TextBox_JobTitle = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.Label_RegistrationDate = new MetroFramework.Controls.MetroLabel();
+            this.DateTime_RegistrationDate = new MetroFramework.Controls.MetroDateTime();
+            this.Label_PaymentDate = new MetroFramework.Controls.MetroLabel();
+            this.DateTime_PaymentDate = new MetroFramework.Controls.MetroDateTime();
+            this.TextBox_AdditionalPhoneNumber = new MetroFramework.Controls.MetroTextBox();
+            this.Label_AdditionalPhoneNumber = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_PaymentAmount = new MetroFramework.Controls.MetroTextBox();
+            this.Label_PaymentAmount = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_Comment = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.PictureBox_AddAdditionalPhoneNumber = new System.Windows.Forms.PictureBox();
+            this.PictureBox_DeleteAdditionalPhoneNumber = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_AddAdditionalPhoneNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_DeleteAdditionalPhoneNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // Button_Cancel
@@ -117,7 +131,7 @@
             this.TextBox_CompanyName.CustomButton.Visible = false;
             this.TextBox_CompanyName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_CompanyName.Lines = new string[0];
-            this.TextBox_CompanyName.Location = new System.Drawing.Point(210, 417);
+            this.TextBox_CompanyName.Location = new System.Drawing.Point(210, 350);
             this.TextBox_CompanyName.MaxLength = 32767;
             this.TextBox_CompanyName.Name = "TextBox_CompanyName";
             this.TextBox_CompanyName.PasswordChar = '\0';
@@ -148,7 +162,7 @@
             this.TextBox_LastName.CustomButton.Visible = false;
             this.TextBox_LastName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_LastName.Lines = new string[0];
-            this.TextBox_LastName.Location = new System.Drawing.Point(210, 277);
+            this.TextBox_LastName.Location = new System.Drawing.Point(210, 250);
             this.TextBox_LastName.MaxLength = 32767;
             this.TextBox_LastName.Name = "TextBox_LastName";
             this.TextBox_LastName.PasswordChar = '\0';
@@ -179,7 +193,7 @@
             this.TextBox_FirstName.CustomButton.Visible = false;
             this.TextBox_FirstName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_FirstName.Lines = new string[0];
-            this.TextBox_FirstName.Location = new System.Drawing.Point(210, 207);
+            this.TextBox_FirstName.Location = new System.Drawing.Point(210, 200);
             this.TextBox_FirstName.MaxLength = 32767;
             this.TextBox_FirstName.Name = "TextBox_FirstName";
             this.TextBox_FirstName.PasswordChar = '\0';
@@ -198,7 +212,7 @@
             // 
             this.ComboBox_CompanyType.FormattingEnabled = true;
             this.ComboBox_CompanyType.ItemHeight = 23;
-            this.ComboBox_CompanyType.Location = new System.Drawing.Point(210, 487);
+            this.ComboBox_CompanyType.Location = new System.Drawing.Point(210, 400);
             this.ComboBox_CompanyType.Name = "ComboBox_CompanyType";
             this.ComboBox_CompanyType.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_CompanyType.Style = MetroFramework.MetroColorStyle.Orange;
@@ -208,7 +222,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(42, 207);
+            this.metroLabel1.Location = new System.Drawing.Point(42, 200);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(70, 19);
             this.metroLabel1.TabIndex = 23;
@@ -217,7 +231,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(43, 277);
+            this.metroLabel2.Location = new System.Drawing.Point(43, 250);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(68, 19);
             this.metroLabel2.TabIndex = 24;
@@ -226,7 +240,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(43, 417);
+            this.metroLabel3.Location = new System.Drawing.Point(43, 350);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(103, 19);
             this.metroLabel3.TabIndex = 25;
@@ -235,7 +249,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(43, 487);
+            this.metroLabel4.Location = new System.Drawing.Point(43, 400);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(95, 19);
             this.metroLabel4.TabIndex = 26;
@@ -244,7 +258,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(694, 206);
+            this.metroLabel5.Location = new System.Drawing.Point(691, 283);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(126, 19);
             this.metroLabel5.TabIndex = 27;
@@ -254,7 +268,7 @@
             // 
             this.ComboBox_ParticipationFormat.FormattingEnabled = true;
             this.ComboBox_ParticipationFormat.ItemHeight = 23;
-            this.ComboBox_ParticipationFormat.Location = new System.Drawing.Point(866, 207);
+            this.ComboBox_ParticipationFormat.Location = new System.Drawing.Point(863, 283);
             this.ComboBox_ParticipationFormat.Name = "ComboBox_ParticipationFormat";
             this.ComboBox_ParticipationFormat.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_ParticipationFormat.Style = MetroFramework.MetroColorStyle.Orange;
@@ -264,7 +278,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(697, 277);
+            this.metroLabel6.Location = new System.Drawing.Point(691, 343);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(95, 19);
             this.metroLabel6.TabIndex = 29;
@@ -286,7 +300,7 @@
             this.TextBox_Email.CustomButton.Visible = false;
             this.TextBox_Email.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_Email.Lines = new string[0];
-            this.TextBox_Email.Location = new System.Drawing.Point(210, 557);
+            this.TextBox_Email.Location = new System.Drawing.Point(210, 450);
             this.TextBox_Email.MaxLength = 32767;
             this.TextBox_Email.Name = "TextBox_Email";
             this.TextBox_Email.PasswordChar = '\0';
@@ -304,7 +318,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(43, 557);
+            this.metroLabel8.Location = new System.Drawing.Point(43, 450);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(41, 19);
             this.metroLabel8.TabIndex = 33;
@@ -313,7 +327,7 @@
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(43, 627);
+            this.metroLabel9.Location = new System.Drawing.Point(43, 500);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(96, 19);
             this.metroLabel9.TabIndex = 34;
@@ -335,7 +349,7 @@
             this.TextBox_PhoneNumber.CustomButton.Visible = false;
             this.TextBox_PhoneNumber.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_PhoneNumber.Lines = new string[0];
-            this.TextBox_PhoneNumber.Location = new System.Drawing.Point(210, 627);
+            this.TextBox_PhoneNumber.Location = new System.Drawing.Point(210, 500);
             this.TextBox_PhoneNumber.MaxLength = 32767;
             this.TextBox_PhoneNumber.Name = "TextBox_PhoneNumber";
             this.TextBox_PhoneNumber.PasswordChar = '\0';
@@ -353,7 +367,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(694, 347);
+            this.metroLabel10.Location = new System.Drawing.Point(691, 403);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(62, 19);
             this.metroLabel10.TabIndex = 36;
@@ -362,7 +376,7 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(694, 417);
+            this.metroLabel11.Location = new System.Drawing.Point(691, 463);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(155, 19);
             this.metroLabel11.TabIndex = 37;
@@ -372,7 +386,7 @@
             // 
             this.ComboBox_Materials.FormattingEnabled = true;
             this.ComboBox_Materials.ItemHeight = 23;
-            this.ComboBox_Materials.Location = new System.Drawing.Point(866, 347);
+            this.ComboBox_Materials.Location = new System.Drawing.Point(863, 403);
             this.ComboBox_Materials.Name = "ComboBox_Materials";
             this.ComboBox_Materials.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_Materials.Style = MetroFramework.MetroColorStyle.Orange;
@@ -383,7 +397,7 @@
             // 
             this.ComboBox_ParticipateEveningEvent.FormattingEnabled = true;
             this.ComboBox_ParticipateEveningEvent.ItemHeight = 23;
-            this.ComboBox_ParticipateEveningEvent.Location = new System.Drawing.Point(866, 417);
+            this.ComboBox_ParticipateEveningEvent.Location = new System.Drawing.Point(863, 463);
             this.ComboBox_ParticipateEveningEvent.Name = "ComboBox_ParticipateEveningEvent";
             this.ComboBox_ParticipateEveningEvent.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_ParticipateEveningEvent.Style = MetroFramework.MetroColorStyle.Orange;
@@ -393,7 +407,7 @@
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(43, 697);
+            this.metroLabel12.Location = new System.Drawing.Point(43, 600);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(56, 19);
             this.metroLabel12.TabIndex = 42;
@@ -415,7 +429,7 @@
             this.TextBox_Country.CustomButton.Visible = false;
             this.TextBox_Country.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_Country.Lines = new string[0];
-            this.TextBox_Country.Location = new System.Drawing.Point(210, 697);
+            this.TextBox_Country.Location = new System.Drawing.Point(210, 600);
             this.TextBox_Country.MaxLength = 32767;
             this.TextBox_Country.Name = "TextBox_Country";
             this.TextBox_Country.PasswordChar = '\0';
@@ -434,7 +448,7 @@
             // 
             this.ComboBox_ParticipateDay1.FormattingEnabled = true;
             this.ComboBox_ParticipateDay1.ItemHeight = 23;
-            this.ComboBox_ParticipateDay1.Location = new System.Drawing.Point(866, 487);
+            this.ComboBox_ParticipateDay1.Location = new System.Drawing.Point(863, 523);
             this.ComboBox_ParticipateDay1.Name = "ComboBox_ParticipateDay1";
             this.ComboBox_ParticipateDay1.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_ParticipateDay1.Style = MetroFramework.MetroColorStyle.Orange;
@@ -444,7 +458,7 @@
             // Label_ParticipateDay1
             // 
             this.Label_ParticipateDay1.AutoSize = true;
-            this.Label_ParticipateDay1.Location = new System.Drawing.Point(694, 487);
+            this.Label_ParticipateDay1.Location = new System.Drawing.Point(691, 523);
             this.Label_ParticipateDay1.Name = "Label_ParticipateDay1";
             this.Label_ParticipateDay1.Size = new System.Drawing.Size(119, 19);
             this.Label_ParticipateDay1.TabIndex = 47;
@@ -454,7 +468,7 @@
             // 
             this.ComboBox_ParticipateDay2.FormattingEnabled = true;
             this.ComboBox_ParticipateDay2.ItemHeight = 23;
-            this.ComboBox_ParticipateDay2.Location = new System.Drawing.Point(866, 562);
+            this.ComboBox_ParticipateDay2.Location = new System.Drawing.Point(863, 583);
             this.ComboBox_ParticipateDay2.Name = "ComboBox_ParticipateDay2";
             this.ComboBox_ParticipateDay2.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_ParticipateDay2.Style = MetroFramework.MetroColorStyle.Orange;
@@ -464,7 +478,7 @@
             // Label_ParticipateDay2
             // 
             this.Label_ParticipateDay2.AutoSize = true;
-            this.Label_ParticipateDay2.Location = new System.Drawing.Point(694, 562);
+            this.Label_ParticipateDay2.Location = new System.Drawing.Point(691, 583);
             this.Label_ParticipateDay2.Name = "Label_ParticipateDay2";
             this.Label_ParticipateDay2.Size = new System.Drawing.Size(121, 19);
             this.Label_ParticipateDay2.TabIndex = 49;
@@ -473,20 +487,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label1.Location = new System.Drawing.Point(44, 148);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 23);
+            this.label1.Size = new System.Drawing.Size(213, 28);
             this.label1.TabIndex = 50;
             this.label1.Text = "Participant information";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label2.Location = new System.Drawing.Point(694, 148);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label2.Location = new System.Drawing.Point(689, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 23);
+            this.label2.Size = new System.Drawing.Size(168, 28);
             this.label2.TabIndex = 51;
             this.label2.Text = "Event information";
             // 
@@ -504,18 +518,19 @@
             // 
             this.ComboBox_PaymentStatus.FormattingEnabled = true;
             this.ComboBox_PaymentStatus.ItemHeight = 23;
-            this.ComboBox_PaymentStatus.Location = new System.Drawing.Point(866, 277);
+            this.ComboBox_PaymentStatus.Location = new System.Drawing.Point(863, 343);
             this.ComboBox_PaymentStatus.Name = "ComboBox_PaymentStatus";
             this.ComboBox_PaymentStatus.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_PaymentStatus.Style = MetroFramework.MetroColorStyle.Orange;
             this.ComboBox_PaymentStatus.TabIndex = 55;
             this.ComboBox_PaymentStatus.UseSelectable = true;
+            this.ComboBox_PaymentStatus.SelectedIndexChanged += new System.EventHandler(this.ComboBox_PaymentStatus_SelectedIndexChanged);
             // 
             // ComboBox_ParticipateDay4
             // 
             this.ComboBox_ParticipateDay4.FormattingEnabled = true;
             this.ComboBox_ParticipateDay4.ItemHeight = 23;
-            this.ComboBox_ParticipateDay4.Location = new System.Drawing.Point(866, 707);
+            this.ComboBox_ParticipateDay4.Location = new System.Drawing.Point(863, 703);
             this.ComboBox_ParticipateDay4.Name = "ComboBox_ParticipateDay4";
             this.ComboBox_ParticipateDay4.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_ParticipateDay4.Style = MetroFramework.MetroColorStyle.Orange;
@@ -526,7 +541,7 @@
             // 
             this.ComboBox_ParticipateDay3.FormattingEnabled = true;
             this.ComboBox_ParticipateDay3.ItemHeight = 23;
-            this.ComboBox_ParticipateDay3.Location = new System.Drawing.Point(866, 632);
+            this.ComboBox_ParticipateDay3.Location = new System.Drawing.Point(863, 643);
             this.ComboBox_ParticipateDay3.Name = "ComboBox_ParticipateDay3";
             this.ComboBox_ParticipateDay3.Size = new System.Drawing.Size(382, 29);
             this.ComboBox_ParticipateDay3.Style = MetroFramework.MetroColorStyle.Orange;
@@ -536,7 +551,7 @@
             // Label_ParticipateDay4
             // 
             this.Label_ParticipateDay4.AutoSize = true;
-            this.Label_ParticipateDay4.Location = new System.Drawing.Point(694, 707);
+            this.Label_ParticipateDay4.Location = new System.Drawing.Point(691, 703);
             this.Label_ParticipateDay4.Name = "Label_ParticipateDay4";
             this.Label_ParticipateDay4.Size = new System.Drawing.Size(121, 19);
             this.Label_ParticipateDay4.TabIndex = 59;
@@ -545,7 +560,7 @@
             // Label_ParticipateDay3
             // 
             this.Label_ParticipateDay3.AutoSize = true;
-            this.Label_ParticipateDay3.Location = new System.Drawing.Point(694, 632);
+            this.Label_ParticipateDay3.Location = new System.Drawing.Point(691, 643);
             this.Label_ParticipateDay3.Name = "Label_ParticipateDay3";
             this.Label_ParticipateDay3.Size = new System.Drawing.Size(121, 19);
             this.Label_ParticipateDay3.TabIndex = 58;
@@ -579,7 +594,7 @@
             this.TextBox_JobTitle.CustomButton.Visible = false;
             this.TextBox_JobTitle.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBox_JobTitle.Lines = new string[0];
-            this.TextBox_JobTitle.Location = new System.Drawing.Point(210, 347);
+            this.TextBox_JobTitle.Location = new System.Drawing.Point(210, 300);
             this.TextBox_JobTitle.MaxLength = 32767;
             this.TextBox_JobTitle.Name = "TextBox_JobTitle";
             this.TextBox_JobTitle.PasswordChar = '\0';
@@ -597,19 +612,213 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(42, 347);
+            this.metroLabel7.Location = new System.Drawing.Point(42, 300);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(55, 19);
             this.metroLabel7.TabIndex = 62;
             this.metroLabel7.Text = "Job title";
             // 
+            // Label_RegistrationDate
+            // 
+            this.Label_RegistrationDate.AutoSize = true;
+            this.Label_RegistrationDate.Location = new System.Drawing.Point(691, 103);
+            this.Label_RegistrationDate.Name = "Label_RegistrationDate";
+            this.Label_RegistrationDate.Size = new System.Drawing.Size(108, 19);
+            this.Label_RegistrationDate.TabIndex = 109;
+            this.Label_RegistrationDate.Text = "Registration date";
+            // 
+            // DateTime_RegistrationDate
+            // 
+            this.DateTime_RegistrationDate.Location = new System.Drawing.Point(863, 103);
+            this.DateTime_RegistrationDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_RegistrationDate.Name = "DateTime_RegistrationDate";
+            this.DateTime_RegistrationDate.Size = new System.Drawing.Size(382, 29);
+            this.DateTime_RegistrationDate.TabIndex = 108;
+            // 
+            // Label_PaymentDate
+            // 
+            this.Label_PaymentDate.AutoSize = true;
+            this.Label_PaymentDate.Location = new System.Drawing.Point(691, 163);
+            this.Label_PaymentDate.Name = "Label_PaymentDate";
+            this.Label_PaymentDate.Size = new System.Drawing.Size(89, 19);
+            this.Label_PaymentDate.TabIndex = 107;
+            this.Label_PaymentDate.Text = "Payment date";
+            // 
+            // DateTime_PaymentDate
+            // 
+            this.DateTime_PaymentDate.Location = new System.Drawing.Point(863, 163);
+            this.DateTime_PaymentDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_PaymentDate.Name = "DateTime_PaymentDate";
+            this.DateTime_PaymentDate.Size = new System.Drawing.Size(382, 29);
+            this.DateTime_PaymentDate.TabIndex = 106;
+            this.DateTime_PaymentDate.ValueChanged += new System.EventHandler(this.DateTime_PaymentDate_ValueChanged);
+            // 
+            // TextBox_AdditionalPhoneNumber
+            // 
+            // 
+            // 
+            // 
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Image = null;
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Location = new System.Drawing.Point(350, 2);
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Name = "";
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Size = new System.Drawing.Size(29, 29);
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBox_AdditionalPhoneNumber.CustomButton.TabIndex = 1;
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBox_AdditionalPhoneNumber.CustomButton.UseSelectable = true;
+            this.TextBox_AdditionalPhoneNumber.CustomButton.Visible = false;
+            this.TextBox_AdditionalPhoneNumber.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.TextBox_AdditionalPhoneNumber.Lines = new string[0];
+            this.TextBox_AdditionalPhoneNumber.Location = new System.Drawing.Point(210, 550);
+            this.TextBox_AdditionalPhoneNumber.MaxLength = 32767;
+            this.TextBox_AdditionalPhoneNumber.Name = "TextBox_AdditionalPhoneNumber";
+            this.TextBox_AdditionalPhoneNumber.PasswordChar = '\0';
+            this.TextBox_AdditionalPhoneNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBox_AdditionalPhoneNumber.SelectedText = "";
+            this.TextBox_AdditionalPhoneNumber.SelectionLength = 0;
+            this.TextBox_AdditionalPhoneNumber.SelectionStart = 0;
+            this.TextBox_AdditionalPhoneNumber.ShortcutsEnabled = true;
+            this.TextBox_AdditionalPhoneNumber.Size = new System.Drawing.Size(382, 34);
+            this.TextBox_AdditionalPhoneNumber.TabIndex = 111;
+            this.TextBox_AdditionalPhoneNumber.UseSelectable = true;
+            this.TextBox_AdditionalPhoneNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBox_AdditionalPhoneNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // Label_AdditionalPhoneNumber
+            // 
+            this.Label_AdditionalPhoneNumber.AutoSize = true;
+            this.Label_AdditionalPhoneNumber.Location = new System.Drawing.Point(43, 550);
+            this.Label_AdditionalPhoneNumber.Name = "Label_AdditionalPhoneNumber";
+            this.Label_AdditionalPhoneNumber.Size = new System.Drawing.Size(160, 19);
+            this.Label_AdditionalPhoneNumber.TabIndex = 110;
+            this.Label_AdditionalPhoneNumber.Text = "Additional phone number";
+            // 
+            // TextBox_PaymentAmount
+            // 
+            // 
+            // 
+            // 
+            this.TextBox_PaymentAmount.CustomButton.Image = null;
+            this.TextBox_PaymentAmount.CustomButton.Location = new System.Drawing.Point(350, 2);
+            this.TextBox_PaymentAmount.CustomButton.Name = "";
+            this.TextBox_PaymentAmount.CustomButton.Size = new System.Drawing.Size(29, 29);
+            this.TextBox_PaymentAmount.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBox_PaymentAmount.CustomButton.TabIndex = 1;
+            this.TextBox_PaymentAmount.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBox_PaymentAmount.CustomButton.UseSelectable = true;
+            this.TextBox_PaymentAmount.CustomButton.Visible = false;
+            this.TextBox_PaymentAmount.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.TextBox_PaymentAmount.Lines = new string[0];
+            this.TextBox_PaymentAmount.Location = new System.Drawing.Point(863, 223);
+            this.TextBox_PaymentAmount.MaxLength = 32767;
+            this.TextBox_PaymentAmount.Name = "TextBox_PaymentAmount";
+            this.TextBox_PaymentAmount.PasswordChar = '\0';
+            this.TextBox_PaymentAmount.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBox_PaymentAmount.SelectedText = "";
+            this.TextBox_PaymentAmount.SelectionLength = 0;
+            this.TextBox_PaymentAmount.SelectionStart = 0;
+            this.TextBox_PaymentAmount.ShortcutsEnabled = true;
+            this.TextBox_PaymentAmount.Size = new System.Drawing.Size(382, 34);
+            this.TextBox_PaymentAmount.TabIndex = 113;
+            this.TextBox_PaymentAmount.UseSelectable = true;
+            this.TextBox_PaymentAmount.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBox_PaymentAmount.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // Label_PaymentAmount
+            // 
+            this.Label_PaymentAmount.AutoSize = true;
+            this.Label_PaymentAmount.Location = new System.Drawing.Point(691, 223);
+            this.Label_PaymentAmount.Name = "Label_PaymentAmount";
+            this.Label_PaymentAmount.Size = new System.Drawing.Size(108, 19);
+            this.Label_PaymentAmount.TabIndex = 112;
+            this.Label_PaymentAmount.Text = "Payment amount";
+            // 
+            // TextBox_Comment
+            // 
+            // 
+            // 
+            // 
+            this.TextBox_Comment.CustomButton.Image = null;
+            this.TextBox_Comment.CustomButton.Location = new System.Drawing.Point(292, 2);
+            this.TextBox_Comment.CustomButton.Name = "";
+            this.TextBox_Comment.CustomButton.Size = new System.Drawing.Size(87, 87);
+            this.TextBox_Comment.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBox_Comment.CustomButton.TabIndex = 1;
+            this.TextBox_Comment.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBox_Comment.CustomButton.UseSelectable = true;
+            this.TextBox_Comment.CustomButton.Visible = false;
+            this.TextBox_Comment.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.TextBox_Comment.Lines = new string[0];
+            this.TextBox_Comment.Location = new System.Drawing.Point(210, 650);
+            this.TextBox_Comment.MaxLength = 32767;
+            this.TextBox_Comment.Multiline = true;
+            this.TextBox_Comment.Name = "TextBox_Comment";
+            this.TextBox_Comment.PasswordChar = '\0';
+            this.TextBox_Comment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TextBox_Comment.SelectedText = "";
+            this.TextBox_Comment.SelectionLength = 0;
+            this.TextBox_Comment.SelectionStart = 0;
+            this.TextBox_Comment.ShortcutsEnabled = true;
+            this.TextBox_Comment.Size = new System.Drawing.Size(382, 92);
+            this.TextBox_Comment.TabIndex = 115;
+            this.TextBox_Comment.UseSelectable = true;
+            this.TextBox_Comment.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBox_Comment.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(43, 650);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(68, 19);
+            this.metroLabel15.TabIndex = 114;
+            this.metroLabel15.Text = "Comment";
+            // 
+            // PictureBox_AddAdditionalPhoneNumber
+            // 
+            this.PictureBox_AddAdditionalPhoneNumber.BackColor = System.Drawing.Color.White;
+            this.PictureBox_AddAdditionalPhoneNumber.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PictureBox_AddAdditionalPhoneNumber.BackgroundImage")));
+            this.PictureBox_AddAdditionalPhoneNumber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_AddAdditionalPhoneNumber.Location = new System.Drawing.Point(599, 500);
+            this.PictureBox_AddAdditionalPhoneNumber.Name = "PictureBox_AddAdditionalPhoneNumber";
+            this.PictureBox_AddAdditionalPhoneNumber.Size = new System.Drawing.Size(36, 34);
+            this.PictureBox_AddAdditionalPhoneNumber.TabIndex = 116;
+            this.PictureBox_AddAdditionalPhoneNumber.TabStop = false;
+            this.PictureBox_AddAdditionalPhoneNumber.Click += new System.EventHandler(this.PictureBox_AddAdditionalPhoneNUmber_Click);
+            // 
+            // PictureBox_DeleteAdditionalPhoneNumber
+            // 
+            this.PictureBox_DeleteAdditionalPhoneNumber.BackColor = System.Drawing.Color.White;
+            this.PictureBox_DeleteAdditionalPhoneNumber.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PictureBox_DeleteAdditionalPhoneNumber.BackgroundImage")));
+            this.PictureBox_DeleteAdditionalPhoneNumber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_DeleteAdditionalPhoneNumber.Location = new System.Drawing.Point(599, 550);
+            this.PictureBox_DeleteAdditionalPhoneNumber.Name = "PictureBox_DeleteAdditionalPhoneNumber";
+            this.PictureBox_DeleteAdditionalPhoneNumber.Size = new System.Drawing.Size(36, 34);
+            this.PictureBox_DeleteAdditionalPhoneNumber.TabIndex = 117;
+            this.PictureBox_DeleteAdditionalPhoneNumber.TabStop = false;
+            this.PictureBox_DeleteAdditionalPhoneNumber.Click += new System.EventHandler(this.PictureBox_DeleteAdditionalPhoneNumber_Click);
+            // 
             // RegisterParticipant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1295, 864);
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
-            this.ClientSize = new System.Drawing.Size(1295, 880);
+            this.ClientSize = new System.Drawing.Size(1295, 864);
+            this.Controls.Add(this.PictureBox_DeleteAdditionalPhoneNumber);
+            this.Controls.Add(this.PictureBox_AddAdditionalPhoneNumber);
+            this.Controls.Add(this.TextBox_Comment);
+            this.Controls.Add(this.metroLabel15);
+            this.Controls.Add(this.TextBox_PaymentAmount);
+            this.Controls.Add(this.Label_PaymentAmount);
+            this.Controls.Add(this.TextBox_AdditionalPhoneNumber);
+            this.Controls.Add(this.Label_AdditionalPhoneNumber);
+            this.Controls.Add(this.Label_RegistrationDate);
+            this.Controls.Add(this.DateTime_RegistrationDate);
+            this.Controls.Add(this.Label_PaymentDate);
+            this.Controls.Add(this.DateTime_PaymentDate);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.TextBox_JobTitle);
             this.Controls.Add(this.ComboBox_Events);
@@ -648,8 +857,11 @@
             this.Controls.Add(this.TextBox_LastName);
             this.Controls.Add(this.TextBox_FirstName);
             this.Controls.Add(this.ComboBox_CompanyType);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "RegisterParticipant";
             this.Text = "Regiter Participant";
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_AddAdditionalPhoneNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_DeleteAdditionalPhoneNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,5 +907,17 @@
         private MetroFramework.Controls.MetroComboBox ComboBox_Events;
         private MetroFramework.Controls.MetroTextBox TextBox_JobTitle;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel Label_RegistrationDate;
+        private MetroFramework.Controls.MetroDateTime DateTime_RegistrationDate;
+        private MetroFramework.Controls.MetroLabel Label_PaymentDate;
+        private MetroFramework.Controls.MetroDateTime DateTime_PaymentDate;
+        private MetroFramework.Controls.MetroTextBox TextBox_AdditionalPhoneNumber;
+        private MetroFramework.Controls.MetroLabel Label_AdditionalPhoneNumber;
+        private MetroFramework.Controls.MetroTextBox TextBox_PaymentAmount;
+        private MetroFramework.Controls.MetroLabel Label_PaymentAmount;
+        private MetroFramework.Controls.MetroTextBox TextBox_Comment;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
+        private System.Windows.Forms.PictureBox PictureBox_AddAdditionalPhoneNumber;
+        private System.Windows.Forms.PictureBox PictureBox_DeleteAdditionalPhoneNumber;
     }
 }

@@ -54,27 +54,16 @@ namespace TC37852369.Services
                 return null;
             }
         }
-        public async Task<Event> editEvent(string eventId,string eventName, DateTime date_From,
-            int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
-            DateTime day4Date, string day1TimeFrom, string day1TimeTo,
-                   string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-                   string day4TimeFrom, string day4TimeTo,string webPage, double paymentAmountForDay,
-                   string venueName, string venueAdress, string eventStatus, string comment, 
-                   bool useTemplate, string current_Mail_Template, string body, string subject)
+        public async Task<Event> editEvent(Event eventEntity)
         {
-            Event eventEntity = new Event(eventId, eventName,
-                date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
-                day1TimeFrom, day1TimeTo,
-                   day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo,webPage, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
-                current_Mail_Template, body, subject
-                );
-            bool isRequestSucessful = await eventRepository.addEvent(long.Parse(eventId),
-                eventName, date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
-                 day1TimeFrom, day1TimeTo,
-                   day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, webPage, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
-                current_Mail_Template, body, subject);
+           
+            bool isRequestSucessful = await eventRepository.addEvent(eventEntity.id,
+                eventEntity.eventName, eventEntity.date_From, eventEntity.eventLengthDays, eventEntity.day1Date, eventEntity.day2Date, eventEntity.day3Date, eventEntity.day4Date,
+                 eventEntity.day1TimeFrom, eventEntity.day1TimeTo,
+                   eventEntity.day2TimeFrom, eventEntity.day2TimeTo, eventEntity.day3TimeFrom, eventEntity.day3TimeTo, eventEntity.day4TimeFrom,
+                   eventEntity.day4TimeTo, eventEntity.webPage, eventEntity.paymentAmountForDay, eventEntity.venueName, eventEntity.venueAdress, eventEntity.eventStatus,
+                   eventEntity.comment, eventEntity.useTemplate,
+                eventEntity.current_Mail_Template, eventEntity.emailBody, eventEntity.emailSubject);
             if (isRequestSucessful)
             {
                 return eventEntity;
@@ -93,19 +82,15 @@ namespace TC37852369.Services
             return await eventRepository.getAllEvents();
         }
 
-        public string addEventImage(string imagePath)
-        {
-            return eventRepository.addEventImage(imagePath);
-        }
 
-        public async Task<bool> addEventDay(string event_Day_Id, string id, string event_Id, int dayNum, double cost, DateTime event_Day_Date)
+        /*public async Task<bool> addEventDay(string event_Day_Id, string id, string event_Id, int dayNum, double cost, DateTime event_Day_Date)
         {
             return await eventRepository.addEventDay(event_Day_Id, id, event_Id,dayNum,cost,event_Day_Date);
         }
         public async Task<bool> deleteEventDay(string event_Id, string Event_Day_Id)
         {
             return await eventRepository.deleteEventDay(event_Id,Event_Day_Id);
-        }
+        }*/
 
         public string getEventStatus(DateTime eventTime, int eventDuration)
         {
@@ -114,7 +99,7 @@ namespace TC37852369.Services
                 return nameof(EventStatus.Past);
             }
             else if (eventTime <= DateTime.Now && 
-                eventTime.AddDays(eventDuration) >= DateTime.Now)
+                eventTime.AddDays(eventDuration - 1) >= DateTime.Now)
             {
                 return nameof(EventStatus.Ongoing);
             }

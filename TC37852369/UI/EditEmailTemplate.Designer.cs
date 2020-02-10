@@ -50,7 +50,7 @@
             // TextBox_Subject
             // 
             this.TextBox_Subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Subject.Location = new System.Drawing.Point(764, 300);
+            this.TextBox_Subject.Location = new System.Drawing.Point(764, 260);
             this.TextBox_Subject.Name = "TextBox_Subject";
             this.TextBox_Subject.Size = new System.Drawing.Size(564, 34);
             this.TextBox_Subject.TabIndex = 1;
@@ -58,10 +58,10 @@
             // TextBox_Body
             // 
             this.TextBox_Body.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Body.Location = new System.Drawing.Point(764, 357);
+            this.TextBox_Body.Location = new System.Drawing.Point(764, 317);
             this.TextBox_Body.Multiline = true;
             this.TextBox_Body.Name = "TextBox_Body";
-            this.TextBox_Body.Size = new System.Drawing.Size(564, 365);
+            this.TextBox_Body.Size = new System.Drawing.Size(564, 242);
             this.TextBox_Body.TabIndex = 2;
             // 
             // Button_Save
@@ -69,7 +69,7 @@
             this.Button_Save.BackColor = System.Drawing.Color.Maroon;
             this.Button_Save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_Save.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Save.Location = new System.Drawing.Point(1188, 851);
+            this.Button_Save.Location = new System.Drawing.Point(1187, 753);
             this.Button_Save.Name = "Button_Save";
             this.Button_Save.Size = new System.Drawing.Size(205, 88);
             this.Button_Save.Style = MetroFramework.MetroColorStyle.White;
@@ -86,7 +86,7 @@
             this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
             this.Button_Cancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Cancel.Location = new System.Drawing.Point(673, 851);
+            this.Button_Cancel.Location = new System.Drawing.Point(687, 753);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(205, 88);
             this.Button_Cancel.Style = MetroFramework.MetroColorStyle.Black;
@@ -101,7 +101,7 @@
             // TextBox_TemplateName
             // 
             this.TextBox_TemplateName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_TemplateName.Location = new System.Drawing.Point(764, 240);
+            this.TextBox_TemplateName.Location = new System.Drawing.Point(764, 200);
             this.TextBox_TemplateName.Name = "TextBox_TemplateName";
             this.TextBox_TemplateName.Size = new System.Drawing.Size(564, 34);
             this.TextBox_TemplateName.TabIndex = 15;
@@ -111,9 +111,9 @@
             this.ListBox_EmailTemplates.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.89076F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.ListBox_EmailTemplates.FormattingEnabled = true;
             this.ListBox_EmailTemplates.ItemHeight = 22;
-            this.ListBox_EmailTemplates.Location = new System.Drawing.Point(31, 173);
+            this.ListBox_EmailTemplates.Location = new System.Drawing.Point(31, 133);
             this.ListBox_EmailTemplates.Name = "ListBox_EmailTemplates";
-            this.ListBox_EmailTemplates.Size = new System.Drawing.Size(454, 642);
+            this.ListBox_EmailTemplates.Size = new System.Drawing.Size(454, 422);
             this.ListBox_EmailTemplates.TabIndex = 16;
             this.ListBox_EmailTemplates.SelectedIndexChanged += new System.EventHandler(this.ListBox_EmailTemplates_SelectedIndexChanged);
             // 
@@ -121,7 +121,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 19.96639F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 91);
+            this.label1.Location = new System.Drawing.Point(23, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(269, 46);
             this.label1.TabIndex = 17;
@@ -136,7 +136,7 @@
             this.Button_CreateNew.ForeColor = System.Drawing.Color.White;
             this.Button_CreateNew.Image = ((System.Drawing.Image)(resources.GetObject("Button_CreateNew.Image")));
             this.Button_CreateNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Button_CreateNew.Location = new System.Drawing.Point(50, 852);
+            this.Button_CreateNew.Location = new System.Drawing.Point(23, 753);
             this.Button_CreateNew.Margin = new System.Windows.Forms.Padding(0);
             this.Button_CreateNew.Name = "Button_CreateNew";
             this.Button_CreateNew.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -150,7 +150,7 @@
             // 
             this.metroLabel9.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel9.Location = new System.Drawing.Point(598, 91);
+            this.metroLabel9.Location = new System.Drawing.Point(598, 51);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(10, 981);
             this.metroLabel9.TabIndex = 26;
@@ -158,7 +158,7 @@
             // Button_Close
             // 
             this.Button_Close.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Close.Location = new System.Drawing.Point(374, 852);
+            this.Button_Close.Location = new System.Drawing.Point(371, 753);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(205, 88);
             this.Button_Close.Style = MetroFramework.MetroColorStyle.Black;
@@ -172,7 +172,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 19.96639F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(629, 93);
+            this.label2.Location = new System.Drawing.Point(629, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(432, 46);
             this.label2.TabIndex = 28;
@@ -181,7 +181,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(638, 240);
+            this.label3.Location = new System.Drawing.Point(638, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 17);
             this.label3.TabIndex = 29;
@@ -190,7 +190,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(638, 300);
+            this.label4.Location = new System.Drawing.Point(638, 260);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 30;
@@ -199,7 +199,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(638, 357);
+            this.label5.Location = new System.Drawing.Point(638, 317);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 31;
@@ -209,7 +209,7 @@
             // 
             this.ComboBox_TemplateStrings.FormattingEnabled = true;
             this.ComboBox_TemplateStrings.ItemHeight = 23;
-            this.ComboBox_TemplateStrings.Location = new System.Drawing.Point(764, 173);
+            this.ComboBox_TemplateStrings.Location = new System.Drawing.Point(764, 133);
             this.ComboBox_TemplateStrings.Name = "ComboBox_TemplateStrings";
             this.ComboBox_TemplateStrings.Size = new System.Drawing.Size(564, 29);
             this.ComboBox_TemplateStrings.TabIndex = 32;
@@ -219,7 +219,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(638, 176);
+            this.label6.Location = new System.Drawing.Point(638, 136);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 17);
             this.label6.TabIndex = 33;
@@ -229,7 +229,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 1020);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1462, 864);
+            this.ClientSize = new System.Drawing.Size(1462, 864);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ComboBox_TemplateStrings);
             this.Controls.Add(this.label5);
@@ -248,6 +250,7 @@
             this.Controls.Add(this.TextBox_Subject);
             this.Name = "EditEmailTemplate";
             this.Text = "Email Template";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

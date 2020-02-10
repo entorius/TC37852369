@@ -39,7 +39,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(36, 119);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(167, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(163, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Participation format name";
             // 
@@ -87,6 +87,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(692, 364);
             this.ClientSize = new System.Drawing.Size(692, 364);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Add);

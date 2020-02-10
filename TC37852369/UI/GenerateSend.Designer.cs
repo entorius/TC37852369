@@ -214,6 +214,7 @@
             // 
             // Table_FilteredResultsHeader
             // 
+            this.Table_FilteredResultsHeader.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Table_FilteredResultsHeader.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.Table_FilteredResultsHeader.ColumnCount = 7;
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
@@ -222,7 +223,7 @@
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
             this.Table_FilteredResultsHeader.Controls.Add(this.label13, 6, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label10, 1, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label11, 1, 0);
@@ -230,7 +231,7 @@
             this.Table_FilteredResultsHeader.Controls.Add(this.label9, 5, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label12, 1, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label3, 0, 0);
-            this.Table_FilteredResultsHeader.Location = new System.Drawing.Point(648, 100);
+            this.Table_FilteredResultsHeader.Location = new System.Drawing.Point(668, 100);
             this.Table_FilteredResultsHeader.Name = "Table_FilteredResultsHeader";
             this.Table_FilteredResultsHeader.RowCount = 1;
             this.Table_FilteredResultsHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -399,10 +400,11 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoScroll = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.Table_FilteredResults);
-            this.panel1.Location = new System.Drawing.Point(648, 151);
+            this.panel1.Location = new System.Drawing.Point(668, 151);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(675, 557);
             this.panel1.TabIndex = 25;
@@ -419,7 +421,7 @@
             this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.Table_FilteredResults.Dock = System.Windows.Forms.DockStyle.Top;
             this.Table_FilteredResults.Location = new System.Drawing.Point(0, 0);
             this.Table_FilteredResults.Name = "Table_FilteredResults";
@@ -453,8 +455,9 @@
             // 
             // CheckBox_CheckAll
             // 
+            this.CheckBox_CheckAll.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CheckBox_CheckAll.AutoSize = true;
-            this.CheckBox_CheckAll.Location = new System.Drawing.Point(648, 731);
+            this.CheckBox_CheckAll.Location = new System.Drawing.Point(668, 771);
             this.CheckBox_CheckAll.Name = "CheckBox_CheckAll";
             this.CheckBox_CheckAll.Size = new System.Drawing.Size(84, 21);
             this.CheckBox_CheckAll.TabIndex = 28;
@@ -466,7 +469,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 880);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1462, 864);
+            this.ClientSize = new System.Drawing.Size(1462, 864);
             this.Controls.Add(this.CheckBox_CheckAll);
             this.Controls.Add(this.ComboBox_ParticipationFormat);
             this.Controls.Add(this.label14);
@@ -490,6 +495,7 @@
             this.Controls.Add(this.ComboBox_Events);
             this.Name = "GenerateSend";
             this.Text = "Generate And Send To Everyone";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Table_FilteredResultsHeader.ResumeLayout(false);
             this.Table_FilteredResultsHeader.PerformLayout();
             this.panel1.ResumeLayout(false);

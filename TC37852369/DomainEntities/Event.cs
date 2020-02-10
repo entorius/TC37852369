@@ -34,6 +34,11 @@ namespace TC37852369.DomainEntities
         public string current_Mail_Template { get; set; }
         public string emailBody { get; set; }
         public string emailSubject { get; set; }
+        public string image1Link { get; set; }
+        public string image2Link { get; set; }
+        public string image3Link { get; set; }
+        public string image4Link { get; set; }
+        public string image5Link { get; set; }
         public Event(string id, string eventName, DateTime date_From,
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom, string day1TimeTo,

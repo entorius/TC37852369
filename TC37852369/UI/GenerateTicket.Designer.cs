@@ -127,7 +127,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1462, 864);
+            this.ClientSize = new System.Drawing.Size(1462, 864);
             this.Controls.Add(this.Button_GenerateUsers);
             this.Controls.Add(this.TextBox_Barcode);
             this.Controls.Add(this.Button_GenerateBarcodeNumber);

@@ -13,7 +13,6 @@ namespace TC37852369.Repository
     public class CompanyDataRepository
     {
         StringEncoder stringEncoder = new StringEncoder();
-        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> EditCompanyData(string address, string companyName, string email, 
             string phoneNumber, string webPageAddress, string companyLogo, string emailSurename,
             string emailPassword)

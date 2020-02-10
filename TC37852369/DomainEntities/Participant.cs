@@ -17,6 +17,7 @@ namespace TC37852369.DomainEntities
         public string companyType { get; set; }
         public string email { get; set; }
         public string phoneNumber { get; set; }
+        public string additionalPhoneNumber { get; set; }
         public string country { get; set; }
         public string participationFormat { get; set; }
         public string paymentStatus { get; set; }
@@ -35,13 +36,21 @@ namespace TC37852369.DomainEntities
         public bool checkedInDay3 { get; set; }
         public bool checkedInDay4 { get; set; }
 
+        public double paymentAmount { get; set; }
+
+
+        public DateTime registrationDate { get; set; }
+        public DateTime paymentDate { get; set; }
+        public string comment { get; set; }
+
         public Participant(string participant_Id, string event_Id,
             string firstName, string lastName,string jobTitle, string company_Name, string company_Type,
             string email, string phone_Number, string country, string participation_Format,
             string payment_Status, bool materials, string ticket_Bar, bool ticket_Sent,
             bool participate_Evening_Event, bool participate_In_Day1, bool participate_In_Day2,
             bool participate_In_Day3, bool participate_In_Day4, bool checked_In_Day1,
-            bool checked_In_Day2, bool checked_In_Day3, bool checked_In_Day4)
+            bool checked_In_Day2, bool checked_In_Day3, bool checked_In_Day4, DateTime registrationDate, DateTime paymentDate, double paymentAmount,
+            string additionalPhoneNumber, string comment)
         {
             this.participantId = participant_Id;
             this.eventId = event_Id;
@@ -67,6 +76,11 @@ namespace TC37852369.DomainEntities
             this.checkedInDay2 = checked_In_Day2;
             this.checkedInDay3 = checked_In_Day3;
             this.checkedInDay4 = checked_In_Day4;
+            this.registrationDate = registrationDate;
+            this.paymentDate = paymentDate;
+            this.paymentAmount = paymentAmount;
+            this.additionalPhoneNumber = additionalPhoneNumber;
+            this.comment = comment;
 
         }
     }

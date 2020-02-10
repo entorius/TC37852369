@@ -118,6 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PictureBox_AddAdditionalPhoneNumber.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACbSURBVDhP7ZO7DYAwDERNidiGEgmJBViCjnFYgh1oWIKeLajhLqKILPOR0+ak1yTOpfCdfKgC
+        AxhvelAAt2ZwKmrg1gq0YQfcyob/DEvQAg5qdqANJ2DNcvshUhvQj7wwp+aFF4bfvPASDI/oIBXWVBqw
+        AG5UY33GRVmzrCm7/yoOakNu1K1smG7I7WtD1tQtRiqODmvK7j9I5AIV5KVjbeq16wAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="PictureBox_DeleteAdditionalPhoneNumber.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAABsSURBVDhP7c+hDYAwEEbhKhIcO4DAIlAYZiEYtmBSVmAEeHW0uR4FgruXfPK/tE6pxRgZ8Co/
+        PBJW3CYNn6gQNH9U4P8aSN/R+Ncls4NZ7GCYHcyiHqwhjTQTkpWQRpoOaj02SOOrHQuinDsB75HXOSPH
+        3NQAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="$this.BackImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAASwCAYAAADrIbPPAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s

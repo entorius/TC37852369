@@ -11,7 +11,6 @@ namespace TC37852369.Repository
 {
     public class UserRepository
     {
-        SetEnvironmentVariable SetEnvironmentVariable = new SetEnvironmentVariable();
         public async Task<bool> addUser(string username, string password, string mail,string phoneNumber, string name, string surename, long user_Id)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();

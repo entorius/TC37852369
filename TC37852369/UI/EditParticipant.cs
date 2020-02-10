@@ -65,6 +65,11 @@ namespace TC37852369
             this.FormClosed += CloseHandler;
 
             loadWindowData();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private async void loadWindowData()
@@ -88,7 +93,9 @@ namespace TC37852369
             {
                 ComboBox_PaymentStatus.Items.Add(paymentStatus);
             }
-            ComboBox_PaymentStatus.SelectedIndex = 0;
+            ComboBox_PaymentStatus.SelectedIndex = ComboBox_PaymentStatus.Items.IndexOf(participant.paymentStatus);
+
+            
 
             //Set Yes No values to materials, participation in evening event, and participation 
             //in event days comboBoxes and select no values for all exept for participating in 
@@ -106,12 +113,35 @@ namespace TC37852369
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
             ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
             ComboBox_ParticipationFormat.SelectedIndexChanged += ParticipationFormatSelectedIndexChanged;
+            DateTime_PaymentDate.Value = participant.paymentDate;
+            DateTime_RegistrationDate.Value = participant.registrationDate;
 
+            if (participant.paymentAmount > 0)
+            {
+                TextBox_PaymentAmount.Text = participant.paymentAmount.ToString();
+            }
+            else
+            {
+                TextBox_PaymentAmount.Text = "";
+            }
+
+            if(participant.additionalPhoneNumber.Length > 0)
+            {
+                TextBox_AdditionalPhoneNumber.Text = participant.additionalPhoneNumber;
+            }
+            else
+            {
+                PictureBox_AddAdditionalPhoneNumber.Show();
+                PictureBox_DeleteAdditionalPhoneNumber.Hide();
+                TextBox_AdditionalPhoneNumber.Text = "";
+                TextBox_AdditionalPhoneNumber.Hide();
+                Label_AdditionalPhoneNumber.Hide();
+            }
+            showHidePyamentAmountAndDate();
+            TextBox_Comment.Text = participant.comment;
 
             setFieldsData();
         }
-
-
 
             protected void CloseHandler(object sender, EventArgs e)
         {
@@ -120,12 +150,12 @@ namespace TC37852369
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            //bool eventChoosen = ComboBox_Events.SelectedItem == null ? false : true;
             int partcipantInformationManditoryFieldsFilled =
                 participantServices.isPartcipantInformationManditoryFieldsCorrect(
                     TextBox_FirstName.Text, TextBox_LastName.Text, TextBox_Email.Text
                     );
-            if (partcipantInformationManditoryFieldsFilled > 0)
+            bool paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
+            if (partcipantInformationManditoryFieldsFilled > 0 || !paymentAmountCorrect)
             {
                 if (partcipantInformationManditoryFieldsFilled == 1)
                 {
@@ -146,11 +176,22 @@ namespace TC37852369
                         "(must be: (some cheracters)@(domain) etc. example@gmail.com)" +
                         " or email has not been entered)", "Warning");
                 }
+                else if (!paymentAmountCorrect)
+                {
+                    messageBoxHelper.showWarning(this,
+                      "Payment amount is negative or not a number", "Warning");
+                }
             }
             else
             {
+                double paymentAmount;
+                Double.TryParse(TextBox_PaymentAmount.Text, out paymentAmount);
+                if (paymentAmount == 0)
+                {
+                    paymentAmount = -1;
+                }
                 Participant createdParticipant = new Participant(
-                    participant.participantId,
+                participant.participantId,
                 participant.eventId,
                 TextBox_FirstName.Text,
                 TextBox_LastName.Text,
@@ -173,7 +214,12 @@ namespace TC37852369
                 participant.checkedInDay1,
                 participant.checkedInDay2,
                 participant.checkedInDay3,
-                participant.checkedInDay4
+                participant.checkedInDay4,
+                DateHelper.setDateToMidnight(DateTime_RegistrationDate.Value),
+                DateHelper.setDateToMidnight(DateTime_PaymentDate.Value),
+                paymentAmount,
+                TextBox_AdditionalPhoneNumber.Text,
+                TextBox_Comment.Text
                 );
                 await participantServices.editParticipant(createdParticipant);
                 if (createdParticipant != null && mainWindow.selectedEvent != null)
@@ -212,6 +258,7 @@ namespace TC37852369
                 if (deleted)
                 {
                     tableLayoutHelper.RemoveArbitraryRow(mainWindow.Table_ParticipantsData1, rowNumber);
+                    mainWindow.participantsToolTipHelpers.RemoveAt(rowNumber);
                     mainWindow.allParticipants.Remove(participant);
                     mainWindow.filteredParticipants.Remove(participant);
                     int id = mainWindow.selectedEventParticipants.FindIndex(p => p.participantId.Equals(participant.participantId));
@@ -440,6 +487,51 @@ namespace TC37852369
                 generateSendInfoWindow.Button_Confirm.Enabled = true;
                 generateSendInfoWindow.Button_Cancel.Enabled = false;
                 generateSendInfoWindow.Label_Status.Text = "Emails    Sent    Successfully";
+            }
+        }
+
+        private void PictureBox_AddAdditionalPhoneNumber_Click(object sender, EventArgs e)
+        {
+            PictureBox_AddAdditionalPhoneNumber.Hide();
+            PictureBox_DeleteAdditionalPhoneNumber.Show();
+            TextBox_AdditionalPhoneNumber.Show();
+            Label_AdditionalPhoneNumber.Show();
+        }
+
+        private void PictureBox_DeleteAdditionalPhoneNumber_Click(object sender, EventArgs e)
+        {
+            PictureBox_AddAdditionalPhoneNumber.Show();
+            PictureBox_DeleteAdditionalPhoneNumber.Hide();
+            TextBox_AdditionalPhoneNumber.Text = "";
+            TextBox_AdditionalPhoneNumber.Hide();
+            Label_AdditionalPhoneNumber.Hide();
+        }
+
+        private void ComboBox_PaymentStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showHidePyamentAmountAndDate();
+        }
+        private void showHidePyamentAmountAndDate()
+        {
+            if (ComboBox_PaymentStatus.SelectedIndex == 2)
+            {
+                TextBox_PaymentAmount.Hide();
+                Label_PaymentAmount.Hide();
+            }
+            else
+            {
+                TextBox_PaymentAmount.Show();
+                Label_PaymentAmount.Show();
+            }
+            if (ComboBox_PaymentStatus.SelectedIndex == 1)
+            {
+                DateTime_PaymentDate.Show();
+                Label_PaymentDate.Show();
+            }
+            else
+            {
+                DateTime_PaymentDate.Hide();
+                Label_PaymentDate.Hide();
             }
         }
     }
