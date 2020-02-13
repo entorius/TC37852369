@@ -93,12 +93,6 @@
             this.Button_AddImage = new System.Windows.Forms.Button();
             this.Button_Delete2 = new System.Windows.Forms.PictureBox();
             this.Button_Image2 = new System.Windows.Forms.Button();
-            this.Button_Delete3 = new System.Windows.Forms.PictureBox();
-            this.Button_Image3 = new System.Windows.Forms.Button();
-            this.Button_Delete4 = new System.Windows.Forms.PictureBox();
-            this.Button_Image4 = new System.Windows.Forms.Button();
-            this.Button_Delete5 = new System.Windows.Forms.PictureBox();
-            this.Button_Image5 = new System.Windows.Forms.Button();
             this.FileDialog_AddEvent = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog_ImageSave = new System.Windows.Forms.FolderBrowserDialog();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -106,11 +100,9 @@
             this.ComboBox_TemplateStrings = new MetroFramework.Controls.MetroComboBox();
             this.Label_ticketWebPage = new MetroFramework.Controls.MetroLabel();
             this.TextBox_WebPage = new System.Windows.Forms.TextBox();
+            this.Button_AddChangeSponsorsImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete5)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBox_EventName
@@ -753,7 +745,7 @@
             this.Button_Image1.ForeColor = System.Drawing.Color.White;
             this.Button_Image1.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image1.Image")));
             this.Button_Image1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image1.Location = new System.Drawing.Point(1266, 812);
+            this.Button_Image1.Location = new System.Drawing.Point(1283, 812);
             this.Button_Image1.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image1.Name = "Button_Image1";
             this.Button_Image1.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -771,7 +763,7 @@
             this.Button_Delete1.ErrorImage = null;
             this.Button_Delete1.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete1.Image")));
             this.Button_Delete1.InitialImage = null;
-            this.Button_Delete1.Location = new System.Drawing.Point(1390, 822);
+            this.Button_Delete1.Location = new System.Drawing.Point(1407, 822);
             this.Button_Delete1.Name = "Button_Delete1";
             this.Button_Delete1.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete1.TabIndex = 81;
@@ -798,11 +790,11 @@
             // Button_Delete2
             // 
             this.Button_Delete2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Delete2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Delete2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
             this.Button_Delete2.ErrorImage = null;
             this.Button_Delete2.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete2.Image")));
             this.Button_Delete2.InitialImage = null;
-            this.Button_Delete2.Location = new System.Drawing.Point(1555, 822);
+            this.Button_Delete2.Location = new System.Drawing.Point(1779, 822);
             this.Button_Delete2.Name = "Button_Delete2";
             this.Button_Delete2.Size = new System.Drawing.Size(20, 20);
             this.Button_Delete2.TabIndex = 84;
@@ -813,14 +805,14 @@
             // 
             this.Button_Image2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button_Image2.AutoEllipsis = true;
-            this.Button_Image2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
+            this.Button_Image2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
             this.Button_Image2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_Image2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Image2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Button_Image2.ForeColor = System.Drawing.Color.White;
             this.Button_Image2.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image2.Image")));
             this.Button_Image2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image2.Location = new System.Drawing.Point(1431, 812);
+            this.Button_Image2.Location = new System.Drawing.Point(1655, 812);
             this.Button_Image2.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Image2.Name = "Button_Image2";
             this.Button_Image2.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
@@ -830,114 +822,6 @@
             this.Button_Image2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Button_Image2.UseVisualStyleBackColor = false;
             this.Button_Image2.Click += new System.EventHandler(this.Button_Image2_Click);
-            // 
-            // Button_Delete3
-            // 
-            this.Button_Delete3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Delete3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
-            this.Button_Delete3.ErrorImage = null;
-            this.Button_Delete3.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete3.Image")));
-            this.Button_Delete3.InitialImage = null;
-            this.Button_Delete3.Location = new System.Drawing.Point(1718, 822);
-            this.Button_Delete3.Name = "Button_Delete3";
-            this.Button_Delete3.Size = new System.Drawing.Size(20, 20);
-            this.Button_Delete3.TabIndex = 86;
-            this.Button_Delete3.TabStop = false;
-            this.Button_Delete3.Click += new System.EventHandler(this.Button_Delete3_Click);
-            // 
-            // Button_Image3
-            // 
-            this.Button_Image3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Image3.AutoEllipsis = true;
-            this.Button_Image3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
-            this.Button_Image3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Image3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Image3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Button_Image3.ForeColor = System.Drawing.Color.White;
-            this.Button_Image3.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image3.Image")));
-            this.Button_Image3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image3.Location = new System.Drawing.Point(1594, 812);
-            this.Button_Image3.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Image3.Name = "Button_Image3";
-            this.Button_Image3.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
-            this.Button_Image3.Size = new System.Drawing.Size(148, 40);
-            this.Button_Image3.TabIndex = 85;
-            this.Button_Image3.Text = "SomeImage1";
-            this.Button_Image3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Button_Image3.UseVisualStyleBackColor = false;
-            this.Button_Image3.Click += new System.EventHandler(this.Button_Image3_Click);
-            // 
-            // Button_Delete4
-            // 
-            this.Button_Delete4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Delete4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
-            this.Button_Delete4.ErrorImage = null;
-            this.Button_Delete4.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete4.Image")));
-            this.Button_Delete4.InitialImage = null;
-            this.Button_Delete4.Location = new System.Drawing.Point(1390, 880);
-            this.Button_Delete4.Name = "Button_Delete4";
-            this.Button_Delete4.Size = new System.Drawing.Size(20, 20);
-            this.Button_Delete4.TabIndex = 88;
-            this.Button_Delete4.TabStop = false;
-            this.Button_Delete4.Click += new System.EventHandler(this.Button_Delete4_Click);
-            // 
-            // Button_Image4
-            // 
-            this.Button_Image4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Image4.AutoEllipsis = true;
-            this.Button_Image4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
-            this.Button_Image4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Image4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Image4.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Button_Image4.ForeColor = System.Drawing.Color.White;
-            this.Button_Image4.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image4.Image")));
-            this.Button_Image4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image4.Location = new System.Drawing.Point(1266, 870);
-            this.Button_Image4.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Image4.Name = "Button_Image4";
-            this.Button_Image4.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
-            this.Button_Image4.Size = new System.Drawing.Size(148, 40);
-            this.Button_Image4.TabIndex = 87;
-            this.Button_Image4.Text = "SomeImage1";
-            this.Button_Image4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Button_Image4.UseVisualStyleBackColor = false;
-            this.Button_Image4.Click += new System.EventHandler(this.Button_Image4_Click);
-            // 
-            // Button_Delete5
-            // 
-            this.Button_Delete5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Delete5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
-            this.Button_Delete5.ErrorImage = null;
-            this.Button_Delete5.Image = ((System.Drawing.Image)(resources.GetObject("Button_Delete5.Image")));
-            this.Button_Delete5.InitialImage = null;
-            this.Button_Delete5.Location = new System.Drawing.Point(1555, 880);
-            this.Button_Delete5.Name = "Button_Delete5";
-            this.Button_Delete5.Size = new System.Drawing.Size(20, 20);
-            this.Button_Delete5.TabIndex = 90;
-            this.Button_Delete5.TabStop = false;
-            this.Button_Delete5.Click += new System.EventHandler(this.Button_Delete5_Click);
-            // 
-            // Button_Image5
-            // 
-            this.Button_Image5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button_Image5.AutoEllipsis = true;
-            this.Button_Image5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(181)))), ((int)(((byte)(220)))));
-            this.Button_Image5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Image5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Image5.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Button_Image5.ForeColor = System.Drawing.Color.White;
-            this.Button_Image5.Image = ((System.Drawing.Image)(resources.GetObject("Button_Image5.Image")));
-            this.Button_Image5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Button_Image5.Location = new System.Drawing.Point(1431, 870);
-            this.Button_Image5.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Image5.Name = "Button_Image5";
-            this.Button_Image5.Padding = new System.Windows.Forms.Padding(3, 4, 30, 0);
-            this.Button_Image5.Size = new System.Drawing.Size(148, 40);
-            this.Button_Image5.TabIndex = 89;
-            this.Button_Image5.Text = "SomeImage1";
-            this.Button_Image5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Button_Image5.UseVisualStyleBackColor = false;
-            this.Button_Image5.Click += new System.EventHandler(this.Button_Image5_Click);
             // 
             // FileDialog_AddEvent
             // 
@@ -994,23 +878,36 @@
             this.TextBox_WebPage.Size = new System.Drawing.Size(409, 30);
             this.TextBox_WebPage.TabIndex = 121;
             // 
+            // Button_AddChangeSponsorsImage
+            // 
+            this.Button_AddChangeSponsorsImage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Button_AddChangeSponsorsImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(80)))));
+            this.Button_AddChangeSponsorsImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_AddChangeSponsorsImage.ForeColor = System.Drawing.Color.White;
+            this.Button_AddChangeSponsorsImage.Image = ((System.Drawing.Image)(resources.GetObject("Button_AddChangeSponsorsImage.Image")));
+            this.Button_AddChangeSponsorsImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Button_AddChangeSponsorsImage.Location = new System.Drawing.Point(1637, 725);
+            this.Button_AddChangeSponsorsImage.Name = "Button_AddChangeSponsorsImage";
+            this.Button_AddChangeSponsorsImage.Size = new System.Drawing.Size(181, 67);
+            this.Button_AddChangeSponsorsImage.TabIndex = 137;
+            this.Button_AddChangeSponsorsImage.Text = "  ADD SPONSORS IMAGE";
+            this.Button_AddChangeSponsorsImage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Button_AddChangeSponsorsImage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_AddChangeSponsorsImage.UseVisualStyleBackColor = false;
+            this.Button_AddChangeSponsorsImage.Click += new System.EventHandler(this.Button_AddChangeSponsorsImage_Click);
+            // 
             // CreateEvent
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1920, 1030);
             this.ClientSize = new System.Drawing.Size(1920, 1030);
+            this.Controls.Add(this.Button_AddChangeSponsorsImage);
             this.Controls.Add(this.Label_ticketWebPage);
             this.Controls.Add(this.TextBox_WebPage);
             this.Controls.Add(this.ComboBox_TemplateStrings);
             this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroLabel9);
-            this.Controls.Add(this.Button_Delete5);
-            this.Controls.Add(this.Button_Image5);
-            this.Controls.Add(this.Button_Delete4);
-            this.Controls.Add(this.Button_Image4);
-            this.Controls.Add(this.Button_Delete3);
-            this.Controls.Add(this.Button_Image3);
             this.Controls.Add(this.Button_Delete2);
             this.Controls.Add(this.Button_Image2);
             this.Controls.Add(this.Button_AddImage);
@@ -1083,9 +980,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Button_Delete5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1156,12 +1050,6 @@
         private System.Windows.Forms.Button Button_AddImage;
         private System.Windows.Forms.PictureBox Button_Delete2;
         private System.Windows.Forms.Button Button_Image2;
-        private System.Windows.Forms.PictureBox Button_Delete3;
-        private System.Windows.Forms.Button Button_Image3;
-        private System.Windows.Forms.PictureBox Button_Delete4;
-        private System.Windows.Forms.Button Button_Image4;
-        private System.Windows.Forms.PictureBox Button_Delete5;
-        private System.Windows.Forms.Button Button_Image5;
         private System.Windows.Forms.OpenFileDialog FileDialog_AddEvent;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_ImageSave;
         private MetroFramework.Controls.MetroLabel metroLabel9;
@@ -1169,5 +1057,6 @@
         private MetroFramework.Controls.MetroComboBox ComboBox_TemplateStrings;
         private MetroFramework.Controls.MetroLabel Label_ticketWebPage;
         private System.Windows.Forms.TextBox TextBox_WebPage;
+        private System.Windows.Forms.Button Button_AddChangeSponsorsImage;
     }
 }

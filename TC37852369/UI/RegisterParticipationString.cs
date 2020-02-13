@@ -53,6 +53,7 @@ namespace TC37852369
 
         private async void Button_Add_Click(object sender, EventArgs e)
         {
+            Button_Add.Enabled = false;
             ParticipationFormat participationFormat = await participationFormatServices.addParticipationFormat(TextBox_ParticipationFormatName.Text);
             if (participationForm.Equals("register"))
             {
@@ -81,6 +82,7 @@ namespace TC37852369
                         "might be problems with database or your internet connection", "Warning");
                 }
             }
+            Button_Add.Enabled = true;
             this.Dispose();
             
         }

@@ -126,9 +126,24 @@ namespace TC37852369
 
         private async void GenerateDocumentsAndSendEmails()
         {
-            
-            List<string> ticketsPaths = ticketCreation.generateTicketsAndSave(
-                    checkedParticipants, events, companyData);
+            Dictionary<string,Event> eventsToSend = new Dictionary<string,Event>();
+            foreach(Participant p in checkedParticipants)
+            {
+                Event eventToAdd = events.Find(ev => ev.id.ToString().Equals(p.eventId));
+                if (!eventsToSend.ContainsKey(eventToAdd.eventName))
+                {
+                    eventsToSend.Add(eventToAdd.eventName, eventToAdd);
+                }
+            }
+            List<Event> eventsToSendList = new List<Event>();
+            foreach(KeyValuePair<string,Event> ev in eventsToSend)
+            {
+                eventsToSendList.Add(ev.Value);
+            }
+
+
+            List<string> ticketsPaths = await ticketCreation.generateTicketsAndSave(
+                    checkedParticipants, eventsToSendList, companyData);
             sendingStatus = "SendingEmails";
             List<string> toEmails = new List<string>();
             List<string> emailBodies = new List<string>();

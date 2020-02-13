@@ -86,17 +86,26 @@ namespace TC37852369.UI
             }
             else
             {
-                CompanyData dataSaved = await companyDataServices.EditCompanyData(
-                    TextBox_Address.Text,
-                    TextBox_CompanyName.Text,
-                    TextBox_Email.Text,
-                    TextBox_PhoneNumber.Text,
-                    TextBox_WebPageAddress.Text,
-                    TextBox_Username.Text,
-                    TextBox_Password.Text,
-                    PictureBox_CompanyLogo.Image
-                    );
-                if (dataSaved == null)
+                CompanyData dataSaved = null;
+                bool isDataSaved = true;
+                try
+                {
+                    dataSaved = await companyDataServices.EditCompanyData(
+                        TextBox_Address.Text,
+                        TextBox_CompanyName.Text,
+                        TextBox_Email.Text,
+                        TextBox_PhoneNumber.Text,
+                        TextBox_WebPageAddress.Text,
+                        TextBox_Username.Text,
+                        TextBox_Password.Text,
+                        PictureBox_CompanyLogo.Image
+                        );
+                }
+                catch(Exception)
+                {
+                    isDataSaved = false;
+                }
+                if (dataSaved == null && isDataSaved)
                 {
                     messageBoxHelper.showWarning(this, "Data save unsuccesfull:\n" +
                         "1) Bad internet connection\n" +

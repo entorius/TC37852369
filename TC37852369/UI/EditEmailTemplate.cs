@@ -144,27 +144,39 @@ namespace TC37852369
         {
             if(selectedItemId >= 0)
             {
-                EmailTemplate editedEmailTemlate = await templateServices.editMailTemplate(
-                    selectedItemId.ToString(),
-                    TextBox_TemplateName.Text,
-                    TextBox_Subject.Text,
-                    TextBox_Body.Text,
-                    false);
+                try
+                {
+                    EmailTemplate editedEmailTemlate = await templateServices.editMailTemplate(
+                        selectedItemId.ToString(),
+                        TextBox_TemplateName.Text,
+                        TextBox_Subject.Text,
+                        TextBox_Body.Text,
+                        false);
 
-                emailTemplates[selectedItemId] = editedEmailTemlate;
+                    emailTemplates[selectedItemId] = editedEmailTemlate;
+                }
+                catch (Exception)
+                {
+                    messageBoxHelper.showWarning(this, "Save Unsuccesful", "Warning");
+                }
             }
             else
             {
-
-                EmailTemplate template = await templateServices.createMailTemplate(
-                    TextBox_TemplateName.Text,
-                    TextBox_Subject.Text,
-                    TextBox_Body.Text,
-                    false);
-                emailTemplates.Add(template);
-                selectedItemId = ListBox_EmailTemplates.Items.Count;
-                this.ListBox_EmailTemplates.Items.Add(template.templateName);
-                
+                try
+                {
+                    EmailTemplate template = await templateServices.createMailTemplate(
+                        TextBox_TemplateName.Text,
+                        TextBox_Subject.Text,
+                        TextBox_Body.Text,
+                        false);
+                    emailTemplates.Add(template);
+                    selectedItemId = ListBox_EmailTemplates.Items.Count;
+                    this.ListBox_EmailTemplates.Items.Add(template.templateName);
+                }
+                catch (Exception)
+                {
+                    messageBoxHelper.showWarning(this, "Save Unsuccesful", "Warning");
+                }
             }
         }
 

@@ -24,24 +24,6 @@ public enum CompanyTypes
     Government
 }
 //Delete when all participation formats will be added to the database
-public enum ParticipationFormats
-{
-     Delegate,
-     Exhibitor,
-     Speaker,
-     SpeakerModerator,
-     SpeakerChairman,
-     StrategicPartner,
-     MediaPartner,
-     SponsorBronze,
-     SponsorSilver,
-     SponsorGold,
-     SponsorPlatinum,
-     SponsorEvening,
-     SponsorIdentity,
-     SponsorLunch,
-     SponsorCoffee
-}
 
 public enum PaymentStatus
 {
@@ -144,9 +126,11 @@ namespace TC37852369
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
             ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
             ComboBox_ParticipationFormat.SelectedIndexChanged += ParticipationFormatSelectedIndexChanged;
+            DateTime_PaymentDate.Hide();
         }
         private async void Button_Register_Click(object sender, EventArgs e)
         {
+            Button_Register.Enabled = false;
             bool eventChoosen = ComboBox_Events.SelectedItem == null ? false : true;
             bool paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
             int partcipantInformationManditoryFieldsFilled =
@@ -194,11 +178,7 @@ namespace TC37852369
                     paymentAmount = -1;
                 }
 
-                DateTime paymentDate = DateTime_PaymentDate.MinDate;
-                if (paymentDateValueChanged)
-                {
-                    paymentDate = paymentValueDate;
-                }
+                DateTime paymentDate = DateTime_PaymentDate.Value;
                 Participant createdParticipant = await participantServices.createParticipant(
                 events[ComboBox_Events.SelectedIndex].id.ToString(),
                 TextBox_FirstName.Text,
@@ -255,6 +235,7 @@ namespace TC37852369
                         "or database write request number exceeded", "Warning");
                 }
             }
+            Button_Register.Enabled = true;
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
@@ -390,13 +371,13 @@ namespace TC37852369
             }
             if(ComboBox_PaymentStatus.SelectedIndex == 1)
             {
-                DateTime_PaymentDate.Hide();
-                Label_PaymentDate.Hide();
+                DateTime_PaymentDate.Show();
+                Label_PaymentDate.Show();
             }
             else
             {
-                DateTime_PaymentDate.Show();
-                Label_PaymentDate.Show();
+                DateTime_PaymentDate.Hide();
+                Label_PaymentDate.Hide();
             }
         }
     }

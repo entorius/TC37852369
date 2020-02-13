@@ -22,6 +22,13 @@ namespace TC37852369.UI
             this.mainWindow = mainWindow;
             
             InitializeComponent();
+
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+
             checkBoxList.Add(CheckBox_FirstName);
             checkBoxList.Add(CheckBox_LastName);
             checkBoxList.Add(CheckBox_CompanyType);

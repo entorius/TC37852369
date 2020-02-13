@@ -119,6 +119,7 @@
     <Compile Include="DomainEntities\EmailTemplate.cs" />
     <Compile Include="DomainEntities\EmailTemplateString.cs" />
     <Compile Include="DomainEntities\Event.cs" />
+    <Compile Include="DomainEntities\FilterWindowData.cs" />
     <Compile Include="DomainEntities\ImageEntity.cs" />
     <Compile Include="DomainEntities\LastIdentificationNumber.cs" />
     <Compile Include="DomainEntities\Participant.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Services\Images\GifImage.cs" />
     <Compile Include="Services\LastEntityIdentificationNumberServices.cs" />
     <Compile Include="Services\MailTemplateServices.cs" />
+    <Compile Include="Services\ParticipantFilteringServices.cs" />
     <Compile Include="Services\ParticipantServices.cs" />
     <Compile Include="Services\ParticipationFormatServices.cs" />
     <Compile Include="Services\Ticket generation\BarcodeGenerator.cs" />

@@ -15,13 +15,14 @@ namespace TC37852369.Services.Ticket_generation
 {
     public class TicketCreation
     {
-        private PDFConverter pdfConverter;
+        public PDFConverter pdfConverter;
         private StringEncoder stringEncoder = new StringEncoder();
-        private BarcodeGenerator barcodeGenerator = new BarcodeGenerator(); 
-        private Microsoft.Office.Interop.Word.Application MSdoc;
+        private BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
+        private ImageEntityServices imageEntityServices = new ImageEntityServices();
+        public Microsoft.Office.Interop.Word.Application MSdoc;
         public static string workingDirectory = Environment.CurrentDirectory;
-
-        string myImageFullPath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\websiteQRCode_noFrame.png";
+        Dictionary<string, Dictionary<int,string>> eventsImagesPaths = new Dictionary<string, Dictionary<int,string>>();
+        string imagesSavingPath = Directory.GetParent(workingDirectory).Parent.FullName + @"\bin\Debug\docs";
         string LogoFinalImage = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\logo_final.png";
         string phoneImagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\phone.png";
         string emailImagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\mail.png";
@@ -33,15 +34,26 @@ namespace TC37852369.Services.Ticket_generation
             
         }
         //creates ticket and returns its path
-        private string createTicket(string firstName, string lastName, string company, string format,
+        public string createTicket(string firstName, string lastName, string company, string format,
             string eventName,string date,string location1Row, string location2Row, string barcode,
-           System.Drawing.Color barcodeColor, string savingName)
+           System.Drawing.Color barcodeColor, string savingName,string firmImagePath,
+           string eventImagePath,string sponsorsImagePath,string savingPath)
         {
             string encodedBarcode = StringEncoder.ReturnEncryptedString(barcode);
             System.Drawing.Image barcodeImage = barcodeGenerator.generateQrBarcodeZXing(encodedBarcode, barcodeColor);
 
-            using (DocX document = DocX.Create(@"docs\" + savingName + ".docx"))
+            string localSavingPath = @"docs\";
+
+            if (savingPath.Replace(" ","").Length > 0)
             {
+                localSavingPath = savingPath + @"\";
+            }
+
+            using (DocX document = DocX.Create(localSavingPath + savingName + ".docx"))
+            {
+                document.InsertParagraph();
+                document.InsertParagraph();
+                System.Drawing.Color borderColor = System.Drawing.ColorTranslator.FromHtml("#00A86B");
                 // Set document margins
                 document.MarginBottom = 0.7F;
                 document.MarginTop = 0.7F;
@@ -50,14 +62,67 @@ namespace TC37852369.Services.Ticket_generation
 
                 document.InsertParagraph();
                 //add logo image
-                addImageToDocument(document, 145, 473, LogoFinalImage, Alignment.center);
+                Picture eventpic = null;
+                Picture sponsorspic = null;
+                if (eventImagePath.Length > 0) 
+                {
+                    Image image = document.AddImage(eventImagePath);
+                    eventpic = image.CreatePicture();
+                }
+                if (sponsorsImagePath.Length > 0)
+                {
+                    Image image = document.AddImage(sponsorsImagePath);
+                    sponsorspic = image.CreatePicture();
+                }
+                if (eventImagePath.Length > 0 && sponsorsImagePath.Length > 0)
+                {
+                    Table table = document.AddTable(1, 2);
+                    float[] widthsPercentage = { 40F, 60F };
+                    table.SetWidthsPercentage(widthsPercentage, document.PageWidth - 20F);
+                    table.Design = TableDesign.TableGrid;
+                    Border emptyBorder = new Border(BorderStyle.Tcbs_none, BorderSize.one, 0, System.Drawing.Color.Transparent);
+                    table.SetBorder(TableBorderType.Top, emptyBorder);
+                    table.SetBorder(TableBorderType.Right, emptyBorder);
+                    table.SetBorder(TableBorderType.Left, emptyBorder);
+                    table.SetBorder(TableBorderType.Bottom, emptyBorder);
+                    Border notEmptyBorder = new Border(BorderStyle.Tcbs_single, BorderSize.one, 1, borderColor);
+                    
+                    table.SetBorder(TableBorderType.InsideV, notEmptyBorder);
+                    if (eventpic != null)
+                    {
+                        table.Rows[0].Cells[0].VerticalAlignment = VerticalAlignment.Center;
 
+                        table.Rows[0].Cells[0].Paragraphs[0].AppendPicture(resizePicture(eventpic,279,200));
+                        
+                    }
+                    if (sponsorspic != null)
+                    {
+                        table.Rows[0].Cells[1].VerticalAlignment = VerticalAlignment.Center;
+                        table.Rows[0].Cells[1].MarginLeft = 20F;
+                        table.Rows[0].Cells[1].Paragraphs[0].AppendPicture(resizePicture(sponsorspic,457,200));
+                        
+                    }
+                    table.SetBorder(TableBorderType.Bottom, emptyBorder);
+                    //table.AutoFit = AutoFit.Contents;
+                    document.InsertTable(table);
+                    table.SetBorder(TableBorderType.Bottom, emptyBorder);
+                }
+                else if (eventImagePath.Length > 0)
+                {
+                    addImageToDocument(document, 145, 473, eventImagePath, Alignment.center);
+                }
+                else if (sponsorsImagePath.Length > 0)
+                {
+                    addImageToDocument(document, 145, 473, sponsorsImagePath, Alignment.center);
+                }
+                //addImageToDocument(document, 145, 473, LogoFinalImage, Alignment.center);
 
                 float pageWidth = document.PageWidth * 18;
                 //add line through all page
-                System.Drawing.Color color = System.Drawing.ColorTranslator.FromHtml("#00A86B");
+
+                document.InsertParagraph();
                 addLineToDocument(document, Xceed.Document.NET.BorderStyle.Tcbs_dashed,
-                    pageWidth, color);
+                    pageWidth, borderColor);
 
                 document.InsertParagraph();
 
@@ -101,21 +166,34 @@ namespace TC37852369.Services.Ticket_generation
                 addTextToDocument(document, calendarMap, Alignment.left, "Calibri", 11, linkColor);
                 document.InsertParagraph();
                 addLineToDocument(document, Xceed.Document.NET.BorderStyle.Tcbs_dashed,
-                    pageWidth, color);
+                    pageWidth, borderColor);
 
                 document.InsertParagraph();
                 addTextToDocument(document, "ORGANIZER", Alignment.left, "Calibri", 14, headerColor);
 
                 string companyImagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\" + "mergedImage" + ".png";
-
-                addTwoImagesToText("\t\t\t\t\t\t", companyImagePath, iliniumImage, document, Alignment.right, "Calibri",
-                    14, System.Drawing.Color.Black);
+                if (firmImagePath.Replace(" ", "").Length < 1)
+                {
+                    addTwoImagesToText("\t\t\t\t\t\t", companyImagePath, iliniumImage, document, Alignment.right, "Calibri",
+                        14, System.Drawing.Color.Black);
+                }
+                else
+                {
+                    addTwoImagesToText("\t\t\t\t\t\t", companyImagePath, firmImagePath, document, Alignment.right, "Calibri",
+                       14, System.Drawing.Color.Black);
+                }
                 // Save this document.
                 document.Save();
             }
 
-            string targetFile = Directory.GetParent(workingDirectory).Parent.FullName + @"\bin\Debug\docs\" + savingName + ".pdf";
-            convertWordToPdf(Directory.GetParent(workingDirectory).Parent.FullName + @"\bin\Debug\docs\" + savingName + ".docx", targetFile);
+
+            string targetPath = Directory.GetParent(workingDirectory).Parent.FullName + @"\bin\Debug\docs\";
+            if (savingPath.Replace(" ", "").Length > 0)
+            {
+                targetPath = savingPath + @"\";
+            }
+            string targetFile = targetPath + savingName + ".pdf";
+            convertWordToPdf(targetPath + savingName + ".docx", targetFile);
             
             return targetFile;
 
@@ -284,8 +362,6 @@ namespace TC37852369.Services.Ticket_generation
 
 
         }
-
-
         private void convertWordToPdf(object filePath, object targetFile)
         {
             pdfConverter.convertWordToPdf(filePath, targetFile);
@@ -293,15 +369,46 @@ namespace TC37852369.Services.Ticket_generation
 
         }
         //returns paths
-        public List<string> generateTicketsAndSave(List<Participant> participants,List<Event> events, CompanyData companyData)
+        public async Task<List<string>> generateTicketsAndSave(List<Participant> participants,List<Event> events, CompanyData companyData)
         {
             if (MSdoc == null) { MSdoc = new Microsoft.Office.Interop.Word.Application(); }
             pdfConverter = new PDFConverter(MSdoc);
             List<string> ticketsPaths = new List<string>(); 
+            foreach(Event ev in events)
+            {
+                Dictionary<int,string> eventImagesPaths = new Dictionary<int,string>();
+                List<ImageEntity> imageEntities = await imageEntityServices.GetEventImageEntities(ev);
+                foreach(ImageEntity ie in imageEntities)
+                {
+                    string imagePath = await imageEntityServices.downloadEventImage(ie, imagesSavingPath);
+                    eventImagesPaths.Add(Int32.Parse(ie.imageNumber.ToString()),imagePath);
+                }
+                eventsImagesPaths.Add(ev.eventName, eventImagesPaths);
+            }
+            List<ImageEntity> companyImageEntity = await imageEntityServices.GetCompanyImageEntities();
+
+            string companyImagePath = "";
+            if (companyImageEntity.Count > 0)
+            {
+                companyImagePath = await imageEntityServices.downloadCompanyImage(companyImageEntity[0], imagesSavingPath);
+            }
             foreach(Participant participant in participants)
             {
                 Event participantEvent = events.FindLast(e => e.id.ToString().Equals(participant.eventId));
                 string eventDate = formatEventDate(participantEvent.date_From);
+                string eventImagePath = "";
+                bool gotEventImagePath = eventsImagesPaths[participantEvent.eventName].TryGetValue(1,out eventImagePath);
+                string sponsorsImagePath = "";
+                bool gotSponsorsImagePath = eventsImagesPaths[participantEvent.eventName].TryGetValue(2, out eventImagePath);
+                if (!gotEventImagePath)
+                {
+                    eventImagePath = "";
+                }
+                if (!gotSponsorsImagePath)
+                {
+                    sponsorsImagePath = "";
+                }
+
                 System.Drawing.Image image = GenerateCompanyCredentialsImage(companyData.companyName,
             companyData.address, companyData.email, companyData.phoneNumber, participantEvent.webPage);
                 string ticketPath = createTicket(
@@ -315,7 +422,11 @@ namespace TC37852369.Services.Ticket_generation
                     participantEvent.venueAdress,
                     participant.ticketBarcode,
                     System.Drawing.Color.Black,
-                    participantEvent.eventName + participant.participantId
+                    participantEvent.eventName + participant.participantId,
+                    companyImagePath,
+                    eventImagePath,
+                    sponsorsImagePath,
+                    ""
                     );
                 ticketsPaths.Add(ticketPath);
             }
@@ -340,5 +451,39 @@ namespace TC37852369.Services.Ticket_generation
 
 
         }
+        public Picture resizePicture(Picture picture, int maxWidth, int maxHeight)
+        {
+            bool widthBigger = picture.Width > picture.Height ? true : false;
+
+            double resizeValue;
+            double maxDouble = 1;
+            double picSize = 1;
+            if (widthBigger)
+            {
+                if (picture.Width > maxWidth) {
+                    maxDouble = (double)maxWidth;
+                    picSize = (double)picture.Width;
+                    resizeValue = picSize / maxDouble;
+                    picture.Width = (int)(picSize / resizeValue);
+                    picture.Height = (int)((double)picture.Height / resizeValue);
+                }
+                
+            }
+            
+               
+            if (picture.Height > maxHeight)
+            {
+                maxDouble = (double)maxHeight;
+                picSize = (double)picture.Height;
+                resizeValue = picSize / maxDouble;
+                picture.Height = (int)(picSize / resizeValue);
+                picture.Width = (int)((double)picture.Width / resizeValue);
+            }
+            return picture;
+            
+
+            
+        }
+       
     }
 }

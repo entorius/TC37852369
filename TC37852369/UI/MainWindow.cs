@@ -44,6 +44,7 @@ namespace TC37852369
         int regiteredParticipantsTodayNumber = 0;
         int checkedInTodayParticipantsNumber = 0;
         WindowLoading windowLoading;
+        public FilterWindowData filterWindowData;
         public MainWindow(Login login)
         {
            
@@ -80,7 +81,7 @@ namespace TC37852369
 
             foreach (PaymentStatus paymentStatus in (PaymentStatus[])Enum.GetValues(typeof(PaymentStatus)))
             {
-                ComboBox_PaymentStatus.Items.Add(paymentStatus);
+                ComboBox_PaymentStatus.Items.Add(paymentStatus.ToString());
             }
             ComboBox_PaymentStatus.SelectedIndex = -1;
 
@@ -100,6 +101,8 @@ namespace TC37852369
                 participantTableColumnShow.Add(true);
             }
             //UpdateParticipantsTable();
+            filterWindowData = new FilterWindowData("", "", "", "", "", "", "", false, "", false, false, "", false, false, false, false,
+            false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
         }
 
         private void TabChanged(object sender, EventArgs e)
@@ -664,8 +667,7 @@ namespace TC37852369
 
             }
 
-            Participant participant = allParticipants.Count > 0 ? allParticipants[0] : null;
-            GenerateTicket ticket = new GenerateTicket(this, participant, companyData, eventEntity);
+            GenerateTicket ticket = new GenerateTicket(this, companyData, events);
             ticket.Show();
             this.Enabled = false;
         }
@@ -786,8 +788,12 @@ namespace TC37852369
             events = await eventService.getAllEvents();
             Table_EventsData.SuspendLayout();
             emptyTable(Table_EventsData);
+            Table_EventsData.ResumeLayout();
             filteredEvents = events;
+            Table_EventsData.SuspendLayout();
             UpdateEventsTable(filteredEvents);
+            Table_EventsData.ResumeLayout();
+
         }
 
         private async void ComboBox_Events_SelectedIndexChanged(object sender, EventArgs e)
@@ -888,7 +894,7 @@ namespace TC37852369
             {
                 eventEntity.eventStatus = eventStatus;
                 Event responseEventEntity = await eventServices.editEvent(eventEntity);
-                int allEventsIndex =events.FindLastIndex(ev => ev.id.Equals(responseEventEntity.id)); 
+                int allEventsIndex = events.FindLastIndex(ev => ev.id.Equals(responseEventEntity.id)); 
                 int filteredEventsIndex = filteredEvents.FindLastIndex(ev => ev.id.Equals(responseEventEntity.id));
                 if (allEventsIndex >= 0)
                 {
@@ -977,8 +983,10 @@ namespace TC37852369
         }
         private void Button_FilterParticipant_Click(object sender, EventArgs e)
         {
+            Button_FilterParticipant.Enabled = false;
             filterParticipants();
             Table_ParticipantsData1.ResumeLayout();
+            Button_FilterParticipant.Enabled = true;
         }
         private void filterParticipants()
         {
@@ -1088,6 +1096,7 @@ namespace TC37852369
 
         private void Button_FilterEvent_Click(object sender, EventArgs e)
         {
+            Button_FilterEvent.Enabled = false;
             filteredEvents = events;
             bool warningShown = false;
             int day = 0;
@@ -1096,29 +1105,51 @@ namespace TC37852369
             bool dayParsed = Int32.TryParse(TextBox_Day.Text, out day);
             bool monthParsed = Int32.TryParse(TextBox_Month.Text, out month);
             bool yearParsed = Int32.TryParse(TextBox_Year.Text, out year);
-            if (dayParsed && monthParsed && yearParsed)
+            if (dayParsed)
             {
                 if (TextBox_Day.Text.Length > 0 && TextBox_Day.Text.Length <= 2 && day <= 31)
                 {
                     filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Day == day);
                 }
+            }
+            else if(TextBox_Day.Text.Replace(" ","").Length > 0)
+            {
+                messageBoxHelper.showWarning(this, "You have entered wrong day (contains spaces or contain letters). \n" +
+                    "will not be filtered according to days", "Warning");
+            }
+            if (monthParsed)
+            {
                 if (TextBox_Month.Text.Length > 0 && TextBox_Month.Text.Length <= 2 && month <= 12)
                 {
                     filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Month == month);
                 }
+            }
+            else if (TextBox_Month.Text.Replace(" ", "").Length > 0)
+            {
+                messageBoxHelper.showWarning(this, "You have entered wrong month (contains spaces or contain letters). \n" +
+                    "will not be filtered according to month", "Warning");
+            }
+            if (yearParsed)
+            {
                 if (TextBox_Year.Text.Length == 4 && year > 1990)
                 {
                     filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Year == year);
                 }
-                if(TextBox_EventName.Text.Replace(" ","").Length > 0)
+            }
+            else if (TextBox_Year.Text.Replace(" ", "").Length > 0)
+            {
+                messageBoxHelper.showWarning(this, "You have entered wrong month (contains spaces or contain letters). \n" +
+                    "will not be filtered according to month", "Warning");
+            }
+
+
+            if (TextBox_EventName.Text.Replace(" ","").Length > 0)
                 {
                     filteredEvents = filteredEvents.FindAll(ev => ev.eventName.Contains(TextBox_EventName.Text));
                 }
-            }
-            else
-            {
-                messageBoxHelper.showWarning(this, "You have entered wrong date (contains spaces or contain letters)", "Warning");
-            }
+            emptyTable(Table_EventsData);
+            UpdateEventsTable(filteredEvents);
+            Button_FilterEvent.Enabled = true;
         }
 
         private void Button_ChooseColumnsToShow_Click(object sender, EventArgs e)
@@ -1126,6 +1157,20 @@ namespace TC37852369
             MainWindow_ColumnsToShow window = new MainWindow_ColumnsToShow(this);
             window.Show();
             this.Enabled = false;
+        }
+
+        private async void Button_ChooseAdvancedFilters_Click(object sender, EventArgs e)
+        {
+            ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
+            List<ParticipationFormat> participationFormats = await participationFormatServices.getAllParticipationFormats();
+            filterWindowData.firstName = TextBox_FirstNameFilter.Text;
+            filterWindowData.lastName = TextBox_LastNameFilter.Text;
+            filterWindowData.companyName = TextBox_CompanyNameFilter.Text;
+            filterWindowData.paymentStatus = ComboBox_PaymentStatus.SelectedItem.ToString();
+            AllFiltersWindow allFiltersWindow = new AllFiltersWindow(this, selectedEvent, filterWindowData, participationFormats, selectedEventParticipants);
+            allFiltersWindow.Show();
+            this.Enabled = false;
+        
         }
     }
 }

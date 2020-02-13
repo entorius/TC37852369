@@ -28,5 +28,21 @@ namespace TC37852369.Services
         {
             return await userRepository.deleteUser(user_Id);
         }
+        public bool isUsernameCorrect(string username)
+        {
+            if (username.Length >= 6)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool isPasswodCorrect(string password, string confirmPassword)
+        {
+            if (password.Length >= 6 && confirmPassword.Length >= 6 && password.Equals(confirmPassword))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

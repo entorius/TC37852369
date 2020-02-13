@@ -13,8 +13,8 @@ namespace TC37852369.Services
         ImageEntityRepository imageEntityRepository = new ImageEntityRepository();
         LastEntityIdentificationNumberServices lastEntityIdentificationNumberServices =
             new LastEntityIdentificationNumberServices();
-        string eventImagesBucketName = "eventsimages";
-        string companyImagesBucketName = "companypictures";
+        string eventImagesBucketName = "eventsimages1";
+        string companyImagesBucketName = "companyimages1";
 
         //getAllImagesEntitiesFromDatabase
         public async Task<List<ImageEntity>> getAllImageEntities()

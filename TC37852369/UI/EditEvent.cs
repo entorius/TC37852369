@@ -97,7 +97,8 @@ namespace TC37852369.UI
             fillFieldsWithEventData(CurrentEvent);
 
             List<ImageEntity> imageEntities = await imageEntityServices.GetEventImageEntities(CurrentEvent);
-            foreach(ImageEntity img in imageEntities)
+            updateImageButtons("", 0);
+            foreach (ImageEntity img in imageEntities)
             {
                 int imgId = Int32.Parse(img.imageNumber.ToString());
                 eventImagesInCloud.Add(imgId, img);
@@ -117,6 +118,7 @@ namespace TC37852369.UI
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
+            Button_Save.Enabled = false;
             int eventDuration = Int32.Parse(ComboBox_EventDuration.SelectedItem.ToString());
 
             //Check if event dates are correct
@@ -297,8 +299,17 @@ namespace TC37852369.UI
                    day4TimeTo,TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                    eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                    emailTemplate, emailBody, emailSubject);
-                Event responseEventEntity = await eventServices.editEvent(eventEntity);
-                if (responseEventEntity != null)
+                Event responseEventEntity = null;
+                bool editedSuccesfully = true;
+                try
+                {
+                    responseEventEntity = await eventServices.editEvent(eventEntity);
+                }
+                catch (Exception)
+                {
+                    editedSuccesfully = false;
+                }
+                if (responseEventEntity != null && editedSuccesfully)
                 {
 
                     List<bool> deleted = new List<bool>();
@@ -306,28 +317,12 @@ namespace TC37852369.UI
                     bool image1Exists = eventImagePath.ContainsKey(1);
                     if (image1Exists)
                     {
-                        AddEventImageToDatabase("1", responseEventEntity);
+                        await AddEventImageToDatabase("1", responseEventEntity);
                     }
                     bool image2Exists = eventImagePath.ContainsKey(2);
                     if (image2Exists)
                     {
-                        AddEventImageToDatabase("2", responseEventEntity);
-                    }
-                    bool image3Exists = eventImagePath.ContainsKey(3);
-                    if (image3Exists)
-                    {
-                        AddEventImageToDatabase("3", responseEventEntity);
-                    }
-                    bool image4Exists = eventImagePath.ContainsKey(4);
-                    if (image4Exists)
-                    {
-                        AddEventImageToDatabase("4", responseEventEntity);
-                    }
-
-                    bool image5Exists = eventImagePath.ContainsKey(5);
-                    if (image5Exists)
-                    {
-                        AddEventImageToDatabase("5", responseEventEntity);
+                        await AddEventImageToDatabase("2", responseEventEntity);
                     }
                     
                     foreach(ImageEntity ent in ImagesInCloudToDelete)
@@ -349,8 +344,9 @@ namespace TC37852369.UI
                         "or database write request number exceeded", "Warning");
                 }
             }
+            Button_Save.Enabled = true;
         }
-        private async void AddEventImageToDatabase(string imageNumber, Event eventEntity)
+        private async Task<string> AddEventImageToDatabase(string imageNumber, Event eventEntity)
         {
             string path = "";
             int imageNumberToAdd;
@@ -362,6 +358,7 @@ namespace TC37852369.UI
                 string image1Name = imageEntityServices.addEventImage(path, lastId.id.ToString());
                 await imageEntityServices.AddEventImageEntity(image1Name, imageNumber, eventEntity);
             }
+            return path;
         }
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
@@ -608,20 +605,6 @@ namespace TC37852369.UI
             SaveImageDialogAction(2, Button_Image2);
         }
 
-        private void Button_Image3_Click(object sender, EventArgs e)
-        {
-            SaveImageDialogAction(3, Button_Image3);
-        }
-
-        private void Button_Image4_Click(object sender, EventArgs e)
-        {
-            SaveImageDialogAction(4, Button_Image4);
-        }
-
-        private void Button_Image5_Click(object sender, EventArgs e)
-        {
-            SaveImageDialogAction(5, Button_Image5);
-        }
 
         private void Button_Delete1_Click(object sender, EventArgs e)
         {
@@ -633,20 +616,7 @@ namespace TC37852369.UI
             DeleteImage(2);
         }
 
-        private void Button_Delete3_Click(object sender, EventArgs e)
-        {
-            DeleteImage(3);
-        }
-
-        private void Button_Delete4_Click(object sender, EventArgs e)
-        {
-            DeleteImage(4);
-        }
-
-        private void Button_Delete5_Click(object sender, EventArgs e)
-        {
-            DeleteImage(5);
-        }
+        
         private void DeleteImage(int imageNumber)
         {
             if (eventImagesInCloud.ContainsKey(imageNumber))
@@ -668,9 +638,6 @@ namespace TC37852369.UI
         {
             updateImageButton(eventImages.ContainsKey(1) || eventImagesInCloud.ContainsKey(1), Button_Image1, Button_Delete1, imageName, updatingImageNumber, 1);
             updateImageButton(eventImages.ContainsKey(2) || eventImagesInCloud.ContainsKey(2), Button_Image2, Button_Delete2, imageName, updatingImageNumber, 2);
-            updateImageButton(eventImages.ContainsKey(3) || eventImagesInCloud.ContainsKey(3), Button_Image3, Button_Delete3, imageName, updatingImageNumber, 3);
-            updateImageButton(eventImages.ContainsKey(4) || eventImagesInCloud.ContainsKey(4), Button_Image4, Button_Delete4, imageName, updatingImageNumber, 4);
-            updateImageButton(eventImages.ContainsKey(5) || eventImagesInCloud.ContainsKey(5), Button_Image5, Button_Delete5, imageName, updatingImageNumber, 5);
         }
         public void updateImageButton(bool eventImagesContainsButtonNumber, Button button, PictureBox pictureBox,
             string imageName, int updatingNumber, int key)
@@ -692,7 +659,7 @@ namespace TC37852369.UI
             }
         }
 
-        private void Button_AddImage_Click(object sender, EventArgs e)
+        private void Button_AddChangeEventImage_Click(object sender, EventArgs e)
         {
             FileDialog_AddEvent.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
             if (FileDialog_AddEvent.ShowDialog() == DialogResult.OK)
@@ -701,25 +668,41 @@ namespace TC37852369.UI
                 Image image = Image.FromFile(fileName);
                 string[] imageName = System.Text.RegularExpressions.Regex.Split(fileName, @"\\");
                 int updatingImageNumber = 0;
-                if (eventImages.Count + eventImagesInCloud.Count < 5)
+               
+                if (!eventImages.ContainsKey(1) && !eventImagesInCloud.ContainsKey(1))
                 {
-                    bool added = false;
-                    for (int i = 1; i <= 5; i++)
-                    {
-                        if (!eventImages.ContainsKey(i) && !eventImagesInCloud.ContainsKey(i) && !added)
-                        {
-                            eventImages.Add(i, image);
-                            eventImagePath.Add(i, fileName);
-                            updatingImageNumber = i;
-                            added = true;
-                        }
-                    }
+                    eventImages.Add(1, image);
+                    eventImagePath.Add(1, fileName);
+                    updatingImageNumber = 1;
+                    updateImageButtons(imageName.Last(), updatingImageNumber);
+                } 
+                else
+                {
+                    showWarning("You already have Event image. ", "Warning");
+                }
+            }
+        }
 
+        private void Button_AddChangeSponsorsImage_Click(object sender, EventArgs e)
+        {
+            FileDialog_AddEvent.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (FileDialog_AddEvent.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = FileDialog_AddEvent.FileName;
+                Image image = Image.FromFile(fileName);
+                string[] imageName = System.Text.RegularExpressions.Regex.Split(fileName, @"\\");
+                int updatingImageNumber = 0;
+
+                if (!eventImages.ContainsKey(2) && !eventImagesInCloud.ContainsKey(2))
+                {
+                    eventImages.Add(2, image);
+                    eventImagePath.Add(2, fileName);
+                    updatingImageNumber = 2;
                     updateImageButtons(imageName.Last(), updatingImageNumber);
                 }
                 else
                 {
-                    showWarning("You can add maximum 5 images. ", "Warning");
+                    showWarning("You already have Sponsors image. ", "Warning");
                 }
             }
         }

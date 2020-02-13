@@ -116,6 +116,8 @@ namespace TC37852369
             DateTime_PaymentDate.Value = participant.paymentDate;
             DateTime_RegistrationDate.Value = participant.registrationDate;
 
+            
+
             if (participant.paymentAmount > 0)
             {
                 TextBox_PaymentAmount.Text = participant.paymentAmount.ToString();
@@ -150,6 +152,9 @@ namespace TC37852369
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
+            Button_Save.Enabled = false;
+            Button_Send.Enabled = false;
+            Button_Delete.Enabled = false;
             int partcipantInformationManditoryFieldsFilled =
                 participantServices.isPartcipantInformationManditoryFieldsCorrect(
                     TextBox_FirstName.Text, TextBox_LastName.Text, TextBox_Email.Text
@@ -221,8 +226,16 @@ namespace TC37852369
                 TextBox_AdditionalPhoneNumber.Text,
                 TextBox_Comment.Text
                 );
-                await participantServices.editParticipant(createdParticipant);
-                if (createdParticipant != null && mainWindow.selectedEvent != null)
+                bool editedSuccesfully = true;
+                try
+                {
+                    await participantServices.editParticipant(createdParticipant);
+                }
+                catch (Exception)
+                {
+                    editedSuccesfully = false;
+                }
+                if (createdParticipant != null && mainWindow.selectedEvent != null && editedSuccesfully)
                 {
 
                     mainWindow.Enabled = true;
@@ -239,6 +252,9 @@ namespace TC37852369
                         "or database write request number exceeded", "Warning");
                 }
             }
+            Button_Save.Enabled = true;
+            Button_Send.Enabled = true;
+            Button_Delete.Enabled = true;
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
@@ -410,7 +426,7 @@ namespace TC37852369
             List<Event> events = new List<Event>();
             events.Add(participantEvent);
 
-            List<string> ticketsPaths = ticketCreation.generateTicketsAndSave(
+            List<string> ticketsPaths = await ticketCreation.generateTicketsAndSave(
                     participants, events, companyData);
             sendingStatus = "SendingEmails";
             List<string> toEmails = new List<string>();

@@ -112,6 +112,7 @@
             this.TextBox_Year = new System.Windows.Forms.TextBox();
             this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
             this.FolderBrowserDialog_Events = new System.Windows.Forms.FolderBrowserDialog();
+            this.Button_ChooseAdvancedFilters = new MetroFramework.Controls.MetroButton();
             this.metroTabPage5.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -134,9 +135,9 @@
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage5.HorizontalScrollbarSize = 10;
-            this.metroTabPage5.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1878, 979);
+            this.metroTabPage5.Size = new System.Drawing.Size(1878, 984);
             this.metroTabPage5.Style = MetroFramework.MetroColorStyle.Black;
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Settings";
@@ -219,9 +220,9 @@
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.HorizontalScrollbarSize = 10;
-            this.metroTabPage4.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1878, 979);
+            this.metroTabPage4.Size = new System.Drawing.Size(1878, 984);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Export";
             this.metroTabPage4.VerticalScrollbar = true;
@@ -341,6 +342,7 @@
             // metroTabPage2
             // 
             this.metroTabPage2.AutoScrollMargin = new System.Drawing.Size(1440, 800);
+            this.metroTabPage2.Controls.Add(this.Button_ChooseAdvancedFilters);
             this.metroTabPage2.Controls.Add(this.Button_ChooseColumnsToShow);
             this.metroTabPage2.Controls.Add(this.Label_PaidDueAmount);
             this.metroTabPage2.Controls.Add(this.Label_CheckedInAmount);
@@ -485,7 +487,7 @@
             // 
             this.Table_ParticipantsData1.AutoSize = true;
             this.Table_ParticipantsData1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Table_ParticipantsData1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+            this.Table_ParticipantsData1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.Table_ParticipantsData1.ColumnCount = 13;
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -505,7 +507,7 @@
             this.Table_ParticipantsData1.Name = "Table_ParticipantsData1";
             this.Table_ParticipantsData1.RowCount = 1;
             this.Table_ParticipantsData1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Table_ParticipantsData1.Size = new System.Drawing.Size(1752, 40);
+            this.Table_ParticipantsData1.Size = new System.Drawing.Size(1738, 40);
             this.Table_ParticipantsData1.TabIndex = 29;
             // 
             // table_ParticipantsHeader
@@ -898,9 +900,9 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 47);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 42);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1878, 979);
+            this.metroTabPage1.Size = new System.Drawing.Size(1878, 984);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.VerticalScrollbar = true;
@@ -1226,6 +1228,22 @@
             this.metroTabControl2.TabStop = false;
             this.metroTabControl2.UseSelectable = true;
             // 
+            // Button_ChooseAdvancedFilters
+            // 
+            this.Button_ChooseAdvancedFilters.BackColor = System.Drawing.Color.Maroon;
+            this.Button_ChooseAdvancedFilters.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_ChooseAdvancedFilters.Location = new System.Drawing.Point(1682, 512);
+            this.Button_ChooseAdvancedFilters.Name = "Button_ChooseAdvancedFilters";
+            this.Button_ChooseAdvancedFilters.Size = new System.Drawing.Size(174, 51);
+            this.Button_ChooseAdvancedFilters.Style = MetroFramework.MetroColorStyle.White;
+            this.Button_ChooseAdvancedFilters.TabIndex = 50;
+            this.Button_ChooseAdvancedFilters.Text = "Choose Advanced Filters";
+            this.Button_ChooseAdvancedFilters.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_ChooseAdvancedFilters.UseCustomBackColor = true;
+            this.Button_ChooseAdvancedFilters.UseSelectable = true;
+            this.Button_ChooseAdvancedFilters.UseStyleColors = true;
+            this.Button_ChooseAdvancedFilters.Click += new System.EventHandler(this.Button_ChooseAdvancedFilters_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1273,11 +1291,11 @@
         private MetroFramework.Controls.MetroButton Button_GenerateMail;
         private MetroFramework.Controls.MetroButton Button_RegisterParticipant;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private System.Windows.Forms.TextBox TextBox_LastNameFilter;
-        private System.Windows.Forms.TextBox TextBox_CompanyNameFilter;
+        public System.Windows.Forms.TextBox TextBox_LastNameFilter;
+        public System.Windows.Forms.TextBox TextBox_CompanyNameFilter;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroButton Button_FilterParticipant;
-        private System.Windows.Forms.TextBox TextBox_FirstNameFilter;
+        public System.Windows.Forms.TextBox TextBox_FirstNameFilter;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroButton Button_CreateEvent;
         private MetroFramework.Controls.MetroLabel metroLabel9;
@@ -1330,7 +1348,7 @@
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog_Events;
         private MetroFramework.Controls.MetroLabel Label_PaidStatus;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroComboBox ComboBox_PaymentStatus;
+        public MetroFramework.Controls.MetroComboBox ComboBox_PaymentStatus;
         private MetroFramework.Controls.MetroButton Button_ClearParticipantFIlters;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -1344,5 +1362,6 @@
         private MetroFramework.Controls.MetroLabel Label_PaidDueAmount;
         private MetroFramework.Controls.MetroButton Button_ChooseColumnsToShow;
         public System.Windows.Forms.TableLayoutPanel Table_ParticipantsData1;
+        private MetroFramework.Controls.MetroButton Button_ChooseAdvancedFilters;
     }
 }

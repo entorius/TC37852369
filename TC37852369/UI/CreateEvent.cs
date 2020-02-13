@@ -300,21 +300,29 @@ namespace TC37852369
                     emailSubject = "";
                 }
 
-                
+
 
 
 
                 //Adding event to database
-                await lastEntityIdentificationNumberService.IncreaseLastIdetificationNumber("Event");
-                Event eventEntity = await eventServices.addEvent(TextBox_EventName.Text, DateTime_EventDate.Value,
-                   eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
-                   day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo,TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
-                   eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
-                   emailTemplate, emailBody, emailSubject);
+                Event eventEntity = null;
+                bool creationSuccesful = true;
+                try
+                {
+                    await lastEntityIdentificationNumberService.IncreaseLastIdetificationNumber("Event");
+                    eventEntity = await eventServices.addEvent(TextBox_EventName.Text, DateTime_EventDate.Value,
+                       eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
+                       day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
+                       day4TimeTo, TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
+                       eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
+                       emailTemplate, emailBody, emailSubject);
+                }
+                catch (Exception)
+                {
+                    creationSuccesful = false;
+                }
 
-
-                if (eventEntity != null)
+                if (eventEntity != null && creationSuccesful)
                 {
                     // checking which images to add
                     bool image1Exists = eventImagePath.ContainsKey(1);
@@ -327,27 +335,13 @@ namespace TC37852369
                     {
                         await AddEventImageToDatabase("2", eventEntity);
                     }
-                    bool image3Exists = eventImagePath.ContainsKey(3);
-                    if (image3Exists)
-                    {
-                        await AddEventImageToDatabase("3", eventEntity);
-                    }
-                    bool image4Exists = eventImagePath.ContainsKey(4);
-                    if (image4Exists)
-                    {
-                        await AddEventImageToDatabase("4", eventEntity);
-                    }
-
-                    bool image5Exists = eventImagePath.ContainsKey(5);
-                    if (image5Exists)
-                    {
-                       await AddEventImageToDatabase("5", eventEntity);
-                    }
                     
 
                     mainWindow.Enabled = true;
-                    mainWindow.ComboBox_Events.Items.Add(eventEntity.eventName);
+                    mainWindow.ComboBox_Events.Items.Clear();
+                    
                     mainWindow.events.Add(eventEntity);
+                  
                     mainWindow.filteredEvents.Add(eventEntity);
                     if (eventEntity.eventStatus.Equals(nameof(EventStatus.Ongoing)) || eventEntity.eventStatus.Equals(nameof(EventStatus.Upcoming)))
                     {
@@ -358,6 +352,11 @@ namespace TC37852369
                         mainWindow.addEventTableRow();
                         mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
                     }
+                    foreach (Event ev in mainWindow.events)
+                    {
+                        mainWindow.ComboBox_Events.Items.Add(ev.eventName);
+                    }
+                    mainWindow.ComboBox_Events.SelectedIndex = mainWindow.ComboBox_Events.Items.IndexOf(mainWindow.selectedEvent.eventName);
                     this.Dispose();
                 }
                 else
@@ -540,25 +539,17 @@ namespace TC37852369
                 Image image = Image.FromFile(fileName);
                 string[] imageName = System.Text.RegularExpressions.Regex.Split(fileName, @"\\");
                 int updatingImageNumber = 0;
-                if (eventImages.Count < 5)
+                
+                if (!eventImages.ContainsKey(1))
                 {
-                    bool added = false;
-                    for(int i = 1; i <= 5; i++)
-                    {
-                        if (!eventImages.ContainsKey(i) && !added)
-                        {
-                            eventImages.Add(i, image);
-                            eventImagePath.Add(i, fileName);
-                            updatingImageNumber = i;
-                            added = true;
-                        }
-                    }
-                    
+                    eventImages.Add(1, image);
+                    eventImagePath.Add(1, fileName);
+                    updatingImageNumber = 1;
                     updateImageButtons(imageName.Last(), updatingImageNumber);
                 }
                 else
                 {
-                    showWarning("You can add maximum 5 images. ", "Warning");
+                    showWarning("You already added event image ", "Warning");
                 }
             }
         }
@@ -566,9 +557,6 @@ namespace TC37852369
         {
             updateImageButton(eventImages.ContainsKey(1), Button_Image1, Button_Delete1,imageName,updatingImageNumber, 1);
             updateImageButton(eventImages.ContainsKey(2), Button_Image2, Button_Delete2, imageName, updatingImageNumber, 2);
-            updateImageButton(eventImages.ContainsKey(3), Button_Image3, Button_Delete3, imageName, updatingImageNumber, 3);
-            updateImageButton(eventImages.ContainsKey(4), Button_Image4, Button_Delete4, imageName, updatingImageNumber, 4);
-            updateImageButton(eventImages.ContainsKey(5), Button_Image5, Button_Delete5, imageName, updatingImageNumber, 5);
         }
         public void updateImageButton(bool eventImagesContainsButtonNumber, Button button, PictureBox pictureBox,
             string imageName, int updatingNumber, int key)
@@ -601,20 +589,6 @@ namespace TC37852369
             SaveImageDialogAction(2, Button_Image2);
         }
 
-        private void Button_Image3_Click(object sender, EventArgs e)
-        {
-            SaveImageDialogAction(3, Button_Image3);
-        }
-
-        private void Button_Image4_Click(object sender, EventArgs e)
-        {
-            SaveImageDialogAction(4, Button_Image4);
-        }
-
-        private void Button_Image5_Click(object sender, EventArgs e)
-        {
-            SaveImageDialogAction(5, Button_Image5);
-        }
         public void SaveImageDialogAction(int buttonNumber, Button button)
         {
             if (folderBrowserDialog_ImageSave.ShowDialog() == DialogResult.OK)
@@ -645,26 +619,6 @@ namespace TC37852369
             updateImageButtons("", 2);
         }
 
-        private void Button_Delete3_Click(object sender, EventArgs e)
-        {
-            eventImages.Remove(3);
-            eventImagePath.Remove(3);
-            updateImageButtons("", 3);
-        }
-
-        private void Button_Delete4_Click(object sender, EventArgs e)
-        {
-            eventImages.Remove(4);
-            eventImagePath.Remove(4);
-            updateImageButtons("", 4);
-        }
-
-        private void Button_Delete5_Click(object sender, EventArgs e)
-        {
-            eventImages.Remove(5);
-            eventImagePath.Remove(5);
-            updateImageButtons("", 5);
-        }
 
         private void ComboBox_EmailTemplate_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -684,6 +638,30 @@ namespace TC37852369
             if (lastSelectedMailTextBox != null)
             {
                 lastSelectedMailTextBox.Text = lastSelectedMailTextBox.Text + mailTemplateStrings[ComboBox_TemplateStrings.SelectedIndex].value;
+            }
+        }
+
+        private void Button_AddChangeSponsorsImage_Click(object sender, EventArgs e)
+        {
+            FileDialog_AddEvent.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (FileDialog_AddEvent.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = FileDialog_AddEvent.FileName;
+                Image image = Image.FromFile(fileName);
+                string[] imageName = System.Text.RegularExpressions.Regex.Split(fileName, @"\\");
+                int updatingImageNumber = 0;
+
+                if (!eventImages.ContainsKey(2))
+                {
+                    eventImages.Add(2, image);
+                    eventImagePath.Add(2, fileName);
+                    updatingImageNumber = 2;
+                    updateImageButtons(imageName.Last(), updatingImageNumber);
+                }
+                else
+                {
+                    showWarning("You already added sponsors image ", "Warning");
+                }
             }
         }
     }

@@ -128,7 +128,7 @@ namespace TC37852369.Repository
             {
                 if (imageEntity != null)
                 {
-                    string bucketName = "eventsimages";
+                    string bucketName = "eventsimages1";
 
                     string googleCloudEnvVar = SetEnvironmentVariable.getGoogleCloudEnvironmentVariable();
                     GoogleCredential credential = GoogleCredential.FromFile(googleCloudEnvVar);

@@ -19,7 +19,7 @@ namespace TC37852369.Repository
         public static void setGoogleCloudEnvironmentVariable()
         {
             string workingDirectory = Environment.CurrentDirectory;
-            string cloudstoragefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\driven-realm-267109-5c7e2e9ddd6d.json";
+            string cloudstoragefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-base-test-268013-a1de1666a0bd.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", cloudstoragefileDirectory);
             Console.WriteLine(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
             var some = "";
@@ -27,7 +27,7 @@ namespace TC37852369.Repository
         public static string getGoogleCloudEnvironmentVariable()
         {
             string workingDirectory = Environment.CurrentDirectory;
-            return Directory.GetParent(workingDirectory).Parent.FullName + @"\driven-realm-267109-5c7e2e9ddd6d.json";
+            return Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-base-test-268013-a1de1666a0bd.json";
         }
     }
 }
