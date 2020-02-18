@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TC37852369.Helpers;
 
 namespace TC37852369.UI
 {
@@ -37,12 +38,14 @@ namespace TC37852369.UI
             checkBoxList.Add(CheckBox_ParticipationFormat);
             checkBoxList.Add(CheckBox_PaymentStatus);
             checkBoxList.Add(CheckBox_PaymentAmount);
+            checkBoxList.Add(CheckBox_RegistrationDate);
+            checkBoxList.Add(CheckBox_PaymentDate);
             checkBoxList.Add(CheckBox_TicketSent);
             checkBoxList.Add(CheckBox_Edit);
             checkBoxList.Add(CheckBox_RegisteredInDay);
             checkBoxList.Add(CheckBox_CheckedInDay);
             checkBoxList.Add(CheckBox_CheckIn);
-            for (int i = 0; i <= 12; i++)
+            for (int i = 0; i <= 14; i++)
             {
                 checkBoxList[i].Checked = mainWindow.participantTableColumnShow[i];
             }
@@ -87,12 +90,14 @@ namespace TC37852369.UI
             showHideColumn(CheckBox_ParticipationFormat, 5, 160);
             showHideColumn(CheckBox_PaymentStatus, 6, 100);
             showHideColumn(CheckBox_PaymentAmount, 7, 100);
-            showHideColumn(CheckBox_TicketSent, 8, 150);
-            showHideColumn(CheckBox_Edit, 9, 150);
-            showHideColumn(CheckBox_RegisteredInDay, 10, 100);
-            showHideColumn(CheckBox_CheckedInDay, 11, 100);
-            showHideColumn(CheckBox_CheckIn, 12, 100);
-            for (int i = 0; i<=12; i++)
+            showHideColumn(CheckBox_RegistrationDate, 8, 100);
+            showHideColumn(CheckBox_PaymentDate, 9, 100);
+            showHideColumn(CheckBox_TicketSent, 10, 150);
+            showHideColumn(CheckBox_Edit, 11, 150);
+            showHideColumn(CheckBox_RegisteredInDay, 12, 100);
+            showHideColumn(CheckBox_CheckedInDay, 13, 100);
+            showHideColumn(CheckBox_CheckIn, 14, 100);
+            for (int i = 0; i<=14; i++)
             {
                 mainWindow.participantTableColumnShow[i] = checkBoxList[i].Checked;
             }

@@ -14,6 +14,12 @@ namespace TC37852369.DomainEntities
         public string jobTitle { get; set; }
         public string companyName { get; set; }
         public string paymentStatus { get; set; }
+        public string RegistrationDateYear { get; set; }
+        public string RegistrationDateMonth { get; set; }
+        public string RegistrationDateDay { get; set; }
+        public string PaymentDateYear { get; set; }
+        public string PaymentDateMonth { get; set; }
+        public string PaymentDateDay { get; set; }
         public string participationFormat { get; set; }
         public bool ticketSent { get; set; }
         public string materials { get; set; }
@@ -30,6 +36,10 @@ namespace TC37852369.DomainEntities
         public bool companyNameDescendingChecked { get; set; }
         public bool countryAscendingChecked { get; set; }
         public bool countryDescendingChecked { get; set; }
+        public bool RegistrationDateAscendingChecked { get; set; }
+        public bool RegistrationDateDescendingChecked { get; set; }
+        public bool PaymentDateAscendingChecked { get; set; }
+        public bool PaymentDateDescendingChecked { get; set; }
         public bool firstNameActive { get; set; }
         public bool lastNameActive { get; set; }
         public bool companyTypeActive { get; set; }
@@ -42,14 +52,18 @@ namespace TC37852369.DomainEntities
         public bool registeredInDayActive { get; set; }
         public bool checkedInDayActive { get; set; }
         public bool countryActive { get; set; }
-
+        public bool registrationDateActive { get; set; }
+        public bool paymentDateActive { get; set; }
         public FilterWindowData(string firstName,string lastName, string companyType,string jobTitle,string companyName,string paymentStatus,
-            string participationFormat,bool ticketSent,string materials,bool registeredInDay,bool checkedInDay,string country,
-            bool firstNameAscendingChecked ,bool firstNameDescendingChecked, bool lastNameAscendingChecked, bool lastNameDescendingChecked,
-             bool jobTitleAscendingChecked, bool jobTitleDescendingChecked, bool companyNameAscendingChecked, bool companyNameDescendingChecked,
-              bool countryAscendingChecked, bool countryDescendingChecked, bool firstNameActive, bool lastNameActive, bool companyTypeActive, 
-              bool jobTitleActive, bool companyNameActive, bool paymentStatusActive,  bool participationFormatActive, bool ticketSentActive, 
-              bool materialsActive, bool registeredInDayActive, bool checkedInDayActive, bool countryActive)
+        string RegistrationDateYear, string RegistrationDateMonth, string RegistrationDateDay, string PaymentDateYear, string PaymentDateMonth,
+        string PaymentDateDay, string participationFormat,bool ticketSent,string materials,bool registeredInDay,bool checkedInDay,string country,
+        bool firstNameAscendingChecked ,bool firstNameDescendingChecked, bool lastNameAscendingChecked, bool lastNameDescendingChecked,
+        bool jobTitleAscendingChecked, bool jobTitleDescendingChecked, bool companyNameAscendingChecked, bool companyNameDescendingChecked,
+        bool countryAscendingChecked, bool countryDescendingChecked, bool RegistrationDateAscendingChecked, bool RegistrationDateDescendingChecked,
+        bool PaymentDateAscendingChecked, bool PaymentDateDescendingChecked, bool firstNameActive, bool lastNameActive, bool companyTypeActive, 
+        bool jobTitleActive, bool companyNameActive, bool paymentStatusActive,  bool participationFormatActive, bool ticketSentActive, 
+        bool materialsActive, bool registeredInDayActive, bool checkedInDayActive, bool countryActive, bool registrationDateActive,
+        bool paymentDateActice)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -57,6 +71,12 @@ namespace TC37852369.DomainEntities
             this.jobTitle = jobTitle;
             this.companyName = companyName;
             this.paymentStatus = paymentStatus;
+            this.RegistrationDateYear = RegistrationDateYear;
+            this.RegistrationDateMonth = RegistrationDateMonth;
+            this.RegistrationDateDay = RegistrationDateDay;
+            this.PaymentDateYear = PaymentDateYear;
+            this.PaymentDateMonth = PaymentDateMonth;
+            this.PaymentDateDay = PaymentDateDay;
             this.participationFormat = participationFormat;
             this.ticketSent = ticketSent;
             this.materials = materials;
@@ -73,8 +93,13 @@ namespace TC37852369.DomainEntities
             this.companyNameDescendingChecked = companyNameDescendingChecked;
             this.countryAscendingChecked = countryAscendingChecked;
             this.countryDescendingChecked = countryDescendingChecked;
+            this.RegistrationDateAscendingChecked = RegistrationDateAscendingChecked;
+            this.RegistrationDateDescendingChecked = RegistrationDateDescendingChecked;
+            this.PaymentDateAscendingChecked = PaymentDateAscendingChecked;
+            this.PaymentDateDescendingChecked = PaymentDateDescendingChecked;
             this.firstNameActive = firstNameActive;
             this.lastNameActive = lastNameActive;
+            this.companyTypeActive = companyTypeActive;
             this.companyNameActive = companyNameActive;
             this.jobTitleActive = jobTitleActive;
             this.companyNameActive = companyNameActive;
@@ -85,7 +110,9 @@ namespace TC37852369.DomainEntities
             this.registeredInDayActive = registeredInDayActive;
             this.checkedInDayActive = checkedInDayActive;
             this.countryActive = countryActive;
-
+            this.registrationDateActive = registrationDateActive;
+            this.paymentDateActive = paymentDateActice;
+           
 
         }
     }

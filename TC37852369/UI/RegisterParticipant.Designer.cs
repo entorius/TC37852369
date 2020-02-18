@@ -378,9 +378,9 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.Location = new System.Drawing.Point(691, 463);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(155, 19);
+            this.metroLabel11.Size = new System.Drawing.Size(89, 19);
             this.metroLabel11.TabIndex = 37;
-            this.metroLabel11.Text = "Participate evening event";
+            this.metroLabel11.Text = "Evening event";
             // 
             // ComboBox_Materials
             // 

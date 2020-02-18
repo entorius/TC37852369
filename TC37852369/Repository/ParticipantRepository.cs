@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 
 namespace TC37852369.Repository
 {
@@ -13,7 +14,7 @@ namespace TC37852369.Repository
         public async Task<bool> addParticipant(Participant participant )
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("Participant").Document(participant.participantId);
             Dictionary<string, object> user = new Dictionary<string, object>
@@ -57,7 +58,7 @@ namespace TC37852369.Repository
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<Participant> allPartcipants = new List<Participant>();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             Query allParticipantsQuery = db.Collection("Participant");
             QuerySnapshot allParticipantsQuerySnapshot = await allParticipantsQuery.GetSnapshotAsync();
             DateTime registrationDate;
@@ -80,7 +81,7 @@ namespace TC37852369.Repository
                 }
                 catch (Exception)
                 {
-                    paymentDate = new DateTime(1753,01,01);
+                    paymentDate = DateHelper.setDateToMidnight(DateTime.Now);
                 }
                 try
                 {
@@ -88,7 +89,7 @@ namespace TC37852369.Repository
                 }
                 catch (Exception)
                 {
-                    registrationDate = DateTime.MinValue;
+                    registrationDate = DateHelper.setDateToMidnight(DateTime.Now);
                 }
 
                 try
@@ -158,7 +159,7 @@ namespace TC37852369.Repository
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             Participant partcipant;
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             DocumentReference docRef = db.Collection("Participant").Document(Id);
             DocumentSnapshot documentSnapshot = await docRef.GetSnapshotAsync();
             DateTime registrationDate;
@@ -180,7 +181,7 @@ namespace TC37852369.Repository
                 }
                 catch (Exception)
                 {
-                    paymentDate = DateTime.MinValue;
+                    paymentDate = DateHelper.setDateToMidnight(DateTime.Now);
                 }
                 try
                 {
@@ -188,7 +189,7 @@ namespace TC37852369.Repository
                 }
                 catch (Exception)
                 {
-                    registrationDate = DateTime.MinValue;
+                    registrationDate = DateHelper.setDateToMidnight(DateTime.Now);
                 }
 
                 try
@@ -259,7 +260,7 @@ namespace TC37852369.Repository
         public async Task<bool> deleteParticipant(string participantId)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("Participant").Document(participantId);
             await docRef.DeleteAsync();

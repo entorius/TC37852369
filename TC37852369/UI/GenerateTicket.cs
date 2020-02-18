@@ -59,6 +59,7 @@ namespace TC37852369
             {
                 if (DialogResult.OK == FolderBrowserDialog_Generation.ShowDialog())
                 {
+                    eventImagesPaths.Clear();
                     string savingPath = FolderBrowserDialog_Generation.SelectedPath;
 
                     List<ImageEntity> imageEntities= await imageEntityServices.GetEventImageEntities(eventsEntities[ComboBox_Events.SelectedIndex]);
@@ -77,28 +78,31 @@ namespace TC37852369
                         companyImagePath = await imageEntityServices.downloadCompanyImage(companyImage[0], targetImagesDirectory);
                     }
 
-                    string eventImagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\logo_final.png";
+                    string eventImagePath = "";
                     if (eventImagesPaths.ContainsKey(1))
                     {
                         eventImagePath = eventImagesPaths[1];
                     }
-                    string sponsorsImagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\sponsorImage1.png";
+                    string sponsorsImagePath = "";
                     if (eventImagesPaths.ContainsKey(2))
                     {
                         sponsorsImagePath = eventImagesPaths[2];
                     }
+                    Event selEvent = eventsEntities[ComboBox_Events.SelectedIndex];
+                    ticketCreation.MSdoc = null;
                     if (ticketCreation.MSdoc == null) { ticketCreation.MSdoc = new Microsoft.Office.Interop.Word.Application(); }
                     ticketCreation.pdfConverter = new PDFConverter(ticketCreation.MSdoc);
                     string ticketPath = ticketCreation.createTicket("Serafina", "Jones", "Daimter", "Speaker",
-                        "Green Auto Summit 2020", "Tuesday , 31 March 2020", "Golden Gate Park", "San Francisco, CA", "IL682370000000",
-                        Color.Black, "testTicket", companyImagePath, eventImagePath, sponsorsImagePath,savingPath);
+                        selEvent.eventName, formatEventDate(selEvent.date_From), selEvent.venueName, selEvent.venueAdress, 
+                        "IL682370000000", Color.Black, "testTicket", companyImagePath, eventImagePath, sponsorsImagePath,savingPath);
+                    if (ticketCreation.MSdoc != null)
+                    {
+                        object Unknown = Type.Missing;
+                        ticketCreation.MSdoc.Documents.Close(ref Unknown, ref Unknown, ref Unknown);
+                        ticketCreation.MSdoc.Quit(ref Unknown, ref Unknown, ref Unknown);
+                    }
                 }
-                if (ticketCreation.MSdoc != null)
-                {
-                    object Unknown = Type.Missing;
-                    ticketCreation.MSdoc.Documents.Close(ref Unknown, ref Unknown, ref Unknown);
-                    ticketCreation.MSdoc.Quit(ref Unknown, ref Unknown, ref Unknown);
-                }
+                
                 Label_Generating.Text = "";
                 Button_Generate.Enabled = true;
             }

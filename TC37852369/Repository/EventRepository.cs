@@ -22,7 +22,7 @@ namespace TC37852369.Repository
             bool useTemplate, string current_Mail_Template, string body, string subject)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             string dateFromString = date_From.ToString();
 
@@ -84,7 +84,7 @@ namespace TC37852369.Repository
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<Event> allEvents = new List<Event>();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             Query allEventsQuery = db.Collection("Event");
             QuerySnapshot allEventsQuerySnapshot = await allEventsQuery.GetSnapshotAsync();
             foreach(DocumentSnapshot documentSnapshot in allEventsQuerySnapshot.Documents)
@@ -150,7 +150,7 @@ namespace TC37852369.Repository
         public async Task<bool> deleteEvent(long event_Id)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("Event").Document(event_Id.ToString());
             await docRef.DeleteAsync();

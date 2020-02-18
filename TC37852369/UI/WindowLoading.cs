@@ -24,8 +24,9 @@ namespace TC37852369.UI
         {
             InitializeComponent();
             this.FormClosed += CloseHandler;
-
+           
             this.mainWindow = mainWindow;
+            this.mainWindow.Enabled = false;
 
             imagePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\ticket_loading.gif";
             gifImage = new GifImage(imagePath, 400, 300);

@@ -10,7 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Services;
+using TC37852369.UI.helpers;
 
 namespace TC37852369.UI
 {
@@ -22,6 +24,7 @@ namespace TC37852369.UI
         Event eventEntity;
         MainWindow mainWindow;
         FilterWindowData filterWindowData;
+        MetroMessageBoxHelper messageHelper = new MetroMessageBoxHelper();
         public AllFiltersWindow(MainWindow mainWindow,Event eventEntity, FilterWindowData filterWindowData,
             List<ParticipationFormat> participationFormats, List<Participant> participants)
         {
@@ -196,6 +199,7 @@ namespace TC37852369.UI
         private void Button_Filter_Click(object sender, EventArgs e)
         {
             Button_Filter.Enabled = false;
+            bool dateNotCorrect = false;
             List<Participant> filteredParticipants = participants;
             if (CheckBox_FirstName.Checked)
             {
@@ -260,6 +264,46 @@ namespace TC37852369.UI
                     filteredParticipants = pfs.filterAccordingToMaterials(filteredParticipants, ComboBox_Materials.SelectedItem.ToString());
                 }
             }
+            if (CheckBox_RegistrationDate.Checked)
+            {
+                int year;
+                int month;
+                int day;
+                bool yearParsed = TextBox_RegistrationDateYear.Text.Length > 0 ? Int32.TryParse(TextBox_RegistrationDateYear.Text, out year) : true;
+                bool monthParsed = TextBox_RegistrationDateMonth.Text.Length > 0 ? Int32.TryParse(TextBox_RegistrationDateMonth.Text, out month) : true;
+                bool dayParsed = TextBox_RegistrationDateDay.Text.Length > 0 ? Int32.TryParse(TextBox_RegistrationDateDay.Text, out day) : true;
+
+
+                if (yearParsed && monthParsed && dayParsed)
+                {
+                    filteredParticipants = pfs.filterAccordingToRegistrationDate(filteredParticipants, TextBox_RegistrationDateYear.Text,
+                        TextBox_RegistrationDateMonth.Text, TextBox_RegistrationDateDay.Text);
+                }
+                else
+                {
+                    dateNotCorrect = true;
+                }
+            }
+            if (CheckBox_PaymentDate.Checked)
+            {
+                int year;
+                int month;
+                int day;
+                bool yearParsed = TextBox_PaymentDateYear.Text.Length > 0 ? Int32.TryParse(TextBox_PaymentDateYear.Text,out year):true;
+                bool monthParsed = TextBox_PaymentDateMonth.Text.Length > 0 ? Int32.TryParse(TextBox_PaymentDateMonth.Text, out month): true;
+                bool dayParsed = TextBox_PaymentDateDay.Text.Length > 0 ? Int32.TryParse(TextBox_PaymentDateDay.Text, out day):true;
+
+
+                if (yearParsed && monthParsed && dayParsed)
+                {
+                    filteredParticipants = pfs.filterAccordingToPaymentDate(filteredParticipants, TextBox_PaymentDateYear.Text,
+                        TextBox_PaymentDateMonth.Text, TextBox_PaymentDateDay.Text);
+                }
+                else
+                {
+                    dateNotCorrect = true;
+                }
+            }
             if (CheckBox_RegisteredInDay.Checked)
             {
                 if (ComboBox_Materials.SelectedIndex >= 0)
@@ -286,33 +330,47 @@ namespace TC37852369.UI
                     filteredParticipants = pfs.filterAccordingToCountry(filteredParticipants, TextBox_Country.Text);
                 }
             }
-            bool orderByFirstName = CheckBox_FirstName.Checked && 
-                ( CheckBox_FirstNameAscending.Checked || CheckBox_FirstNameDescending.Checked );
-            bool orderByLastName = CheckBox_LastName.Checked &&
-                (CheckBox_LastNameAscending.Checked || CheckBox_LastNameDescending.Checked);
-            bool orderByJobTitle = CheckBox_JobTitle.Checked &&
-                (CheckBox_JobTitleAscending.Checked || CheckBox_JobTitleDescending.Checked);
-            bool orderByCompanyName = CheckBox_CompanyName.Checked &&
-                (CheckBox_CompanyNameAscending.Checked || CheckBox_CompanyNameDescending.Checked);
-            bool orderByCountry = CheckBox_Country.Checked &&
-               (CheckBox_CountryAscending.Checked || CheckBox_CountryDescending.Checked);
-            filteredParticipants = pfs.SortParticipantsAscendingDescending(filteredParticipants, orderByFirstName, orderByLastName,
-                orderByJobTitle, orderByCompanyName, orderByCountry, CheckBox_FirstNameAscending.Checked, CheckBox_LastNameAscending.Checked,
-                CheckBox_JobTitleAscending.Checked, CheckBox_CompanyNameAscending.Checked, CheckBox_CountryAscending.Checked);
+            if (!dateNotCorrect)
+            {
+                bool orderByFirstName = CheckBox_FirstName.Checked &&
+                    (CheckBox_FirstNameAscending.Checked || CheckBox_FirstNameDescending.Checked);
+                bool orderByLastName = CheckBox_LastName.Checked &&
+                    (CheckBox_LastNameAscending.Checked || CheckBox_LastNameDescending.Checked);
+                bool orderByJobTitle = CheckBox_JobTitle.Checked &&
+                    (CheckBox_JobTitleAscending.Checked || CheckBox_JobTitleDescending.Checked);
+                bool orderByCompanyName = CheckBox_CompanyName.Checked &&
+                    (CheckBox_CompanyNameAscending.Checked || CheckBox_CompanyNameDescending.Checked);
+                bool orderByCountry = CheckBox_Country.Checked &&
+                   (CheckBox_CountryAscending.Checked || CheckBox_CountryDescending.Checked);
+                bool orderByRegistrationDate = CheckBox_RegistrationDate.Checked &&
+                   (CheckBox_RegistrationDateAscending.Checked || CheckBox_RegistrationDateDescending.Checked);
+                bool orderByPaymentDate = CheckBox_PaymentDate.Checked &&
+                   (CheckBox_PaymentDateAscending.Checked || CheckBox_PaymentDateDescending.Checked);
+                filteredParticipants = pfs.SortParticipantsAscendingDescending(filteredParticipants, orderByFirstName, orderByLastName,
+                    orderByJobTitle, orderByCompanyName, orderByCountry, orderByRegistrationDate, orderByPaymentDate,
+                    CheckBox_FirstNameAscending.Checked, CheckBox_LastNameAscending.Checked,
+                    CheckBox_JobTitleAscending.Checked, CheckBox_CompanyNameAscending.Checked, CheckBox_CountryAscending.Checked,
+                    CheckBox_RegistrationDateAscending.Checked, CheckBox_RegistrationDateDescending.Checked,
+                    CheckBox_PaymentDateAscending.Checked, CheckBox_PaymentDateDescending.Checked);
 
-            mainWindow.filteredParticipants = filteredParticipants;
-            mainWindow.emptyTable(mainWindow.Table_ParticipantsData1);
-            mainWindow.UpdateParticipantsTable(filteredParticipants);
-            updateFiltersData();
-            mainWindow.filterWindowData = filterWindowData;
-            mainWindow.TextBox_FirstNameFilter.Text = filterWindowData.firstName;
-            mainWindow.TextBox_LastNameFilter.Text = filterWindowData.lastName;
-            mainWindow.TextBox_CompanyNameFilter.Text = filterWindowData.companyName;
-            mainWindow.ComboBox_PaymentStatus.SelectedIndex = 
-                mainWindow.ComboBox_PaymentStatus.Items.IndexOf(filterWindowData.paymentStatus);
-            Button_Filter.Enabled = true;
-            mainWindow.Enabled = true;
-            this.Dispose();
+                mainWindow.filteredParticipants = filteredParticipants;
+                mainWindow.emptyTable(mainWindow.Table_ParticipantsData1);
+                mainWindow.UpdateParticipantsTable(filteredParticipants);
+                updateFiltersData();
+                mainWindow.filterWindowData = filterWindowData;
+                mainWindow.TextBox_FirstNameFilter.Text = filterWindowData.firstName;
+                mainWindow.TextBox_LastNameFilter.Text = filterWindowData.lastName;
+                mainWindow.TextBox_CompanyNameFilter.Text = filterWindowData.companyName;
+                mainWindow.ComboBox_PaymentStatus.SelectedIndex =
+                    mainWindow.ComboBox_PaymentStatus.Items.IndexOf(filterWindowData.paymentStatus);
+                Button_Filter.Enabled = true;
+                mainWindow.Enabled = true;
+                this.Dispose();
+            }
+            else
+            {
+                messageHelper.showWarning(this, "Registration date or payment date was entered incorectly (can only contain numbers)", "Warning");
+            }
         }
         private void updateFiltersData()
         {
@@ -322,6 +380,12 @@ namespace TC37852369.UI
             filterWindowData.jobTitle = TextBox_JobTitle.Text;
             filterWindowData.companyName = TextBox_CompanyName.Text;
             filterWindowData.paymentStatus = ComboBox_PaymentStatus.SelectedItem.ToString();
+            filterWindowData.RegistrationDateYear = TextBox_RegistrationDateYear.Text;
+            filterWindowData.RegistrationDateMonth = TextBox_RegistrationDateMonth.Text;
+            filterWindowData.RegistrationDateDay = TextBox_RegistrationDateDay.Text;
+            filterWindowData.PaymentDateYear = TextBox_PaymentDateYear.Text;
+            filterWindowData.PaymentDateMonth = TextBox_PaymentDateMonth.Text;
+            filterWindowData.PaymentDateDay = TextBox_PaymentDateDay.Text;
             filterWindowData.participationFormat = ComboBox_ParticipationFormat.SelectedItem.ToString();
             filterWindowData.ticketSent = ComboBox_TicketSent.SelectedIndex == 0;
             filterWindowData.materials = ComboBox_Materials.SelectedValue.ToString();
@@ -335,6 +399,8 @@ namespace TC37852369.UI
             filterWindowData.jobTitleActive = CheckBox_JobTitle.Checked;
             filterWindowData.companyNameActive = CheckBox_CompanyName.Checked;
             filterWindowData.paymentStatusActive = CheckBox_PaymentStatus.Checked;
+            filterWindowData.registrationDateActive = CheckBox_RegistrationDate.Checked;
+            filterWindowData.paymentDateActive = CheckBox_PaymentDate.Checked;
             filterWindowData.participationFormatActive = CheckBox_ParticipationFormat.Checked;
             filterWindowData.ticketSentActive = CheckBox_TicketSent.Checked;
             filterWindowData.materialsActive = CheckBox_Materials.Checked;
@@ -352,6 +418,10 @@ namespace TC37852369.UI
             filterWindowData.companyNameDescendingChecked = CheckBox_CompanyNameDescending.Checked;
             filterWindowData.countryAscendingChecked = CheckBox_CountryAscending.Checked;
             filterWindowData.countryDescendingChecked = CheckBox_CountryDescending.Checked;
+            filterWindowData.RegistrationDateAscendingChecked = CheckBox_RegistrationDateAscending.Checked;
+            filterWindowData.RegistrationDateDescendingChecked = CheckBox_RegistrationDateDescending.Checked;
+            filterWindowData.PaymentDateAscendingChecked = CheckBox_RegistrationDateAscending.Checked;
+            filterWindowData.PaymentDateDescendingChecked = CheckBox_RegistrationDateDescending.Checked;
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)

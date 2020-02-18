@@ -14,7 +14,7 @@ namespace TC37852369.Repository
         public async Task<bool> addUser(string username, string password, string mail,string phoneNumber, string name, string surename, long user_Id)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("System_User").Document(user_Id.ToString());
             Dictionary<string, object> user = new Dictionary<string, object>
@@ -42,7 +42,7 @@ namespace TC37852369.Repository
             string databaseName;
             string databasePassword;
             string databaseUsername;
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             Query userQuery = db.Collection("System_User").WhereEqualTo("Username", username).WhereEqualTo("Password", password);
             QuerySnapshot userQuerySnapshot = await userQuery.GetSnapshotAsync();
             foreach (DocumentSnapshot documentSnapshot in userQuerySnapshot.Documents)
@@ -65,7 +65,7 @@ namespace TC37852369.Repository
         public async Task<bool> deleteUser(string user_Id)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("System_User").Document(user_Id);
             await docRef.DeleteAsync();

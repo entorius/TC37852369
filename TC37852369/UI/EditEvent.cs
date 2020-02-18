@@ -331,11 +331,32 @@ namespace TC37852369.UI
                     }
 
                         mainWindow.Enabled = true;
+                    long selectedEventId = -1;
+                    if (mainWindow.ComboBox_Events.SelectedIndex >= 0)
+                    {
+                        selectedEventId = mainWindow.events[mainWindow.ComboBox_Events.SelectedIndex].id;
+                    }
                     int eventIndex = mainWindow.events.FindLastIndex(delegate (Event eventEnt)
                     {
                         return eventEnt.id == eventId;
                     });
-                    mainWindow.editEventTableRow(responseEventEntity, eventIndex);
+                    mainWindow.events[eventIndex] = eventEntity;
+
+                    int filteredEventIndex = mainWindow.filteredEvents.FindLastIndex(ev => ev.id == eventId);
+                    
+                        mainWindow.filteredEvents[filteredEventIndex] = eventEntity;
+                        mainWindow.editEventTableRow(responseEventEntity, filteredEventIndex);
+                    
+                    
+                    mainWindow.ComboBox_Events.Items.Clear();
+                    foreach (Event eve in mainWindow.events)
+                    {
+                        mainWindow.ComboBox_Events.Items.Add(eve.eventName);
+                    }
+                    if (mainWindow.ComboBox_Events.SelectedIndex >= 0)
+                    {
+                        mainWindow.ComboBox_Events.SelectedIndex = Int32.Parse(selectedEventId.ToString());
+                    }
                     this.Dispose();
                 }
                 else

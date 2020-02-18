@@ -44,6 +44,8 @@
             this.CheckBox_CheckAll = new MetroFramework.Controls.MetroCheckBox();
             this.Button_Confirm = new MetroFramework.Controls.MetroButton();
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
+            this.CheckBox_RegistrationDate = new MetroFramework.Controls.MetroCheckBox();
+            this.CheckBox_PaymentDate = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // CheckBox_FirstName
@@ -147,7 +149,7 @@
             this.CheckBox_CheckIn.AutoSize = true;
             this.CheckBox_CheckIn.Checked = true;
             this.CheckBox_CheckIn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_CheckIn.Location = new System.Drawing.Point(560, 200);
+            this.CheckBox_CheckIn.Location = new System.Drawing.Point(560, 300);
             this.CheckBox_CheckIn.Name = "CheckBox_CheckIn";
             this.CheckBox_CheckIn.Size = new System.Drawing.Size(72, 17);
             this.CheckBox_CheckIn.TabIndex = 14;
@@ -159,7 +161,7 @@
             this.CheckBox_CheckedInDay.AutoSize = true;
             this.CheckBox_CheckedInDay.Checked = true;
             this.CheckBox_CheckedInDay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_CheckedInDay.Location = new System.Drawing.Point(560, 150);
+            this.CheckBox_CheckedInDay.Location = new System.Drawing.Point(560, 250);
             this.CheckBox_CheckedInDay.Name = "CheckBox_CheckedInDay";
             this.CheckBox_CheckedInDay.Size = new System.Drawing.Size(113, 17);
             this.CheckBox_CheckedInDay.TabIndex = 13;
@@ -171,7 +173,7 @@
             this.CheckBox_RegisteredInDay.AutoSize = true;
             this.CheckBox_RegisteredInDay.Checked = true;
             this.CheckBox_RegisteredInDay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_RegisteredInDay.Location = new System.Drawing.Point(560, 100);
+            this.CheckBox_RegisteredInDay.Location = new System.Drawing.Point(560, 200);
             this.CheckBox_RegisteredInDay.Name = "CheckBox_RegisteredInDay";
             this.CheckBox_RegisteredInDay.Size = new System.Drawing.Size(127, 17);
             this.CheckBox_RegisteredInDay.TabIndex = 12;
@@ -183,7 +185,7 @@
             this.CheckBox_Edit.AutoSize = true;
             this.CheckBox_Edit.Checked = true;
             this.CheckBox_Edit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_Edit.Location = new System.Drawing.Point(334, 300);
+            this.CheckBox_Edit.Location = new System.Drawing.Point(560, 150);
             this.CheckBox_Edit.Name = "CheckBox_Edit";
             this.CheckBox_Edit.Size = new System.Drawing.Size(46, 17);
             this.CheckBox_Edit.TabIndex = 11;
@@ -195,7 +197,7 @@
             this.CheckBox_TicketSent.AutoSize = true;
             this.CheckBox_TicketSent.Checked = true;
             this.CheckBox_TicketSent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_TicketSent.Location = new System.Drawing.Point(334, 250);
+            this.CheckBox_TicketSent.Location = new System.Drawing.Point(560, 100);
             this.CheckBox_TicketSent.Name = "CheckBox_TicketSent";
             this.CheckBox_TicketSent.Size = new System.Drawing.Size(86, 17);
             this.CheckBox_TicketSent.TabIndex = 10;
@@ -241,6 +243,30 @@
             this.Button_Cancel.UseSelectable = true;
             this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
+            // CheckBox_RegistrationDate
+            // 
+            this.CheckBox_RegistrationDate.AutoSize = true;
+            this.CheckBox_RegistrationDate.Checked = true;
+            this.CheckBox_RegistrationDate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBox_RegistrationDate.Location = new System.Drawing.Point(334, 250);
+            this.CheckBox_RegistrationDate.Name = "CheckBox_RegistrationDate";
+            this.CheckBox_RegistrationDate.Size = new System.Drawing.Size(125, 17);
+            this.CheckBox_RegistrationDate.TabIndex = 18;
+            this.CheckBox_RegistrationDate.Text = "Registration Date";
+            this.CheckBox_RegistrationDate.UseSelectable = true;
+            // 
+            // CheckBox_PaymentDate
+            // 
+            this.CheckBox_PaymentDate.AutoSize = true;
+            this.CheckBox_PaymentDate.Checked = true;
+            this.CheckBox_PaymentDate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBox_PaymentDate.Location = new System.Drawing.Point(334, 300);
+            this.CheckBox_PaymentDate.Name = "CheckBox_PaymentDate";
+            this.CheckBox_PaymentDate.Size = new System.Drawing.Size(104, 17);
+            this.CheckBox_PaymentDate.TabIndex = 19;
+            this.CheckBox_PaymentDate.Text = "Payment Date";
+            this.CheckBox_PaymentDate.UseSelectable = true;
+            // 
             // MainWindow_ColumnsToShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -248,6 +274,8 @@
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(780, 430);
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CheckBox_PaymentDate);
+            this.Controls.Add(this.CheckBox_RegistrationDate);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Confirm);
             this.Controls.Add(this.CheckBox_CheckAll);
@@ -289,5 +317,7 @@
         private MetroFramework.Controls.MetroCheckBox CheckBox_CheckAll;
         private MetroFramework.Controls.MetroButton Button_Confirm;
         private MetroFramework.Controls.MetroButton Button_Cancel;
+        private MetroFramework.Controls.MetroCheckBox CheckBox_RegistrationDate;
+        private MetroFramework.Controls.MetroCheckBox CheckBox_PaymentDate;
     }
 }

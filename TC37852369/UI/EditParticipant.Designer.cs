@@ -276,9 +276,9 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.Location = new System.Drawing.Point(696, 440);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(155, 19);
+            this.metroLabel11.Size = new System.Drawing.Size(89, 19);
             this.metroLabel11.TabIndex = 79;
-            this.metroLabel11.Text = "Participate evening event";
+            this.metroLabel11.Text = "Evening event";
             // 
             // metroLabel10
             // 

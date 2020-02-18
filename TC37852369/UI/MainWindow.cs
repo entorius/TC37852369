@@ -68,12 +68,13 @@ namespace TC37852369
         {
 
             events = await eventService.getAllEvents();
+            filteredEvents = events;
             //Participant participant1 = await participantService.getParticipant("253");
             //participants.Add(participant1);
             allParticipants = await participantService.getAllParticipants();
             companyData = await companyDataServices.GetCompanyData();
             mailTemplates = await mailTemplateService.getAllMailTemplates();
-            UpdateEventsTable(events);
+            UpdateEventsTable(filteredEvents);
             foreach (Event eventEntity in events)
             {
                 ComboBox_Events.Items.Add(eventEntity.eventName);
@@ -96,13 +97,15 @@ namespace TC37852369
 
             updateEventExportItems();
             windowLoading.Dispose();
-            for (int i = 0; i <= 12; i++)
+            this.Enabled = true;
+            for (int i = 0; i <= 14; i++)
             {
                 participantTableColumnShow.Add(true);
             }
             //UpdateParticipantsTable();
-            filterWindowData = new FilterWindowData("", "", "", "", "", "", "", false, "", false, false, "", false, false, false, false,
-            false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+            filterWindowData = new FilterWindowData("", "", "", "", "", "", "","","","","","","", false, "", false, false, "", false, false, false, false,
+            false, false,false, false, false, false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+            false,false);
         }
 
         private void TabChanged(object sender, EventArgs e)
@@ -287,41 +290,80 @@ namespace TC37852369
 
             emptyTableRowsAndColumns(table_ParticipantsHeader);
 
+            List<ToolTipHelper> toolTipHelpers = new List<ToolTipHelper>();
+
             Label label_FirstName = new Label();
             label_FirstName.Text = participant.firstName;
             label_FirstName.Width = 300;
+            ToolTipHelper toolTipHelperFirstName = new ToolTipHelper();
+            toolTipHelperFirstName.getLabelToolTip(label_FirstName, participant.firstName);
+            toolTipHelpers.Add(toolTipHelperFirstName);
+
             Label label_LastName = new Label();
             label_LastName.Text = participant.lastName;
             label_LastName.Width = 200;
+            ToolTipHelper toolTipHelperLastName = new ToolTipHelper();
+            toolTipHelperLastName.getLabelToolTip(label_LastName, participant.lastName);
+            toolTipHelpers.Add(toolTipHelperLastName);
+
             Label label_JobTitle = new Label();
             label_JobTitle.Text = participant.jobTitle;
             label_JobTitle.Width = 150;
+            ToolTipHelper toolTipHelperJobTitle = new ToolTipHelper();
+            toolTipHelperJobTitle.getLabelToolTip(label_JobTitle, participant.jobTitle);
+            toolTipHelpers.Add(toolTipHelperJobTitle);
+
             Label label_CompanyType = new Label();
             label_CompanyType.Text = participant.companyType;
             label_CompanyType.Width = 200;
+
             Label label_CompanyName = new Label();
             label_CompanyName.Text = participant.companyName;
             label_CompanyName.Width = 200;
+            ToolTipHelper toolTipHelperCompanyName = new ToolTipHelper();
+            toolTipHelperCompanyName.getLabelToolTip(label_CompanyName, participant.companyName);
+            toolTipHelpers.Add(toolTipHelperCompanyName);
+
             Label label_ParticipationFormat = new Label();
             label_ParticipationFormat.Text = participant.participationFormat;
             label_ParticipationFormat.Width = 160;
+            ToolTipHelper toolTipHelperParticipationFormat = new ToolTipHelper();
+            toolTipHelperParticipationFormat.getLabelToolTip(label_ParticipationFormat, participant.participationFormat);
+            toolTipHelpers.Add(toolTipHelperParticipationFormat);
+
             Label label_PaymentStatus = new Label();
             label_PaymentStatus.Text = participant.paymentStatus;
             label_PaymentStatus.Width = 320;
+
             Label label_PaymentAmount = new Label();
             label_PaymentAmount.Text = paymentAmount.ToString();
             label_PaymentAmount.Width = 320;
+
+            Label label_RegistrationDate = new Label();
+            label_RegistrationDate.Text = participant.registrationDate.ToString("dd/MM/yyyy");
+            label_RegistrationDate.Width = 320;
+
+            Label label_PaymentDate = new Label();
+            label_PaymentDate.Text = participant.paymentStatus.Equals("Paid") ? participant.paymentDate.ToString("dd/MM/yyyy"): "-";
+            label_PaymentDate.Width = 320;
+
             Label label_TicketSent = new Label();
             label_TicketSent.Text = participant.ticketSent ? "yes" : "no";
             label_TicketSent.Width = 320;
+
             Label label_CheckedInDay = new Label();
             label_CheckedInDay.Text = "";
             label_CheckedInDay.Width = 320;
+
             Label label_RegisteredInDay = new Label();
             label_RegisteredInDay.Text = "";
             label_RegisteredInDay.Width = 320;
+
             string headerCheckedInDay = "";
             string headerRegisteredInDay = "";
+
+            participantsToolTipHelpers.Add(toolTipHelpers);
+
             if (participantEvent.date_From <= todayDate && participantEvent.date_From.AddDays(participantEvent.eventLengthDays - 1) >= todayDate)
             {
                 if (participantEvent.date_From.Equals(todayDate))
@@ -353,22 +395,24 @@ namespace TC37852369
                     headerRegisteredInDay = "Registered in day 4";
                 }
             }
-            Label label_FirstNameHeader = formatLabel(9, 150, "First Name", Color.White);
-            Label label_LastNameHeader = formatLabel(9, 150, "Last Name", Color.White);
-            Label label_JobTitleHeader = formatLabel(9, 150, "Job title", Color.White);
-            Label label_CompanyTypeHeader = formatLabel(9, 150, "Company type", Color.White);
-            Label label_CompanyNameHeader = formatLabel(9, 150, "Company name", Color.White);
-            Label label_ParticipationFormatHeader = formatLabel(9, 160, "Participation format", Color.White);
-            Label label_PaymentStatusHeader = formatLabel(9, 100, "Payment status", Color.White);
-            Label label_PaymentAmountHeader = formatLabel(9, 100, "Payment amount", Color.White);
-            Label label_TicketSentHeader = formatLabel(9, 150, "Ticket sent", Color.White);
-            Label label_EditHeader = formatLabel(9, 150, "Edit", Color.White);
-            Label label_CheckInHeader = formatLabel(9, 100, "CheckIn", Color.White);
-            Label label_CheckedInDayHeader = formatLabel(9, 100, headerCheckedInDay, Color.White);
-            Label label_RegisteredInDayHeader = formatLabel(9, 100, headerRegisteredInDay, Color.White);
+            Label label_FirstNameHeader = formatLabel(9, 150,45, "First Name", Color.White);
+            Label label_LastNameHeader = formatLabel(9, 150, 45, "Last Name", Color.White);
+            Label label_JobTitleHeader = formatLabel(9, 150, 45, "Job title", Color.White);
+            Label label_CompanyTypeHeader = formatLabel(9, 150, 45, "Company type", Color.White);
+            Label label_CompanyNameHeader = formatLabel(9, 150, 45, "Company name", Color.White);
+            Label label_ParticipationFormatHeader = formatLabel(9, 160, 45, "Participation format", Color.White);
+            Label label_PaymentStatusHeader = formatLabel(9, 100, 45, "Payment status", Color.White);
+            Label label_PaymentAmountHeader = formatLabel(9, 100, 45, "Payment amount", Color.White);
+            Label label_RegistrationDateHeader = formatLabel(9, 100, 45, "Registration Date", Color.White);
+            Label label_PaymentDateHeader = formatLabel(9, 100, 45, "Payment Date", Color.White);
+            Label label_TicketSentHeader = formatLabel(9, 150, 45, "Ticket sent", Color.White);
+            Label label_EditHeader = formatLabel(9, 150, 45, "Edit", Color.White);
+            Label label_CheckInHeader = formatLabel(9, 100, 45, "CheckIn", Color.White);
+            Label label_CheckedInDayHeader = formatLabel(9, 100, 45, headerCheckedInDay, Color.White);
+            Label label_RegisteredInDayHeader = formatLabel(9, 100, 45, headerRegisteredInDay, Color.White);
 
-            Table_ParticipantsData1.ColumnCount = 10;
-            table_ParticipantsHeader.ColumnCount = 10;
+            Table_ParticipantsData1.ColumnCount = 12;
+            table_ParticipantsHeader.ColumnCount = 12;
 
             table_ParticipantsHeader.Controls.Add(label_FirstNameHeader, 0, 0);
             table_ParticipantsHeader.Controls.Add(label_LastNameHeader, 1, 0);
@@ -378,18 +422,20 @@ namespace TC37852369
             table_ParticipantsHeader.Controls.Add(label_ParticipationFormatHeader, 5, 0);
             table_ParticipantsHeader.Controls.Add(label_PaymentStatusHeader, 6, 0);
             table_ParticipantsHeader.Controls.Add(label_PaymentAmountHeader, 7, 0);
-            table_ParticipantsHeader.Controls.Add(label_TicketSentHeader, 8, 0);
-            table_ParticipantsHeader.Controls.Add(label_EditHeader, 9, 0);
+            table_ParticipantsHeader.Controls.Add(label_RegistrationDateHeader, 8, 0);
+            table_ParticipantsHeader.Controls.Add(label_PaymentDateHeader, 9, 0);
+            table_ParticipantsHeader.Controls.Add(label_TicketSentHeader, 10, 0);
+            table_ParticipantsHeader.Controls.Add(label_EditHeader, 11, 0);
 
             table_ParticipantsHeader.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
             if (headerCheckedInDay.Length > 0)
             {
-                Table_ParticipantsData1.ColumnCount = 13;
-                table_ParticipantsHeader.ColumnCount = 13;
+                Table_ParticipantsData1.ColumnCount = 15;
+                table_ParticipantsHeader.ColumnCount = 15;
 
-                table_ParticipantsHeader.Controls.Add(label_RegisteredInDayHeader, 10, 0);
-                table_ParticipantsHeader.Controls.Add(label_CheckedInDayHeader, 11, 0);
-                table_ParticipantsHeader.Controls.Add(label_CheckInHeader, 12, 0);
+                table_ParticipantsHeader.Controls.Add(label_RegisteredInDayHeader, 12, 0);
+                table_ParticipantsHeader.Controls.Add(label_CheckedInDayHeader, 13, 0);
+                table_ParticipantsHeader.Controls.Add(label_CheckInHeader, 14, 0);
 
 
             }
@@ -424,13 +470,15 @@ namespace TC37852369
             Table_ParticipantsData1.Controls.Add(label_ParticipationFormat, 5, rowNumber);
             Table_ParticipantsData1.Controls.Add(label_PaymentStatus, 6, rowNumber);
             Table_ParticipantsData1.Controls.Add(label_PaymentAmount, 7, rowNumber);
-            Table_ParticipantsData1.Controls.Add(label_TicketSent, 8, rowNumber);
-            Table_ParticipantsData1.Controls.Add(button_Edit, 9, rowNumber);
+            Table_ParticipantsData1.Controls.Add(label_RegistrationDate, 8, rowNumber);
+            Table_ParticipantsData1.Controls.Add(label_PaymentDate, 9, rowNumber);
+            Table_ParticipantsData1.Controls.Add(label_TicketSent, 10, rowNumber);
+            Table_ParticipantsData1.Controls.Add(button_Edit, 11, rowNumber);
             if (Table_ParticipantsData1.ColumnCount == 13)
             {
-                Table_ParticipantsData1.Controls.Add(label_RegisteredInDay, 10, rowNumber);
-                Table_ParticipantsData1.Controls.Add(label_CheckedInDay, 11, rowNumber);
-                Table_ParticipantsData1.Controls.Add(button_CheckIn, 12, rowNumber);
+                Table_ParticipantsData1.Controls.Add(label_RegisteredInDay, 12, rowNumber);
+                Table_ParticipantsData1.Controls.Add(label_CheckedInDay, 13, rowNumber);
+                Table_ParticipantsData1.Controls.Add(button_CheckIn, 14, rowNumber);
             }
 
         }
@@ -559,13 +607,11 @@ namespace TC37852369
 
             Table_ParticipantsData1.GetControlFromPosition(1, rowNumber).Text =
                 participant.lastName;
-
             participantsToolTipHelpers[rowNumber][1].labelToolTip
                 .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(1, rowNumber), participant.lastName);
 
             Table_ParticipantsData1.GetControlFromPosition(2, rowNumber).Text =
                 participant.jobTitle;
-
             participantsToolTipHelpers[rowNumber][2].labelToolTip
                 .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(2, rowNumber), participant.jobTitle);
 
@@ -574,13 +620,11 @@ namespace TC37852369
 
             Table_ParticipantsData1.GetControlFromPosition(4, rowNumber).Text =
                 participant.companyName;
-
             participantsToolTipHelpers[rowNumber][3].labelToolTip
                 .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(4, rowNumber), participant.companyName);
 
             Table_ParticipantsData1.GetControlFromPosition(5, rowNumber).Text =
                 participant.participationFormat;
-
             participantsToolTipHelpers[rowNumber][4].labelToolTip
                 .SetToolTip(Table_ParticipantsData1.GetControlFromPosition(5, rowNumber), participant.participationFormat);
 
@@ -591,41 +635,47 @@ namespace TC37852369
                 paymentAmount.ToString();
 
             Table_ParticipantsData1.GetControlFromPosition(8, rowNumber).Text =
+                participant.registrationDate.ToString("dd/MM/yyyy");
+
+            Table_ParticipantsData1.GetControlFromPosition(9, rowNumber).Text =
+                participant.paymentStatus.Equals("Paid") ? participant.paymentDate.ToString("dd/MM/yyyy") : "-";
+
+            Table_ParticipantsData1.GetControlFromPosition(10, rowNumber).Text =
                 participant.ticketSent ? "yes" : "no";
 
 
-            if (Table_ParticipantsData1.ColumnCount == 13)
+            if (Table_ParticipantsData1.ColumnCount == 15)
             {
                 if (participantEvent.date_From.Equals(todayDate))
                 {
-                    Table_ParticipantsData1.GetControlFromPosition(10, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(12, rowNumber).Text =
                    participant.participateInDay1 ? "yes" : "no";
 
-                    Table_ParticipantsData1.GetControlFromPosition(11, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(13, rowNumber).Text =
                     participant.checkedInDay1 ? "yes" : "no";
                 }
                 else if (participantEvent.date_From.AddDays(1).Equals(todayDate))
                 {
-                    Table_ParticipantsData1.GetControlFromPosition(10, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(12, rowNumber).Text =
                    participant.participateInDay2 ? "yes" : "no";
 
-                    Table_ParticipantsData1.GetControlFromPosition(11, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(13, rowNumber).Text =
                     participant.checkedInDay2 ? "yes" : "no";
                 }
                 else if (participantEvent.date_From.AddDays(2).Equals(todayDate))
                 {
-                    Table_ParticipantsData1.GetControlFromPosition(10, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(12, rowNumber).Text =
                    participant.participateInDay3 ? "yes" : "no";
 
-                    Table_ParticipantsData1.GetControlFromPosition(11, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(13, rowNumber).Text =
                     participant.checkedInDay3 ? "yes" : "no";
                 }
                 else if (participantEvent.date_From.AddDays(3).Equals(todayDate))
                 {
-                    Table_ParticipantsData1.GetControlFromPosition(10, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(12, rowNumber).Text =
                    participant.participateInDay4 ? "yes" : "no";
 
-                    Table_ParticipantsData1.GetControlFromPosition(11, rowNumber).Text =
+                    Table_ParticipantsData1.GetControlFromPosition(13, rowNumber).Text =
                     participant.checkedInDay4 ? "yes" : "no";
                 }
             }
@@ -1024,10 +1074,11 @@ namespace TC37852369
             }
             UpdateParticipantsTable(filteredParticipants);
         }
-        private Label formatLabel(int size, int width, string text, Color color)
+        private Label formatLabel(int size, int width,int height, string text, Color color)
         {
             Label upgradedLabel = new Label();
             upgradedLabel.Width = width;
+            upgradedLabel.Height = height;
             upgradedLabel.Text = text;
             Font font = new Font("Segoe UI Semibold", size);
             upgradedLabel.Font = font;
@@ -1154,22 +1205,39 @@ namespace TC37852369
 
         private void Button_ChooseColumnsToShow_Click(object sender, EventArgs e)
         {
-            MainWindow_ColumnsToShow window = new MainWindow_ColumnsToShow(this);
-            window.Show();
-            this.Enabled = false;
+            if (ComboBox_Events.SelectedIndex >= 0)
+            {
+                MainWindow_ColumnsToShow window = new MainWindow_ColumnsToShow(this);
+                window.Show();
+                this.Enabled = false;
+            }
+            else
+            {
+                messageBoxHelper.showWarning(this, "You have not choosen event!", "Warning");
+            }
         }
 
         private async void Button_ChooseAdvancedFilters_Click(object sender, EventArgs e)
         {
-            ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
-            List<ParticipationFormat> participationFormats = await participationFormatServices.getAllParticipationFormats();
-            filterWindowData.firstName = TextBox_FirstNameFilter.Text;
-            filterWindowData.lastName = TextBox_LastNameFilter.Text;
-            filterWindowData.companyName = TextBox_CompanyNameFilter.Text;
-            filterWindowData.paymentStatus = ComboBox_PaymentStatus.SelectedItem.ToString();
-            AllFiltersWindow allFiltersWindow = new AllFiltersWindow(this, selectedEvent, filterWindowData, participationFormats, selectedEventParticipants);
-            allFiltersWindow.Show();
-            this.Enabled = false;
+            if (ComboBox_Events.SelectedIndex >= 0)
+            {
+                ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
+                List<ParticipationFormat> participationFormats = await participationFormatServices.getAllParticipationFormats();
+                filterWindowData.firstName = TextBox_FirstNameFilter.Text;
+                filterWindowData.lastName = TextBox_LastNameFilter.Text;
+                filterWindowData.companyName = TextBox_CompanyNameFilter.Text;
+                if (ComboBox_PaymentStatus.SelectedIndex >= 0)
+                {
+                    filterWindowData.paymentStatus = ComboBox_PaymentStatus.SelectedItem.ToString();
+                }
+                AllFiltersWindow allFiltersWindow = new AllFiltersWindow(this, selectedEvent, filterWindowData, participationFormats, selectedEventParticipants);
+                allFiltersWindow.Show();
+                this.Enabled = false;
+            }
+            else
+            {
+                messageBoxHelper.showWarning(this, "You have not choosen event!", "Warning");
+            }
         
         }
     }

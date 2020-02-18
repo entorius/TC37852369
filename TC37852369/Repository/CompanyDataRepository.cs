@@ -18,7 +18,7 @@ namespace TC37852369.Repository
             string emailPassword)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             CancellationTokenSource cts = new CancellationTokenSource();
             CancellationToken cancellationToken = cts.Token;
@@ -65,7 +65,7 @@ namespace TC37852369.Repository
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             CompanyData companyData = null;
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             Query CompanyDataQuery = db.Collection("CompanyData");
             CancellationTokenSource cts = new CancellationTokenSource();
             CancellationToken cancellationToken = cts.Token;

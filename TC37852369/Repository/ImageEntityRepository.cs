@@ -11,13 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TC37852369.DomainEntities;
 
+
+
 namespace TC37852369.Repository
 {
+    
     public class ImageEntityRepository
     {
         public async Task<List<ImageEntity>> getAllImageEntities()
         {
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             List<ImageEntity> allImages = new List<ImageEntity>();
 
@@ -42,7 +45,7 @@ namespace TC37852369.Repository
         }
         public async Task<ImageEntity> AddImageEntity(ImageEntity imageEntity)
         {
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             Dictionary<string, object> user = new Dictionary<string, object>
             {
                 { "Id",                         imageEntity.id                      },
@@ -57,14 +60,14 @@ namespace TC37852369.Repository
         }
         public async Task<bool> DeleteImageEntityFromDatabase(ImageEntity imageEntity)
         {
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             DocumentReference docRef = db.Collection("Images").Document(imageEntity.id.ToString());
             await docRef.DeleteAsync();
             return true;
         }
         public async Task<List<ImageEntity>> GetEntityImageEntities(string entityName,string entityId)
         {
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             List<ImageEntity> entityImages = new List<ImageEntity>();
 

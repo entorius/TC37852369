@@ -93,9 +93,59 @@ namespace TC37852369.Services
         {
             return participants.FindAll(p => p.country.Contains(country));
         }
+        public List<Participant> filterAccordingToRegistrationDate(List<Participant> participants, string year,string month, string day)
+        {
+            List<Participant> filteredParticipants = participants;
+            int filterYear;
+            int filterMonth;
+            int filterDay;
+            bool yearParsed = Int32.TryParse(year, out filterYear);
+            bool monthParsed = Int32.TryParse(month, out filterMonth);
+            bool dayParsed = Int32.TryParse(day, out filterDay);
+
+            if (year.Length > 0 && yearParsed && filterYear > 1900)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.registrationDate.Year == filterYear);
+            }
+            if (month.Length > 0 && monthParsed && filterMonth > 1900)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.registrationDate.Month == filterMonth);
+            }
+            if (day.Length > 0 && dayParsed && filterDay > 1900)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.registrationDate.Day == filterDay);
+            }
+            return filteredParticipants;
+        }
+        public List<Participant> filterAccordingToPaymentDate(List<Participant> participants, string year, string month, string day)
+        {
+            List<Participant> filteredParticipants = participants;
+            int filterYear;
+            int filterMonth;
+            int filterDay;
+            bool yearParsed = Int32.TryParse(year, out filterYear);
+            bool monthParsed = Int32.TryParse(month, out filterMonth);
+            bool dayParsed = Int32.TryParse(day, out filterDay);
+
+            if (year.Length > 0 && yearParsed && filterYear > 1900)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.paymentDate.Year == filterYear);
+            }
+            if (month.Length > 0 && monthParsed && filterMonth > 1900)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.paymentDate.Month == filterMonth);
+            }
+            if (day.Length > 0 && dayParsed && filterDay > 1900)
+            {
+                filteredParticipants = filteredParticipants.FindAll(p => p.paymentDate.Day == filterDay);
+            }
+            return filteredParticipants;
+        }
         public List<Participant> SortParticipantsAscendingDescending(List<Participant> participants,bool orderByFirstName, 
-            bool orderByLastName, bool orderByJobTitle, bool orderByCompanyName, bool orderByCountry, bool orderByFirstNameAscending,
-            bool orderByLastNameAscending, bool orderByJobTitleAscending, bool orderByCompanyNameAscending, bool orderByCountryAscending)
+            bool orderByLastName, bool orderByJobTitle, bool orderByCompanyName, bool orderByCountry,bool orderByRegistrationDate,
+            bool orderByPaymentDate,bool orderByFirstNameAscending,bool orderByLastNameAscending, bool orderByJobTitleAscending,
+            bool orderByCompanyNameAscending, bool orderByCountryAscending, bool orderByRegistrationDateAscending, 
+            bool orderByRegistrationDateDescending,bool orderByPaymentDateAscending,bool orderByPaymentDateDescending)
         {
             List<Participant> sortedParticipants = participants;
 
@@ -154,6 +204,28 @@ namespace TC37852369.Services
                 else
                 {
                     orderedParticipants.ThenByDescending(p => p.companyName);
+                }
+            }
+            if (orderByRegistrationDate)
+            {
+                if (orderByRegistrationDateAscending)
+                {
+                    orderedParticipants.ThenBy(p => p.registrationDate);
+                }
+                else
+                {
+                    orderedParticipants.ThenByDescending(p => p.registrationDate);
+                }
+            }
+            if (orderByPaymentDate)
+            {
+                if (orderByPaymentDateAscending)
+                {
+                    orderedParticipants.ThenBy(p => p.paymentDate);
+                }
+                else
+                {
+                    orderedParticipants.ThenByDescending(p => p.paymentDate);
                 }
             }
             return orderedParticipants.ToList();

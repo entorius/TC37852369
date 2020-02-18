@@ -14,7 +14,7 @@ namespace TC37852369.Repository
         public async Task<LastIdentificationNumber> getLastIdetificationNumber(string domainEntityName)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             long databaseId;
             string databaseEntityName;
             LastIdentificationNumber lastIdetificationNumber = new LastIdentificationNumber();
@@ -35,7 +35,7 @@ namespace TC37852369.Repository
         private async Task<LastIdentificationNumber> AddLastIdetificationNumber(LastIdentificationNumber lastIdentificationNumber)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             LastIdentificationNumber lastIdetificationNumber = new LastIdentificationNumber();
             Dictionary<string, object> user = new Dictionary<string, object>
             {
@@ -49,7 +49,7 @@ namespace TC37852369.Repository
         public async Task<LastIdentificationNumber> IncreaseLastIdetificationNumber(string domainEntityName)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             LastIdentificationNumber lastIdentificationNumber = await getLastIdetificationNumber(domainEntityName);
             lastIdentificationNumber.id += 1;
             await AddLastIdetificationNumber(lastIdentificationNumber);

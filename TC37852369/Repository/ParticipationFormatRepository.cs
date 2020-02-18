@@ -13,7 +13,7 @@ namespace TC37852369.Repository
         public async Task<bool> addParticipationFormat(string id, string value)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("ParticipationFormat").Document(id);
 
@@ -31,7 +31,7 @@ namespace TC37852369.Repository
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
             List<ParticipationFormat> participationFormats = new List<ParticipationFormat>();
 
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
             Query allParticipationFormatQuery = db.Collection("ParticipationFormat");
             QuerySnapshot allParticipationFormatQuerySnapshot = await allParticipationFormatQuery.GetSnapshotAsync();
 
@@ -52,7 +52,7 @@ namespace TC37852369.Repository
         public async Task<bool> deleteParticipationFormat(string id)
         {
             SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            FirestoreDb db = FirestoreDb.Create("ticketbase-36d66");
+            FirestoreDb db = FirestoreDb.Create(GetConstant.FIRESTORE_ID);
 
             DocumentReference docRef = db.Collection("ParticipationFormat").Document(id);
             await docRef.DeleteAsync();
