@@ -56,6 +56,7 @@ namespace TC37852369.UI
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            BringToFront();
         }
 
         // Fills window fields on initialization
@@ -162,10 +163,10 @@ namespace TC37852369.UI
                 eventDuration
                 );
 
-            int checkIfPaymentAmountCorect = eventServices.checkIfPaymentAmountCorrect(TextBox_PaymentAmount.Text);
+           
 
             if (eventErrorCode > 0 || emailTemplateErrorCode > 0 || isSomeTimeFromToNotCorrect > 0
-                || checkIfPaymentAmountCorect > 0 || !isEventNameCorrect || !isVenueNameCorrect
+                || !isEventNameCorrect || !isVenueNameCorrect
                 || !isVenueAdressCorrect)
             {
                 if (!isEventNameCorrect)
@@ -196,24 +197,6 @@ namespace TC37852369.UI
                     {
                         showWarning("Event day " + eventErrorCode + " date is earlier than " +
                             "event day" + (eventErrorCode - 1) + " date",
-                            "Warning");
-                    }
-                }
-                else if (checkIfPaymentAmountCorect > 0)
-                {
-                    if (checkIfPaymentAmountCorect == 1)
-                    {
-                        showWarning("Event Payment Amount for day not entered", "Warning");
-                    }
-                    else if (checkIfPaymentAmountCorect == 2)
-                    {
-                        showWarning("Event Payment Amount for day entered in incorrect format",
-                            "Warning");
-                    }
-                    else if (checkIfPaymentAmountCorect == 3)
-                    {
-                        showWarning("Event Payment Amount for day is too high (maximum value" +
-                            "1.79 * 10^308",
                             "Warning");
                     }
                 }
@@ -279,7 +262,6 @@ namespace TC37852369.UI
                     ComboBox_Day4ToHour.SelectedItem.ToString(),
                     ComboBox_Day4ToMinute.SelectedItem.ToString());
 
-                double paymentAmountForDay = Double.Parse(TextBox_PaymentAmount.Text);
 
                 string emailTemplate = "";
                 string emailBody = TextBox_Body.Text;
@@ -296,7 +278,7 @@ namespace TC37852369.UI
                     TextBox_EventName.Text, DateTime_EventDate.Value,
                    eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo,TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
+                   day4TimeTo,TextBox_WebPage.Text, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                    eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                    emailTemplate, emailBody, emailSubject);
                 Event responseEventEntity = null;
@@ -551,8 +533,6 @@ namespace TC37852369.UI
 
             TextBox_VenueName.Text = eventEntity.venueName;
             TextBox_VenueAdress.Text = eventEntity.venueAdress;
-
-            TextBox_PaymentAmount.Text = eventEntity.paymentAmountForDay.ToString();
 
             TextBox_WebPage.Text = eventEntity.webPage;
             TextBox_Comments.Text = eventEntity.comment;

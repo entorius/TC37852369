@@ -105,13 +105,6 @@ namespace TC37852369.Repository
                     using (var outputFile = File.OpenWrite(savingPath+ @"\" + eventImageName))
                     {
                         
-                        Console.WriteLine(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
-                        foreach(DictionaryEntry env in Environment.GetEnvironmentVariables())
-                        {
-                            string name = (string)env.Key;
-                            string value = (string)env.Value;
-                            Console.WriteLine("{0}={1}", name, value);
-                        }
                         await storage.DownloadObjectAsync(bucketName, eventImageName, outputFile);
                     }
                     Console.WriteLine($"downloaded {eventImageName} to {savingPath}.");
@@ -172,73 +165,7 @@ namespace TC37852369.Repository
             }
             return imageDeleted;
         }
-        /*public string addEventImage(string imagePath, string imageId)
-        {
-            SetEnvironmentVariable.setGoogleCloudEnvironmentVariable();
-            string eventImagesLinks = "";
-            try
-            {
-                if (imagePath.Length != 0)
-                {
-                    string bucketName = "eventsimages";
-                    string sharedkeyFilePath = SetEnvironmentVariable.getGoogleCloudEnvironmentVariable();
-                    GoogleCredential credential = null;
-                    using (var jsonStream = new FileStream(sharedkeyFilePath, FileMode.Open,
-                        FileAccess.Read, FileShare.Read))
-                    {
-                        credential = GoogleCredential.FromStream(jsonStream);
-                    }
-                    var storageClient = StorageClient.Create(credential);
-                    string[] spliters = { @"\" };
-
-                    string filetoUpload = imagePath;
-                    string[] splitedString = imagePath.Split(spliters, StringSplitOptions.RemoveEmptyEntries);
-                    string fileName = splitedString[splitedString.Length - 1];
-                    eventImagesLinks = fileName;
-
-
-                    string[] spliters1 = { "."};
-
-                    string[] splitedFileName = fileName.Split(spliters1, StringSplitOptions.RemoveEmptyEntries);
-                    string newFileName = "";
-                    for(int i=0;i<splitedFileName.Length;i++)
-                    {
-                        if (i != 0)
-                        {
-                            newFileName += ".";
-                        }
-                        newFileName += splitedFileName[i];
-                        if (i == splitedFileName.Length - 2)
-                        {
-                            newFileName = newFileName + imageId;
-                        }
-                    }
-                    eventImagesLinks = newFileName;
-                    //check if object with name like this exists
-                    try
-                    {
-                        Google.Apis.Storage.v1.Data.Object GoogleFirestoreObject = storageClient.GetObject(bucketName, fileName);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("GoogleFirestoreObject does not exist");
-                    }
-                    using (var fileStream = new FileStream(filetoUpload, FileMode.Open,
-                        FileAccess.Read, FileShare.Read))
-                    {
-                        storageClient.UploadObject(bucketName, newFileName, "text/plain", fileStream);
-
-                    }
-                    Console.WriteLine("uploaded the file successfully");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            SetEnvironmentVariable.setFirestoreEnvironmentVariable();
-            return eventImagesLinks;
-        }*/
+       
         public string addImage(string imagePath, string imageId,string bucketName)
         {
             SetEnvironmentVariable.setGoogleCloudEnvironmentVariable();

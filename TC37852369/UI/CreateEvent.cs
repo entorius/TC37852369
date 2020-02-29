@@ -137,8 +137,7 @@ namespace TC37852369
             //Check if event details strings are correct
             bool isEventNameCorrect = eventServices.isStringCorrect(TextBox_EventName.Text);
             bool isVenueNameCorrect = eventServices.isStringCorrect(TextBox_VenueName.Text);
-            int len = TextBox_VenueAdress.Text.Length;
-            bool isVenueAdressCorrect = len > 0 ? true : false;
+            bool isVenueAdressCorrect = eventServices.isStringCorrect(TextBox_VenueAdress.Text);
 
             string emailTemplateString = "";
             if (ComboBox_EmailTemplate.SelectedIndex >= 0)
@@ -171,10 +170,9 @@ namespace TC37852369
                 eventDuration
                 );
 
-            int checkIfPaymentAmountCorect = eventServices.checkIfPaymentAmountCorrect(TextBox_PaymentAmount.Text);
 
             if (eventErrorCode > 0 || emailTemplateErrorCode > 0 || isSomeTimeFromToNotCorrect > 0
-              || checkIfPaymentAmountCorect > 0 || !isEventNameCorrect || !isVenueNameCorrect
+              || !isEventNameCorrect || !isVenueNameCorrect
               || !isVenueAdressCorrect)
             {
                 if (!isEventNameCorrect)
@@ -205,24 +203,6 @@ namespace TC37852369
                     {
                         showWarning("Event day " + eventErrorCode + " date is earlier than " +
                             "event day" + (eventErrorCode - 1) + " date",
-                            "Warning");
-                    }
-                }
-                else if(checkIfPaymentAmountCorect > 0)
-                {
-                    if (checkIfPaymentAmountCorect == 1)
-                    {
-                        showWarning("Event Payment Amount for day not entered", "Warning");
-                    }
-                    else if (checkIfPaymentAmountCorect == 2)
-                    {
-                        showWarning("Event Payment Amount for day entered in incorrect format",
-                            "Warning");
-                    }
-                    else if (checkIfPaymentAmountCorect == 3)
-                    {
-                        showWarning("Event Payment Amount for day is too high (maximum value" +
-                            "1.79 * 10^308",
                             "Warning");
                     }
                 }
@@ -288,7 +268,6 @@ namespace TC37852369
                     ComboBox_Day4ToHour.SelectedItem.ToString(),
                     ComboBox_Day4ToMinute.SelectedItem.ToString());
 
-                double paymentAmountForDay = Double.Parse(TextBox_PaymentAmount.Text);
 
                 string emailTemplate = "";
                 string emailBody = TextBox_Body.Text;
@@ -300,10 +279,6 @@ namespace TC37852369
                     emailSubject = "";
                 }
 
-
-
-
-
                 //Adding event to database
                 Event eventEntity = null;
                 bool creationSuccesful = true;
@@ -313,7 +288,7 @@ namespace TC37852369
                     eventEntity = await eventServices.addEvent(TextBox_EventName.Text, DateTime_EventDate.Value,
                        eventDuration, day1, day2, day3, day4, day1TimeFrom, day1TimeTo,
                        day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                       day4TimeTo, TextBox_WebPage.Text, paymentAmountForDay, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
+                       day4TimeTo, TextBox_WebPage.Text, TextBox_VenueName.Text, TextBox_VenueAdress.Text,
                        eventStatus, TextBox_Comments.Text, CheckBox_UseDefaultEmail.Checked,
                        emailTemplate, emailBody, emailSubject);
                 }
@@ -338,25 +313,39 @@ namespace TC37852369
                     
 
                     mainWindow.Enabled = true;
+                    int selectedEventIndex = mainWindow.ComboBox_Events.SelectedIndex;
                     mainWindow.ComboBox_Events.Items.Clear();
                     
                     mainWindow.events.Add(eventEntity);
-                  
-                    mainWindow.filteredEvents.Add(eventEntity);
-                    if (eventEntity.eventStatus.Equals(nameof(EventStatus.Ongoing)) || eventEntity.eventStatus.Equals(nameof(EventStatus.Upcoming)))
+                    List<Event> currentEventList = new List<Event>();
+                    currentEventList.Add(eventEntity);
+                    List<Event> filteredEventList = eventServices.filterEvents(currentEventList, mainWindow.lastEventFilteringYear, mainWindow.lastEventFilteringMonth,
+                        mainWindow.lastEventFilteringDay, mainWindow.lastEventFilteringEventName);
+
+                    if (filteredEventList.Count > 0)
                     {
-                        mainWindow.filteredEvents = mainWindow.filteredEvents.OrderByDescending(ev => ev.date_From).ToList();
+                        if (eventEntity.eventStatus.Equals(nameof(EventStatus.Ongoing)) || eventEntity.eventStatus.Equals(nameof(EventStatus.Upcoming)))
+                        {
+                            mainWindow.filteredEvents = mainWindow.filteredEvents.OrderByDescending(ev => ev.date_From).ToList();
+                            mainWindow.emptyTable(mainWindow.Table_EventsData);
+                            mainWindow.UpdateEventsTable(mainWindow.filteredEvents);
+                        }
+                        else
+                        {
+                            mainWindow.addEventTableRow();
+                            mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
+                        }
+                        foreach (Event ev in mainWindow.events)
+                        {
+                            mainWindow.ComboBox_Events.Items.Add(ev.eventName);
+                        }
+                        if (selectedEventIndex >= 0)
+                        {
+                            mainWindow.ComboBox_Events.SelectedIndex = mainWindow.ComboBox_Events.Items.IndexOf(mainWindow.selectedEvent.eventName);
+                        }
                     }
-                    else
-                    {
-                        mainWindow.addEventTableRow();
-                        mainWindow.addEventToEventTableRow(eventEntity, mainWindow.Table_EventsData.RowCount - 1);
-                    }
-                    foreach (Event ev in mainWindow.events)
-                    {
-                        mainWindow.ComboBox_Events.Items.Add(ev.eventName);
-                    }
-                    mainWindow.ComboBox_Events.SelectedIndex = mainWindow.ComboBox_Events.Items.IndexOf(mainWindow.selectedEvent.eventName);
+                    mainWindow.Label_FilteredEventsAmount.Text = mainWindow.filteredEvents.Count.ToString();
+                    mainWindow.Label_EventsNumberAmount.Text = mainWindow.events.Count.ToString();
                     this.Dispose();
                 }
                 else

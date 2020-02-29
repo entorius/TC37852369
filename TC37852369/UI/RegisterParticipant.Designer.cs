@@ -79,6 +79,7 @@
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.PictureBox_AddAdditionalPhoneNumber = new System.Windows.Forms.PictureBox();
             this.PictureBox_DeleteAdditionalPhoneNumber = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_AddAdditionalPhoneNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_DeleteAdditionalPhoneNumber)).BeginInit();
             this.SuspendLayout();
@@ -630,7 +631,7 @@
             // DateTime_RegistrationDate
             // 
             this.DateTime_RegistrationDate.Location = new System.Drawing.Point(863, 103);
-            this.DateTime_RegistrationDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_RegistrationDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_RegistrationDate.Name = "DateTime_RegistrationDate";
             this.DateTime_RegistrationDate.Size = new System.Drawing.Size(382, 29);
             this.DateTime_RegistrationDate.TabIndex = 108;
@@ -647,7 +648,7 @@
             // DateTime_PaymentDate
             // 
             this.DateTime_PaymentDate.Location = new System.Drawing.Point(863, 163);
-            this.DateTime_PaymentDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_PaymentDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_PaymentDate.Name = "DateTime_PaymentDate";
             this.DateTime_PaymentDate.Size = new System.Drawing.Size(382, 29);
             this.DateTime_PaymentDate.TabIndex = 106;
@@ -798,15 +799,26 @@
             this.PictureBox_DeleteAdditionalPhoneNumber.TabStop = false;
             this.PictureBox_DeleteAdditionalPhoneNumber.Click += new System.EventHandler(this.PictureBox_DeleteAdditionalPhoneNumber_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(198, 32);
+            this.label12.TabIndex = 118;
+            this.label12.Text = "Regiter Participant";
+            // 
             // RegisterParticipant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1295, 864);
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.ClientSize = new System.Drawing.Size(1295, 864);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.PictureBox_DeleteAdditionalPhoneNumber);
             this.Controls.Add(this.PictureBox_AddAdditionalPhoneNumber);
             this.Controls.Add(this.TextBox_Comment);
@@ -859,7 +871,6 @@
             this.Controls.Add(this.ComboBox_CompanyType);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "RegisterParticipant";
-            this.Text = "Regiter Participant";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_AddAdditionalPhoneNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_DeleteAdditionalPhoneNumber)).EndInit();
             this.ResumeLayout(false);
@@ -871,53 +882,54 @@
 
         private MetroFramework.Controls.MetroButton Button_Cancel;
         private MetroFramework.Controls.MetroButton Button_Register;
-        private MetroFramework.Controls.MetroTextBox TextBox_CompanyName;
-        private MetroFramework.Controls.MetroTextBox TextBox_LastName;
-        private MetroFramework.Controls.MetroTextBox TextBox_FirstName;
-        private MetroFramework.Controls.MetroComboBox ComboBox_CompanyType;
+        public MetroFramework.Controls.MetroTextBox TextBox_CompanyName;
+        public MetroFramework.Controls.MetroTextBox TextBox_LastName;
+        public MetroFramework.Controls.MetroTextBox TextBox_FirstName;
+        public MetroFramework.Controls.MetroComboBox ComboBox_CompanyType;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroTextBox TextBox_Email;
+        public MetroFramework.Controls.MetroTextBox TextBox_Email;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private MetroFramework.Controls.MetroTextBox TextBox_PhoneNumber;
+        public MetroFramework.Controls.MetroTextBox TextBox_PhoneNumber;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroComboBox ComboBox_Materials;
-        private MetroFramework.Controls.MetroComboBox ComboBox_ParticipateEveningEvent;
+        public MetroFramework.Controls.MetroComboBox ComboBox_Materials;
+        public MetroFramework.Controls.MetroComboBox ComboBox_ParticipateEveningEvent;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroTextBox TextBox_Country;
-        private MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay1;
-        private MetroFramework.Controls.MetroLabel Label_ParticipateDay1;
-        private MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay2;
-        private MetroFramework.Controls.MetroLabel Label_ParticipateDay2;
+        public MetroFramework.Controls.MetroTextBox TextBox_Country;
+        public MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay1;
+        public MetroFramework.Controls.MetroLabel Label_ParticipateDay1;
+        public MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay2;
+        public MetroFramework.Controls.MetroLabel Label_ParticipateDay2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public MetroFramework.Controls.MetroComboBox ComboBox_ParticipationFormat;
         public MetroFramework.Controls.MetroComboBox ComboBox_PaymentStatus;
-        private MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay4;
-        private MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay3;
-        private MetroFramework.Controls.MetroLabel Label_ParticipateDay4;
-        private MetroFramework.Controls.MetroLabel Label_ParticipateDay3;
-        private MetroFramework.Controls.MetroComboBox ComboBox_Events;
-        private MetroFramework.Controls.MetroTextBox TextBox_JobTitle;
+        public MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay4;
+        public MetroFramework.Controls.MetroComboBox ComboBox_ParticipateDay3;
+        public MetroFramework.Controls.MetroLabel Label_ParticipateDay4;
+        public MetroFramework.Controls.MetroLabel Label_ParticipateDay3;
+        public MetroFramework.Controls.MetroComboBox ComboBox_Events;
+        public MetroFramework.Controls.MetroTextBox TextBox_JobTitle;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLabel Label_RegistrationDate;
-        private MetroFramework.Controls.MetroDateTime DateTime_RegistrationDate;
-        private MetroFramework.Controls.MetroLabel Label_PaymentDate;
-        private MetroFramework.Controls.MetroDateTime DateTime_PaymentDate;
-        private MetroFramework.Controls.MetroTextBox TextBox_AdditionalPhoneNumber;
-        private MetroFramework.Controls.MetroLabel Label_AdditionalPhoneNumber;
-        private MetroFramework.Controls.MetroTextBox TextBox_PaymentAmount;
-        private MetroFramework.Controls.MetroLabel Label_PaymentAmount;
-        private MetroFramework.Controls.MetroTextBox TextBox_Comment;
+        public MetroFramework.Controls.MetroLabel Label_RegistrationDate;
+        public MetroFramework.Controls.MetroDateTime DateTime_RegistrationDate;
+        public MetroFramework.Controls.MetroLabel Label_PaymentDate;
+        public MetroFramework.Controls.MetroDateTime DateTime_PaymentDate;
+        public MetroFramework.Controls.MetroTextBox TextBox_AdditionalPhoneNumber;
+        public MetroFramework.Controls.MetroLabel Label_AdditionalPhoneNumber;
+        public MetroFramework.Controls.MetroTextBox TextBox_PaymentAmount;
+        public MetroFramework.Controls.MetroLabel Label_PaymentAmount;
+        public MetroFramework.Controls.MetroTextBox TextBox_Comment;
         private MetroFramework.Controls.MetroLabel metroLabel15;
-        private System.Windows.Forms.PictureBox PictureBox_AddAdditionalPhoneNumber;
-        private System.Windows.Forms.PictureBox PictureBox_DeleteAdditionalPhoneNumber;
+        public System.Windows.Forms.PictureBox PictureBox_AddAdditionalPhoneNumber;
+        public System.Windows.Forms.PictureBox PictureBox_DeleteAdditionalPhoneNumber;
+        private System.Windows.Forms.Label label12;
     }
 }

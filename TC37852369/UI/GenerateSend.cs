@@ -60,6 +60,7 @@ namespace TC37852369
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            BringToFront();
         }
         async void FillWindowFields()
         {
@@ -88,43 +89,9 @@ namespace TC37852369
 
         }
 
-        private void Button_Send_Click(object sender, EventArgs e)
-        {
-            if (companyData.emailUsername.Length == 0 || companyData.emailUsername.Length == 0)
-            {
-                metroMessageBoxHelper.showWarning(this, "You cannot send email because you have not entered " +
-                    "your email credentials, which are mandatory to send email. Go to Main Window -> Settings -> Add/" +
-                    "Change company information to fill email credentials", "Warning");
-            }
-            else
-            {
-                for(int i = 0; i < SendCheckBoxes.Count; i++)
-                {
-                    if (SendCheckBoxes[i].Checked)
-                    {
-                        checkedParticipants.Add(filteredParticipants[i]);
-                    }
-                }
-                cancelationTokenSource = new CancellationTokenSource();
-                Button_Send.Enabled = false;
-                generateSendInfoWindow = new GenerateSendInfoWindow(this);
-                sendingStatus = "GeneratingDocuments";
-                Timer_StringChanged.Enabled = true;
-               
-                generateSendInfoWindow.Show();
-                generateSendInfoWindow.BringToFront();
+        
 
-                var tasks = new[]
-                {
-                    Task.Factory.StartNew(() => GenerateDocumentsAndSendEmails(),cancelationTokenSource.Token)
-                };
-
-                //mainWindow.Enabled = true;
-                //this.Dispose();
-            }
-        }
-
-        private async void GenerateDocumentsAndSendEmails()
+        private async void GenerateDocumentsAndSendEmailsWithTickets()
         {
             Dictionary<string,Event> eventsToSend = new Dictionary<string,Event>();
             foreach(Participant p in checkedParticipants)
@@ -149,7 +116,7 @@ namespace TC37852369
             List<string> emailBodies = new List<string>();
             List<string> emailSubjects = new List<string>();
             List<string> ticketsNames = new List<string>();
-            foreach (Participant p in filteredParticipants)
+            foreach (Participant p in checkedParticipants)
             {
                 toEmails.Add(p.email);
                 Event eventEntity = events.Find(ev => ev.id.ToString().Equals(p.eventId));
@@ -172,33 +139,11 @@ namespace TC37852369
                 ticketsNames.Add(eventEntity.eventName + " ticket");
             }
 
-            sendEmail.SendEmails(toEmails, emailSubjects, emailBodies, ticketsPaths, ticketsNames);
+            sendEmail.SendEmailsWithTickets(toEmails, emailSubjects, emailBodies, ticketsPaths, ticketsNames);
             sendingStatus = "EmailsSent";
-            foreach (Participant p in filteredParticipants)
-            {
-                p.ticketSent = true;
-                Participant participant = await participantServices.editParticipant(p);
-
-                if (participant != null)
-                {
-                    int allParticipantsIndex = mainWindow.allParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
-                    int selectedEventParticipantsIndex = 0;
-                    int filteredEventParticipantsIndex = 0;
-                    if (mainWindow.selectedEventParticipants.Count > 0)
-                    {
-                        selectedEventParticipantsIndex = mainWindow.selectedEventParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
-                        filteredEventParticipantsIndex = mainWindow.filteredParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
-                    }
-                    mainWindow.allParticipants[allParticipantsIndex] = p;
-                    if (mainWindow.selectedEventParticipants.Count > 0)
-                    {
-                        mainWindow.selectedEventParticipants[selectedEventParticipantsIndex] = p;
-                        mainWindow.filteredParticipants[filteredEventParticipantsIndex] = p;
-                        mainWindow.editParticipantTableRow(participant, filteredEventParticipantsIndex);
-                    }
-                }
-            }
+           
         }
+       
 
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
@@ -369,6 +314,8 @@ namespace TC37852369
             CheckBox button_Check = new CheckBox();
             button_Check.Checked = false;
             button_Check.Visible = true;
+            button_Check.Text = "";
+            button_Check.Width = 50;
             SendCheckBoxes.Add(button_Check);
 
             table.Controls.Add(label_FirstName,      0, rowNumber);
@@ -415,8 +362,10 @@ namespace TC37852369
         }
         public void emptyTable(TableLayoutPanel table)
         {
+            table.Hide();
             table.Controls.Clear();
             table.RowCount = 1;
+            table.Show();
         }
 
         private void Timer_StringChanged_Tick(object sender, EventArgs e)
@@ -457,6 +406,111 @@ namespace TC37852369
                     checkBox.Checked = false;
                 }
             }
+        }
+
+        private void Button_SendTemplate_Click(object sender, EventArgs e)
+        {
+            if (companyData.emailUsername.Length == 0 || companyData.emailUsername.Length == 0)
+            {
+                metroMessageBoxHelper.showWarning(this, "You cannot send email because you have not entered " +
+                    "your email credentials, which are mandatory to send email. Go to Main Window -> Settings -> Add/" +
+                    "Change company information to fill email credentials", "Warning");
+            }
+            else
+            {
+
+                for (int i = 0; i < SendCheckBoxes.Count; i++)
+                {
+                    if (SendCheckBoxes[i].Checked)
+                    {
+                        checkedParticipants.Add(filteredParticipants[i]);
+                    }
+                }
+                if (checkedParticipants.Count > 0)
+                {
+
+                    SendTemplate sendTemp = new SendTemplate(emailTemplates, checkedParticipants, events, this, companyData,
+                        mainWindow);
+                    sendTemp.Show();
+                }
+                else
+                {
+                    metroMessageBoxHelper.showWarning(this, "You have not choosen any particicipants, to send emails!", "Warning");
+                }
+            }
+            //mainWindow.Enabled = true;
+            //this.Dispose();
+        }
+
+        private async void Button_SendTickets_Click(object sender, EventArgs e)
+        {
+            if (companyData.emailUsername.Length == 0 || companyData.emailUsername.Length == 0)
+            {
+                metroMessageBoxHelper.showWarning(this, "You cannot send email because you have not entered " +
+                    "your email credentials, which are mandatory to send email. Go to Main Window -> Settings -> Add/" +
+                    "Change company information to fill email credentials", "Warning");
+            }
+            else
+            {
+
+                for (int i = 0; i < SendCheckBoxes.Count; i++)
+                {
+                    if (SendCheckBoxes[i].Checked)
+                    {
+                        checkedParticipants.Add(filteredParticipants[i]);
+                    }
+                }
+                if (checkedParticipants.Count > 0)
+                {
+                    cancelationTokenSource = new CancellationTokenSource();
+                    Button_SendTickets.Enabled = false;
+                    generateSendInfoWindow = new GenerateSendInfoWindow(this);
+                    sendingStatus = "GeneratingDocuments";
+                    Timer_StringChanged.Enabled = true;
+
+                    generateSendInfoWindow.Show();
+                    generateSendInfoWindow.BringToFront();
+
+                    var tasks = new[]
+                    {
+                    Task.Factory.StartNew(() => GenerateDocumentsAndSendEmailsWithTickets(),cancelationTokenSource.Token)
+                    };
+                    foreach(Task t in tasks)
+                    {
+                        await t;
+                    }
+                    foreach (Participant p in checkedParticipants)
+                    {
+                        p.ticketSent = true;
+                        Participant participant = await participantServices.editParticipant(p);
+
+                        if (participant != null)
+                        {
+                            int allParticipantsIndex = mainWindow.allParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
+                            int selectedEventParticipantsIndex = 0;
+                            int filteredEventParticipantsIndex = 0;
+                            if (mainWindow.selectedEventParticipants.Count > 0)
+                            {
+                                selectedEventParticipantsIndex = mainWindow.selectedEventParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
+                                filteredEventParticipantsIndex = mainWindow.filteredParticipants.FindIndex(par => par.participantId.Equals(p.participantId));
+                            }
+                            mainWindow.allParticipants[allParticipantsIndex] = p;
+                            if (mainWindow.selectedEventParticipants.Count > 0)
+                            {
+                                mainWindow.selectedEventParticipants[selectedEventParticipantsIndex] = p;
+                                mainWindow.filteredParticipants[filteredEventParticipantsIndex] = p;
+                                mainWindow.editParticipantTableRow(participant, filteredEventParticipantsIndex);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    metroMessageBoxHelper.showWarning(this, "You have not choosen any particicipants, to send emails!", "Warning");
+                }
+            }
+            //mainWindow.Enabled = true;
+            //this.Dispose();
         }
     }
 }

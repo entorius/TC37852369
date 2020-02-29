@@ -37,6 +37,7 @@
             this.Label_CustomLineColor = new MetroFramework.Controls.MetroLabel();
             this.PictureBox_LineColor = new System.Windows.Forms.PictureBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LineColor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,11 +157,22 @@
             this.metroLabel2.TabIndex = 8;
             this.metroLabel2.Text = "Line Color:";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 32);
+            this.label12.TabIndex = 122;
+            this.label12.Text = "Edit Ticket";
+            // 
             // TicketEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.PictureBox_LineColor);
             this.Controls.Add(this.Label_CustomLineColor);
@@ -171,7 +183,6 @@
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Name = "TicketEdit";
-            this.Text = "Edit Ticket";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LineColor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,5 +200,6 @@
         private MetroFramework.Controls.MetroLabel Label_CustomLineColor;
         private System.Windows.Forms.PictureBox PictureBox_LineColor;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -34,6 +34,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.FolderBrowserDialog_Generation = new System.Windows.Forms.FolderBrowserDialog();
             this.Label_Generating = new MetroFramework.Controls.MetroLabel();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Button_Generate
@@ -92,13 +93,24 @@
             this.Label_Generating.Size = new System.Drawing.Size(0, 0);
             this.Label_Generating.TabIndex = 14;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label15.Location = new System.Drawing.Point(22, 24);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(172, 32);
+            this.label15.TabIndex = 143;
+            this.label15.Text = "Generate Ticket";
+            // 
             // GenerateTicket
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(800, 600);
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.Label_Generating);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.ComboBox_Events);
@@ -106,7 +118,6 @@
             this.Controls.Add(this.Button_Generate);
             this.Name = "GenerateTicket";
             this.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
-            this.Text = "GenerateTicket";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +130,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog_Generation;
         private MetroFramework.Controls.MetroLabel Label_Generating;
+        private System.Windows.Forms.Label label15;
     }
 }

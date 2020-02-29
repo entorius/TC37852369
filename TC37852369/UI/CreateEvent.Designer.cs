@@ -87,7 +87,6 @@
             this.Label_To3 = new MetroFramework.Controls.MetroLabel();
             this.Label_To4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.TextBox_PaymentAmount = new System.Windows.Forms.TextBox();
             this.Button_Image1 = new System.Windows.Forms.Button();
             this.Button_Delete1 = new System.Windows.Forms.PictureBox();
             this.Button_AddImage = new System.Windows.Forms.Button();
@@ -95,12 +94,12 @@
             this.Button_Image2 = new System.Windows.Forms.Button();
             this.FileDialog_AddEvent = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog_ImageSave = new System.Windows.Forms.FolderBrowserDialog();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.ComboBox_TemplateStrings = new MetroFramework.Controls.MetroComboBox();
             this.Label_ticketWebPage = new MetroFramework.Controls.MetroLabel();
             this.TextBox_WebPage = new System.Windows.Forms.TextBox();
             this.Button_AddChangeSponsorsImage = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).BeginInit();
             this.SuspendLayout();
@@ -118,7 +117,7 @@
             // 
             this.TextBox_VenueName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueName.Location = new System.Drawing.Point(224, 665);
+            this.TextBox_VenueName.Location = new System.Drawing.Point(223, 605);
             this.TextBox_VenueName.Name = "TextBox_VenueName";
             this.TextBox_VenueName.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueName.TabIndex = 5;
@@ -127,7 +126,7 @@
             // 
             this.TextBox_VenueAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_VenueAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_VenueAdress.Location = new System.Drawing.Point(224, 725);
+            this.TextBox_VenueAdress.Location = new System.Drawing.Point(223, 665);
             this.TextBox_VenueAdress.Name = "TextBox_VenueAdress";
             this.TextBox_VenueAdress.Size = new System.Drawing.Size(409, 30);
             this.TextBox_VenueAdress.TabIndex = 6;
@@ -216,7 +215,7 @@
             // 
             this.DateTime_EventDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DateTime_EventDate.Location = new System.Drawing.Point(224, 185);
-            this.DateTime_EventDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_EventDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_EventDate.Name = "DateTime_EventDate";
             this.DateTime_EventDate.Size = new System.Drawing.Size(409, 29);
             this.DateTime_EventDate.TabIndex = 15;
@@ -240,9 +239,9 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(67, 185);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(70, 19);
             this.metroLabel1.TabIndex = 17;
-            this.metroLabel1.Text = "Event date*";
+            this.metroLabel1.Text = "Event date";
             // 
             // metroLabel2
             // 
@@ -250,9 +249,9 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(67, 245);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(137, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(131, 19);
             this.metroLabel2.TabIndex = 18;
-            this.metroLabel2.Text = "Event duration (days)*";
+            this.metroLabel2.Text = "Event duration (days)";
             // 
             // metroLabel3
             // 
@@ -277,27 +276,27 @@
             // 
             this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(67, 665);
+            this.metroLabel5.Location = new System.Drawing.Point(66, 605);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(81, 19);
             this.metroLabel5.TabIndex = 21;
-            this.metroLabel5.Text = "Venue name*";
+            this.metroLabel5.Text = "Venue name";
             // 
             // metroLabel6
             // 
             this.metroLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(67, 725);
+            this.metroLabel6.Location = new System.Drawing.Point(66, 665);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(91, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(85, 19);
             this.metroLabel6.TabIndex = 22;
-            this.metroLabel6.Text = "Venue adress*";
+            this.metroLabel6.Text = "Venue adress";
             // 
             // metroLabel8
             // 
             this.metroLabel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(67, 785);
+            this.metroLabel8.Location = new System.Drawing.Point(66, 725);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(73, 19);
             this.metroLabel8.TabIndex = 26;
@@ -309,9 +308,9 @@
             this.Label_Subject.AutoSize = true;
             this.Label_Subject.Location = new System.Drawing.Point(1119, 180);
             this.Label_Subject.Name = "Label_Subject";
-            this.Label_Subject.Size = new System.Drawing.Size(91, 19);
+            this.Label_Subject.Size = new System.Drawing.Size(85, 19);
             this.Label_Subject.TabIndex = 27;
-            this.Label_Subject.Text = "Email subject*";
+            this.Label_Subject.Text = "Email subject";
             // 
             // metroLabel10
             // 
@@ -319,9 +318,9 @@
             this.metroLabel10.AutoSize = true;
             this.metroLabel10.Location = new System.Drawing.Point(1119, 240);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel10.Size = new System.Drawing.Size(75, 19);
             this.metroLabel10.TabIndex = 28;
-            this.metroLabel10.Text = "Email body*";
+            this.metroLabel10.Text = "Email body";
             // 
             // metroLabel11
             // 
@@ -337,7 +336,7 @@
             // 
             this.TextBox_Comments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_Comments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_Comments.Location = new System.Drawing.Point(224, 785);
+            this.TextBox_Comments.Location = new System.Drawing.Point(223, 725);
             this.TextBox_Comments.Multiline = true;
             this.TextBox_Comments.Name = "TextBox_Comments";
             this.TextBox_Comments.Size = new System.Drawing.Size(409, 70);
@@ -387,7 +386,7 @@
             // 
             this.DateTime_Day1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DateTime_Day1.Location = new System.Drawing.Point(224, 305);
-            this.DateTime_Day1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_Day1.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_Day1.Name = "DateTime_Day1";
             this.DateTime_Day1.Size = new System.Drawing.Size(243, 29);
             this.DateTime_Day1.TabIndex = 40;
@@ -396,7 +395,7 @@
             // 
             this.DateTime_Day2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DateTime_Day2.Location = new System.Drawing.Point(224, 365);
-            this.DateTime_Day2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_Day2.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_Day2.Name = "DateTime_Day2";
             this.DateTime_Day2.Size = new System.Drawing.Size(243, 29);
             this.DateTime_Day2.TabIndex = 41;
@@ -405,7 +404,7 @@
             // 
             this.DateTime_Day3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DateTime_Day3.Location = new System.Drawing.Point(224, 425);
-            this.DateTime_Day3.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_Day3.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_Day3.Name = "DateTime_Day3";
             this.DateTime_Day3.Size = new System.Drawing.Size(243, 29);
             this.DateTime_Day3.TabIndex = 42;
@@ -414,7 +413,7 @@
             // 
             this.DateTime_Day4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DateTime_Day4.Location = new System.Drawing.Point(224, 485);
-            this.DateTime_Day4.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_Day4.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_Day4.Name = "DateTime_Day4";
             this.DateTime_Day4.Size = new System.Drawing.Size(243, 29);
             this.DateTime_Day4.TabIndex = 43;
@@ -725,15 +724,6 @@
             this.metroLabel7.Text = "Payment amount (for day)*";
             this.metroLabel7.WrapToLine = true;
             // 
-            // TextBox_PaymentAmount
-            // 
-            this.TextBox_PaymentAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TextBox_PaymentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_PaymentAmount.Location = new System.Drawing.Point(224, 545);
-            this.TextBox_PaymentAmount.Name = "TextBox_PaymentAmount";
-            this.TextBox_PaymentAmount.Size = new System.Drawing.Size(409, 30);
-            this.TextBox_PaymentAmount.TabIndex = 77;
-            // 
             // Button_Image1
             // 
             this.Button_Image1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -827,16 +817,6 @@
             // 
             this.FileDialog_AddEvent.FileName = "openFileDialog1";
             // 
-            // metroLabel9
-            // 
-            this.metroLabel9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(67, 545);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(116, 19);
-            this.metroLabel9.TabIndex = 117;
-            this.metroLabel9.Text = "Payment Amount*";
-            // 
             // metroLabel12
             // 
             this.metroLabel12.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -863,7 +843,7 @@
             // 
             this.Label_ticketWebPage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_ticketWebPage.AutoSize = true;
-            this.Label_ticketWebPage.Location = new System.Drawing.Point(67, 605);
+            this.Label_ticketWebPage.Location = new System.Drawing.Point(66, 545);
             this.Label_ticketWebPage.Name = "Label_ticketWebPage";
             this.Label_ticketWebPage.Size = new System.Drawing.Size(70, 19);
             this.Label_ticketWebPage.TabIndex = 122;
@@ -873,7 +853,7 @@
             // 
             this.TextBox_WebPage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBox_WebPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.TextBox_WebPage.Location = new System.Drawing.Point(224, 605);
+            this.TextBox_WebPage.Location = new System.Drawing.Point(223, 545);
             this.TextBox_WebPage.Name = "TextBox_WebPage";
             this.TextBox_WebPage.Size = new System.Drawing.Size(409, 30);
             this.TextBox_WebPage.TabIndex = 121;
@@ -896,25 +876,35 @@
             this.Button_AddChangeSponsorsImage.UseVisualStyleBackColor = false;
             this.Button_AddChangeSponsorsImage.Click += new System.EventHandler(this.Button_AddChangeSponsorsImage_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 32);
+            this.label12.TabIndex = 138;
+            this.label12.Text = "Create Event";
+            // 
             // CreateEvent
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1920, 1030);
             this.ClientSize = new System.Drawing.Size(1920, 1030);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Button_AddChangeSponsorsImage);
             this.Controls.Add(this.Label_ticketWebPage);
             this.Controls.Add(this.TextBox_WebPage);
             this.Controls.Add(this.ComboBox_TemplateStrings);
             this.Controls.Add(this.metroLabel12);
-            this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.Button_Delete2);
             this.Controls.Add(this.Button_Image2);
             this.Controls.Add(this.Button_AddImage);
             this.Controls.Add(this.Button_Delete1);
             this.Controls.Add(this.Button_Image1);
             this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.TextBox_PaymentAmount);
             this.Controls.Add(this.Label_To4);
             this.Controls.Add(this.Label_To3);
             this.Controls.Add(this.Label_To2);
@@ -976,7 +966,6 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Name = "CreateEvent";
             this.Padding = new System.Windows.Forms.Padding(20, 64, 20, 21);
-            this.Text = "Create Event";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button_Delete2)).EndInit();
@@ -1044,7 +1033,6 @@
         private MetroFramework.Controls.MetroLabel Label_To3;
         private MetroFramework.Controls.MetroLabel Label_To4;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private System.Windows.Forms.TextBox TextBox_PaymentAmount;
         private System.Windows.Forms.Button Button_Image1;
         private System.Windows.Forms.PictureBox Button_Delete1;
         private System.Windows.Forms.Button Button_AddImage;
@@ -1052,11 +1040,11 @@
         private System.Windows.Forms.Button Button_Image2;
         private System.Windows.Forms.OpenFileDialog FileDialog_AddEvent;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_ImageSave;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroComboBox ComboBox_TemplateStrings;
         private MetroFramework.Controls.MetroLabel Label_ticketWebPage;
         private System.Windows.Forms.TextBox TextBox_WebPage;
         private System.Windows.Forms.Button Button_AddChangeSponsorsImage;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -39,6 +39,7 @@ namespace TC37852369.UI
             this.mainWindow = mainWindow;
             InitializeComponent();
             this.FormClosed += CloseHandler;
+            this.BringToFront();
             InitializeWindowData();
             bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
             if (toMaximize)

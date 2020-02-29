@@ -36,6 +36,7 @@ namespace TC37852369.UI
         {
             InitializeComponent();
             TextBox_HEXLineColor.TextChanged += HexLineColorChanged;
+            BringToFront();
         }
 
         private void HexLineColorChanged(object sender, EventArgs e)

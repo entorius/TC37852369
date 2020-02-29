@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TC37852369.DomainEntities;
+using TC37852369.Helpers;
 using TC37852369.Repository;
 
 public enum EventStatus
@@ -25,7 +26,7 @@ namespace TC37852369.Services
             int eventLengthDays, DateTime day1Date, DateTime day2Date, DateTime day3Date,
             DateTime day4Date, string day1TimeFrom,string day1TimeTo,
                    string day2TimeFrom, string day2TimeTo, string day3TimeFrom, string day3TimeTo,
-                   string day4TimeFrom, string day4TimeTo, string webPage, double paymentAmountForDay, string venueName,
+                   string day4TimeFrom, string day4TimeTo, string webPage, string venueName,
                    string venueAdress, string eventStatus, string comment, bool useTemplate, 
                    string current_Mail_Template, string body, string subject)
         {
@@ -36,14 +37,14 @@ namespace TC37852369.Services
                 date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                 day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo,webPage, paymentAmountForDay, venueName, venueAdress, eventStatus, comment, useTemplate,
+                   day4TimeTo,webPage, venueName, venueAdress, eventStatus, comment, useTemplate,
                 current_Mail_Template, body, subject
                 );
             bool isRequestSucessful = await eventRepository.addEvent(lastIdentificationNumber.id, 
                 eventName,date_From, eventLengthDays, day1Date, day2Date, day3Date, day4Date,
                  day1TimeFrom, day1TimeTo,
                    day2TimeFrom, day2TimeTo, day3TimeFrom, day3TimeTo, day4TimeFrom,
-                   day4TimeTo, webPage, paymentAmountForDay, venueName,venueAdress, eventStatus,comment, useTemplate,
+                   day4TimeTo, webPage, venueName,venueAdress, eventStatus,comment, useTemplate,
                 current_Mail_Template,body,subject);
             if (isRequestSucessful)
             {
@@ -61,7 +62,7 @@ namespace TC37852369.Services
                 eventEntity.eventName, eventEntity.date_From, eventEntity.eventLengthDays, eventEntity.day1Date, eventEntity.day2Date, eventEntity.day3Date, eventEntity.day4Date,
                  eventEntity.day1TimeFrom, eventEntity.day1TimeTo,
                    eventEntity.day2TimeFrom, eventEntity.day2TimeTo, eventEntity.day3TimeFrom, eventEntity.day3TimeTo, eventEntity.day4TimeFrom,
-                   eventEntity.day4TimeTo, eventEntity.webPage, eventEntity.paymentAmountForDay, eventEntity.venueName, eventEntity.venueAdress, eventEntity.eventStatus,
+                   eventEntity.day4TimeTo, eventEntity.webPage, eventEntity.venueName, eventEntity.venueAdress, eventEntity.eventStatus,
                    eventEntity.comment, eventEntity.useTemplate,
                 eventEntity.current_Mail_Template, eventEntity.emailBody, eventEntity.emailSubject);
             if (isRequestSucessful)
@@ -94,12 +95,12 @@ namespace TC37852369.Services
 
         public string getEventStatus(DateTime eventTime, int eventDuration)
         {
-            if(eventTime.AddDays(eventDuration) < DateTime.Now)
+            if(eventTime.AddDays(eventDuration - 1) < DateHelper.setDateToMidnight(DateTime.Now))
             {
                 return nameof(EventStatus.Past);
             }
-            else if (eventTime <= DateTime.Now && 
-                eventTime.AddDays(eventDuration - 1) >= DateTime.Now)
+            else if (eventTime <= DateHelper.setDateToMidnight(DateTime.Now) && 
+                eventTime.AddDays(eventDuration - 1) >= DateHelper.setDateToMidnight(DateTime.Now))
             {
                 return nameof(EventStatus.Ongoing);
             }
@@ -115,6 +116,10 @@ namespace TC37852369.Services
         public bool isStringCorrect(string value)
         {
             value = value.Replace(" ", string.Empty);
+            if(value.Length == 0)
+            {
+                return true;
+            }
             if(value.Length < 3)
             {
                 return false;
@@ -230,6 +235,82 @@ namespace TC37852369.Services
             catch (OverflowException)
             {
                 return 3;
+            }
+            return 0;
+        }
+        public List<Event> filterEvents(List<Event> allEvents,int year,int month,int day, string eventName)
+        {
+            List<Event> filteredEvents = allEvents;
+            if (year != 0)
+            {
+                filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Year == year || ev.date_From.AddDays(ev.eventLengthDays).Year == year);
+
+            }
+            if (month != 0)
+            {
+                filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Month == month || ev.date_From.AddDays(ev.eventLengthDays).Month == month);
+
+            }
+            if (day != 0)
+            {
+                filteredEvents = filteredEvents.FindAll(ev => ev.date_From.Day <= day || ev.date_From.AddDays(ev.eventLengthDays).Day >= day);
+            }
+            if(eventName.Replace(" ", "").Length > 0)
+            {
+                filteredEvents = filteredEvents.FindAll(ev => ev.eventName.Replace(" ","").Equals(eventName.Replace(" ","")));
+            }
+            return filteredEvents;
+        }
+        public bool eventDayCorrect(string day)
+        {
+            int dayNumber = 0;
+            bool dayParsed = Int32.TryParse(day, out dayNumber);
+            if (dayParsed)
+            {
+                if (dayNumber <= 31 && dayNumber >= 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+        public bool eventYearCorrect(string year)
+        {
+            int yearNumber = 0;
+            bool yearParsed = Int32.TryParse(year, out yearNumber);
+            if (yearParsed)
+            {
+                if (yearNumber >= 1800)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+        public bool eventMonthCorrect(string month)
+        {
+            int monthNumber = 0;
+            bool dayParsed = Int32.TryParse(month, out monthNumber);
+            if (dayParsed)
+            {
+                if (monthNumber <= 12 && monthNumber >= 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+        public int getEventDayNumber(Event eventEntity)
+        {
+            for (int i = 0; i < eventEntity.eventLengthDays; i++)
+            {
+                if (DateHelper.setDateToMidnight(DateTime.Now).Equals(eventEntity.date_From.AddDays(i)))
+                {
+                    return i + 1;
+                }
             }
             return 0;
         }

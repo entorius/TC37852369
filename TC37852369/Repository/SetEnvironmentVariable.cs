@@ -13,9 +13,8 @@ namespace TC37852369.Repository
         public static void setFirestoreEnvironmentVariable()
         {
             string workingDirectory = Environment.CurrentDirectory;
-            string firebasefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\TicketBase-7013fb49b87b.json";
+            string firebasefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\ticketbase-36d66-firebase-adminsdk-50vwt-f21d8b1827.json";
 
-            //string workingDirectory = Environment.CurrentDirectory;
             //string firebasefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-maindb-firebase-adminsdk-pqjyq-d3e72218f9.json";
 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", firebasefileDirectory);
@@ -26,21 +25,18 @@ namespace TC37852369.Repository
         public static void setGoogleCloudEnvironmentVariable()
         {
             string workingDirectory = Environment.CurrentDirectory;
-            string cloudstoragefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-base-test-268013-a1de1666a0bd.json";
+            string cloudstoragefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-base-test-6a936ec44f08.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", cloudstoragefileDirectory);
 
-            //string workingDirectory = Environment.CurrentDirectory;
             //string cloudstoragefileDirectory = Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-main-268400-0f4758658acc.json";
             //Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", cloudstoragefileDirectory);
 
-            Console.WriteLine(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
         }
         public static string getGoogleCloudEnvironmentVariable()
         {
             string workingDirectory = Environment.CurrentDirectory;
-            return Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-base-test-268013-a1de1666a0bd.json";
+            return Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-base-test-6a936ec44f08.json";
 
-            //string workingDirectory = Environment.CurrentDirectory;
             //return Directory.GetParent(workingDirectory).Parent.FullName + @"\ticket-main-268400-0f4758658acc.json";
 
         }

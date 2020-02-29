@@ -23,7 +23,7 @@ namespace TC37852369
         List<EmailTemplate> emailTemplates = new List<EmailTemplate>();
         MetroMessageBoxHelper messageBoxHelper = new MetroMessageBoxHelper();
         int lastTemplateId = -1;
-        bool justCheckedChanged = false;
+      
         bool creteNewClicked = false;
 
         TextBox lastTextBoxClicked = null;
@@ -34,7 +34,7 @@ namespace TC37852369
             mainWindow = window;
             this.FormClosed += CloseHandler;
             InitializeComponent();
-            
+            this.BringToFront();
 
             /*for (int i = 0; i < 30; i++)
             {
@@ -49,6 +49,11 @@ namespace TC37852369
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            ComboBox_TemplateStrings.Enabled = false;
+            TextBox_TemplateName.Enabled = false;
+            TextBox_Subject.Enabled = false;
+            TextBox_Body.Enabled = false;
+            BringToFront();
         }
 
         private void TextBoxBodyClicked(object sender, EventArgs e)
@@ -96,8 +101,16 @@ namespace TC37852369
 
         private void Button_CreateNew_Click(object sender, EventArgs e)
         {
-            
-            if (selectedItemId != -1)
+            ComboBox_TemplateStrings.Enabled = true;
+            TextBox_TemplateName.Enabled = true;
+            TextBox_Subject.Enabled = true;
+            TextBox_Body.Enabled = true;
+            TextBox_TemplateName.Text = "";
+            TextBox_Subject.Text = "";
+            TextBox_Body.Text = "";
+            selectedItemId = -1;
+            ListBox_EmailTemplates.SelectedIndex = -1;
+            /*if (selectedItemId != -1)
             {
                 creteNewClicked = true;
                 bool emailTemplateChanged = EmailTemplateChanged();
@@ -137,7 +150,7 @@ namespace TC37852369
                         justCheckedChanged = false;
                     }
                 }
-            }
+            }*/
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)
@@ -172,6 +185,8 @@ namespace TC37852369
                     emailTemplates.Add(template);
                     selectedItemId = ListBox_EmailTemplates.Items.Count;
                     this.ListBox_EmailTemplates.Items.Add(template.templateName);
+                    selectedItemId = ListBox_EmailTemplates.Items.Count - 1;
+                    ListBox_EmailTemplates.SelectedIndex = ListBox_EmailTemplates.Items.Count - 1;
                 }
                 catch (Exception)
                 {
@@ -182,8 +197,19 @@ namespace TC37852369
 
         private void ListBox_EmailTemplates_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool emailTemplateChanged = EmailTemplateChanged();
-            if (emailTemplateChanged && !justCheckedChanged)
+            if (ListBox_EmailTemplates.SelectedIndex >= 0)
+            {
+                ComboBox_TemplateStrings.Enabled = true;
+                TextBox_TemplateName.Enabled = true;
+                TextBox_Subject.Enabled = true;
+                TextBox_Body.Enabled = true;
+                bool emailTemplateChanged = EmailTemplateChanged();
+                selectedItemId = ListBox_EmailTemplates.SelectedIndex;
+                TextBox_TemplateName.Text = emailTemplates[selectedItemId].templateName;
+                TextBox_Subject.Text = emailTemplates[selectedItemId].subject;
+                TextBox_Body.Text = emailTemplates[selectedItemId].body;
+            }
+            /*if (emailTemplateChanged && !justCheckedChanged)
             {
                 if (messageBoxHelper.showYesNo(this, "Are you sure you want to change to other template?", "Warning") == DialogResult.Yes)
                 {
@@ -218,7 +244,7 @@ namespace TC37852369
             if (creteNewClicked)
             {
                 creteNewClicked = false;
-            }
+            }*/
         }
 
         public bool EmailTemplateChanged()
@@ -249,6 +275,37 @@ namespace TC37852369
         {
             mainWindow.Enabled = true;
             this.Dispose();
+        }
+
+        private async void Button_Delete_Click(object sender, EventArgs e)
+        {
+            if (selectedItemId >= 0)
+            {
+
+                if (messageBoxHelper.showYesNo(this, "Are you sure you want to delete this template?", "Warning") == DialogResult.Yes)
+                {
+                    await templateServices.deleteMailTemplate(
+                        emailTemplates[selectedItemId].id
+                            );
+                    ListBox_EmailTemplates.Items.RemoveAt(selectedItemId);
+                    emailTemplates.RemoveAt(selectedItemId);
+                    mainWindow.mailTemplates.RemoveAt(selectedItemId);
+                    selectedItemId = -1;
+                    ListBox_EmailTemplates.SelectedIndex = -1;
+                    ComboBox_TemplateStrings.Enabled = false;
+                    TextBox_TemplateName.Enabled = false;
+                    TextBox_Subject.Enabled = false;
+                    TextBox_Body.Enabled = false;
+                    ComboBox_TemplateStrings.Text = "";
+                    TextBox_TemplateName.Text = "";
+                    TextBox_Subject.Text = "";
+                    TextBox_Body.Text = "";
+                }
+            }
+            else
+            {
+                messageBoxHelper.showWarning(this, "No template has been choosen", "Warning");
+            }
         }
     }
 }

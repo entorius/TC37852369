@@ -50,42 +50,48 @@ namespace TC37852369.Services
         public List<Participant> filterAccordingToRegisteredInDay(Event eventEntity,List<Participant> participants, bool registeredInDay)
         {
             DateTime today = DateHelper.setDateToMidnight(DateTime.Now);
-            if (today.Equals(eventEntity.date_From))
+            if (eventEntity != null)
             {
-                return participants.FindAll(p => p.participateInDay1 == registeredInDay);
-            }
-            else if (today.Equals(eventEntity.date_From.AddDays(1)))
-            {
-                return participants.FindAll(p => p.participateInDay2 == registeredInDay);
-            }
-            else if (today.Equals(eventEntity.date_From.AddDays(2)))
-            {
-                return participants.FindAll(p => p.participateInDay3 == registeredInDay);
-            }
-            else if (today.Equals(eventEntity.date_From.AddDays(3)))
-            {
-                return participants.FindAll(p => p.participateInDay4 == registeredInDay);
+                if (today.Equals(eventEntity.date_From))
+                {
+                    return participants.FindAll(p => p.participateInDay1 == registeredInDay);
+                }
+                else if (today.Equals(eventEntity.date_From.AddDays(1)))
+                {
+                    return participants.FindAll(p => p.participateInDay2 == registeredInDay);
+                }
+                else if (today.Equals(eventEntity.date_From.AddDays(2)))
+                {
+                    return participants.FindAll(p => p.participateInDay3 == registeredInDay);
+                }
+                else if (today.Equals(eventEntity.date_From.AddDays(3)))
+                {
+                    return participants.FindAll(p => p.participateInDay4 == registeredInDay);
+                }
             }
             return null;
         }
         public List<Participant> filterAccordingToCheckedInDay(Event eventEntity, List<Participant> participants, bool checkedInDay)
         {
-            DateTime today = DateHelper.setDateToMidnight(DateTime.Now);
-            if (today.Equals(eventEntity.date_From))
+            if (eventEntity != null)
             {
-                return participants.FindAll(p => p.checkedInDay1 == checkedInDay);
-            }
-            else if (today.Equals(eventEntity.date_From.AddDays(1)))
-            {
-                return participants.FindAll(p => p.checkedInDay2 == checkedInDay);
-            }
-            else if (today.Equals(eventEntity.date_From.AddDays(2)))
-            {
-                return participants.FindAll(p => p.checkedInDay3 == checkedInDay);
-            }
-            else if (today.Equals(eventEntity.date_From.AddDays(3)))
-            {
-                return participants.FindAll(p => p.checkedInDay4 == checkedInDay);
+                DateTime today = DateHelper.setDateToMidnight(DateTime.Now);
+                if (today.Equals(eventEntity.date_From))
+                {
+                    return participants.FindAll(p => p.checkedInDay1 == checkedInDay);
+                }
+                else if (today.Equals(eventEntity.date_From.AddDays(1)))
+                {
+                    return participants.FindAll(p => p.checkedInDay2 == checkedInDay);
+                }
+                else if (today.Equals(eventEntity.date_From.AddDays(2)))
+                {
+                    return participants.FindAll(p => p.checkedInDay3 == checkedInDay);
+                }
+                else if (today.Equals(eventEntity.date_From.AddDays(3)))
+                {
+                    return participants.FindAll(p => p.checkedInDay4 == checkedInDay);
+                }
             }
             return new List<Participant>();
         }
@@ -155,80 +161,231 @@ namespace TC37852369.Services
             {
                 if (orderByFirstNameAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.firstName);
+                    orderedParticipants = orderedParticipants.ThenBy(p => p.firstName);
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.firstName);
+                    orderedParticipants = orderedParticipants.ThenByDescending(p => p.firstName);
                 }
             }
             if (orderByLastName)
             {
                 if (orderByLastNameAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.lastName);
+                    orderedParticipants = orderedParticipants.ThenBy(p => p.lastName);
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.lastName);
+                    orderedParticipants = orderedParticipants.ThenByDescending(p => p.lastName);
                 }
             }
             if (orderByJobTitle)
             {
                 if (orderByJobTitleAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.jobTitle);
+                    orderedParticipants = orderedParticipants.ThenBy(p => p.jobTitle);
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.jobTitle);
+                    orderedParticipants = orderedParticipants.ThenByDescending(p => p.jobTitle);
                 }
             }
             if (orderByCompanyName)
             {
                 if (orderByCompanyNameAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.companyName);
+                    orderedParticipants = orderedParticipants.ThenBy(p => p.companyName);
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.companyName);
+                    orderedParticipants = orderedParticipants.ThenByDescending(p => p.companyName);
                 }
             }
             if (orderByCountry)
             {
                 if (orderByCountryAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.companyName);
+                    orderedParticipants = orderedParticipants.ThenBy(p => p.companyName);
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.companyName);
+                    orderedParticipants = orderedParticipants.ThenByDescending(p => p.companyName);
                 }
             }
             if (orderByRegistrationDate)
             {
+                
                 if (orderByRegistrationDateAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.registrationDate);
+                    orderedParticipants = orderedParticipants.ThenBy(p => p.registrationDate);
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.registrationDate);
+                    orderedParticipants = orderedParticipants.ThenByDescending(p => p.registrationDate);
                 }
             }
+            bool orderedByPaymentDate = false;
+            List<Participant> allParticipants = new List<Participant>();
+
+            //Overrides all other filters
             if (orderByPaymentDate)
             {
+                orderedByPaymentDate = true;
+                List<Participant> participantsFilterByPaymentDate = orderedParticipants.ToList().FindAll(op => op.paymentStatus.Equals("Paid"));
+                List<Participant> participantsFilterOthers = orderedParticipants.ToList().FindAll(op => !op.paymentStatus.Equals("Paid"));
+
                 if (orderByPaymentDateAscending)
                 {
-                    orderedParticipants.ThenBy(p => p.paymentDate);
+                    participantsFilterByPaymentDate = participantsFilterByPaymentDate.OrderBy(p => p.paymentDate).ToList();
                 }
                 else
                 {
-                    orderedParticipants.ThenByDescending(p => p.paymentDate);
+                    participantsFilterByPaymentDate = participantsFilterByPaymentDate.OrderByDescending(p => p.paymentDate).ToList();
+                }
+                foreach (Participant p in participantsFilterByPaymentDate)
+                {
+                    allParticipants.Add(p);
+                }
+                foreach (Participant p in participantsFilterOthers)
+                {
+                    allParticipants.Add(p);
+                }
+
+            }
+            if (orderedByPaymentDate)
+            {
+                return allParticipants;
+            }
+            else
+            {
+                return orderedParticipants.ToList();
+            }
+        }
+        public List<Participant> filterParticipants(List<Participant> allParticipants, FilterWindowData filterWindowData,Event eventEntity)
+        {
+            List<Participant> filteredParticipants = allParticipants;
+            if (filterWindowData.firstNameActive)
+            {
+                if (filterWindowData.firstName.Replace(" ", "").Length > 0)
+                {
+                    filteredParticipants = filterAccordingToFirstName(filteredParticipants, filterWindowData.firstName);
                 }
             }
-            return orderedParticipants.ToList();
+            if (filterWindowData.lastNameActive)
+            {
+                if (filterWindowData.lastName.Replace(" ", "").Length > 0)
+                {
+                    filteredParticipants = filterAccordingToLastName(filteredParticipants, filterWindowData.lastName);
+                }
+            }
+            if (filterWindowData.companyTypeActive)
+            {
+                if (filterWindowData.companyType.Replace(" ", "").Length > 0)
+                {
+                    filteredParticipants = filterAccordingToCompanyType(filteredParticipants, filterWindowData.companyType);
+                }
+            }
+            if (filterWindowData.jobTitleActive)
+            {
+                if (filterWindowData.jobTitle.Replace(" ", "").Length > 0)
+                {
+                    filteredParticipants = filterAccordingToJobTitle(filteredParticipants, filterWindowData.jobTitle);
+                }
+            }
+            if (filterWindowData.companyNameActive)
+            {
+                if (filterWindowData.companyName.Replace(" ", "").Length > 0)
+                {
+                    filteredParticipants = filterAccordingToCompanyName(filteredParticipants, filterWindowData.companyName);
+                }
+            }
+            if (filterWindowData.paymentStatusActive)
+            {
+                if (filterWindowData.paymentStatus.Length >= 0)
+                {
+                    filteredParticipants = filterAccordingToPaymentStatus(filteredParticipants, filterWindowData.paymentStatus);
+                }
+            }
+            if (filterWindowData.participationFormatActive)
+            {
+                if (filterWindowData.participationFormat.Length >= 0)
+                {
+                    filteredParticipants = filterAccordingToParticipationFormat(filteredParticipants, filterWindowData.participationFormat);
+                }
+            }
+            if (filterWindowData.ticketSentActive)
+            {
+                if (filterWindowData.ticketSent)
+                {
+                    filteredParticipants = filterAccordingToTicketSent(filteredParticipants, filterWindowData.ticketSent);
+                }
+            }
+            if (filterWindowData.materialsActive)
+            {
+                if (filterWindowData.materials.Length >= 0)
+                {
+                    filteredParticipants = filterAccordingToMaterials(filteredParticipants, filterWindowData.materials);
+                }
+            }
+            if (filterWindowData.registrationDateActive)
+            {
+                int year;
+                int month;
+                int day;
+                bool yearParsed = filterWindowData.RegistrationDateYear.Length > 0 ? Int32.TryParse(filterWindowData.RegistrationDateYear, out year) : true;
+                bool monthParsed = filterWindowData.RegistrationDateMonth.Length > 0 ? Int32.TryParse(filterWindowData.RegistrationDateMonth, out month) : true;
+                bool dayParsed = filterWindowData.RegistrationDateDay.Length > 0 ? Int32.TryParse(filterWindowData.RegistrationDateDay, out day) : true;
+
+
+                if (yearParsed && monthParsed && dayParsed)
+                {
+                    filteredParticipants = filterAccordingToRegistrationDate(filteredParticipants, filterWindowData.RegistrationDateYear,
+                        filterWindowData.RegistrationDateMonth, filterWindowData.RegistrationDateDay);
+                }
+            }
+            if (filterWindowData.paymentDateActive)
+            {
+                int year;
+                int month;
+                int day;
+                bool yearParsed = filterWindowData.PaymentDateYear.Length > 0 ? Int32.TryParse(filterWindowData.PaymentDateYear, out year) : true;
+                bool monthParsed = filterWindowData.PaymentDateMonth.Length > 0 ? Int32.TryParse(filterWindowData.PaymentDateMonth, out month) : true;
+                bool dayParsed = filterWindowData.PaymentDateDay.Length > 0 ? Int32.TryParse(filterWindowData.PaymentDateDay, out day) : true;
+
+
+                if (yearParsed && monthParsed && dayParsed)
+                {
+                    filteredParticipants = filterAccordingToPaymentDate(filteredParticipants, filterWindowData.PaymentDateYear,
+                        filterWindowData.PaymentDateMonth, filterWindowData.PaymentDateDay);
+                }
+            }
+            if (filterWindowData.registeredInDayActive)
+            {
+                if (filterWindowData.materials.Length > 0)
+                {
+                    List<Participant> part = filterAccordingToRegisteredInDay(eventEntity, filteredParticipants, filterWindowData.registeredInDay);
+                    if (part != null)
+                    {
+                        filteredParticipants = part;
+                    }
+                }
+            }
+            if (filterWindowData.checkedInDayActive)
+            {
+                List<Participant> part = filterAccordingToCheckedInDay(eventEntity, filteredParticipants, filterWindowData.checkedInDay);
+                if (part != null)
+                {
+                    filteredParticipants = part;
+                }
+            }
+            if (filterWindowData.countryActive)
+            {
+                if (filterWindowData.country.Replace(" ", "").Length > 0)
+                {
+                    filteredParticipants = filterAccordingToCountry(filteredParticipants, filterWindowData.country);
+                }
+            }
+            return filteredParticipants;
         }
     }
 }

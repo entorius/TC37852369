@@ -24,6 +24,7 @@ namespace TC37852369
             this.mainWindow = window;
             this.FormClosed += CloseHandler;
             InitializeComponent();
+            BringToFront();
             //on initialiazation adds watermarks on all textFields
 
             TextBoxModification TextBox_UsernameMod = new TextBoxModification(TextBox_Username, "Username", false);

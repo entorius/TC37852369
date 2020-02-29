@@ -28,6 +28,7 @@ namespace TC37852369.UI
         GifImage sentGif;
         GenerateSend generateSend;
         EditParticipant editParticipant;
+        SendTemplate sendTemplate;
 
 
         public GenerateSendInfoWindow(GenerateSend generateSend)
@@ -41,6 +42,7 @@ namespace TC37852369.UI
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            BringToFront();
         }
         public GenerateSendInfoWindow(EditParticipant editParticipant)
         {
@@ -48,8 +50,26 @@ namespace TC37852369.UI
 
             this.editParticipant = editParticipant;
             InitializeComponent();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            BringToFront();
         }
+        public GenerateSendInfoWindow(SendTemplate sendTemplate)
+        {
+            initializeWindow();
 
+            this.sendTemplate = sendTemplate;
+            InitializeComponent();
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            BringToFront();
+        }
         private void initializeWindow()
         {
             sendingGifPath = Directory.GetParent(workingDirectory).Parent.FullName + @"\UI\Images\Sending.gif";
@@ -88,11 +108,15 @@ namespace TC37852369.UI
             fileHelper.DeleteAllFilesFormDirectory(directory);
             if (generateSend != null)
             {
-                generateSend.Button_Send.Enabled = true;
+                generateSend.Button_SendTickets.Enabled = true;
             }
             if (editParticipant != null)
             {
                 editParticipant.Button_Send.Enabled = true;
+            }
+            if (sendTemplate != null)
+            {
+                sendTemplate.Button_Send.Enabled = true;
             }
             this.Dispose();
         }
@@ -102,14 +126,19 @@ namespace TC37852369.UI
             if (generateSend != null)
             {
                 generateSend.cancelationTokenSource.Cancel();
-                generateSend.Button_Send.Enabled = true;
+                generateSend.Button_SendTickets.Enabled = true;
             }
             if (editParticipant != null)
             {
                 editParticipant.cancelationTokenSource.Cancel();
                 editParticipant.Button_Send.Enabled = true;
             }
-                this.Dispose();
+            if (sendTemplate != null)
+            {
+              
+                sendTemplate.Button_Send.Enabled = true;
+            }
+            this.Dispose();
         }
     }
 }

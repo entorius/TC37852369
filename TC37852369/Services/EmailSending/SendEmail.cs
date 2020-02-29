@@ -58,7 +58,7 @@ namespace TC37852369.Services.EmailSending
             }
             return client;
         }
-        public int SendEmails(List<string> toEmails, List<string> emailSubject, List<string> emailBody,
+        public int SendEmailsWithTickets(List<string> toEmails, List<string> emailSubject, List<string> emailBody,
             List<string> attachmentsPaths, List<string> attachmentsNames)
         {
             int unsuccesses = 0;
@@ -121,6 +121,74 @@ namespace TC37852369.Services.EmailSending
                         }
                         i = toAddresses.Count;
                        // MailSended mailSendedWindow = new MailSended(succesfullEmails);
+                        //mailSendedWindow.Show();
+                        //mainForm.Label_currentSatusSending.Text = "Siuntimas baigtas!";
+                        return succesfullEmails.Count;
+                    }
+                }
+
+            }
+            //mainForm.Label_currentSatusSending.Text = "Siuntimas baigtas!";
+            return totali + 1;
+        }
+        public int SendEmails(List<string> toEmails, List<string> emailSubject, List<string> emailBody)
+        {
+            int unsuccesses = 0;
+            var fromAddress = new MailAddress(fromEmail, fromEmail);
+            List<MailAddress> toAddresses = new List<MailAddress>();
+            foreach (string email in toEmails)
+            {
+                if (!email.Contains(Environment.NewLine))
+                {
+                    toAddresses.Add(new MailAddress(email, email));
+                }
+            }
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                Timeout = 20000
+            };
+            int lasti = 0;
+            int totali = 0;
+            for (int i = 0; i < toAddresses.Count; i++)
+            {
+                try
+                {
+                    var message = new MailMessage(fromAddress, toAddresses[i]);
+
+                    message.Subject = emailSubject[i];
+                    message.Body = emailBody[i];
+                    smtp.Send(message);
+
+                    totali = i;
+                }
+                catch (Exception)
+                {
+                    if (i - lasti >= 90)
+                    {
+                        //mainForm.Enabled = true;
+                        //mainForm.Label_currentSatusSending.Text = "Išsiųsta laiškų: " + i + "Laukite 7 minutes kol atsinaujins siuntimas.";
+                        //mainForm.Enabled = false;
+                        System.Threading.Thread.Sleep(420000);
+                        unsuccesses = unsuccesses + 1;
+                        i = i - 1;
+                        lasti = i;
+                    }
+                    else
+                    {
+                        List<string> succesfullEmails = new List<string>();
+                        for (int j = 0; j <= i; j++)
+                        {
+                            succesfullEmails.Add(toEmails[j]);
+                        }
+                        i = toAddresses.Count;
+                        // MailSended mailSendedWindow = new MailSended(succesfullEmails);
                         //mailSendedWindow.Show();
                         //mainForm.Label_currentSatusSending.Text = "Siuntimas baigtas!";
                         return succesfullEmails.Count;

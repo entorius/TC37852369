@@ -46,6 +46,8 @@
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.CheckBox_RegistrationDate = new MetroFramework.Controls.MetroCheckBox();
             this.CheckBox_PaymentDate = new MetroFramework.Controls.MetroCheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.CheckBox_Country = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // CheckBox_FirstName
@@ -53,7 +55,7 @@
             this.CheckBox_FirstName.AutoSize = true;
             this.CheckBox_FirstName.Checked = true;
             this.CheckBox_FirstName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_FirstName.Location = new System.Drawing.Point(112, 100);
+            this.CheckBox_FirstName.Location = new System.Drawing.Point(112, 80);
             this.CheckBox_FirstName.Name = "CheckBox_FirstName";
             this.CheckBox_FirstName.Size = new System.Drawing.Size(84, 17);
             this.CheckBox_FirstName.TabIndex = 0;
@@ -65,7 +67,7 @@
             this.CheckBox_LastName.AutoSize = true;
             this.CheckBox_LastName.Checked = true;
             this.CheckBox_LastName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_LastName.Location = new System.Drawing.Point(112, 150);
+            this.CheckBox_LastName.Location = new System.Drawing.Point(112, 120);
             this.CheckBox_LastName.Name = "CheckBox_LastName";
             this.CheckBox_LastName.Size = new System.Drawing.Size(86, 17);
             this.CheckBox_LastName.TabIndex = 1;
@@ -89,7 +91,7 @@
             this.CheckBox_JobTitle.AutoSize = true;
             this.CheckBox_JobTitle.Checked = true;
             this.CheckBox_JobTitle.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_JobTitle.Location = new System.Drawing.Point(112, 250);
+            this.CheckBox_JobTitle.Location = new System.Drawing.Point(112, 240);
             this.CheckBox_JobTitle.Name = "CheckBox_JobTitle";
             this.CheckBox_JobTitle.Size = new System.Drawing.Size(73, 17);
             this.CheckBox_JobTitle.TabIndex = 3;
@@ -101,7 +103,7 @@
             this.CheckBox_CompanyName.AutoSize = true;
             this.CheckBox_CompanyName.Checked = true;
             this.CheckBox_CompanyName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_CompanyName.Location = new System.Drawing.Point(112, 300);
+            this.CheckBox_CompanyName.Location = new System.Drawing.Point(112, 280);
             this.CheckBox_CompanyName.Name = "CheckBox_CompanyName";
             this.CheckBox_CompanyName.Size = new System.Drawing.Size(118, 17);
             this.CheckBox_CompanyName.TabIndex = 4;
@@ -113,7 +115,7 @@
             this.CheckBox_ParticipationFormat.AutoSize = true;
             this.CheckBox_ParticipationFormat.Checked = true;
             this.CheckBox_ParticipationFormat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_ParticipationFormat.Location = new System.Drawing.Point(334, 100);
+            this.CheckBox_ParticipationFormat.Location = new System.Drawing.Point(334, 80);
             this.CheckBox_ParticipationFormat.Name = "CheckBox_ParticipationFormat";
             this.CheckBox_ParticipationFormat.Size = new System.Drawing.Size(139, 17);
             this.CheckBox_ParticipationFormat.TabIndex = 6;
@@ -125,7 +127,7 @@
             this.CheckBox_PaymentStatus.AutoSize = true;
             this.CheckBox_PaymentStatus.Checked = true;
             this.CheckBox_PaymentStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_PaymentStatus.Location = new System.Drawing.Point(334, 150);
+            this.CheckBox_PaymentStatus.Location = new System.Drawing.Point(334, 120);
             this.CheckBox_PaymentStatus.Name = "CheckBox_PaymentStatus";
             this.CheckBox_PaymentStatus.Size = new System.Drawing.Size(112, 17);
             this.CheckBox_PaymentStatus.TabIndex = 8;
@@ -137,7 +139,7 @@
             this.CheckBox_PaymentAmount.AutoSize = true;
             this.CheckBox_PaymentAmount.Checked = true;
             this.CheckBox_PaymentAmount.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_PaymentAmount.Location = new System.Drawing.Point(334, 200);
+            this.CheckBox_PaymentAmount.Location = new System.Drawing.Point(334, 160);
             this.CheckBox_PaymentAmount.Name = "CheckBox_PaymentAmount";
             this.CheckBox_PaymentAmount.Size = new System.Drawing.Size(122, 17);
             this.CheckBox_PaymentAmount.TabIndex = 9;
@@ -149,7 +151,7 @@
             this.CheckBox_CheckIn.AutoSize = true;
             this.CheckBox_CheckIn.Checked = true;
             this.CheckBox_CheckIn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_CheckIn.Location = new System.Drawing.Point(560, 300);
+            this.CheckBox_CheckIn.Location = new System.Drawing.Point(560, 200);
             this.CheckBox_CheckIn.Name = "CheckBox_CheckIn";
             this.CheckBox_CheckIn.Size = new System.Drawing.Size(72, 17);
             this.CheckBox_CheckIn.TabIndex = 14;
@@ -161,7 +163,7 @@
             this.CheckBox_CheckedInDay.AutoSize = true;
             this.CheckBox_CheckedInDay.Checked = true;
             this.CheckBox_CheckedInDay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_CheckedInDay.Location = new System.Drawing.Point(560, 250);
+            this.CheckBox_CheckedInDay.Location = new System.Drawing.Point(560, 160);
             this.CheckBox_CheckedInDay.Name = "CheckBox_CheckedInDay";
             this.CheckBox_CheckedInDay.Size = new System.Drawing.Size(113, 17);
             this.CheckBox_CheckedInDay.TabIndex = 13;
@@ -173,7 +175,7 @@
             this.CheckBox_RegisteredInDay.AutoSize = true;
             this.CheckBox_RegisteredInDay.Checked = true;
             this.CheckBox_RegisteredInDay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_RegisteredInDay.Location = new System.Drawing.Point(560, 200);
+            this.CheckBox_RegisteredInDay.Location = new System.Drawing.Point(560, 120);
             this.CheckBox_RegisteredInDay.Name = "CheckBox_RegisteredInDay";
             this.CheckBox_RegisteredInDay.Size = new System.Drawing.Size(127, 17);
             this.CheckBox_RegisteredInDay.TabIndex = 12;
@@ -185,7 +187,7 @@
             this.CheckBox_Edit.AutoSize = true;
             this.CheckBox_Edit.Checked = true;
             this.CheckBox_Edit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_Edit.Location = new System.Drawing.Point(560, 150);
+            this.CheckBox_Edit.Location = new System.Drawing.Point(560, 80);
             this.CheckBox_Edit.Name = "CheckBox_Edit";
             this.CheckBox_Edit.Size = new System.Drawing.Size(46, 17);
             this.CheckBox_Edit.TabIndex = 11;
@@ -197,7 +199,7 @@
             this.CheckBox_TicketSent.AutoSize = true;
             this.CheckBox_TicketSent.Checked = true;
             this.CheckBox_TicketSent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_TicketSent.Location = new System.Drawing.Point(560, 100);
+            this.CheckBox_TicketSent.Location = new System.Drawing.Point(331, 280);
             this.CheckBox_TicketSent.Name = "CheckBox_TicketSent";
             this.CheckBox_TicketSent.Size = new System.Drawing.Size(86, 17);
             this.CheckBox_TicketSent.TabIndex = 10;
@@ -248,7 +250,7 @@
             this.CheckBox_RegistrationDate.AutoSize = true;
             this.CheckBox_RegistrationDate.Checked = true;
             this.CheckBox_RegistrationDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_RegistrationDate.Location = new System.Drawing.Point(334, 250);
+            this.CheckBox_RegistrationDate.Location = new System.Drawing.Point(331, 200);
             this.CheckBox_RegistrationDate.Name = "CheckBox_RegistrationDate";
             this.CheckBox_RegistrationDate.Size = new System.Drawing.Size(125, 17);
             this.CheckBox_RegistrationDate.TabIndex = 18;
@@ -260,20 +262,44 @@
             this.CheckBox_PaymentDate.AutoSize = true;
             this.CheckBox_PaymentDate.Checked = true;
             this.CheckBox_PaymentDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_PaymentDate.Location = new System.Drawing.Point(334, 300);
+            this.CheckBox_PaymentDate.Location = new System.Drawing.Point(331, 240);
             this.CheckBox_PaymentDate.Name = "CheckBox_PaymentDate";
             this.CheckBox_PaymentDate.Size = new System.Drawing.Size(104, 17);
             this.CheckBox_PaymentDate.TabIndex = 19;
             this.CheckBox_PaymentDate.Text = "Payment Date";
             this.CheckBox_PaymentDate.UseSelectable = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 28);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(192, 32);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Columns To Show";
+            // 
+            // CheckBox_Country
+            // 
+            this.CheckBox_Country.AutoSize = true;
+            this.CheckBox_Country.Checked = true;
+            this.CheckBox_Country.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBox_Country.Location = new System.Drawing.Point(112, 160);
+            this.CheckBox_Country.Name = "CheckBox_Country";
+            this.CheckBox_Country.Size = new System.Drawing.Size(69, 17);
+            this.CheckBox_Country.TabIndex = 21;
+            this.CheckBox_Country.Text = "Country";
+            this.CheckBox_Country.UseSelectable = true;
+            // 
             // MainWindow_ColumnsToShow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(780, 430);
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CheckBox_Country);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.CheckBox_PaymentDate);
             this.Controls.Add(this.CheckBox_RegistrationDate);
             this.Controls.Add(this.Button_Cancel);
@@ -293,7 +319,6 @@
             this.Controls.Add(this.CheckBox_LastName);
             this.Controls.Add(this.CheckBox_FirstName);
             this.Name = "MainWindow_ColumnsToShow";
-            this.Text = "Columns To Show";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,5 +344,7 @@
         private MetroFramework.Controls.MetroButton Button_Cancel;
         private MetroFramework.Controls.MetroCheckBox CheckBox_RegistrationDate;
         private MetroFramework.Controls.MetroCheckBox CheckBox_PaymentDate;
+        private System.Windows.Forms.Label label12;
+        private MetroFramework.Controls.MetroCheckBox CheckBox_Country;
     }
 }

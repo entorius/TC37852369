@@ -32,6 +32,7 @@
             this.TextBox_ParticipationFormatName = new System.Windows.Forms.TextBox();
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
             this.Button_Add = new MetroFramework.Controls.MetroButton();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -83,19 +84,29 @@
             this.Button_Add.UseStyleColors = true;
             this.Button_Add.Click += new System.EventHandler(this.Button_Add_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(310, 32);
+            this.label12.TabIndex = 119;
+            this.label12.Text = "Add new participation format";
+            // 
             // RegisterParticipationString
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(692, 364);
             this.ClientSize = new System.Drawing.Size(692, 364);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Add);
             this.Controls.Add(this.TextBox_ParticipationFormatName);
             this.Controls.Add(this.metroLabel1);
             this.Name = "RegisterParticipationString";
-            this.Text = "Add new participation format";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,5 +118,6 @@
         private System.Windows.Forms.TextBox TextBox_ParticipationFormatName;
         private MetroFramework.Controls.MetroButton Button_Cancel;
         private MetroFramework.Controls.MetroButton Button_Add;
+        private System.Windows.Forms.Label label12;
     }
 }

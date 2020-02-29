@@ -35,7 +35,7 @@ namespace TC37852369.Services.Ticket_generation
         }
         //creates ticket and returns its path
         public string createTicket(string firstName, string lastName, string company, string format,
-            string eventName,string date,string location1Row, string location2Row, string barcode,
+            string eventName,string date, int monthNumber,string location1Row, string location2Row, string barcode,
            System.Drawing.Color barcodeColor, string savingName,string firmImagePath,
            string eventImagePath,string sponsorsImagePath,string savingPath)
         {
@@ -92,14 +92,14 @@ namespace TC37852369.Services.Ticket_generation
                     {
                         table.Rows[0].Cells[0].VerticalAlignment = VerticalAlignment.Center;
 
-                        table.Rows[0].Cells[0].Paragraphs[0].AppendPicture(resizePicture(eventpic,279,200));
+                        table.Rows[0].Cells[0].Paragraphs[0].AppendPicture(resizePicture(eventpic,300,200));
                         
                     }
                     if (sponsorspic != null)
                     {
                         table.Rows[0].Cells[1].VerticalAlignment = VerticalAlignment.Center;
                         table.Rows[0].Cells[1].MarginLeft = 20F;
-                        table.Rows[0].Cells[1].Paragraphs[0].AppendPicture(resizePicture(sponsorspic,457,200));
+                        table.Rows[0].Cells[1].Paragraphs[0].AppendPicture(resizePicture(sponsorspic,600,200));
                         
                     }
                     table.SetBorder(TableBorderType.Bottom, emptyBorder);
@@ -109,11 +109,11 @@ namespace TC37852369.Services.Ticket_generation
                 }
                 else if (eventImagePath.Length > 0)
                 {
-                    addImageToDocument(document, 145, 473, eventImagePath, Alignment.center);
+                    addImageToDocument(document, 150, 500, eventImagePath, Alignment.center);
                 }
                 else if (sponsorsImagePath.Length > 0)
                 {
-                    addImageToDocument(document, 145, 473, sponsorsImagePath, Alignment.center);
+                    addImageToDocument(document, 150, 500, sponsorsImagePath, Alignment.center);
                 }
                 //addImageToDocument(document, 145, 473, LogoFinalImage, Alignment.center);
 
@@ -143,12 +143,17 @@ namespace TC37852369.Services.Ticket_generation
                 addTextToDocument(document, eventName, Alignment.left, "Calibri", 16, paragraphColor);
                 document.InsertParagraph();
                 string dateLocation = "Date\t\t\t\t\t\t\t\t\tLocation";
-                string datePlace = date + "\t\t\t\t\t" + location1Row;
+                string tabs = "\t\t\t\t\t";
+                if (monthNumber >= 11 || monthNumber == 9)
+                {
+                    tabs = "\t\t\t\t";
+                }
+                string datePlace = date + tabs + location1Row;
                 string TimeLocation = "\t\t\t\t\t\t\t\t\t" + location2Row;
 
 
 
-                string calendarMap = "Add to calendar\t\t\t\t\t\t\t\t\t\t\tView map";
+                //string calendarMap = "Add to calendar\t\t\t\t\t\t\t\t\t\t\tView map";
 
 
 
@@ -163,7 +168,7 @@ namespace TC37852369.Services.Ticket_generation
 
                 addImageToDocument(document, 250, 250, barcodeImage, Alignment.center);
 
-                addTextToDocument(document, calendarMap, Alignment.left, "Calibri", 11, linkColor);
+                //addTextToDocument(document, calendarMap, Alignment.left, "Calibri", 11, linkColor);
                 document.InsertParagraph();
                 addLineToDocument(document, Xceed.Document.NET.BorderStyle.Tcbs_dashed,
                     pageWidth, borderColor);
@@ -418,6 +423,7 @@ namespace TC37852369.Services.Ticket_generation
                     participant.participationFormat,
                     participantEvent.eventName,
                     eventDate,
+                    participantEvent.date_From.Month,
                     participantEvent.venueName,
                     participantEvent.venueAdress,
                     participant.ticketBarcode,

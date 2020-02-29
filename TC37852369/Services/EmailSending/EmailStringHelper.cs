@@ -12,7 +12,7 @@ namespace TC37852369.Services.EmailSending
         
         public string formatEmailString(string emailString, Participant participant, Event eventE)
         {
-            double paymentAmount = eventE.paymentAmountForDay * Convert.ToDouble(CountParticipationDays(participant));
+            double paymentAmount = participant.paymentAmount;
             emailString = replaceFirstName(emailString, participant.firstName);
             emailString = replaceLastName(emailString, participant.lastName);
             emailString = replaceCompanyName(emailString, participant.companyName);

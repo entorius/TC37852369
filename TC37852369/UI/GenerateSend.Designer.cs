@@ -33,7 +33,7 @@
             this.TextBox_CompanyName = new MetroFramework.Controls.MetroTextBox();
             this.TextBox_FirstName = new MetroFramework.Controls.MetroTextBox();
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
-            this.Button_Send = new MetroFramework.Controls.MetroButton();
+            this.Button_SendTickets = new MetroFramework.Controls.MetroButton();
             this.label1 = new System.Windows.Forms.Label();
             this.Button_Filter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,6 +59,8 @@
             this.ComboBox_ParticipationFormat = new MetroFramework.Controls.MetroComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.CheckBox_CheckAll = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.Button_SendTemplate = new MetroFramework.Controls.MetroButton();
             this.Table_FilteredResultsHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -150,21 +152,21 @@
             this.Button_Cancel.UseSelectable = true;
             this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
-            // Button_Send
+            // Button_SendTickets
             // 
-            this.Button_Send.BackColor = System.Drawing.Color.Maroon;
-            this.Button_Send.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Send.Location = new System.Drawing.Point(1186, 750);
-            this.Button_Send.Name = "Button_Send";
-            this.Button_Send.Size = new System.Drawing.Size(198, 86);
-            this.Button_Send.Style = MetroFramework.MetroColorStyle.White;
-            this.Button_Send.TabIndex = 9;
-            this.Button_Send.Text = "Send";
-            this.Button_Send.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Button_Send.UseCustomBackColor = true;
-            this.Button_Send.UseSelectable = true;
-            this.Button_Send.UseStyleColors = true;
-            this.Button_Send.Click += new System.EventHandler(this.Button_Send_Click);
+            this.Button_SendTickets.BackColor = System.Drawing.Color.Maroon;
+            this.Button_SendTickets.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_SendTickets.Location = new System.Drawing.Point(1257, 750);
+            this.Button_SendTickets.Name = "Button_SendTickets";
+            this.Button_SendTickets.Size = new System.Drawing.Size(198, 86);
+            this.Button_SendTickets.Style = MetroFramework.MetroColorStyle.White;
+            this.Button_SendTickets.TabIndex = 9;
+            this.Button_SendTickets.Text = "Send Tickets";
+            this.Button_SendTickets.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_SendTickets.UseCustomBackColor = true;
+            this.Button_SendTickets.UseSelectable = true;
+            this.Button_SendTickets.UseStyleColors = true;
+            this.Button_SendTickets.Click += new System.EventHandler(this.Button_SendTickets_Click);
             // 
             // label1
             // 
@@ -223,7 +225,7 @@
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+            this.Table_FilteredResultsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
             this.Table_FilteredResultsHeader.Controls.Add(this.label13, 6, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label10, 1, 0);
             this.Table_FilteredResultsHeader.Controls.Add(this.label11, 1, 0);
@@ -421,7 +423,7 @@
             this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.Table_FilteredResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.Table_FilteredResults.Dock = System.Windows.Forms.DockStyle.Top;
             this.Table_FilteredResults.Location = new System.Drawing.Point(0, 0);
             this.Table_FilteredResults.Name = "Table_FilteredResults";
@@ -457,7 +459,7 @@
             // 
             this.CheckBox_CheckAll.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CheckBox_CheckAll.AutoSize = true;
-            this.CheckBox_CheckAll.Location = new System.Drawing.Point(668, 771);
+            this.CheckBox_CheckAll.Location = new System.Drawing.Point(668, 714);
             this.CheckBox_CheckAll.Name = "CheckBox_CheckAll";
             this.CheckBox_CheckAll.Size = new System.Drawing.Size(84, 21);
             this.CheckBox_CheckAll.TabIndex = 28;
@@ -465,13 +467,41 @@
             this.CheckBox_CheckAll.UseVisualStyleBackColor = true;
             this.CheckBox_CheckAll.CheckedChanged += new System.EventHandler(this.CheckBox_CheckAll_CheckedChanged);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label15.Location = new System.Drawing.Point(23, 21);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(340, 32);
+            this.label15.TabIndex = 141;
+            this.label15.Text = "Generate And Send To Everyone";
+            // 
+            // Button_SendTemplate
+            // 
+            this.Button_SendTemplate.BackColor = System.Drawing.Color.Maroon;
+            this.Button_SendTemplate.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_SendTemplate.Location = new System.Drawing.Point(1019, 750);
+            this.Button_SendTemplate.Name = "Button_SendTemplate";
+            this.Button_SendTemplate.Size = new System.Drawing.Size(198, 86);
+            this.Button_SendTemplate.Style = MetroFramework.MetroColorStyle.White;
+            this.Button_SendTemplate.TabIndex = 142;
+            this.Button_SendTemplate.Text = "Send Template";
+            this.Button_SendTemplate.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_SendTemplate.UseCustomBackColor = true;
+            this.Button_SendTemplate.UseSelectable = true;
+            this.Button_SendTemplate.UseStyleColors = true;
+            this.Button_SendTemplate.Click += new System.EventHandler(this.Button_SendTemplate_Click);
+            // 
             // GenerateSend
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1462, 864);
             this.ClientSize = new System.Drawing.Size(1462, 864);
+            this.Controls.Add(this.Button_SendTemplate);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.CheckBox_CheckAll);
             this.Controls.Add(this.ComboBox_ParticipationFormat);
             this.Controls.Add(this.label14);
@@ -488,13 +518,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Button_Filter);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Button_Send);
+            this.Controls.Add(this.Button_SendTickets);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.TextBox_FirstName);
             this.Controls.Add(this.TextBox_CompanyName);
             this.Controls.Add(this.ComboBox_Events);
             this.Name = "GenerateSend";
-            this.Text = "Generate And Send To Everyone";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Table_FilteredResultsHeader.ResumeLayout(false);
             this.Table_FilteredResultsHeader.PerformLayout();
@@ -510,7 +539,7 @@
         private MetroFramework.Controls.MetroTextBox TextBox_CompanyName;
         private MetroFramework.Controls.MetroTextBox TextBox_FirstName;
         private MetroFramework.Controls.MetroButton Button_Cancel;
-        public  MetroFramework.Controls.MetroButton Button_Send;
+        public  MetroFramework.Controls.MetroButton Button_SendTickets;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Filter;
         private System.Windows.Forms.Label label2;
@@ -536,5 +565,7 @@
         private MetroFramework.Controls.MetroComboBox ComboBox_ParticipationFormat;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox CheckBox_CheckAll;
+        private System.Windows.Forms.Label label15;
+        public MetroFramework.Controls.MetroButton Button_SendTemplate;
     }
 }

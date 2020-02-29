@@ -78,6 +78,7 @@ namespace TC37852369.UI
                 ComboBox_CheckedInDay.Items.Add(yesNo.ToString());
             }
             LoadWindowData();
+            BringToFront();
         }
         private void LoadWindowData()
         {
@@ -87,6 +88,12 @@ namespace TC37852369.UI
             TextBox_JobTitle.Text = filterWindowData.jobTitle;
             TextBox_CompanyName.Text = filterWindowData.companyName;
             ComboBox_PaymentStatus.SelectedIndex = ComboBox_PaymentStatus.Items.IndexOf(filterWindowData.paymentStatus);
+            TextBox_RegistrationDateYear.Text = filterWindowData.RegistrationDateYear;
+            TextBox_RegistrationDateMonth.Text = filterWindowData.RegistrationDateMonth;
+            TextBox_RegistrationDateDay.Text = filterWindowData.RegistrationDateDay;
+            TextBox_PaymentDateYear.Text = filterWindowData.PaymentDateYear;
+            TextBox_PaymentDateMonth.Text = filterWindowData.PaymentDateMonth;
+            TextBox_PaymentDateDay.Text = filterWindowData.PaymentDateDay;
             ComboBox_ParticipationFormat.SelectedIndex = ComboBox_ParticipationFormat.Items.IndexOf(filterWindowData.participationFormat);
             ComboBox_TicketSent.SelectedIndex = ComboBox_TicketSent.Items.IndexOf(filterWindowData.ticketSent);
             ComboBox_Materials.SelectedIndex = ComboBox_Materials.Items.IndexOf(filterWindowData.materials);
@@ -100,6 +107,8 @@ namespace TC37852369.UI
             CheckBox_JobTitle.Checked = filterWindowData.jobTitleActive;
             CheckBox_CompanyName.Checked = filterWindowData.companyNameActive;
             CheckBox_PaymentStatus.Checked = filterWindowData.paymentStatusActive;
+            CheckBox_RegistrationDate.Checked = filterWindowData.registrationDateActive;
+            CheckBox_PaymentDate.Checked = filterWindowData.paymentDateActive;
             CheckBox_ParticipationFormat.Checked = filterWindowData.participationFormatActive;
             CheckBox_TicketSent.Checked = filterWindowData.ticketSentActive;
             CheckBox_Materials.Checked = filterWindowData.materialsActive;
@@ -117,6 +126,10 @@ namespace TC37852369.UI
             CheckBox_CompanyNameDescending.Checked = filterWindowData.companyNameDescendingChecked;
             CheckBox_CountryAscending.Checked = filterWindowData.countryAscendingChecked;
             CheckBox_CountryDescending.Checked = filterWindowData.countryDescendingChecked;
+            CheckBox_RegistrationDateAscending.Checked = filterWindowData.RegistrationDateAscendingChecked;
+            CheckBox_RegistrationDateDescending.Checked = filterWindowData.RegistrationDateDescendingChecked;
+            CheckBox_RegistrationDateAscending.Checked = filterWindowData.PaymentDateAscendingChecked;
+            CheckBox_RegistrationDateDescending.Checked = filterWindowData.PaymentDateDescendingChecked;
 
 
         }
@@ -376,21 +389,50 @@ namespace TC37852369.UI
         {
             filterWindowData.firstName = TextBox_FirstName.Text;
             filterWindowData.lastName = TextBox_LastName.Text;
-            filterWindowData.companyType = ComboBox_CompanyType.SelectedItem.ToString();
+            filterWindowData.companyType = "";
+            if (ComboBox_CompanyType.SelectedIndex >= 0)
+            {
+                filterWindowData.companyType = ComboBox_CompanyType.SelectedItem.ToString();
+            }
+
             filterWindowData.jobTitle = TextBox_JobTitle.Text;
             filterWindowData.companyName = TextBox_CompanyName.Text;
-            filterWindowData.paymentStatus = ComboBox_PaymentStatus.SelectedItem.ToString();
+            filterWindowData.paymentStatus = "";
+            if (ComboBox_PaymentStatus.SelectedIndex >= 0) 
+            { 
+                filterWindowData.paymentStatus = ComboBox_PaymentStatus.SelectedItem.ToString();
+            }
             filterWindowData.RegistrationDateYear = TextBox_RegistrationDateYear.Text;
             filterWindowData.RegistrationDateMonth = TextBox_RegistrationDateMonth.Text;
             filterWindowData.RegistrationDateDay = TextBox_RegistrationDateDay.Text;
             filterWindowData.PaymentDateYear = TextBox_PaymentDateYear.Text;
             filterWindowData.PaymentDateMonth = TextBox_PaymentDateMonth.Text;
             filterWindowData.PaymentDateDay = TextBox_PaymentDateDay.Text;
-            filterWindowData.participationFormat = ComboBox_ParticipationFormat.SelectedItem.ToString();
-            filterWindowData.ticketSent = ComboBox_TicketSent.SelectedIndex == 0;
-            filterWindowData.materials = ComboBox_Materials.SelectedValue.ToString();
-            filterWindowData.registeredInDay = ComboBox_RegisteredInDay.SelectedIndex == 0;
-            filterWindowData.checkedInDay = ComboBox_CheckedInDay.SelectedIndex == 0;
+            filterWindowData.participationFormat = "";
+            if (ComboBox_ParticipationFormat.SelectedIndex >= 0)
+            {
+                filterWindowData.participationFormat = ComboBox_ParticipationFormat.SelectedItem.ToString();
+            }
+            filterWindowData.ticketSent = false;
+            if (ComboBox_TicketSent.SelectedIndex >= 0)
+            {
+                filterWindowData.ticketSent = ComboBox_TicketSent.SelectedIndex == 0;
+            }
+            filterWindowData.materials = "";
+            if (ComboBox_Materials.SelectedIndex >= 0)
+            {
+                filterWindowData.materials = ComboBox_Materials.SelectedValue.ToString();
+            }
+            filterWindowData.registeredInDay = false;
+            if (ComboBox_RegisteredInDay.SelectedIndex >= 0)
+            {
+                filterWindowData.registeredInDay = ComboBox_RegisteredInDay.SelectedIndex == 0;
+            }
+            filterWindowData.checkedInDay = false;
+            if (ComboBox_CheckedInDay.SelectedIndex >= 0)
+            {
+                filterWindowData.checkedInDay = ComboBox_CheckedInDay.SelectedIndex == 0;
+            }
             filterWindowData.country = TextBox_Country.Text;
 
             filterWindowData.firstNameActive = CheckBox_FirstName.Checked;

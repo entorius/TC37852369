@@ -39,6 +39,7 @@ namespace TC37852369.UI
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            BringToFront();
         }
         private void CloseHandler(object sender, EventArgs e)
         {

@@ -32,6 +32,7 @@ namespace TC37852369
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            BringToFront();
         }
         public RegisterParticipationString(EditParticipant editParticipant)
         {

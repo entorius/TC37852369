@@ -31,6 +31,7 @@
             this.TextBox_Email = new System.Windows.Forms.TextBox();
             this.TextBox_Password = new System.Windows.Forms.TextBox();
             this.Button_Login = new MetroFramework.Controls.MetroButton();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TextBox_Email
@@ -66,17 +67,27 @@
             this.Button_Login.UseStyleColors = true;
             this.Button_Login.Click += new System.EventHandler(this.Button_Login_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label15.Location = new System.Drawing.Point(23, 23);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 32);
+            this.label15.TabIndex = 144;
+            this.label15.Text = "Login";
+            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(570, 500);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.Button_Login);
             this.Controls.Add(this.TextBox_Password);
             this.Controls.Add(this.TextBox_Email);
             this.Name = "Login";
-            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,5 +97,6 @@
         private System.Windows.Forms.TextBox TextBox_Email;
         private System.Windows.Forms.TextBox TextBox_Password;
         private MetroFramework.Controls.MetroButton Button_Login;
+        private System.Windows.Forms.Label label15;
     }
 }

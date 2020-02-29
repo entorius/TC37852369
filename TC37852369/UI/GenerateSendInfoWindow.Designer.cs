@@ -36,6 +36,7 @@
             this.Timer_Sending = new System.Windows.Forms.Timer(this.components);
             this.Timer_Sent = new System.Windows.Forms.Timer(this.components);
             this.Label_Status = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Status)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,19 +101,29 @@
             this.Label_Status.TabIndex = 3;
             this.Label_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label15.Location = new System.Drawing.Point(23, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(96, 32);
+            this.label15.TabIndex = 142;
+            this.label15.Text = "Sending";
+            // 
             // GenerateSendInfoWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(800, 450);
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.Label_Status);
             this.Controls.Add(this.Button_Confirm);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.PictureBox_Status);
             this.Name = "GenerateSendInfoWindow";
-            this.Text = "Sending";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Status)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,5 +139,6 @@
         public System.Windows.Forms.Timer Timer_Sending;
         public System.Windows.Forms.Timer Timer_Sent;
         public System.Windows.Forms.Label Label_Status;
+        private System.Windows.Forms.Label label15;
     }
 }

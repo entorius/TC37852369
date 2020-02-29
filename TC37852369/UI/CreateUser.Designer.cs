@@ -45,6 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TextBox_Email
@@ -216,13 +217,24 @@
             this.label7.TabIndex = 27;
             this.label7.Text = "Phone number";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(133, 32);
+            this.label12.TabIndex = 139;
+            this.label12.Text = "Create User";
+            // 
             // CreateUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1300, 574);
             this.ClientSize = new System.Drawing.Size(1300, 574);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -241,7 +253,6 @@
             this.Controls.Add(this.TextBox_Name);
             this.Controls.Add(this.TextBox_Email);
             this.Name = "CreateUser";
-            this.Text = "Create User";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +276,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label12;
     }
 }

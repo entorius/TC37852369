@@ -32,6 +32,7 @@ namespace TC37852369.UI
 
             checkBoxList.Add(CheckBox_FirstName);
             checkBoxList.Add(CheckBox_LastName);
+            checkBoxList.Add(CheckBox_Country);
             checkBoxList.Add(CheckBox_CompanyType);
             checkBoxList.Add(CheckBox_JobTitle);
             checkBoxList.Add(CheckBox_CompanyName);
@@ -50,6 +51,7 @@ namespace TC37852369.UI
                 checkBoxList[i].Checked = mainWindow.participantTableColumnShow[i];
             }
             this.FormClosed += ClosedHandler;
+            BringToFront();
         }
 
         private void CheckBox_CheckAll_CheckedChanged(object sender, EventArgs e)
@@ -82,22 +84,27 @@ namespace TC37852369.UI
 
         private void Button_Confirm_Click(object sender, EventArgs e)
         {
+            mainWindow.Table_ParticipantsData1.Hide();
+            mainWindow.table_ParticipantsHeader.Hide();
             showHideColumn(CheckBox_FirstName, 0, 150);
             showHideColumn(CheckBox_LastName, 1, 150);
-            showHideColumn(CheckBox_CompanyType, 2, 150);
-            showHideColumn(CheckBox_JobTitle, 3, 150);
-            showHideColumn(CheckBox_CompanyName, 4, 150);
-            showHideColumn(CheckBox_ParticipationFormat, 5, 160);
-            showHideColumn(CheckBox_PaymentStatus, 6, 100);
-            showHideColumn(CheckBox_PaymentAmount, 7, 100);
-            showHideColumn(CheckBox_RegistrationDate, 8, 100);
-            showHideColumn(CheckBox_PaymentDate, 9, 100);
-            showHideColumn(CheckBox_TicketSent, 10, 150);
-            showHideColumn(CheckBox_Edit, 11, 150);
-            showHideColumn(CheckBox_RegisteredInDay, 12, 100);
-            showHideColumn(CheckBox_CheckedInDay, 13, 100);
-            showHideColumn(CheckBox_CheckIn, 14, 100);
-            for (int i = 0; i<=14; i++)
+            showHideColumn(CheckBox_Country, 2, 150);
+            showHideColumn(CheckBox_CompanyType, 3, 150);
+            showHideColumn(CheckBox_JobTitle, 4, 150);
+            showHideColumn(CheckBox_CompanyName, 5, 150);
+            showHideColumn(CheckBox_ParticipationFormat, 6, 160);
+            showHideColumn(CheckBox_PaymentStatus, 7, 100);
+            showHideColumn(CheckBox_PaymentAmount, 8, 100);
+            showHideColumn(CheckBox_RegistrationDate, 9, 100);
+            showHideColumn(CheckBox_PaymentDate, 10, 100);
+            showHideColumn(CheckBox_TicketSent, 11, 150);
+            showHideColumn(CheckBox_Edit, 12, 150);
+            showHideColumn(CheckBox_RegisteredInDay, 13, 100);
+            showHideColumn(CheckBox_CheckedInDay, 14, 100);
+            showHideColumn(CheckBox_CheckIn, 15, 100);
+            mainWindow.Table_ParticipantsData1.Show();
+            mainWindow.table_ParticipantsHeader.Show();
+            for (int i = 0; i<=15; i++)
             {
                 mainWindow.participantTableColumnShow[i] = checkBoxList[i].Checked;
             }

@@ -98,7 +98,7 @@ namespace TC37852369.Repository
                 }
                 catch (Exception)
                 {
-                    paymentAmount = -1;
+                    paymentAmount = 0;
                 }
 
                 try
@@ -198,7 +198,7 @@ namespace TC37852369.Repository
                 }
                 catch (Exception)
                 {
-                    paymentAmount = -1;
+                    paymentAmount = 0;
                 }
 
                 try

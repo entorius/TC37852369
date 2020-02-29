@@ -35,14 +35,14 @@
             this.Button_GenerateTicket = new MetroFramework.Controls.MetroTile();
             this.Button_AddUser = new MetroFramework.Controls.MetroTile();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.TextBox_EventExportFileName = new MetroFramework.Controls.MetroTextBox();
             this.Button_ExcelExport = new MetroFramework.Controls.MetroButton();
             this.Button_DelegateList = new MetroFramework.Controls.MetroButton();
             this.Button_ExportAll = new MetroFramework.Controls.MetroButton();
             this.ComboBox_EventExport = new MetroFramework.Controls.MetroComboBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.Label_FilteredAmount = new MetroFramework.Controls.MetroLabel();
+            this.Label_Filtered = new MetroFramework.Controls.MetroLabel();
             this.Button_ChooseAdvancedFilters = new MetroFramework.Controls.MetroButton();
             this.Button_ChooseColumnsToShow = new MetroFramework.Controls.MetroButton();
             this.Label_PaidDueAmount = new MetroFramework.Controls.MetroLabel();
@@ -63,11 +63,13 @@
             this.Label_TicketSent = new System.Windows.Forms.Label();
             this.Label_Edit = new System.Windows.Forms.Label();
             this.Label_RegisteredInday1 = new System.Windows.Forms.Label();
-            this.Label_PaymentAmount = new System.Windows.Forms.Label();
             this.Label_CheckedInDay = new System.Windows.Forms.Label();
             this.Label_CompanyType = new System.Windows.Forms.Label();
             this.Label_LastName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.Label_PaymentAmount = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -82,10 +84,14 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_LastNameFilter = new System.Windows.Forms.TextBox();
             this.TextBox_CompanyNameFilter = new System.Windows.Forms.TextBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.Label_HorizontalRegistrationLine = new MetroFramework.Controls.MetroLabel();
             this.Button_FilterParticipant = new MetroFramework.Controls.MetroButton();
             this.TextBox_FirstNameFilter = new System.Windows.Forms.TextBox();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.Label_FilteredEventsAmount = new MetroFramework.Controls.MetroLabel();
+            this.Label_FilteredEvents = new MetroFramework.Controls.MetroLabel();
+            this.Label_EventsNumberAmount = new MetroFramework.Controls.MetroLabel();
+            this.Label_EventsNumber = new MetroFramework.Controls.MetroLabel();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.TextBox_EventName = new System.Windows.Forms.TextBox();
@@ -104,7 +110,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Button_UpdateEvents = new MetroFramework.Controls.MetroButton();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.Label_HorizontalEventsLine = new MetroFramework.Controls.MetroLabel();
             this.Button_CreateEvent = new MetroFramework.Controls.MetroButton();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_Day = new System.Windows.Forms.TextBox();
@@ -113,8 +119,9 @@
             this.TextBox_Year = new System.Windows.Forms.TextBox();
             this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
             this.FolderBrowserDialog_Events = new System.Windows.Forms.FolderBrowserDialog();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Label_EventDayNumber = new System.Windows.Forms.Label();
             this.metroTabPage5.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -137,9 +144,9 @@
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage5.HorizontalScrollbarSize = 10;
-            this.metroTabPage5.Location = new System.Drawing.Point(4, 42);
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1878, 984);
+            this.metroTabPage5.Size = new System.Drawing.Size(1878, 979);
             this.metroTabPage5.Style = MetroFramework.MetroColorStyle.Black;
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Settings";
@@ -211,9 +218,7 @@
             // metroTabPage4
             // 
             this.metroTabPage4.AutoScrollMargin = new System.Drawing.Size(1440, 800);
-            this.metroTabPage4.Controls.Add(this.metroLabel10);
             this.metroTabPage4.Controls.Add(this.metroLabel8);
-            this.metroTabPage4.Controls.Add(this.TextBox_EventExportFileName);
             this.metroTabPage4.Controls.Add(this.Button_ExcelExport);
             this.metroTabPage4.Controls.Add(this.Button_DelegateList);
             this.metroTabPage4.Controls.Add(this.Button_ExportAll);
@@ -222,9 +227,9 @@
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.HorizontalScrollbarSize = 10;
-            this.metroTabPage4.Location = new System.Drawing.Point(4, 42);
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1878, 984);
+            this.metroTabPage4.Size = new System.Drawing.Size(1878, 979);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Export";
             this.metroTabPage4.VerticalScrollbar = true;
@@ -232,60 +237,20 @@
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
             // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(80, 42);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(105, 19);
-            this.metroLabel10.TabIndex = 17;
-            this.metroLabel10.Text = "Saving file name";
-            // 
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(80, 130);
+            this.metroLabel8.Location = new System.Drawing.Point(81, 51);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(77, 19);
             this.metroLabel8.TabIndex = 16;
             this.metroLabel8.Text = "Event name";
             // 
-            // TextBox_EventExportFileName
-            // 
-            // 
-            // 
-            // 
-            this.TextBox_EventExportFileName.CustomButton.Image = null;
-            this.TextBox_EventExportFileName.CustomButton.Location = new System.Drawing.Point(545, 1);
-            this.TextBox_EventExportFileName.CustomButton.Name = "";
-            this.TextBox_EventExportFileName.CustomButton.Size = new System.Drawing.Size(33, 33);
-            this.TextBox_EventExportFileName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.TextBox_EventExportFileName.CustomButton.TabIndex = 1;
-            this.TextBox_EventExportFileName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.TextBox_EventExportFileName.CustomButton.UseSelectable = true;
-            this.TextBox_EventExportFileName.CustomButton.Visible = false;
-            this.TextBox_EventExportFileName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.TextBox_EventExportFileName.Lines = new string[0];
-            this.TextBox_EventExportFileName.Location = new System.Drawing.Point(234, 42);
-            this.TextBox_EventExportFileName.MaxLength = 32767;
-            this.TextBox_EventExportFileName.Name = "TextBox_EventExportFileName";
-            this.TextBox_EventExportFileName.PasswordChar = '\0';
-            this.TextBox_EventExportFileName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TextBox_EventExportFileName.SelectedText = "";
-            this.TextBox_EventExportFileName.SelectionLength = 0;
-            this.TextBox_EventExportFileName.SelectionStart = 0;
-            this.TextBox_EventExportFileName.ShortcutsEnabled = true;
-            this.TextBox_EventExportFileName.Size = new System.Drawing.Size(579, 35);
-            this.TextBox_EventExportFileName.TabIndex = 15;
-            this.TextBox_EventExportFileName.UseSelectable = true;
-            this.TextBox_EventExportFileName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.TextBox_EventExportFileName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // Button_ExcelExport
             // 
             this.Button_ExcelExport.BackColor = System.Drawing.Color.Maroon;
             this.Button_ExcelExport.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_ExcelExport.Location = new System.Drawing.Point(62, 213);
+            this.Button_ExcelExport.Location = new System.Drawing.Point(49, 153);
             this.Button_ExcelExport.Name = "Button_ExcelExport";
             this.Button_ExcelExport.Size = new System.Drawing.Size(209, 86);
             this.Button_ExcelExport.Style = MetroFramework.MetroColorStyle.White;
@@ -301,7 +266,7 @@
             // 
             this.Button_DelegateList.BackColor = System.Drawing.Color.Maroon;
             this.Button_DelegateList.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_DelegateList.Location = new System.Drawing.Point(409, 213);
+            this.Button_DelegateList.Location = new System.Drawing.Point(396, 153);
             this.Button_DelegateList.Name = "Button_DelegateList";
             this.Button_DelegateList.Size = new System.Drawing.Size(209, 86);
             this.Button_DelegateList.Style = MetroFramework.MetroColorStyle.White;
@@ -317,7 +282,7 @@
             // 
             this.Button_ExportAll.BackColor = System.Drawing.Color.Maroon;
             this.Button_ExportAll.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_ExportAll.Location = new System.Drawing.Point(756, 213);
+            this.Button_ExportAll.Location = new System.Drawing.Point(743, 153);
             this.Button_ExportAll.Name = "Button_ExportAll";
             this.Button_ExportAll.Size = new System.Drawing.Size(209, 86);
             this.Button_ExportAll.Style = MetroFramework.MetroColorStyle.White;
@@ -334,7 +299,7 @@
             this.ComboBox_EventExport.FontSize = MetroFramework.MetroComboBoxSize.Tall;
             this.ComboBox_EventExport.FormattingEnabled = true;
             this.ComboBox_EventExport.ItemHeight = 29;
-            this.ComboBox_EventExport.Location = new System.Drawing.Point(234, 130);
+            this.ComboBox_EventExport.Location = new System.Drawing.Point(235, 51);
             this.ComboBox_EventExport.Name = "ComboBox_EventExport";
             this.ComboBox_EventExport.Size = new System.Drawing.Size(579, 35);
             this.ComboBox_EventExport.Style = MetroFramework.MetroColorStyle.Blue;
@@ -344,6 +309,9 @@
             // metroTabPage2
             // 
             this.metroTabPage2.AutoScrollMargin = new System.Drawing.Size(1440, 800);
+            this.metroTabPage2.Controls.Add(this.Label_EventDayNumber);
+            this.metroTabPage2.Controls.Add(this.Label_FilteredAmount);
+            this.metroTabPage2.Controls.Add(this.Label_Filtered);
             this.metroTabPage2.Controls.Add(this.Button_ChooseAdvancedFilters);
             this.metroTabPage2.Controls.Add(this.Button_ChooseColumnsToShow);
             this.metroTabPage2.Controls.Add(this.Label_PaidDueAmount);
@@ -368,7 +336,7 @@
             this.metroTabPage2.Controls.Add(this.metroLabel4);
             this.metroTabPage2.Controls.Add(this.TextBox_LastNameFilter);
             this.metroTabPage2.Controls.Add(this.TextBox_CompanyNameFilter);
-            this.metroTabPage2.Controls.Add(this.metroLabel5);
+            this.metroTabPage2.Controls.Add(this.Label_HorizontalRegistrationLine);
             this.metroTabPage2.Controls.Add(this.Button_FilterParticipant);
             this.metroTabPage2.Controls.Add(this.TextBox_FirstNameFilter);
             this.metroTabPage2.HorizontalScrollbar = true;
@@ -384,6 +352,24 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // Label_FilteredAmount
+            // 
+            this.Label_FilteredAmount.AutoSize = true;
+            this.Label_FilteredAmount.Location = new System.Drawing.Point(1497, 45);
+            this.Label_FilteredAmount.Name = "Label_FilteredAmount";
+            this.Label_FilteredAmount.Size = new System.Drawing.Size(53, 19);
+            this.Label_FilteredAmount.TabIndex = 52;
+            this.Label_FilteredAmount.Text = "Filtered";
+            // 
+            // Label_Filtered
+            // 
+            this.Label_Filtered.AutoSize = true;
+            this.Label_Filtered.Location = new System.Drawing.Point(1401, 44);
+            this.Label_Filtered.Name = "Label_Filtered";
+            this.Label_Filtered.Size = new System.Drawing.Size(53, 19);
+            this.Label_Filtered.TabIndex = 51;
+            this.Label_Filtered.Text = "Filtered";
             // 
             // Button_ChooseAdvancedFilters
             // 
@@ -438,7 +424,7 @@
             // Label_RegisteredAmount
             // 
             this.Label_RegisteredAmount.AutoSize = true;
-            this.Label_RegisteredAmount.Location = new System.Drawing.Point(1497, 20);
+            this.Label_RegisteredAmount.Location = new System.Drawing.Point(1497, 13);
             this.Label_RegisteredAmount.Name = "Label_RegisteredAmount";
             this.Label_RegisteredAmount.Size = new System.Drawing.Size(71, 19);
             this.Label_RegisteredAmount.TabIndex = 47;
@@ -498,7 +484,7 @@
             this.Panel_ParticipantsData.Location = new System.Drawing.Point(0, 120);
             this.Panel_ParticipantsData.MaximumSize = new System.Drawing.Size(1637, 800);
             this.Panel_ParticipantsData.Name = "Panel_ParticipantsData";
-            this.Panel_ParticipantsData.Size = new System.Drawing.Size(1637, 153);
+            this.Panel_ParticipantsData.Size = new System.Drawing.Size(1637, 749);
             this.Panel_ParticipantsData.TabIndex = 40;
             // 
             // Table_ParticipantsData1
@@ -506,7 +492,8 @@
             this.Table_ParticipantsData1.AutoSize = true;
             this.Table_ParticipantsData1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Table_ParticipantsData1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.Table_ParticipantsData1.ColumnCount = 15;
+            this.Table_ParticipantsData1.ColumnCount = 16;
+            this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -521,15 +508,13 @@
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Table_ParticipantsData1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.Table_ParticipantsData1.Location = new System.Drawing.Point(3, 60);
             this.Table_ParticipantsData1.MinimumSize = new System.Drawing.Size(0, 40);
             this.Table_ParticipantsData1.Name = "Table_ParticipantsData1";
             this.Table_ParticipantsData1.RowCount = 1;
             this.Table_ParticipantsData1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Table_ParticipantsData1.Size = new System.Drawing.Size(1942, 40);
+            this.Table_ParticipantsData1.Size = new System.Drawing.Size(2108, 40);
             this.Table_ParticipantsData1.TabIndex = 29;
             // 
             // table_ParticipantsHeader
@@ -538,7 +523,8 @@
             this.table_ParticipantsHeader.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.table_ParticipantsHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(84)))), ((int)(((byte)(96)))));
             this.table_ParticipantsHeader.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.table_ParticipantsHeader.ColumnCount = 15;
+            this.table_ParticipantsHeader.ColumnCount = 16;
+            this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -553,31 +539,30 @@
             this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.table_ParticipantsHeader.Controls.Add(this.Label_JobTitle, 2, 0);
+            this.table_ParticipantsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.table_ParticipantsHeader.Controls.Add(this.Label_JobTitle, 3, 0);
             this.table_ParticipantsHeader.Controls.Add(this.Label_FirstName, 0, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_CompanyName, 3, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_PaymentStatus, 6, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_ParticipationFormat, 5, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_TicketSent, 10, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_Edit, 11, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_RegisteredInday1, 12, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_CheckedInDay, 13, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_CompanyType, 2, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_CompanyName, 4, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_PaymentStatus, 7, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_ParticipationFormat, 6, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_TicketSent, 11, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_Edit, 12, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_RegisteredInday1, 13, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_CheckedInDay, 14, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_CompanyType, 3, 0);
             this.table_ParticipantsHeader.Controls.Add(this.Label_LastName, 1, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.label1, 14, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.label15, 9, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.Label_PaymentAmount, 7, 0);
-            this.table_ParticipantsHeader.Controls.Add(this.label14, 8, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.label1, 15, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.label15, 10, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.Label_PaymentAmount, 8, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.label14, 9, 0);
+            this.table_ParticipantsHeader.Controls.Add(this.label13, 2, 0);
             this.table_ParticipantsHeader.Location = new System.Drawing.Point(3, 10);
             this.table_ParticipantsHeader.Margin = new System.Windows.Forms.Padding(0);
             this.table_ParticipantsHeader.MinimumSize = new System.Drawing.Size(0, 50);
             this.table_ParticipantsHeader.Name = "table_ParticipantsHeader";
             this.table_ParticipantsHeader.RowCount = 1;
             this.table_ParticipantsHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table_ParticipantsHeader.Size = new System.Drawing.Size(1942, 50);
+            this.table_ParticipantsHeader.Size = new System.Drawing.Size(2108, 50);
             this.table_ParticipantsHeader.TabIndex = 28;
             // 
             // Label_JobTitle
@@ -606,7 +591,7 @@
             this.Label_CompanyName.AutoSize = true;
             this.Label_CompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_CompanyName.ForeColor = System.Drawing.Color.White;
-            this.Label_CompanyName.Location = new System.Drawing.Point(613, 2);
+            this.Label_CompanyName.Location = new System.Drawing.Point(765, 2);
             this.Label_CompanyName.Name = "Label_CompanyName";
             this.Label_CompanyName.Size = new System.Drawing.Size(116, 20);
             this.Label_CompanyName.TabIndex = 3;
@@ -616,7 +601,7 @@
             // 
             this.Label_PaymentStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_PaymentStatus.ForeColor = System.Drawing.Color.White;
-            this.Label_PaymentStatus.Location = new System.Drawing.Point(927, 2);
+            this.Label_PaymentStatus.Location = new System.Drawing.Point(1079, 2);
             this.Label_PaymentStatus.Name = "Label_PaymentStatus";
             this.Label_PaymentStatus.Size = new System.Drawing.Size(85, 40);
             this.Label_PaymentStatus.TabIndex = 5;
@@ -627,7 +612,7 @@
             this.Label_ParticipationFormat.AutoSize = true;
             this.Label_ParticipationFormat.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_ParticipationFormat.ForeColor = System.Drawing.Color.White;
-            this.Label_ParticipationFormat.Location = new System.Drawing.Point(765, 2);
+            this.Label_ParticipationFormat.Location = new System.Drawing.Point(917, 2);
             this.Label_ParticipationFormat.Name = "Label_ParticipationFormat";
             this.Label_ParticipationFormat.Size = new System.Drawing.Size(146, 20);
             this.Label_ParticipationFormat.TabIndex = 6;
@@ -638,7 +623,7 @@
             this.Label_TicketSent.AutoSize = true;
             this.Label_TicketSent.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_TicketSent.ForeColor = System.Drawing.Color.White;
-            this.Label_TicketSent.Location = new System.Drawing.Point(1335, 2);
+            this.Label_TicketSent.Location = new System.Drawing.Point(1487, 2);
             this.Label_TicketSent.Name = "Label_TicketSent";
             this.Label_TicketSent.Size = new System.Drawing.Size(81, 20);
             this.Label_TicketSent.TabIndex = 7;
@@ -649,7 +634,7 @@
             this.Label_Edit.AutoSize = true;
             this.Label_Edit.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_Edit.ForeColor = System.Drawing.Color.White;
-            this.Label_Edit.Location = new System.Drawing.Point(1487, 2);
+            this.Label_Edit.Location = new System.Drawing.Point(1639, 2);
             this.Label_Edit.Name = "Label_Edit";
             this.Label_Edit.Size = new System.Drawing.Size(35, 20);
             this.Label_Edit.TabIndex = 8;
@@ -660,29 +645,18 @@
             this.Label_RegisteredInday1.AutoSize = true;
             this.Label_RegisteredInday1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_RegisteredInday1.ForeColor = System.Drawing.Color.White;
-            this.Label_RegisteredInday1.Location = new System.Drawing.Point(1639, 2);
+            this.Label_RegisteredInday1.Location = new System.Drawing.Point(1791, 2);
             this.Label_RegisteredInday1.Name = "Label_RegisteredInday1";
             this.Label_RegisteredInday1.Size = new System.Drawing.Size(85, 40);
             this.Label_RegisteredInday1.TabIndex = 9;
             this.Label_RegisteredInday1.Text = "Registered in day 1";
-            // 
-            // Label_PaymentAmount
-            // 
-            this.Label_PaymentAmount.AutoSize = true;
-            this.Label_PaymentAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Label_PaymentAmount.ForeColor = System.Drawing.Color.White;
-            this.Label_PaymentAmount.Location = new System.Drawing.Point(1029, 2);
-            this.Label_PaymentAmount.Name = "Label_PaymentAmount";
-            this.Label_PaymentAmount.Size = new System.Drawing.Size(73, 40);
-            this.Label_PaymentAmount.TabIndex = 10;
-            this.Label_PaymentAmount.Text = "Payment amount";
             // 
             // Label_CheckedInDay
             // 
             this.Label_CheckedInDay.AutoSize = true;
             this.Label_CheckedInDay.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_CheckedInDay.ForeColor = System.Drawing.Color.White;
-            this.Label_CheckedInDay.Location = new System.Drawing.Point(1741, 2);
+            this.Label_CheckedInDay.Location = new System.Drawing.Point(1893, 2);
             this.Label_CheckedInDay.Name = "Label_CheckedInDay";
             this.Label_CheckedInDay.Size = new System.Drawing.Size(84, 40);
             this.Label_CheckedInDay.TabIndex = 11;
@@ -693,7 +667,7 @@
             this.Label_CompanyType.AutoSize = true;
             this.Label_CompanyType.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.Label_CompanyType.ForeColor = System.Drawing.Color.White;
-            this.Label_CompanyType.Location = new System.Drawing.Point(309, 2);
+            this.Label_CompanyType.Location = new System.Drawing.Point(613, 2);
             this.Label_CompanyType.Name = "Label_CompanyType";
             this.Label_CompanyType.Size = new System.Drawing.Size(108, 20);
             this.Label_CompanyType.TabIndex = 4;
@@ -714,11 +688,44 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1843, 2);
+            this.label1.Location = new System.Drawing.Point(1995, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Check in";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(1385, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 40);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "Payment Date";
+            // 
+            // Label_PaymentAmount
+            // 
+            this.Label_PaymentAmount.AutoSize = true;
+            this.Label_PaymentAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Label_PaymentAmount.ForeColor = System.Drawing.Color.White;
+            this.Label_PaymentAmount.Location = new System.Drawing.Point(1181, 2);
+            this.Label_PaymentAmount.Name = "Label_PaymentAmount";
+            this.Label_PaymentAmount.Size = new System.Drawing.Size(73, 40);
+            this.Label_PaymentAmount.TabIndex = 10;
+            this.Label_PaymentAmount.Text = "Payment amount";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(1283, 2);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(91, 40);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Registration Date";
             // 
             // metroLabel6
             // 
@@ -750,7 +757,7 @@
             // Label_Registered
             // 
             this.Label_Registered.AutoSize = true;
-            this.Label_Registered.Location = new System.Drawing.Point(1401, 20);
+            this.Label_Registered.Location = new System.Drawing.Point(1401, 12);
             this.Label_Registered.Name = "Label_Registered";
             this.Label_Registered.Size = new System.Drawing.Size(71, 19);
             this.Label_Registered.TabIndex = 36;
@@ -872,15 +879,15 @@
             this.TextBox_CompanyNameFilter.Size = new System.Drawing.Size(188, 30);
             this.TextBox_CompanyNameFilter.TabIndex = 15;
             // 
-            // metroLabel5
+            // Label_HorizontalRegistrationLine
             // 
-            this.metroLabel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel5.Location = new System.Drawing.Point(-4, 106);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(1652, 24);
-            this.metroLabel5.TabIndex = 13;
-            this.metroLabel5.Text = "\r\n";
+            this.Label_HorizontalRegistrationLine.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label_HorizontalRegistrationLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Label_HorizontalRegistrationLine.Location = new System.Drawing.Point(-4, 106);
+            this.Label_HorizontalRegistrationLine.Name = "Label_HorizontalRegistrationLine";
+            this.Label_HorizontalRegistrationLine.Size = new System.Drawing.Size(1652, 2);
+            this.Label_HorizontalRegistrationLine.TabIndex = 13;
+            this.Label_HorizontalRegistrationLine.Text = "\r\n";
             // 
             // Button_FilterParticipant
             // 
@@ -910,6 +917,10 @@
             // 
             this.metroTabPage1.AutoScrollMargin = new System.Drawing.Size(1440, 800);
             this.metroTabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage1.Controls.Add(this.Label_FilteredEventsAmount);
+            this.metroTabPage1.Controls.Add(this.Label_FilteredEvents);
+            this.metroTabPage1.Controls.Add(this.Label_EventsNumberAmount);
+            this.metroTabPage1.Controls.Add(this.Label_EventsNumber);
             this.metroTabPage1.Controls.Add(this.label11);
             this.metroTabPage1.Controls.Add(this.label10);
             this.metroTabPage1.Controls.Add(this.TextBox_EventName);
@@ -918,7 +929,7 @@
             this.metroTabPage1.Controls.Add(this.label2);
             this.metroTabPage1.Controls.Add(this.panel1);
             this.metroTabPage1.Controls.Add(this.Button_UpdateEvents);
-            this.metroTabPage1.Controls.Add(this.metroLabel7);
+            this.metroTabPage1.Controls.Add(this.Label_HorizontalEventsLine);
             this.metroTabPage1.Controls.Add(this.Button_CreateEvent);
             this.metroTabPage1.Controls.Add(this.metroLabel9);
             this.metroTabPage1.Controls.Add(this.TextBox_Day);
@@ -929,15 +940,51 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 42);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 47);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1878, 984);
+            this.metroTabPage1.Size = new System.Drawing.Size(1878, 979);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.VerticalScrollbar = true;
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // Label_FilteredEventsAmount
+            // 
+            this.Label_FilteredEventsAmount.AutoSize = true;
+            this.Label_FilteredEventsAmount.Location = new System.Drawing.Point(1608, 61);
+            this.Label_FilteredEventsAmount.Name = "Label_FilteredEventsAmount";
+            this.Label_FilteredEventsAmount.Size = new System.Drawing.Size(16, 19);
+            this.Label_FilteredEventsAmount.TabIndex = 52;
+            this.Label_FilteredEventsAmount.Text = "0";
+            // 
+            // Label_FilteredEvents
+            // 
+            this.Label_FilteredEvents.AutoSize = true;
+            this.Label_FilteredEvents.Location = new System.Drawing.Point(1506, 61);
+            this.Label_FilteredEvents.Name = "Label_FilteredEvents";
+            this.Label_FilteredEvents.Size = new System.Drawing.Size(93, 19);
+            this.Label_FilteredEvents.TabIndex = 50;
+            this.Label_FilteredEvents.Text = "Filtered events";
+            // 
+            // Label_EventsNumberAmount
+            // 
+            this.Label_EventsNumberAmount.AutoSize = true;
+            this.Label_EventsNumberAmount.Location = new System.Drawing.Point(1607, 29);
+            this.Label_EventsNumberAmount.Name = "Label_EventsNumberAmount";
+            this.Label_EventsNumberAmount.Size = new System.Drawing.Size(16, 19);
+            this.Label_EventsNumberAmount.TabIndex = 53;
+            this.Label_EventsNumberAmount.Text = "0";
+            // 
+            // Label_EventsNumber
+            // 
+            this.Label_EventsNumber.AutoSize = true;
+            this.Label_EventsNumber.Location = new System.Drawing.Point(1506, 27);
+            this.Label_EventsNumber.Name = "Label_EventsNumber";
+            this.Label_EventsNumber.Size = new System.Drawing.Size(95, 19);
+            this.Label_EventsNumber.TabIndex = 51;
+            this.Label_EventsNumber.Text = "Events number";
             // 
             // label11
             // 
@@ -1012,7 +1059,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 119);
             this.panel1.MaximumSize = new System.Drawing.Size(1682, 800);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1682, 531);
+            this.panel1.Size = new System.Drawing.Size(1682, 771);
             this.panel1.TabIndex = 31;
             // 
             // Table_EventsData
@@ -1028,12 +1075,12 @@
             this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.Table_EventsData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.Table_EventsData.Location = new System.Drawing.Point(7, 44);
             this.Table_EventsData.Name = "Table_EventsData";
             this.Table_EventsData.RowCount = 1;
-            this.Table_EventsData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.Table_EventsData.Size = new System.Drawing.Size(1660, 50);
+            this.Table_EventsData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.Table_EventsData.Size = new System.Drawing.Size(1681, 71);
             this.Table_EventsData.TabIndex = 1;
             // 
             // Table_EventsHeader
@@ -1049,7 +1096,7 @@
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.Table_EventsHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.Table_EventsHeader.Controls.Add(this.label20, 0, 0);
@@ -1064,7 +1111,7 @@
             this.Table_EventsHeader.Name = "Table_EventsHeader";
             this.Table_EventsHeader.RowCount = 1;
             this.Table_EventsHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Table_EventsHeader.Size = new System.Drawing.Size(1659, 41);
+            this.Table_EventsHeader.Size = new System.Drawing.Size(1671, 41);
             this.Table_EventsHeader.TabIndex = 0;
             // 
             // label20
@@ -1163,15 +1210,15 @@
             this.Button_UpdateEvents.UseStyleColors = true;
             this.Button_UpdateEvents.Click += new System.EventHandler(this.Button_UpdateEvents_Click);
             // 
-            // metroLabel7
+            // Label_HorizontalEventsLine
             // 
-            this.metroLabel7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroLabel7.Location = new System.Drawing.Point(-15, 110);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(1706, 20);
-            this.metroLabel7.TabIndex = 27;
-            this.metroLabel7.Text = "\r\n";
+            this.Label_HorizontalEventsLine.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label_HorizontalEventsLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Label_HorizontalEventsLine.Location = new System.Drawing.Point(-15, 110);
+            this.Label_HorizontalEventsLine.Name = "Label_HorizontalEventsLine";
+            this.Label_HorizontalEventsLine.Size = new System.Drawing.Size(1706, 2);
+            this.Label_HorizontalEventsLine.TabIndex = 27;
+            this.Label_HorizontalEventsLine.Text = "\r\n";
             // 
             // Button_CreateEvent
             // 
@@ -1257,41 +1304,57 @@
             this.metroTabControl2.TabStop = false;
             this.metroTabControl2.UseSelectable = true;
             // 
-            // label14
+            // label12
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(1131, 2);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 40);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Registration Date";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(14, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(153, 32);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Main Window";
             // 
-            // label15
+            // label13
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(1233, 2);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 40);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Payment Date";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.07563F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(309, 2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 20);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Country";
+            // 
+            // Label_EventDayNumber
+            // 
+            this.Label_EventDayNumber.AutoSize = true;
+            this.Label_EventDayNumber.BackColor = System.Drawing.Color.White;
+            this.Label_EventDayNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 12.10084F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Label_EventDayNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Label_EventDayNumber.Location = new System.Drawing.Point(7, 59);
+            this.Label_EventDayNumber.Name = "Label_EventDayNumber";
+            this.Label_EventDayNumber.Size = new System.Drawing.Size(188, 30);
+            this.Label_EventDayNumber.TabIndex = 56;
+            this.Label_EventDayNumber.Text = "Event day number";
             // 
             // MainWindow
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1920, 1030);
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.ClientSize = new System.Drawing.Size(1920, 1030);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.metroTabControl2);
+            this.Font = new System.Drawing.Font("Segoe UI", 7.865546F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.MaximumSize = new System.Drawing.Size(1920, 1030);
             this.Name = "MainWindow";
-            this.Text = "Main Window";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.RightToLeftLayout = true;
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.None;
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.metroTabPage5.ResumeLayout(false);
@@ -1310,6 +1373,7 @@
             this.Table_EventsHeader.ResumeLayout(false);
             this.metroTabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1328,7 +1392,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         public System.Windows.Forms.TextBox TextBox_LastNameFilter;
         public System.Windows.Forms.TextBox TextBox_CompanyNameFilter;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel Label_HorizontalRegistrationLine;
         private MetroFramework.Controls.MetroButton Button_FilterParticipant;
         public System.Windows.Forms.TextBox TextBox_FirstNameFilter;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
@@ -1339,7 +1403,7 @@
         private MetroFramework.Controls.MetroButton Button_FilterEvent;
         private System.Windows.Forms.TextBox TextBox_Year;
         private MetroFramework.Controls.MetroTabControl metroTabControl2;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel Label_HorizontalEventsLine;
         private MetroFramework.Controls.MetroButton Button_UpdateParticipantsInformation;
         private MetroFramework.Controls.MetroButton Button_UpdateEvents;
         private MetroFramework.Controls.MetroButton Button_CheckIn;
@@ -1377,9 +1441,7 @@
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroButton Button_ExcelExport;
         private MetroFramework.Controls.MetroButton Button_DelegateList;
-        private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroTextBox TextBox_EventExportFileName;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog_Events;
         private MetroFramework.Controls.MetroLabel Label_PaidStatus;
         private MetroFramework.Controls.MetroLabel metroLabel11;
@@ -1393,12 +1455,21 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private MetroFramework.Controls.MetroLabel Label_CheckedInAmount;
-        private MetroFramework.Controls.MetroLabel Label_RegisteredAmount;
+        public MetroFramework.Controls.MetroLabel Label_RegisteredAmount;
         private MetroFramework.Controls.MetroLabel Label_PaidDueAmount;
         private MetroFramework.Controls.MetroButton Button_ChooseColumnsToShow;
         public System.Windows.Forms.TableLayoutPanel Table_ParticipantsData1;
         private MetroFramework.Controls.MetroButton Button_ChooseAdvancedFilters;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        public MetroFramework.Controls.MetroLabel Label_FilteredAmount;
+        private MetroFramework.Controls.MetroLabel Label_Filtered;
+        public MetroFramework.Controls.MetroLabel Label_FilteredEventsAmount;
+        private MetroFramework.Controls.MetroLabel Label_FilteredEvents;
+        public MetroFramework.Controls.MetroLabel Label_EventsNumberAmount;
+        private MetroFramework.Controls.MetroLabel Label_EventsNumber;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label Label_EventDayNumber;
     }
 }

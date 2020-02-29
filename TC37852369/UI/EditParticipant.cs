@@ -70,6 +70,7 @@ namespace TC37852369
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+            BringToFront();
         }
 
         private async void loadWindowData()
@@ -118,7 +119,7 @@ namespace TC37852369
 
             
 
-            if (participant.paymentAmount > 0)
+            if (participant.paymentAmount >= 0)
             {
                 TextBox_PaymentAmount.Text = participant.paymentAmount.ToString();
             }
@@ -159,7 +160,10 @@ namespace TC37852369
                 participantServices.isPartcipantInformationManditoryFieldsCorrect(
                     TextBox_FirstName.Text, TextBox_LastName.Text, TextBox_Email.Text
                     );
-            bool paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
+            bool paymentAmountCorrect = true;
+            if (ComboBox_PaymentStatus.SelectedIndex != 2) {
+                paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
+            }
             if (partcipantInformationManditoryFieldsFilled > 0 || !paymentAmountCorrect)
             {
                 if (partcipantInformationManditoryFieldsFilled == 1)
@@ -190,10 +194,10 @@ namespace TC37852369
             else
             {
                 double paymentAmount;
-                Double.TryParse(TextBox_PaymentAmount.Text, out paymentAmount);
-                if (paymentAmount == 0)
+                bool parsedAmount = Double.TryParse(TextBox_PaymentAmount.Text, out paymentAmount);
+                if (ComboBox_PaymentStatus.SelectedIndex == 2 || !parsedAmount)
                 {
-                    paymentAmount = -1;
+                    paymentAmount = 0;
                 }
                 Participant createdParticipant = new Participant(
                 participant.participantId,
@@ -275,10 +279,21 @@ namespace TC37852369
                 {
                     tableLayoutHelper.RemoveArbitraryRow(mainWindow.Table_ParticipantsData1, rowNumber);
                     mainWindow.participantsToolTipHelpers.RemoveAt(rowNumber);
-                    mainWindow.allParticipants.Remove(participant);
-                    mainWindow.filteredParticipants.Remove(participant);
-                    int id = mainWindow.selectedEventParticipants.FindIndex(p => p.participantId.Equals(participant.participantId));
-                    mainWindow.selectedEventParticipants.RemoveAt(id);
+                    int allParticipantsid = mainWindow.allParticipants.FindIndex(p => p.participantId.Equals(participant.participantId));
+                    mainWindow.allParticipants.RemoveAt(allParticipantsid);
+                    if (mainWindow.filteredParticipants.Count > 0)
+                    {
+                        int filteredParticipantsid = mainWindow.filteredParticipants.FindIndex(p => p.participantId.Equals(participant.participantId));
+                        mainWindow.filteredParticipants.Remove(participant);
+                    }
+                    if (mainWindow.selectedEventParticipants.Count > 0)
+                    {
+                        int id = mainWindow.selectedEventParticipants.FindIndex(p => p.participantId.Equals(participant.participantId));
+                        mainWindow.selectedEventParticipants.RemoveAt(id);
+                    }
+
+                    mainWindow.Label_FilteredAmount.Text = mainWindow.filteredParticipants.Count.ToString();
+                    mainWindow.Label_RegisteredAmount.Text = mainWindow.selectedEventParticipants.Count.ToString();
                     mainWindow.Enabled = true;
                     this.Dispose();
                 }
@@ -456,7 +471,7 @@ namespace TC37852369
                 ticketsNames.Add(eventEntity.eventName + " ticket");
             }
 
-            sendEmail.SendEmails(toEmails, emailSubjects, emailBodies, ticketsPaths, ticketsNames);
+            sendEmail.SendEmailsWithTickets(toEmails, emailSubjects, emailBodies, ticketsPaths, ticketsNames);
             sendingStatus = "EmailsSent";
             foreach (Participant p in participants)
             {
@@ -549,6 +564,25 @@ namespace TC37852369
                 DateTime_PaymentDate.Hide();
                 Label_PaymentDate.Hide();
             }
+        }
+
+        private void Button_CopyDelegate_Click(object sender, EventArgs e)
+        {
+            RegisterParticipant participant = new RegisterParticipant(mainWindow,mainWindow.events, this.participant, participantEvent);
+            participant.Show();
+            participant.BringToFront();
+            this.Dispose();
+
+        }
+
+        private void Button_SendTemplate_Click(object sender, EventArgs e)
+        {
+            List<Participant> currentParticipant = new List<Participant>();
+            currentParticipant.Add(this.participant);
+            SendTemplate sendTemplate = new SendTemplate(mainWindow.mailTemplates, currentParticipant, mainWindow.events,
+                this, mainWindow.companyData, mainWindow);
+            sendTemplate.Show();
+            this.Enabled = false;
         }
     }
 }

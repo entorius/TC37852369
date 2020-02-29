@@ -60,6 +60,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.Label_CompanyName = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -390,13 +391,24 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Company Name";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(231, 32);
+            this.label12.TabIndex = 120;
+            this.label12.Text = "Scanned User Display";
+            // 
             // ScanningUserDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(800, 502);
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Label_JobTitle);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Label_ParticipationFormat);
@@ -431,7 +443,6 @@
             this.Controls.Add(this.label1);
             this.Name = "ScanningUserDisplay";
             this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Text = "Scanned User Display";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,5 +482,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label Label_CompanyName;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
     }
 }

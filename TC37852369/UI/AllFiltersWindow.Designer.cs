@@ -104,6 +104,7 @@
             this.metroPanel7 = new MetroFramework.Controls.MetroPanel();
             this.CheckBox_PaymentDateDescending = new MetroFramework.Controls.MetroCheckBox();
             this.CheckBox_PaymentDateAscending = new MetroFramework.Controls.MetroCheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -153,7 +154,7 @@
             // CheckBox_FirstName
             // 
             this.CheckBox_FirstName.AutoSize = true;
-            this.CheckBox_FirstName.Location = new System.Drawing.Point(525, 87);
+            this.CheckBox_FirstName.Location = new System.Drawing.Point(525, 86);
             this.CheckBox_FirstName.Name = "CheckBox_FirstName";
             this.CheckBox_FirstName.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_FirstName.TabIndex = 6;
@@ -182,7 +183,7 @@
             // CheckBox_CompanyType
             // 
             this.CheckBox_CompanyType.AutoSize = true;
-            this.CheckBox_CompanyType.Location = new System.Drawing.Point(525, 160);
+            this.CheckBox_CompanyType.Location = new System.Drawing.Point(525, 166);
             this.CheckBox_CompanyType.Name = "CheckBox_CompanyType";
             this.CheckBox_CompanyType.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_CompanyType.TabIndex = 16;
@@ -201,7 +202,7 @@
             // CheckBox_JobTitle
             // 
             this.CheckBox_JobTitle.AutoSize = true;
-            this.CheckBox_JobTitle.Location = new System.Drawing.Point(525, 204);
+            this.CheckBox_JobTitle.Location = new System.Drawing.Point(525, 206);
             this.CheckBox_JobTitle.Name = "CheckBox_JobTitle";
             this.CheckBox_JobTitle.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_JobTitle.TabIndex = 21;
@@ -250,7 +251,7 @@
             // CheckBox_CompanyName
             // 
             this.CheckBox_CompanyName.AutoSize = true;
-            this.CheckBox_CompanyName.Location = new System.Drawing.Point(525, 245);
+            this.CheckBox_CompanyName.Location = new System.Drawing.Point(525, 246);
             this.CheckBox_CompanyName.Name = "CheckBox_CompanyName";
             this.CheckBox_CompanyName.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_CompanyName.TabIndex = 26;
@@ -299,7 +300,7 @@
             // CheckBox_PaymentStatus
             // 
             this.CheckBox_PaymentStatus.AutoSize = true;
-            this.CheckBox_PaymentStatus.Location = new System.Drawing.Point(525, 280);
+            this.CheckBox_PaymentStatus.Location = new System.Drawing.Point(525, 286);
             this.CheckBox_PaymentStatus.Name = "CheckBox_PaymentStatus";
             this.CheckBox_PaymentStatus.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_PaymentStatus.TabIndex = 31;
@@ -318,7 +319,7 @@
             // CheckBox_TicketSent
             // 
             this.CheckBox_TicketSent.AutoSize = true;
-            this.CheckBox_TicketSent.Location = new System.Drawing.Point(523, 435);
+            this.CheckBox_TicketSent.Location = new System.Drawing.Point(524, 446);
             this.CheckBox_TicketSent.Name = "CheckBox_TicketSent";
             this.CheckBox_TicketSent.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_TicketSent.TabIndex = 36;
@@ -328,7 +329,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(21, 435);
+            this.metroLabel7.Location = new System.Drawing.Point(23, 440);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(71, 19);
             this.metroLabel7.TabIndex = 34;
@@ -337,7 +338,7 @@
             // CheckBox_RegisteredInDay
             // 
             this.CheckBox_RegisteredInDay.AutoSize = true;
-            this.CheckBox_RegisteredInDay.Location = new System.Drawing.Point(523, 515);
+            this.CheckBox_RegisteredInDay.Location = new System.Drawing.Point(525, 526);
             this.CheckBox_RegisteredInDay.Name = "CheckBox_RegisteredInDay";
             this.CheckBox_RegisteredInDay.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_RegisteredInDay.TabIndex = 41;
@@ -347,7 +348,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(21, 515);
+            this.metroLabel8.Location = new System.Drawing.Point(23, 520);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(111, 19);
             this.metroLabel8.TabIndex = 39;
@@ -356,7 +357,7 @@
             // CheckBox_CheckedInDay
             // 
             this.CheckBox_CheckedInDay.AutoSize = true;
-            this.CheckBox_CheckedInDay.Location = new System.Drawing.Point(523, 555);
+            this.CheckBox_CheckedInDay.Location = new System.Drawing.Point(524, 566);
             this.CheckBox_CheckedInDay.Name = "CheckBox_CheckedInDay";
             this.CheckBox_CheckedInDay.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_CheckedInDay.TabIndex = 46;
@@ -366,7 +367,7 @@
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(21, 555);
+            this.metroLabel9.Location = new System.Drawing.Point(23, 560);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(98, 19);
             this.metroLabel9.TabIndex = 44;
@@ -456,7 +457,7 @@
             // 
             this.ComboBox_TicketSent.FormattingEnabled = true;
             this.ComboBox_TicketSent.ItemHeight = 23;
-            this.ComboBox_TicketSent.Location = new System.Drawing.Point(164, 435);
+            this.ComboBox_TicketSent.Location = new System.Drawing.Point(166, 440);
             this.ComboBox_TicketSent.Name = "ComboBox_TicketSent";
             this.ComboBox_TicketSent.Size = new System.Drawing.Size(165, 29);
             this.ComboBox_TicketSent.TabIndex = 49;
@@ -466,7 +467,7 @@
             // 
             this.ComboBox_CheckedInDay.FormattingEnabled = true;
             this.ComboBox_CheckedInDay.ItemHeight = 23;
-            this.ComboBox_CheckedInDay.Location = new System.Drawing.Point(164, 555);
+            this.ComboBox_CheckedInDay.Location = new System.Drawing.Point(166, 560);
             this.ComboBox_CheckedInDay.Name = "ComboBox_CheckedInDay";
             this.ComboBox_CheckedInDay.Size = new System.Drawing.Size(165, 29);
             this.ComboBox_CheckedInDay.TabIndex = 50;
@@ -476,7 +477,7 @@
             // 
             this.ComboBox_RegisteredInDay.FormattingEnabled = true;
             this.ComboBox_RegisteredInDay.ItemHeight = 23;
-            this.ComboBox_RegisteredInDay.Location = new System.Drawing.Point(164, 515);
+            this.ComboBox_RegisteredInDay.Location = new System.Drawing.Point(166, 520);
             this.ComboBox_RegisteredInDay.Name = "ComboBox_RegisteredInDay";
             this.ComboBox_RegisteredInDay.Size = new System.Drawing.Size(165, 29);
             this.ComboBox_RegisteredInDay.TabIndex = 50;
@@ -645,7 +646,7 @@
             // 
             this.ComboBox_ParticipationFormat.FormattingEnabled = true;
             this.ComboBox_ParticipationFormat.ItemHeight = 23;
-            this.ComboBox_ParticipationFormat.Location = new System.Drawing.Point(164, 395);
+            this.ComboBox_ParticipationFormat.Location = new System.Drawing.Point(166, 400);
             this.ComboBox_ParticipationFormat.Name = "ComboBox_ParticipationFormat";
             this.ComboBox_ParticipationFormat.Size = new System.Drawing.Size(165, 29);
             this.ComboBox_ParticipationFormat.TabIndex = 57;
@@ -654,7 +655,7 @@
             // CheckBox_ParticipationFormat
             // 
             this.CheckBox_ParticipationFormat.AutoSize = true;
-            this.CheckBox_ParticipationFormat.Location = new System.Drawing.Point(523, 395);
+            this.CheckBox_ParticipationFormat.Location = new System.Drawing.Point(524, 406);
             this.CheckBox_ParticipationFormat.Name = "CheckBox_ParticipationFormat";
             this.CheckBox_ParticipationFormat.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_ParticipationFormat.TabIndex = 56;
@@ -664,7 +665,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(21, 395);
+            this.metroLabel10.Location = new System.Drawing.Point(23, 400);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(126, 19);
             this.metroLabel10.TabIndex = 55;
@@ -674,7 +675,7 @@
             // 
             this.ComboBox_Materials.FormattingEnabled = true;
             this.ComboBox_Materials.ItemHeight = 23;
-            this.ComboBox_Materials.Location = new System.Drawing.Point(164, 475);
+            this.ComboBox_Materials.Location = new System.Drawing.Point(166, 480);
             this.ComboBox_Materials.Name = "ComboBox_Materials";
             this.ComboBox_Materials.Size = new System.Drawing.Size(165, 29);
             this.ComboBox_Materials.TabIndex = 60;
@@ -683,7 +684,7 @@
             // CheckBox_Materials
             // 
             this.CheckBox_Materials.AutoSize = true;
-            this.CheckBox_Materials.Location = new System.Drawing.Point(523, 475);
+            this.CheckBox_Materials.Location = new System.Drawing.Point(524, 486);
             this.CheckBox_Materials.Name = "CheckBox_Materials";
             this.CheckBox_Materials.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_Materials.TabIndex = 59;
@@ -693,7 +694,7 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(21, 475);
+            this.metroLabel11.Location = new System.Drawing.Point(23, 480);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(62, 19);
             this.metroLabel11.TabIndex = 58;
@@ -702,7 +703,7 @@
             // CheckBox_Country
             // 
             this.CheckBox_Country.AutoSize = true;
-            this.CheckBox_Country.Location = new System.Drawing.Point(524, 599);
+            this.CheckBox_Country.Location = new System.Drawing.Point(524, 606);
             this.CheckBox_Country.Name = "CheckBox_Country";
             this.CheckBox_Country.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_Country.TabIndex = 62;
@@ -712,7 +713,7 @@
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(21, 595);
+            this.metroLabel12.Location = new System.Drawing.Point(23, 600);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(56, 19);
             this.metroLabel12.TabIndex = 61;
@@ -725,7 +726,7 @@
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(335, 595);
+            this.metroPanel5.Location = new System.Drawing.Point(335, 600);
             this.metroPanel5.Name = "metroPanel5";
             this.metroPanel5.Size = new System.Drawing.Size(185, 27);
             this.metroPanel5.TabIndex = 55;
@@ -768,7 +769,7 @@
             this.TextBox_Country.CustomButton.UseSelectable = true;
             this.TextBox_Country.CustomButton.Visible = false;
             this.TextBox_Country.Lines = new string[0];
-            this.TextBox_Country.Location = new System.Drawing.Point(164, 595);
+            this.TextBox_Country.Location = new System.Drawing.Point(166, 600);
             this.TextBox_Country.MaxLength = 32767;
             this.TextBox_Country.Name = "TextBox_Country";
             this.TextBox_Country.PasswordChar = '\0';
@@ -786,7 +787,7 @@
             // CheckBox_RegistrationDate
             // 
             this.CheckBox_RegistrationDate.AutoSize = true;
-            this.CheckBox_RegistrationDate.Location = new System.Drawing.Point(683, 325);
+            this.CheckBox_RegistrationDate.Location = new System.Drawing.Point(716, 326);
             this.CheckBox_RegistrationDate.Name = "CheckBox_RegistrationDate";
             this.CheckBox_RegistrationDate.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_RegistrationDate.TabIndex = 64;
@@ -796,7 +797,7 @@
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(25, 325);
+            this.metroLabel13.Location = new System.Drawing.Point(23, 320);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(109, 19);
             this.metroLabel13.TabIndex = 63;
@@ -805,7 +806,7 @@
             // CheckBox_PaymentDate
             // 
             this.CheckBox_PaymentDate.AutoSize = true;
-            this.CheckBox_PaymentDate.Location = new System.Drawing.Point(683, 363);
+            this.CheckBox_PaymentDate.Location = new System.Drawing.Point(716, 366);
             this.CheckBox_PaymentDate.Name = "CheckBox_PaymentDate";
             this.CheckBox_PaymentDate.Size = new System.Drawing.Size(99, 17);
             this.CheckBox_PaymentDate.TabIndex = 66;
@@ -815,7 +816,7 @@
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(25, 363);
+            this.metroLabel14.Location = new System.Drawing.Point(23, 360);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(90, 19);
             this.metroLabel14.TabIndex = 65;
@@ -836,7 +837,7 @@
             this.TextBox_RegistrationDateYear.CustomButton.UseSelectable = true;
             this.TextBox_RegistrationDateYear.CustomButton.Visible = false;
             this.TextBox_RegistrationDateYear.Lines = new string[0];
-            this.TextBox_RegistrationDateYear.Location = new System.Drawing.Point(198, 325);
+            this.TextBox_RegistrationDateYear.Location = new System.Drawing.Point(211, 320);
             this.TextBox_RegistrationDateYear.MaxLength = 32767;
             this.TextBox_RegistrationDateYear.Name = "TextBox_RegistrationDateYear";
             this.TextBox_RegistrationDateYear.PasswordChar = '\0';
@@ -866,7 +867,7 @@
             this.TextBox_RegistrationDateMonth.CustomButton.UseSelectable = true;
             this.TextBox_RegistrationDateMonth.CustomButton.Visible = false;
             this.TextBox_RegistrationDateMonth.Lines = new string[0];
-            this.TextBox_RegistrationDateMonth.Location = new System.Drawing.Point(304, 325);
+            this.TextBox_RegistrationDateMonth.Location = new System.Drawing.Point(340, 320);
             this.TextBox_RegistrationDateMonth.MaxLength = 32767;
             this.TextBox_RegistrationDateMonth.Name = "TextBox_RegistrationDateMonth";
             this.TextBox_RegistrationDateMonth.PasswordChar = '\0';
@@ -896,7 +897,7 @@
             this.TextBox_RegistrationDateDay.CustomButton.UseSelectable = true;
             this.TextBox_RegistrationDateDay.CustomButton.Visible = false;
             this.TextBox_RegistrationDateDay.Lines = new string[0];
-            this.TextBox_RegistrationDateDay.Location = new System.Drawing.Point(401, 325);
+            this.TextBox_RegistrationDateDay.Location = new System.Drawing.Point(448, 320);
             this.TextBox_RegistrationDateDay.MaxLength = 32767;
             this.TextBox_RegistrationDateDay.Name = "TextBox_RegistrationDateDay";
             this.TextBox_RegistrationDateDay.PasswordChar = '\0';
@@ -915,7 +916,7 @@
             // 
             this.metroLabel15.AutoSize = true;
             this.metroLabel15.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel15.Location = new System.Drawing.Point(162, 329);
+            this.metroLabel15.Location = new System.Drawing.Point(162, 320);
             this.metroLabel15.Name = "metroLabel15";
             this.metroLabel15.Size = new System.Drawing.Size(30, 17);
             this.metroLabel15.TabIndex = 70;
@@ -925,7 +926,7 @@
             // 
             this.metroLabel16.AutoSize = true;
             this.metroLabel16.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel16.Location = new System.Drawing.Point(254, 331);
+            this.metroLabel16.Location = new System.Drawing.Point(273, 320);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(44, 17);
             this.metroLabel16.TabIndex = 71;
@@ -935,7 +936,7 @@
             // 
             this.metroLabel17.AutoSize = true;
             this.metroLabel17.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel17.Location = new System.Drawing.Point(366, 331);
+            this.metroLabel17.Location = new System.Drawing.Point(402, 320);
             this.metroLabel17.Name = "metroLabel17";
             this.metroLabel17.Size = new System.Drawing.Size(29, 17);
             this.metroLabel17.TabIndex = 72;
@@ -945,7 +946,7 @@
             // 
             this.metroLabel18.AutoSize = true;
             this.metroLabel18.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel18.Location = new System.Drawing.Point(366, 369);
+            this.metroLabel18.Location = new System.Drawing.Point(402, 360);
             this.metroLabel18.Name = "metroLabel18";
             this.metroLabel18.Size = new System.Drawing.Size(29, 17);
             this.metroLabel18.TabIndex = 78;
@@ -955,7 +956,7 @@
             // 
             this.metroLabel19.AutoSize = true;
             this.metroLabel19.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel19.Location = new System.Drawing.Point(254, 369);
+            this.metroLabel19.Location = new System.Drawing.Point(273, 360);
             this.metroLabel19.Name = "metroLabel19";
             this.metroLabel19.Size = new System.Drawing.Size(44, 17);
             this.metroLabel19.TabIndex = 77;
@@ -965,7 +966,7 @@
             // 
             this.metroLabel20.AutoSize = true;
             this.metroLabel20.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel20.Location = new System.Drawing.Point(162, 367);
+            this.metroLabel20.Location = new System.Drawing.Point(162, 360);
             this.metroLabel20.Name = "metroLabel20";
             this.metroLabel20.Size = new System.Drawing.Size(30, 17);
             this.metroLabel20.TabIndex = 76;
@@ -986,7 +987,7 @@
             this.TextBox_PaymentDateDay.CustomButton.UseSelectable = true;
             this.TextBox_PaymentDateDay.CustomButton.Visible = false;
             this.TextBox_PaymentDateDay.Lines = new string[0];
-            this.TextBox_PaymentDateDay.Location = new System.Drawing.Point(401, 363);
+            this.TextBox_PaymentDateDay.Location = new System.Drawing.Point(448, 360);
             this.TextBox_PaymentDateDay.MaxLength = 32767;
             this.TextBox_PaymentDateDay.Name = "TextBox_PaymentDateDay";
             this.TextBox_PaymentDateDay.PasswordChar = '\0';
@@ -1016,7 +1017,7 @@
             this.TextBox_PaymentDateMonth.CustomButton.UseSelectable = true;
             this.TextBox_PaymentDateMonth.CustomButton.Visible = false;
             this.TextBox_PaymentDateMonth.Lines = new string[0];
-            this.TextBox_PaymentDateMonth.Location = new System.Drawing.Point(304, 363);
+            this.TextBox_PaymentDateMonth.Location = new System.Drawing.Point(340, 360);
             this.TextBox_PaymentDateMonth.MaxLength = 32767;
             this.TextBox_PaymentDateMonth.Name = "TextBox_PaymentDateMonth";
             this.TextBox_PaymentDateMonth.PasswordChar = '\0';
@@ -1046,7 +1047,7 @@
             this.TextBox_PaymentDateYear.CustomButton.UseSelectable = true;
             this.TextBox_PaymentDateYear.CustomButton.Visible = false;
             this.TextBox_PaymentDateYear.Lines = new string[0];
-            this.TextBox_PaymentDateYear.Location = new System.Drawing.Point(198, 363);
+            this.TextBox_PaymentDateYear.Location = new System.Drawing.Point(211, 360);
             this.TextBox_PaymentDateYear.MaxLength = 32767;
             this.TextBox_PaymentDateYear.Name = "TextBox_PaymentDateYear";
             this.TextBox_PaymentDateYear.PasswordChar = '\0';
@@ -1068,7 +1069,7 @@
             this.metroPanel6.HorizontalScrollbarBarColor = true;
             this.metroPanel6.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel6.HorizontalScrollbarSize = 10;
-            this.metroPanel6.Location = new System.Drawing.Point(481, 325);
+            this.metroPanel6.Location = new System.Drawing.Point(525, 320);
             this.metroPanel6.Name = "metroPanel6";
             this.metroPanel6.Size = new System.Drawing.Size(185, 27);
             this.metroPanel6.TabIndex = 54;
@@ -1103,7 +1104,7 @@
             this.metroPanel7.HorizontalScrollbarBarColor = true;
             this.metroPanel7.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel7.HorizontalScrollbarSize = 10;
-            this.metroPanel7.Location = new System.Drawing.Point(481, 362);
+            this.metroPanel7.Location = new System.Drawing.Point(525, 360);
             this.metroPanel7.Name = "metroPanel7";
             this.metroPanel7.Size = new System.Drawing.Size(185, 27);
             this.metroPanel7.TabIndex = 55;
@@ -1131,11 +1132,22 @@
             this.CheckBox_PaymentDateAscending.Text = "Ascending";
             this.CheckBox_PaymentDateAscending.UseSelectable = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(283, 32);
+            this.label12.TabIndex = 79;
+            this.label12.Text = "Choose which filters to use";
+            // 
             // AllFiltersWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(829, 850);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.metroPanel7);
             this.Controls.Add(this.metroPanel6);
             this.Controls.Add(this.metroLabel18);
@@ -1199,7 +1211,6 @@
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Filter);
             this.Name = "AllFiltersWindow";
-            this.Text = "Choose which filters to use";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.metroPanel2.ResumeLayout(false);
@@ -1297,5 +1308,6 @@
         private MetroFramework.Controls.MetroPanel metroPanel7;
         private MetroFramework.Controls.MetroCheckBox CheckBox_PaymentDateDescending;
         private MetroFramework.Controls.MetroCheckBox CheckBox_PaymentDateAscending;
+        private System.Windows.Forms.Label label12;
     }
 }

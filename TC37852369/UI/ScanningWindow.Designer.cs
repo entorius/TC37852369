@@ -36,6 +36,7 @@
             this.Timer_Barcode = new System.Windows.Forms.Timer(this.components);
             this.TextBox_Barcode = new System.Windows.Forms.TextBox();
             this.Label_Scanning = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Barcode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,16 +92,27 @@
             this.Label_Scanning.Size = new System.Drawing.Size(0, 15);
             this.Label_Scanning.TabIndex = 6;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(152, 32);
+            this.label12.TabIndex = 121;
+            this.label12.Text = "Scan barcode";
+            // 
             // ScanningWindow
             // 
             this.ApplyImageInvert = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(497, 326);
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.ClientSize = new System.Drawing.Size(497, 326);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Label_Scanning);
             this.Controls.Add(this.TextBox_Barcode);
             this.Controls.Add(this.Button_Cancel);
@@ -109,7 +121,6 @@
             this.Name = "ScanningWindow";
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
-            this.Text = "Scan barcode";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Barcode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -123,5 +134,6 @@
         private System.Windows.Forms.Timer Timer_Barcode;
         private System.Windows.Forms.TextBox TextBox_Barcode;
         private System.Windows.Forms.Label Label_Scanning;
+        private System.Windows.Forms.Label label12;
     }
 }

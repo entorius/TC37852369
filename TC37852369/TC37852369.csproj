@@ -278,6 +278,12 @@
     <Compile Include="UI\ScanningWindow.Designer.cs">
       <DependentUpon>ScanningWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SendTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SendTemplate.Designer.cs">
+      <DependentUpon>SendTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TicketEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ScanningWindow.resx">
       <DependentUpon>ScanningWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SendTemplate.resx">
+      <DependentUpon>SendTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TicketEdit.resx">
       <DependentUpon>TicketEdit.cs</DependentUpon>

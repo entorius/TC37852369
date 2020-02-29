@@ -13,8 +13,6 @@ namespace TC37852369.Services
         ImageEntityRepository imageEntityRepository = new ImageEntityRepository();
         LastEntityIdentificationNumberServices lastEntityIdentificationNumberServices =
             new LastEntityIdentificationNumberServices();
-        string eventImagesBucketName = "eventsimages1";
-        string companyImagesBucketName = "companyimages1";
 
         //getAllImagesEntitiesFromDatabase
         public async Task<List<ImageEntity>> getAllImageEntities()
@@ -42,11 +40,11 @@ namespace TC37852369.Services
         //Add Image Entity To Cloud
         public string addEventImage(string imagePath, string imageId)
         {
-            return imageEntityRepository.addImage(imagePath, imageId, eventImagesBucketName);
+            return imageEntityRepository.addImage(imagePath, imageId, GetConstant.eventImagesBucketName);
         }
         public string addCompanyImage(string imagePath, string imageId)
         {
-            return imageEntityRepository.addImage(imagePath, imageId, companyImagesBucketName);
+            return imageEntityRepository.addImage(imagePath, imageId, GetConstant.companyImagesBucketName);
         }
 
 
@@ -54,12 +52,12 @@ namespace TC37852369.Services
         public async Task<bool> DeleteEventImageEntity(ImageEntity imageEntity)
         {
             bool deletedFromDatabase = await imageEntityRepository.DeleteImageEntityFromDatabase(imageEntity);
-            return await imageEntityRepository.deleteImageFromCloud(imageEntity, eventImagesBucketName);
+            return await imageEntityRepository.deleteImageFromCloud(imageEntity, GetConstant.eventImagesBucketName);
         }
         public async Task<bool> DeleteCompanyImageEntity(ImageEntity imageEntity)
         {
             bool deletedFromDatabase = await imageEntityRepository.DeleteImageEntityFromDatabase(imageEntity);
-            return await imageEntityRepository.deleteImageFromCloud(imageEntity, companyImagesBucketName);
+            return await imageEntityRepository.deleteImageFromCloud(imageEntity, GetConstant.companyImagesBucketName);
         }
 
         private async Task<List<ImageEntity>> GetEntityImageEntities(string entityName, string entityId)
@@ -83,11 +81,11 @@ namespace TC37852369.Services
         }
         public async Task<string> downloadEventImage(ImageEntity image, string savingPath)
         {
-            return await downloadImage(image, savingPath, eventImagesBucketName);
+            return await downloadImage(image, savingPath, GetConstant.eventImagesBucketName);
         }
         public async Task<string> downloadCompanyImage(ImageEntity image, string savingPath)
         {
-            return await downloadImage(image, savingPath, companyImagesBucketName);
+            return await downloadImage(image, savingPath, GetConstant.companyImagesBucketName);
         }
 
     }

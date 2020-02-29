@@ -41,6 +41,7 @@ namespace TC37852369
             mainWindow = window;
             this.FormClosed += CloseHandler;
             InitializeComponent();
+            this.BringToFront();
             bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
             if (toMaximize)
             {
@@ -93,7 +94,7 @@ namespace TC37852369
                     if (ticketCreation.MSdoc == null) { ticketCreation.MSdoc = new Microsoft.Office.Interop.Word.Application(); }
                     ticketCreation.pdfConverter = new PDFConverter(ticketCreation.MSdoc);
                     string ticketPath = ticketCreation.createTicket("Serafina", "Jones", "Daimter", "Speaker",
-                        selEvent.eventName, formatEventDate(selEvent.date_From), selEvent.venueName, selEvent.venueAdress, 
+                        selEvent.eventName, formatEventDate(selEvent.date_From), selEvent.date_From.Month, selEvent.venueName, selEvent.venueAdress, 
                         "IL682370000000", Color.Black, "testTicket", companyImagePath, eventImagePath, sponsorsImagePath,savingPath);
                     if (ticketCreation.MSdoc != null)
                     {

@@ -183,32 +183,41 @@ namespace TC37852369.Services
             return regestered;
         }
 
-        public int isPartcipantInformationManditoryFieldsCorrect(string name, string surename, string email)
+        public int isPartcipantInformationManditoryFieldsCorrect(string name, string surename,string email)
         {
 
-            if (name.Length < 3)
+            if (name.Replace(" ", "").Length > 0)
             {
-                return 1;
+                if (name.Length < 3)
+                {
+                    return 1;
+                }
             }
-            else if (surename.Length < 3)
+            if (surename.Replace(" ", "").Length > 0)
             {
-                return 2;
+            if (surename.Length < 3)
+                {
+                    return 2;
+                }
             }
-            try
+            if (email.Replace(" ", "").Length > 0)
             {
-                MailAddress emailCatch = new MailAddress(email);
-            }
-            catch (FormatException)
-            {
-                return 3;
-            }
-            catch (ArgumentNullException)
-            {
-                return 3;
-            }
-            catch (ArgumentException)
-            {
-                return 3;
+                try
+                {
+                    MailAddress emailCatch = new MailAddress(email);
+                }
+                catch (FormatException)
+                {
+                    return 3;
+                }
+                catch (ArgumentNullException)
+                {
+                    return 3;
+                }
+                catch (ArgumentException)
+                {
+                    return 3;
+                }
             }
             return 0;
         }
@@ -224,45 +233,12 @@ namespace TC37852369.Services
             return filteredParticipants;
         }
 
-        public double countParticipantsPaymentAmount(List<Participant> participants, Event eventEntity)
+        public double countParticipantsPaymentAmount(List<Participant> participants)
         {
             double paymentAmount = 0;
             foreach(Participant participant in participants)
             {
-                if (participant.paymentAmount > 0)
-                {
-                    paymentAmount += participant.paymentAmount;
-                }
-                else { 
-                    if (eventEntity.eventLengthDays >= 1)
-                    {
-                        if (participant.participateInDay1)
-                        {
-                            paymentAmount += eventEntity.paymentAmountForDay;
-                        }
-                    }
-                    if (eventEntity.eventLengthDays >= 2)
-                    {
-                        if (participant.participateInDay2)
-                        {
-                            paymentAmount += eventEntity.paymentAmountForDay;
-                        }
-                    }
-                    if (eventEntity.eventLengthDays >= 3)
-                    {
-                        if (participant.participateInDay3)
-                        {
-                            paymentAmount += eventEntity.paymentAmountForDay;
-                        }
-                    }
-                    if (eventEntity.eventLengthDays >= 4)
-                    {
-                        if (participant.participateInDay4)
-                        {
-                            paymentAmount += eventEntity.paymentAmountForDay;
-                        }
-                    }
-                }
+                paymentAmount += participant.paymentAmount;
             }
             return paymentAmount;
         }
@@ -271,7 +247,7 @@ namespace TC37852369.Services
             double localPaymentAmount;
             if(paymentAmount.Replace(" ","").Length == 0)
             {
-                return true;
+                return false;
             }
             bool parsed = Double.TryParse(paymentAmount, out localPaymentAmount);
             if (!parsed)

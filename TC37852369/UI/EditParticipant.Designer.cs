@@ -83,6 +83,9 @@
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_PaymentAmount = new MetroFramework.Controls.MetroTextBox();
             this.Label_PaymentAmount = new MetroFramework.Controls.MetroLabel();
+            this.Button_CopyDelegate = new MetroFramework.Controls.MetroButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Button_SendTemplate = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_DeleteAdditionalPhoneNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_AddAdditionalPhoneNumber)).BeginInit();
             this.SuspendLayout();
@@ -438,7 +441,7 @@
             // 
             this.Button_Cancel.BackColor = System.Drawing.Color.Silver;
             this.Button_Cancel.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Cancel.Location = new System.Drawing.Point(636, 748);
+            this.Button_Cancel.Location = new System.Drawing.Point(251, 748);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(186, 69);
             this.Button_Cancel.Style = MetroFramework.MetroColorStyle.Black;
@@ -646,12 +649,12 @@
             this.Button_Send.BackColor = System.Drawing.Color.DarkTurquoise;
             this.Button_Send.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.Button_Send.ForeColor = System.Drawing.Color.White;
-            this.Button_Send.Location = new System.Drawing.Point(851, 748);
+            this.Button_Send.Location = new System.Drawing.Point(862, 748);
             this.Button_Send.Name = "Button_Send";
             this.Button_Send.Size = new System.Drawing.Size(186, 69);
             this.Button_Send.Style = MetroFramework.MetroColorStyle.Black;
             this.Button_Send.TabIndex = 100;
-            this.Button_Send.Text = "Send email";
+            this.Button_Send.Text = "Send Ticket";
             this.Button_Send.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Button_Send.UseCustomBackColor = true;
             this.Button_Send.UseCustomForeColor = true;
@@ -667,7 +670,7 @@
             // DateTime_PaymentDate
             // 
             this.DateTime_PaymentDate.Location = new System.Drawing.Point(868, 140);
-            this.DateTime_PaymentDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_PaymentDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_PaymentDate.Name = "DateTime_PaymentDate";
             this.DateTime_PaymentDate.Size = new System.Drawing.Size(382, 29);
             this.DateTime_PaymentDate.TabIndex = 102;
@@ -693,7 +696,7 @@
             // DateTime_RegistrationDate
             // 
             this.DateTime_RegistrationDate.Location = new System.Drawing.Point(868, 80);
-            this.DateTime_RegistrationDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.DateTime_RegistrationDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.DateTime_RegistrationDate.Name = "DateTime_RegistrationDate";
             this.DateTime_RegistrationDate.Size = new System.Drawing.Size(382, 29);
             this.DateTime_RegistrationDate.TabIndex = 104;
@@ -843,13 +846,62 @@
             this.Label_PaymentAmount.TabIndex = 124;
             this.Label_PaymentAmount.Text = "Payment amount";
             // 
+            // Button_CopyDelegate
+            // 
+            this.Button_CopyDelegate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Button_CopyDelegate.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_CopyDelegate.ForeColor = System.Drawing.Color.White;
+            this.Button_CopyDelegate.Location = new System.Drawing.Point(456, 748);
+            this.Button_CopyDelegate.Name = "Button_CopyDelegate";
+            this.Button_CopyDelegate.Size = new System.Drawing.Size(186, 69);
+            this.Button_CopyDelegate.Style = MetroFramework.MetroColorStyle.Black;
+            this.Button_CopyDelegate.TabIndex = 126;
+            this.Button_CopyDelegate.Text = "Copy delegate";
+            this.Button_CopyDelegate.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_CopyDelegate.UseCustomBackColor = true;
+            this.Button_CopyDelegate.UseCustomForeColor = true;
+            this.Button_CopyDelegate.UseSelectable = true;
+            this.Button_CopyDelegate.UseStyleColors = true;
+            this.Button_CopyDelegate.Click += new System.EventHandler(this.Button_CopyDelegate_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(165, 32);
+            this.label12.TabIndex = 140;
+            this.label12.Text = "Edit Participant";
+            // 
+            // Button_SendTemplate
+            // 
+            this.Button_SendTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Button_SendTemplate.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_SendTemplate.ForeColor = System.Drawing.Color.White;
+            this.Button_SendTemplate.Location = new System.Drawing.Point(659, 748);
+            this.Button_SendTemplate.Name = "Button_SendTemplate";
+            this.Button_SendTemplate.Size = new System.Drawing.Size(186, 69);
+            this.Button_SendTemplate.Style = MetroFramework.MetroColorStyle.Black;
+            this.Button_SendTemplate.TabIndex = 141;
+            this.Button_SendTemplate.Text = "Send Template";
+            this.Button_SendTemplate.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_SendTemplate.UseCustomBackColor = true;
+            this.Button_SendTemplate.UseCustomForeColor = true;
+            this.Button_SendTemplate.UseSelectable = true;
+            this.Button_SendTemplate.UseStyleColors = true;
+            this.Button_SendTemplate.Click += new System.EventHandler(this.Button_SendTemplate_Click);
+            // 
             // EditParticipant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1295, 864);
             this.ClientSize = new System.Drawing.Size(1295, 864);
+            this.Controls.Add(this.Button_SendTemplate);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.Button_CopyDelegate);
             this.Controls.Add(this.TextBox_PaymentAmount);
             this.Controls.Add(this.Label_PaymentAmount);
             this.Controls.Add(this.TextBox_Comment);
@@ -903,7 +955,6 @@
             this.Controls.Add(this.TextBox_FirstName);
             this.Controls.Add(this.ComboBox_CompanyType);
             this.Name = "EditParticipant";
-            this.Text = "Edit Participant";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_DeleteAdditionalPhoneNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_AddAdditionalPhoneNumber)).EndInit();
             this.ResumeLayout(false);
@@ -966,5 +1017,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroTextBox TextBox_PaymentAmount;
         private MetroFramework.Controls.MetroLabel Label_PaymentAmount;
+        private MetroFramework.Controls.MetroButton Button_CopyDelegate;
+        private System.Windows.Forms.Label label12;
+        private MetroFramework.Controls.MetroButton Button_SendTemplate;
     }
 }

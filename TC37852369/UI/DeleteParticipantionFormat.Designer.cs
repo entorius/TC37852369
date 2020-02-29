@@ -31,6 +31,7 @@
             this.ComboBox_ParticipationFormats = new MetroFramework.Controls.MetroComboBox();
             this.Button_Delete = new MetroFramework.Controls.MetroButton();
             this.Button_Cancel = new MetroFramework.Controls.MetroButton();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ComboBox_ParticipationFormats
@@ -71,19 +72,30 @@
             this.Button_Cancel.UseSelectable = true;
             this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(301, 32);
+            this.label12.TabIndex = 140;
+            this.label12.Text = "Delete Participantion Format";
+            // 
             // DeleteParticipantionFormat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(699, 300);
             this.ClientSize = new System.Drawing.Size(699, 300);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Delete);
             this.Controls.Add(this.ComboBox_ParticipationFormats);
             this.Name = "DeleteParticipantionFormat";
-            this.Text = "Delete Participantion Format";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -92,5 +104,6 @@
         private MetroFramework.Controls.MetroComboBox ComboBox_ParticipationFormats;
         private MetroFramework.Controls.MetroButton Button_Delete;
         private MetroFramework.Controls.MetroButton Button_Cancel;
+        private System.Windows.Forms.Label label12;
     }
 }

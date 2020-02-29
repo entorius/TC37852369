@@ -45,6 +45,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ComboBox_TemplateStrings = new MetroFramework.Controls.MetroComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Button_Delete = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // TextBox_Subject
@@ -66,7 +68,7 @@
             // 
             // Button_Save
             // 
-            this.Button_Save.BackColor = System.Drawing.Color.Maroon;
+            this.Button_Save.BackColor = System.Drawing.Color.Teal;
             this.Button_Save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_Save.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.Button_Save.Location = new System.Drawing.Point(1187, 753);
@@ -225,13 +227,42 @@
             this.label6.TabIndex = 33;
             this.label6.Text = "Template strings";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(165, 32);
+            this.label12.TabIndex = 141;
+            this.label12.Text = "Email Template";
+            // 
+            // Button_Delete
+            // 
+            this.Button_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Button_Delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Delete.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Delete.Location = new System.Drawing.Point(941, 753);
+            this.Button_Delete.Name = "Button_Delete";
+            this.Button_Delete.Size = new System.Drawing.Size(205, 88);
+            this.Button_Delete.Style = MetroFramework.MetroColorStyle.White;
+            this.Button_Delete.TabIndex = 142;
+            this.Button_Delete.Text = "Delete";
+            this.Button_Delete.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Button_Delete.UseCustomBackColor = true;
+            this.Button_Delete.UseSelectable = true;
+            this.Button_Delete.UseStyleColors = true;
+            this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
+            // 
             // EditEmailTemplate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1462, 864);
             this.ClientSize = new System.Drawing.Size(1462, 864);
+            this.Controls.Add(this.Button_Delete);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ComboBox_TemplateStrings);
             this.Controls.Add(this.label5);
@@ -249,7 +280,6 @@
             this.Controls.Add(this.TextBox_Body);
             this.Controls.Add(this.TextBox_Subject);
             this.Name = "EditEmailTemplate";
-            this.Text = "Email Template";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,5 +303,7 @@
         private System.Windows.Forms.Label label5;
         private MetroFramework.Controls.MetroComboBox ComboBox_TemplateStrings;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label12;
+        private MetroFramework.Controls.MetroButton Button_Delete;
     }
 }

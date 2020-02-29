@@ -47,6 +47,7 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_Password = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_CompanyLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -390,13 +391,24 @@
             this.metroLabel7.TabIndex = 21;
             this.metroLabel7.Text = "Email password";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Light", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label12.Location = new System.Drawing.Point(23, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(370, 32);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Add/Change Company Information";
+            // 
             // AddChangeCompanyInformation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1295, 705);
             this.ClientSize = new System.Drawing.Size(1295, 705);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.TextBox_Password);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.TextBox_Username);
@@ -416,7 +428,6 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.PictureBox_CompanyLogo);
             this.Name = "AddChangeCompanyInformation";
-            this.Text = "Add/Change Company Information";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_CompanyLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -444,5 +455,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox TextBox_Password;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.Label label12;
     }
 }

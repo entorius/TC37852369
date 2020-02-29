@@ -48,7 +48,12 @@ namespace TC37852369
         List<Event> events = new List<Event>();
         ParticipantServices participantServices = new ParticipantServices();
         ParticipationFormatServices participationFormatServices = new ParticipationFormatServices();
+        ParticipantFilteringServices participantFilteringServices = new ParticipantFilteringServices();
         public List<ParticipationFormat> participationFormats = new List<ParticipationFormat>();
+
+        Participant templateParticipat;
+        Event templateParticipatEvent;
+        bool addParticipantDataAction = false;
 
         string addNewParticipationFormat = "+ Add new participation format";
         string deleteParticipationFormat = "x Delete participation format";
@@ -70,8 +75,69 @@ namespace TC37852369
                 this.WindowState = FormWindowState.Maximized;
             }
 
-            loadWindowData();
+           loadWindowData();
+            BringToFront();
         }
+        public RegisterParticipant(MainWindow window, List<Event> events,Participant participant,Event eventEntity)
+        {
+            mainWindow = window;
+            this.events = events;
+            this.FormClosed += CloseHandler;
+
+            InitializeComponent();
+            EventDaysShowHide(null);
+            bool toMaximize = WindowHelper.checkIfMaximizeWindow(this.Width, this.Height);
+            if (toMaximize)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            addParticipantDataAction = true;
+            templateParticipat = participant;
+            templateParticipatEvent = eventEntity;
+            loadWindowData();
+            BringToFront();
+        }
+
+        private bool addParticipantData()
+        {
+            ComboBox_Events.SelectedIndex = mainWindow.events.FindIndex(ev => ev.eventName.Equals(templateParticipatEvent.eventName));
+            //participant.TextBox_FirstName = this.TextBox_FirstName;
+            //participant.TextBox_LastName = this.TextBox_LastName;
+            TextBox_JobTitle.Text = templateParticipat.jobTitle;
+            TextBox_CompanyName.Text = templateParticipat.companyName;
+            ComboBox_CompanyType.SelectedIndex = ComboBox_CompanyType.Items.IndexOf(templateParticipat.companyType);
+            TextBox_Email.Text = templateParticipat.email;
+            TextBox_PhoneNumber.Text = templateParticipat.phoneNumber;
+            if (templateParticipat.additionalPhoneNumber.Length > 0)
+            {
+                TextBox_AdditionalPhoneNumber.Text = templateParticipat.additionalPhoneNumber;
+                PictureBox_AddAdditionalPhoneNumber.Hide();
+                Label_AdditionalPhoneNumber.Show();
+                TextBox_AdditionalPhoneNumber.Show();
+                PictureBox_DeleteAdditionalPhoneNumber.Show();
+            }
+            else
+            {
+                Label_AdditionalPhoneNumber.Hide();
+                TextBox_AdditionalPhoneNumber.Hide();
+                PictureBox_DeleteAdditionalPhoneNumber.Hide();
+            }
+            TextBox_Country.Text = templateParticipat.country;
+            TextBox_Comment.Text = templateParticipat.comment;
+            DateTime_PaymentDate.Value = templateParticipat.paymentDate;
+            DateTime_RegistrationDate.Value = templateParticipat.registrationDate;
+            TextBox_PaymentAmount.Text = templateParticipat.paymentAmount.ToString();
+            ComboBox_ParticipationFormat.SelectedIndex = ComboBox_ParticipationFormat.Items.IndexOf(templateParticipat.participationFormat);
+            ComboBox_PaymentStatus.SelectedIndex = ComboBox_PaymentStatus.Items.IndexOf(templateParticipat.paymentStatus);
+            ComboBox_Materials.SelectedIndex = ComboBox_Materials.Items.IndexOf(templateParticipat.materials ? "Yes":"No");
+            ComboBox_ParticipateEveningEvent.SelectedIndex = ComboBox_ParticipateEveningEvent.Items.IndexOf(templateParticipat.participateEveningEvent ? "Yes" : "No");
+            ComboBox_ParticipateDay1.SelectedIndex = ComboBox_ParticipateDay1.Items.IndexOf(templateParticipat.participateInDay1 ? "Yes" : "No");
+            ComboBox_ParticipateDay2.SelectedIndex = ComboBox_ParticipateDay2.Items.IndexOf(templateParticipat.participateInDay2 ? "Yes" : "No");
+            ComboBox_ParticipateDay3.SelectedIndex = ComboBox_ParticipateDay3.Items.IndexOf(templateParticipat.participateInDay3 ? "Yes" : "No");
+            ComboBox_ParticipateDay4.SelectedIndex = ComboBox_ParticipateDay4.Items.IndexOf(templateParticipat.participateInDay4 ? "Yes" : "No");
+            return true;
+        }
+
         private async void loadWindowData()
         {
             participationFormats = await participationFormatServices.getAllParticipationFormats();
@@ -88,7 +154,7 @@ namespace TC37852369
             }
             foreach (CompanyTypes companyType in (CompanyTypes[])Enum.GetValues(typeof(CompanyTypes)))
             {
-                ComboBox_CompanyType.Items.Add(companyType);
+                ComboBox_CompanyType.Items.Add(companyType.ToString());
             }
 
 
@@ -99,7 +165,7 @@ namespace TC37852369
             //Set payment status values to comboBox and select first item
             foreach (PaymentStatus paymentStatus in (PaymentStatus[])Enum.GetValues(typeof(PaymentStatus)))
             {
-                ComboBox_PaymentStatus.Items.Add(paymentStatus);
+                ComboBox_PaymentStatus.Items.Add(paymentStatus.ToString());
             }
             ComboBox_PaymentStatus.SelectedIndex = 0;
 
@@ -108,12 +174,12 @@ namespace TC37852369
             //first day of event
             foreach (YesNo yesNo in (YesNo[])Enum.GetValues(typeof(YesNo)))
             {
-                ComboBox_Materials.Items.Add(yesNo);
-                ComboBox_ParticipateEveningEvent.Items.Add(yesNo);
-                ComboBox_ParticipateDay1.Items.Add(yesNo);
-                ComboBox_ParticipateDay2.Items.Add(yesNo);
-                ComboBox_ParticipateDay3.Items.Add(yesNo);
-                ComboBox_ParticipateDay4.Items.Add(yesNo);
+                ComboBox_Materials.Items.Add(yesNo.ToString());
+                ComboBox_ParticipateEveningEvent.Items.Add(yesNo.ToString());
+                ComboBox_ParticipateDay1.Items.Add(yesNo.ToString());
+                ComboBox_ParticipateDay2.Items.Add(yesNo.ToString());
+                ComboBox_ParticipateDay3.Items.Add(yesNo.ToString());
+                ComboBox_ParticipateDay4.Items.Add(yesNo.ToString());
             }
             ComboBox_Materials.SelectedIndex = 1;
             ComboBox_ParticipateEveningEvent.SelectedIndex = 1;
@@ -122,17 +188,28 @@ namespace TC37852369
             ComboBox_ParticipateDay3.SelectedIndex = 1;
             ComboBox_ParticipateDay4.SelectedIndex = 1;
 
+            TextBox_PaymentAmount.Text = "0";
+
             ComboBox_PaymentStatus.SelectedIndex = 0;
             ComboBox_ParticipationFormat.Items.Add(addNewParticipationFormat);
             ComboBox_ParticipationFormat.Items.Add(deleteParticipationFormat);
             ComboBox_ParticipationFormat.SelectedIndexChanged += ParticipationFormatSelectedIndexChanged;
             DateTime_PaymentDate.Hide();
+            if (addParticipantDataAction)
+            {
+                bool added = addParticipantData();
+                BringToFront();
+            }
         }
         private async void Button_Register_Click(object sender, EventArgs e)
         {
             Button_Register.Enabled = false;
             bool eventChoosen = ComboBox_Events.SelectedItem == null ? false : true;
-            bool paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
+            bool paymentAmountCorrect = true;
+            if (ComboBox_PaymentStatus.SelectedIndex != 2)
+            {
+                paymentAmountCorrect = participantServices.paymentAmountStringCorrect(TextBox_PaymentAmount.Text);
+            }
             int partcipantInformationManditoryFieldsFilled =
                 participantServices.isPartcipantInformationManditoryFieldsCorrect(
                     TextBox_FirstName.Text, TextBox_LastName.Text, TextBox_Email.Text
@@ -172,10 +249,10 @@ namespace TC37852369
             else
             {
                 double paymentAmount;
-                Double.TryParse(TextBox_PaymentAmount.Text, out paymentAmount);
-                if(paymentAmount == 0)
+                bool paymentAmountParsed = Double.TryParse(TextBox_PaymentAmount.Text, out paymentAmount);
+                if (ComboBox_PaymentStatus.SelectedIndex == 2 || !paymentAmountParsed)
                 {
-                    paymentAmount = -1;
+                    paymentAmount = 0;
                 }
 
                 DateTime paymentDate = DateTime_PaymentDate.Value;
@@ -212,19 +289,27 @@ namespace TC37852369
                     {
                         if (createdParticipant.eventId.Equals(mainWindow.selectedEvent.id.ToString()))
                         {
-                            mainWindow.filteredParticipants.Add(createdParticipant);
-                            if (mainWindow.selectedEvent != null)
+                            List<Participant> currentParticipantList = new List<Participant>();
+                            currentParticipantList.Add(createdParticipant);
+                            List<Participant> filteredParticipant = participantFilteringServices.filterParticipants(currentParticipantList, mainWindow.filterWindowData, mainWindow.selectedEvent);
+                            if (filteredParticipant.Count > 0)
                             {
-                                if (createdParticipant.eventId.Equals(mainWindow.selectedEvent.id.ToString()))
+                                mainWindow.filteredParticipants.Add(createdParticipant);
+                               
+                                if (mainWindow.selectedEvent != null)
                                 {
-                                    mainWindow.selectedEventParticipants.Add(createdParticipant);
+                                    if (createdParticipant.eventId.Equals(mainWindow.selectedEvent.id.ToString()))
+                                    {
+                                        mainWindow.selectedEventParticipants.Add(createdParticipant);
+                                    }
+                                    mainWindow.UpdateCheckedInAndRegistered(mainWindow.selectedEventParticipants, mainWindow.selectedEvent, false);
+                                    int filteredAmount = Int32.Parse(mainWindow.Label_FilteredAmount.Text) + 1;
+                                    mainWindow.Label_FilteredAmount.Text = filteredAmount.ToString();
                                 }
-                                mainWindow.UpdateCheckedInAndRegistered(mainWindow.selectedEventParticipants, mainWindow.selectedEvent, false);
-
+                                mainWindow.addParticipantTableRow();
+                                mainWindow.addParticipantToParticipantTableRow(
+                                    createdParticipant, mainWindow.Table_ParticipantsData1.RowCount - 1, events);
                             }
-                            mainWindow.addParticipantTableRow();
-                            mainWindow.addParticipantToParticipantTableRow(
-                                createdParticipant, mainWindow.Table_ParticipantsData1.RowCount - 1, events);
                         }
                     }
                     this.Dispose();
